@@ -202,7 +202,7 @@ namespace HollyJson
             sfd.ShowHiddenItems = true;
             if(sfd.ShowDialog() == true)
             {
-                File.WriteAllText(sfd.FileName, jobj.ToString());
+                File.WriteAllText(sfd.FileName, jobj.ToString(Formatting.None));
             }
 
         }
