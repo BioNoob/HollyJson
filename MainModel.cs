@@ -22,6 +22,7 @@ namespace HollyJson
         public stateJson Info { get; set; }
         public Character SelectedChar { get; set; }
         public bool Save_Loaded { get; set; } = false;
+        public bool Save_done { get; set; } = false;
 
         CommandHandler _savefile;
         CommandHandler _openfile;
@@ -90,7 +91,9 @@ namespace HollyJson
             {
                 return _savefile ??= new CommandHandler(async obj =>
                 {
-                    await WriteChange();
+                    Save_done = false;
+                    bool t = await WriteChange();
+                    Save_done = true;
                 },
                 (obj) => true);
             }
@@ -153,57 +156,71 @@ namespace HollyJson
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        public async Task WriteChange()
+        public async Task<bool> WriteChange()
         {
-            Info.reputation += 10;
-            var z = jobj["stateJson"];
-            z["reputation"] = Info.reputation;//.ToString("0.0", CultureInfo.InvariantCulture);
-            z["budget"] = Info.budget;
-            z["cash"] = Info.cash;
-            z["influence"] = Info.influence;
-
-            foreach (var item in Info.characters)
+            try
             {
-                if (item.WasChanged)
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "Select where to save";
+                sfd.DefaultExt = ".json";
+                sfd.InitialDirectory = opennedfileplace;
+                sfd.RestoreDirectory = true;
+                sfd.Filter = "Json|*.json";
+                sfd.ShowHiddenItems = true;
+                if (sfd.ShowDialog() == true)
                 {
-                    var a = z["characters"];
-                    var b = a?.SingleOrDefault(t => t?["id"]?.Value<int>() == item.id, null);
-                    if (b is not null)
+                    var z = jobj["stateJson"];
+                    z["reputation"] = Info.reputation;//.ToString("0.0", CultureInfo.InvariantCulture);
+                    z["budget"] = Info.budget;
+                    z["cash"] = Info.cash;
+                    z["influence"] = Info.influence;
+
+                    foreach (var item in Info.characters)
                     {
-                        b["limit"] = item.limit;
-                        b["mood"] = item.mood;
-                        b["attitude"] = item.attitude;
-                        b["birthDate"] = item.birthDate;
-                        b["studioId"] = item.studioId;
-                        var cnt = b["contract"];
-                        if(cnt is not null && cnt.HasValues)
+                        if (item.WasChanged)
                         {
-                            cnt["amount"] = item.contract.amount;
-                            cnt["startAmount"] = item.contract.startAmount;
-                            cnt["initialFee"] = item.contract.initialFee;
-                            cnt["monthlySalary"] = item.contract.monthlySalary;
-                            cnt["weightToSalary"] = item.contract.weightToSalary;
-                            cnt["dateOfSigning"] = item.contract.dateOfSigning;
+                            var a = z["characters"];
+                            var b = a?.SingleOrDefault(t => t?["id"]?.Value<int>() == item.id, null);
+                            if (b is not null)
+                            {
+                                b["limit"] = item.limit;
+                                b["mood"] = item.mood;
+                                b["attitude"] = item.attitude;
+                                b["birthDate"] = item.birthDate;
+                                b["studioId"] = item.studioId;
+                                var cnt = b["contract"];
+                                if (cnt is not null && cnt.HasValues)
+                                {
+                                    cnt["amount"] = item.contract.amount;
+                                    cnt["startAmount"] = item.contract.startAmount;
+                                    cnt["initialFee"] = item.contract.initialFee;
+                                    cnt["monthlySalary"] = item.contract.monthlySalary;
+                                    cnt["weightToSalary"] = item.contract.weightToSalary;
+                                    cnt["dateOfSigning"] = item.contract.dateOfSigning;
+                                }
+                                if (item.CustomNameWasSetted)
+                                    b["customName"] = item.MyCustomName;
+                                b["professions"][item.professions.ProfAsString] = item.professions.SetterVal;
+                            }
+
                         }
-                        b["professions"][item.professions.ProfAsString] = item.professions.SetterVal;
                     }
-                        
+
+                    await File.WriteAllTextAsync(sfd.FileName, jobj.ToString(Formatting.None));
+                    return true;
                 }
+                else
+                    return false;
             }
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Title = "Select where to save";
-            sfd.DefaultExt = ".json";
-            sfd.InitialDirectory = opennedfileplace;
-            sfd.RestoreDirectory = true;
-            sfd.Filter = "Json|*.json";
-            sfd.ShowHiddenItems = true;
-            if(sfd.ShowDialog() == true)
+            catch (Exception ex)
             {
-                File.WriteAllText(sfd.FileName, jobj.ToString(Formatting.None));
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
             }
+
 
         }
     }

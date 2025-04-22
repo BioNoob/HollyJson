@@ -13,7 +13,8 @@ namespace HollyJson
         private string normalFirst1;
         private string normalLast1;
         private string customName1;
-
+        bool calcages = false;
+        private string? myCustomName = null;
         public double limit { get; set; }
         public double mood { get; set; }
         public double attitude { get; set; }
@@ -42,6 +43,20 @@ namespace HollyJson
             }
             set => normalLast1 = value;
         }
+        public string MyCustomName
+        {
+            get
+            {
+                if (myCustomName is null)
+                    return customName;
+                else
+                    return myCustomName;
+            }
+            set
+            {
+                myCustomName = value;
+            }
+        }
         public string customName
         {
             get
@@ -51,8 +66,9 @@ namespace HollyJson
                 else
                     return customName1;
             }
-            set => customName1 = value;
+            set { customName1 = value; }
         }
+        public bool CustomNameWasSetted => MyCustomName != customName;
         public string birthDate
         {
             get => birthDate1;
@@ -74,7 +90,8 @@ namespace HollyJson
                 age = value;
             }
         }
-        bool calcages = false;
+
+
         public void SetFullAge(DateTime now)
         {
             var age = now.Year - GetBirthDate.Year;
@@ -98,6 +115,9 @@ namespace HollyJson
                     mood == q.mood &&
                     attitude == q.attitude &&
                     birthDate.Equals(q.birthDate);
+
+                t1 &= !CustomNameWasSetted;
+
                 bool t2 =
                     professions.SetterVal == q.professions.SetterVal;
                 var cntr = q.contract;
