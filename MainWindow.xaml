@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HollyJson"
         mc:Ignorable="d" ResizeMode="NoResize"
         Icon="/main.ico"
-        Title="Holly JsonEditor by Yakor" Height="450" Width="590" MinHeight="250" MinWidth="590">
+        Title="Holly JsonEditor" Height="450" Width="590" MinHeight="250" MinWidth="590">
     <Window.DataContext>
         <local:MainModel/>
     </Window.DataContext>
@@ -57,11 +57,17 @@
                 <Button.Content>
                     <Image Source="/user.png"/>
                 </Button.Content>
+                <Button.ToolTip>
+                    <TextBlock Padding="0" Text="Open CHARACTER_NAMES file for better usability"/>
+                </Button.ToolTip>
             </Button>
             <Button Command="{Binding OpenFileCmd}" CommandParameter="OFD" Grid.Column="2" Height="25" Width="25" Margin="5,0,0,0">
                 <Button.Content>
                     <Image Source="/ofd.png"/>
                 </Button.Content>
+                <Button.ToolTip>
+                    <TextBlock Padding="0" Text="Open save.json file"/>
+                </Button.ToolTip>
             </Button>
         </Grid>
         <ListView Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Info.Mycharacters}" Margin="5,5,0,0"
@@ -85,9 +91,9 @@
             <ListView.ItemTemplate>
                 <DataTemplate DataType="local:Character">
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="{Binding customName}" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Padding="0" Margin="0,0,5,0"/>
+                        <Label Content="{Binding MyCustomName}" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Padding="0" Margin="0,0,5,0"/>
                     </StackPanel>
-                    
+
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
@@ -123,8 +129,8 @@
                         <ColumnDefinition Width="75"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Name" Grid.Row="0" Grid.Column="0"/>
-                    <TextBox Text="{Binding SelectedChar.customName}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
-                           HorizontalContentAlignment="Left" IsReadOnly="True" Margin="12,5,12,5" Background="#1F777777"/>
+                    <TextBox Text="{Binding SelectedChar.MyCustomName}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
+                           HorizontalContentAlignment="Left"  Margin="12,5,12,5" />
                     <Label Content="Id" Grid.Row="1" Grid.Column="0"/>
                     <TextBox Text="{Binding SelectedChar.id}" IsReadOnly="True" Grid.Row="1" Grid.Column="1" Width="50" 
                              Background="#1F777777"/>
@@ -177,8 +183,22 @@
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Content="Contract" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
                     <Label Grid.Row="0" Grid.Column="2" Content="Days Left"/>
-                    <TextBox Text="{Binding SelectedChar.contract.DaysLeft}" Grid.Row="0" Grid.Column="3" Width="50"
-                             PreviewTextInput="NumberValidation" DataObject.Pasting="PastingHandler"/>
+                    <TextBox Grid.Row="0" Grid.Column="3" Width="50" 
+                             PreviewTextInput="NumberValidation" DataObject.Pasting="PastingHandler">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox" BasedOn="{StaticResource txtbox}">
+                                <Setter Property="Margin" Value="5"/>
+                                <Setter Property="Text" Value="{Binding SelectedChar.contract.DaysLeft}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SelectedChar.contract.contractType}" Value="2">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                        <Setter Property="Text" Value="∞"/>
+                                        <Setter Property="Background" Value="#1F777777"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
                     <Label Grid.Row="1" Grid.Column="0" Content="Years"/>
                     <TextBox Text="{Binding SelectedChar.contract.amount}" Grid.Row="1" Grid.Column="1" Width="50"
                              PreviewTextInput="NumberValidation" DataObject.Pasting="PastingHandler"/>
@@ -213,9 +233,51 @@
                     VerticalAlignment="Bottom" HorizontalAlignment="Right"
                     Command="{Binding SaveCmd}">
                 <Image Source="/save.png"/>
+                <Button.Style>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Save_done}" Value="True">
+                                <DataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#7F00FF00" 
+                                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                                            FillBehavior="Stop" AutoReverse="True" 
+                                                            Duration="0:0:1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.EnterActions>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
 
 
         </Grid>
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="-10,-25,-10,0" 
+                VerticalAlignment="Center">
+            <Image  Source="/backgrnd.jpg" Stretch="UniformToFill" HorizontalAlignment="Center"/>
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Save_Loaded}" Value="true">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" 
+                                                         From="1" To="0" 
+                                                         FillBehavior="HoldEnd" AutoReverse="False" 
+                                                         Duration="0:0:1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.EnterActions>
+                            <Setter Property="IsHitTestVisible" Value="False"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+        </Border>
+
     </Grid>
 </Window>
