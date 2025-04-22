@@ -14,12 +14,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="backgrnd.jpg" />
     <None Remove="ofd.png" />
     <None Remove="save.png" />
     <None Remove="user.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="backgrnd.jpg" />
     <Resource Include="ofd.png" />
     <Resource Include="save.png" />
     <Resource Include="user.png" />
