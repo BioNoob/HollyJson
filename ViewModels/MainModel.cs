@@ -5,6 +5,8 @@ using PropertyChanged;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
+using System.IO.Packaging;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -17,15 +19,39 @@ namespace HollyJson
     {
         private bool names_loaded = false;
         private string opennedfileplace = string.Empty;
+        CommandHandler _savefile;
+        CommandHandler _openfile;
+        private string search_txt;
         JObject? jobj = null;
-        public Dictionary<string, string> DictNames { get; set; }
+        private Character selectedChar;
+
+        public Dictionary<string, string> LocaleNames { get; set; }
+        public Dictionary<string, string> LocaleTranslator { get; set; }
         public stateJson Info { get; set; }
-        public Character SelectedChar { get; set; }
+        public Character SelectedChar { get => selectedChar; set => selectedChar = value; }
+        public List<string> StudioListForChar { get; set; }
         public bool Save_Loaded { get; set; } = false;
         public bool Save_done { get; set; } = false;
 
-        CommandHandler _savefile;
-        CommandHandler _openfile;
+        public List<string> StudioList { get; set; }
+        public List<string> ProfList { get; set; }
+        public string Filter_Prof { get; set; }
+        public string Filter_studio { get; set; }
+        public string Filter_txt { get => search_txt; set => search_txt = value; }
+
+        private async void SetLocale(string path)
+        {
+            await LoadNamesFromJson(path);
+            await LoadLocaleFromJson(path);
+
+            if (Save_Loaded | names_loaded)
+                foreach (var t in Info.characters)
+                {
+                    t.normalLast = LocaleNames[t.lastNameId];
+                    t.normalFirst = LocaleNames[t.firstNameId];
+                }
+
+        }
         public CommandHandler OpenFileCmd
         {
             get
@@ -51,8 +77,8 @@ namespace HollyJson
                                 if (Save_Loaded)
                                     foreach (var t in Info.characters)
                                     {
-                                        t.normalLast = DictNames[t.lastNameId];
-                                        t.normalFirst = DictNames[t.firstNameId];
+                                        t.normalLast = LocaleNames[t.lastNameId];
+                                        t.normalFirst = LocaleNames[t.firstNameId];
                                     }
                             }
                         }
@@ -75,8 +101,8 @@ namespace HollyJson
                                 if (names_loaded)
                                     foreach (var t in Info.characters)
                                     {
-                                        t.normalLast = DictNames[t.lastNameId];
-                                        t.normalFirst = DictNames[t.firstNameId];
+                                        t.normalLast = LocaleNames[t.lastNameId];
+                                        t.normalFirst = LocaleNames[t.firstNameId];
                                     }
                             }
 
@@ -103,6 +129,21 @@ namespace HollyJson
                 (obj) => true);
             }
         }
+        public async Task LoadLocaleFromJson(string path)
+        {
+            string json = await File.ReadAllTextAsync(path); //"PROTAGONIST_WARRIOR": 26,
+            var map = JObject.Parse(json).SelectToken("IdMap");
+            List<string> maplbl = JsonConvert.DeserializeObject<List<string>>(map.ToString());
+            var local = JObject.Parse(json).SelectToken("locStrings");//array[int] = answer
+                                                                      //должны получить на выходе - вирд строка : нормальная строка
+            List<string> getout = JsonConvert.DeserializeObject<List<string>>(local.ToString());
+            LocaleTranslator = new Dictionary<string, string>();
+            int ii = 0;
+            maplbl.ForEach(t =>
+            {
+                LocaleTranslator.Add(t, getout[ii++]);
+            });
+        }
         public async Task LoadNamesFromJson(string path)
         {
             try
@@ -110,11 +151,11 @@ namespace HollyJson
                 string json = await File.ReadAllTextAsync(path);
                 var dt = JObject.Parse(json).SelectToken("locStrings");
                 List<string> names = JsonConvert.DeserializeObject<List<string>>(dt.ToString());
-                DictNames = new Dictionary<string, string>();
+                LocaleNames = new Dictionary<string, string>();
                 int ii = 0;
                 names.ForEach(t =>
                 {
-                    DictNames.Add(ii++.ToString(), t);
+                    LocaleNames.Add(ii++.ToString(), t);
                 });
             }
             catch (Exception ex)
@@ -122,7 +163,6 @@ namespace HollyJson
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         public async Task ParseJson(string path)
         {
             try
@@ -162,7 +202,7 @@ namespace HollyJson
                                     WhiteTag whiteTag = new WhiteTag();
                                     var in_tag = tag.First();
                                     whiteTag.id = in_tag.SelectToken("id")?.Value<string>();
-                                    if(whiteTag.Tagtype == Tags.ELSE) //срезаем то что не отслеживаем, ибо нафиг
+                                    if (whiteTag.Tagtype == Tags.ELSE) //срезаем то что не отслеживаем, ибо нафиг
                                         continue;
                                     whiteTag.dateAdded = (DateTime)in_tag.SelectToken("dateAdded")?.Value<DateTime>();
                                     whiteTag.movieId = (int)in_tag.SelectToken("movieId")?.Value<int>();
@@ -176,7 +216,14 @@ namespace HollyJson
                         }
                     }
                 }
+                StudioList = Info.characters.Where(t => t.studioId is not null).Select(t => t.studioId).Distinct().ToList()!;
+                StudioList.Insert(0, "All");
+                ProfList = Info.characters.Where(t => t.professions.GetProfession != Professions.Profession.Else).Select(t => t.professions.ProfAsString).Distinct().ToList()!;
+                ProfList.Insert(0, "All");
+                Filter_Prof = ProfList[0];
+                Filter_studio = StudioList[0];
                 Info.Mycharacters = [.. Info.characters.Where(t => t.studioId == "PL" && t.professions.GetProfession != Professions.Profession.Else)];
+
             }
             catch (Exception ex)
             {
