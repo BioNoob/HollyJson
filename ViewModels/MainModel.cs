@@ -32,55 +32,60 @@ namespace HollyJson
             {
                 return _openfile ??= new CommandHandler(async obj =>
                 {
-                    if ((string)obj != "OFD")
+                    try
                     {
-                        var ofd = new OpenFileDialog();
-                        ofd.Multiselect = false;
-                        ofd.Title = "Select names file (Hollywood Animal\\Holly_Data\\StreamingAssets\\Data\\Localization\\RUS\\)";
-                        ofd.DefaultExt = ".json";
-                        ofd.FileName = "CHARACTER_NAMES.json";
-                        ofd.RestoreDirectory = true;
-                        ofd.Filter = "Json|*.json";
-                        ofd.ShowHiddenItems = true;
-                        if (ofd.ShowDialog() == true)
+                        if ((string)obj != "OFD")
                         {
-                            await LoadNamesFromJson(ofd.FileName);
-                            names_loaded = true;
-                            if (Save_Loaded)
-                                foreach (var t in Info.characters)
-                                {
-                                    t.normalLast = DictNames[t.lastNameId];
-                                    t.normalFirst = DictNames[t.firstNameId];
-                                }
+                            var ofd = new OpenFileDialog();
+                            ofd.Multiselect = false;
+                            ofd.Title = "Select names file (Hollywood Animal\\Holly_Data\\StreamingAssets\\Data\\Localization\\RUS\\)";
+                            ofd.DefaultExt = ".json";
+                            ofd.FileName = "CHARACTER_NAMES.json";
+                            ofd.RestoreDirectory = true;
+                            ofd.Filter = "Json|*.json";
+                            ofd.ShowHiddenItems = true;
+                            if (ofd.ShowDialog() == true)
+                            {
+                                await LoadNamesFromJson(ofd.FileName);
+                                names_loaded = true;
+                                if (Save_Loaded)
+                                    foreach (var t in Info.characters)
+                                    {
+                                        t.normalLast = DictNames[t.lastNameId];
+                                        t.normalFirst = DictNames[t.firstNameId];
+                                    }
+                            }
+                        }
+                        else
+                        {
+                            var ofdd = new OpenFileDialog();
+                            ofdd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "Low\\Weappy\\Holly\\Saves\\Profiles";
+                            ofdd.Multiselect = false;
+                            ofdd.Title = "Select save file";
+                            ofdd.DefaultExt = ".json";
+                            ofdd.RestoreDirectory = true;
+                            ofdd.Filter = "Json|*.json";
+                            ofdd.ShowHiddenItems = true;
+                            if (ofdd.ShowDialog() == true)
+                            {
+                                opennedfileplace = Path.GetDirectoryName(ofdd.FileName);
+                                await ParseJson(ofdd.FileName);
+                                Save_Loaded = true;
+                                SelectedChar = Info.Mycharacters[0];
+                                if (names_loaded)
+                                    foreach (var t in Info.characters)
+                                    {
+                                        t.normalLast = DictNames[t.lastNameId];
+                                        t.normalFirst = DictNames[t.firstNameId];
+                                    }
+                            }
+
                         }
                     }
-                    else
+                    catch (System.Exception)
                     {
-                        var ofdd = new OpenFileDialog();
-                        ofdd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "Low\\Weappy\\Holly\\Saves\\Profiles";
-                        ofdd.Multiselect = false;
-                        ofdd.Title = "Select save file";
-                        ofdd.DefaultExt = ".json";
-                        ofdd.RestoreDirectory = true;
-                        ofdd.Filter = "Json|*.json";
-                        ofdd.ShowHiddenItems = true;
-                        if (ofdd.ShowDialog() == true)
-                        {
-                            opennedfileplace = Path.GetDirectoryName(ofdd.FileName);
-                            await ParseJson(ofdd.FileName);
-                            Save_Loaded = true;
-                            SelectedChar = Info.Mycharacters[0];
-                            if (names_loaded)
-                                foreach (var t in Info.characters)
-                                {
-                                    t.normalLast = DictNames[t.lastNameId];
-                                    t.normalFirst = DictNames[t.firstNameId];
-                                }
-                        }
-
+                        Save_Loaded = false;
                     }
-
-
                 },
                 (obj) => true);
             }
@@ -136,7 +141,7 @@ namespace HollyJson
                 Info.influence = (int)aa.SelectToken("influence")?.Value<int>();
                 Info.studioName = aa.SelectToken("studioName")?.Value<string>();
                 Info.timePassed = aa.SelectToken("timePassed")?.Value<string>();
-                Info.characters = new ObservableCollection<Character>();
+                Info.characters = [];
                 foreach (var item in aa.SelectToken("characters")?.Children())
                 {
                     if (item is not null)
@@ -148,6 +153,25 @@ namespace HollyJson
                             z.SetFullAge(Info.Now);
                             if (z.contract is not null)
                                 z.contract.SetCalcDaysLeft(Info.Now);
+                            var tags = item.SelectToken("whiteTagsNEW");
+                            if (tags?.Children().Count() > 0)
+                            {
+                                z.whiteTagsNEW = [];
+                                foreach (var tag in tags.Children())
+                                {
+                                    WhiteTag whiteTag = new WhiteTag();
+                                    var in_tag = tag.First();
+                                    whiteTag.id = in_tag.SelectToken("id")?.Value<string>();
+                                    if(whiteTag.Tagtype == Tags.ELSE) //срезаем то что не отслеживаем, ибо нафиг
+                                        continue;
+                                    whiteTag.dateAdded = (DateTime)in_tag.SelectToken("dateAdded")?.Value<DateTime>();
+                                    whiteTag.movieId = (int)in_tag.SelectToken("movieId")?.Value<int>();
+                                    whiteTag.value = (double)in_tag.SelectToken("value")?.Value<double>();
+                                    whiteTag.IsOverall = (bool)in_tag.SelectToken("IsOverall")?.Value<bool>();
+                                    whiteTag.overallValues = JsonConvert.DeserializeObject<List<OverallValue>>(in_tag.SelectToken("overallValues").ToString());
+                                    z.whiteTagsNEW.Add(whiteTag);
+                                }
+                            }
                             Info.characters.Add(z);
                         }
                     }
@@ -238,7 +262,7 @@ namespace HollyJson
     }
     public class CommandHandler : ICommand
     {
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler? CanExecuteChanged;
         private readonly Action<object> _execute;
         private readonly Predicate<object> _canExecute;
 
@@ -248,16 +272,16 @@ namespace HollyJson
             _canExecute = canExecute;
         }
 
-        public bool CanExecute(object parameter)
+        public bool CanExecute(object? parameter)
         {
             if (_canExecute == null)
                 return true;
-            return _canExecute(parameter);
+            return _canExecute(parameter!);
         }
 
-        public void Execute(object parameter)
+        public void Execute(object? parameter)
         {
-            _execute?.Invoke(parameter);
+            _execute?.Invoke(parameter!);
         }
     }
 }

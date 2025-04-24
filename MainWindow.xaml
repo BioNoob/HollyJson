@@ -102,6 +102,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.Resources>
@@ -131,8 +132,8 @@
                     <Label Content="Name" Grid.Row="0" Grid.Column="0"/>
                     <TextBox Text="{Binding SelectedChar.MyCustomName}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
                            HorizontalContentAlignment="Left"  Margin="12,5,12,5" />
-                    <Label Content="Id" Grid.Row="1" Grid.Column="0"/>
-                    <TextBox Text="{Binding SelectedChar.id}" IsReadOnly="True" Grid.Row="1" Grid.Column="1" Width="50" 
+                    <Label Content="Std. Id" Grid.Row="1" Grid.Column="0"/>
+                    <TextBox Text="{Binding SelectedChar.studioId}" IsReadOnly="True" Grid.Row="1" Grid.Column="1" Width="50" 
                              Background="#1F777777"/>
                     <Label Content="Age"  Grid.Row="1" Grid.Column="2"/>
                     <TextBox Text="{Binding SelectedChar.Age}" Grid.Row="1" Grid.Column="3" Width="50" 
@@ -162,10 +163,10 @@
                            HorizontalContentAlignment="Left"/>
                     <Label Content="Skill" Grid.Row="1" Grid.Column="2"/>
                     <TextBox Text="{Binding SelectedChar.professions.SetterVal, StringFormat={}{0:0.0}}" Grid.Row="1" Grid.Column="3" 
-                             Width="50" PreviewTextInput="DoubleValidation" DataObject.Pasting="PastingHandler"/>
+                             Width="50" PreviewTextInput="LimitValidation" DataObject.Pasting="PastingHandler"/>
                     <Label Content="Limit" Grid.Row="1" Grid.Column="0"/>
                     <TextBox Text="{Binding SelectedChar.limit, StringFormat={}{0:0.0}}" Grid.Row="1" Grid.Column="1" 
-                             Width="50" PreviewTextInput="DoubleValidation" DataObject.Pasting="PastingHandler"/>
+                             Width="50" PreviewTextInput="LimitValidation" DataObject.Pasting="PastingHandler"/>
                 </Grid>
             </Border>
             <Border  Grid.Row="2" BorderThickness="1.5" BorderBrush="DarkGray" CornerRadius="5" Margin="5,5,0,0">
@@ -229,7 +230,9 @@
                     </TextBox>
                 </Grid>
             </Border>
-            <Button Grid.Column="1" Grid.Row="3" Width="25" Height="25" IsEnabled="{Binding Save_Loaded}"
+            <Border Grid.Row="3" BorderThickness="1.5" BorderBrush="DarkGray" CornerRadius="5" Margin="5,5,0,0">
+            </Border>
+            <Button Grid.Column="1" Grid.Row="4" Width="25" Height="25" IsEnabled="{Binding Save_Loaded}"
                     VerticalAlignment="Bottom" HorizontalAlignment="Right"
                     Command="{Binding SaveCmd}">
                 <Image Source="/save.png"/>

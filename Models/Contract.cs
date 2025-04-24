@@ -20,7 +20,7 @@ namespace HollyJson
             set
             {
                 if (!calceddays)
-                    dateOfSigning = dateOfSigning.AddDays(value - daysLeft);//daysLeft - value);
+                    dateOfSigning = dateOfSigning.AddDays(value - daysLeft);
                 else
                     calceddays = false;
                 daysLeft = value;
@@ -30,7 +30,7 @@ namespace HollyJson
         public void SetCalcDaysLeft(DateTime now)
         {
             var t = dateOfSigning.AddYears(amount);
-            TimeSpan ts = t - now;//now - dateOfSigning;
+            TimeSpan ts = t - now;
             calceddays = true;
             DaysLeft = (int)ts.TotalDays;
         }

@@ -21,7 +21,12 @@ public partial class MainWindow : Window
     }
     private void DoubleValidation(object sender, TextCompositionEventArgs e)
     {
-        Regex regex = new Regex(@"^\d+(?:\.\d)$");
+        Regex regex = new Regex(@"^\d+(?:\.\d+)$");
+        e.Handled = regex.IsMatch(e.Text);
+    }
+    private void LimitValidation(object sender, TextCompositionEventArgs e)
+    {
+        Regex regex = new Regex(@"^[10](?:\.\d)$");
         e.Handled = regex.IsMatch(e.Text);
     }
     private Boolean IsTextAllowed(String text)

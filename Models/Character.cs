@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using PropertyChanged;
 using System.Globalization;
-using System.Windows.Documents;
+using System.Collections.ObjectModel;
 
 namespace HollyJson
 {
@@ -13,12 +13,13 @@ namespace HollyJson
         private string normalFirst1;
         private string normalLast1;
         private string customName1;
-        bool calcages = false;
+        private bool calcages = false;
         private string? myCustomName = null;
         public double limit { get; set; }
         public double mood { get; set; }
         public double attitude { get; set; }
         public int id { get; set; }
+        public int portraitBaseId { get; set; }
         public string firstNameId { get; set; }
         public string normalFirst
         {
@@ -83,22 +84,25 @@ namespace HollyJson
             get => age;
             set
             {
-                if(!calcages)
+                if (!calcages)
                     birthDate = GetBirthDate.AddYears(age - value).ToString("dd-MM-yyyy");
                 else
                     calcages = false;
                 age = value;
             }
         }
-
+        [JsonIgnore]
+        public ObservableCollection<WhiteTag> whiteTagsNEW { get; set; }
+        //ПРОВЕРИТЬ ЛОКАЛИЗАЦИЮ
+        public List<string> aSins { get; set; }
+        public List<string> labels { get; set; }
 
         public void SetFullAge(DateTime now)
         {
             var age = now.Year - GetBirthDate.Year;
             if (GetBirthDate.Date > now.AddYears(-age)) age--;
             calcages = true;
-            Age = age;  
-            //return age;
+            Age = age;
         }
         public string? studioId { get; set; }
 
