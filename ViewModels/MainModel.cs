@@ -5,8 +5,7 @@ using PropertyChanged;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
-using System.IO.Packaging;
-using System.Security.Cryptography;
+using System.Runtime.Caching;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -25,9 +24,10 @@ namespace HollyJson
         JObject? jobj = null;
         private Character selectedChar;
 
-        public Dictionary<string, string> LocaleNames { get; set; }
-        public Dictionary<string, string> LocaleTranslator { get; set; }
+        public static Dictionary<string, string> LocaleNames { get; set; } = [];
+        public static Dictionary<string, string> LocaleTranslator { get; set; } = [];
         public stateJson Info { get; set; }
+        public ObservableCollection<Character> FilteredObj { get; set; }
         public Character SelectedChar { get => selectedChar; set => selectedChar = value; }
         public List<string> StudioListForChar { get; set; }
         public bool Save_Loaded { get; set; } = false;
@@ -94,16 +94,22 @@ namespace HollyJson
                             ofdd.ShowHiddenItems = true;
                             if (ofdd.ShowDialog() == true)
                             {
-                                opennedfileplace = Path.GetDirectoryName(ofdd.FileName);
-                                await ParseJson(ofdd.FileName);
-                                Save_Loaded = true;
-                                SelectedChar = Info.Mycharacters[0];
-                                if (names_loaded)
-                                    foreach (var t in Info.characters)
-                                    {
-                                        t.normalLast = LocaleNames[t.lastNameId];
-                                        t.normalFirst = LocaleNames[t.firstNameId];
-                                    }
+                                await Task.Run(async () =>
+                                {
+                                    opennedfileplace = Path.GetDirectoryName(ofdd.FileName);
+                                    await ParseJson(ofdd.FileName);
+                                    GC.Collect();
+                                    FilteredObj = Info.characters;
+                                    Save_Loaded = true;
+                                    //SelectedChar = Info.Mycharacters[0];
+                                    if (names_loaded)
+                                        foreach (var t in Info.characters)
+                                        {
+                                            t.normalLast = LocaleNames[t.lastNameId];
+                                            t.normalFirst = LocaleNames[t.firstNameId];
+                                        }
+                                });
+                                GC.Collect();
                             }
 
                         }
@@ -168,9 +174,20 @@ namespace HollyJson
             try
             {
                 string jsonstr = await File.ReadAllTextAsync(path);
-                var reader = new JsonTextReader(new StringReader(jsonstr));
-                reader.FloatParseHandling = FloatParseHandling.Decimal;
-                jobj = JObject.Load(reader);
+                using (var str_reader = new StringReader(jsonstr))
+                {
+                    using (var reader = new JsonTextReader(str_reader))
+                    {
+                        reader.FloatParseHandling = FloatParseHandling.Decimal;
+                        jobj = null;
+                        jobj = JObject.Load(reader);
+                        str_reader.Close();
+                        reader.Close();
+                    }
+                }
+                jsonstr = null;
+                
+                //var reader = new JsonTextReader(new StringReader(jsonstr));
                 var aa = jobj.SelectToken("stateJson");
                 //Info = JsonConvert.DeserializeObject<stateJson>(aa.ToString());
                 //переезжаем на дессирализцаию в ручную...
@@ -181,12 +198,29 @@ namespace HollyJson
                 Info.influence = (int)aa.SelectToken("influence")?.Value<int>();
                 Info.studioName = aa.SelectToken("studioName")?.Value<string>();
                 Info.timePassed = aa.SelectToken("timePassed")?.Value<string>();
+                Info.NextSpawnDays = [];
+                var sp_d = aa.SelectToken("nextGenCharacterTimers")?.Children();
+                foreach (var item in sp_d)
+                {                   
+                    foreach (var prof in item.Children())
+                    {
+                        foreach (var prop in prof?.ToObject<JObject>().Properties())
+                        {
+                            Info.NextSpawnDays.Add(prop.Name,prop.Value.ToObject<DateTime>());
+                        }  
+                    } 
+                }
                 Info.characters = [];
                 foreach (var item in aa.SelectToken("characters")?.Children())
                 {
                     if (item is not null)
                     {
                         var z = JsonConvert.DeserializeObject<Character>(item.ToString());
+                        var qqq = item.SelectToken("professions").ToObject<JObject>().Properties().ElementAt(0);
+                        var q_prop = qqq.Name;
+                        var q_val = qqq.Value;
+                        //qqq[0].
+                        //z.professions.PropertyProf = ;
                         if (z is not null)
                         {
                             z.JsonString = item.ToString();
@@ -217,12 +251,13 @@ namespace HollyJson
                     }
                 }
                 StudioList = Info.characters.Where(t => t.studioId is not null).Select(t => t.studioId).Distinct().ToList()!;
-                StudioList.Insert(0, "All");
-                ProfList = Info.characters.Where(t => t.professions.GetProfession != Professions.Profession.Else).Select(t => t.professions.ProfAsString).Distinct().ToList()!;
-                ProfList.Insert(0, "All");
-                Filter_Prof = ProfList[0];
-                Filter_studio = StudioList[0];
-                Info.Mycharacters = [.. Info.characters.Where(t => t.studioId == "PL" && t.professions.GetProfession != Professions.Profession.Else)];
+                //jobj = null;
+                //StudioList.Insert(0, "All");
+                //ProfList = Info.characters.Where(t => t.professions.GetProfession != Professions.Profession.Else).Select(t => t.professions.ProfAsString).Distinct().ToList()!;
+                //ProfList.Insert(0, "All");
+                //Filter_Prof = ProfList[0];
+                //Filter_studio = StudioList[0];
+                //Info.Mycharacters = [.. Info.characters.Where(t => t.studioId == "PL" && t.professions.GetProfession != Professions.Profession.Else)];
 
             }
             catch (Exception ex)
@@ -274,7 +309,7 @@ namespace HollyJson
                                 }
                                 if (item.CustomNameWasSetted)
                                     b["customName"] = item.MyCustomName;
-                                b["professions"][item.professions.ProfAsString] = item.professions.SetterVal;
+                                //b["professions"][item.professions.ProfAsString] = item.professions.SetterVal;
                             }
 
                         }
@@ -300,6 +335,18 @@ namespace HollyJson
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return ((DateTime)value).ToString("dd.MM.yyyy");
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
+    public class LangStringConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return MainModel.LocaleTranslator.ContainsKey((string)value) ? MainModel.LocaleTranslator[(string)value] : value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

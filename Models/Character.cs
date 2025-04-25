@@ -107,6 +107,7 @@ namespace HollyJson
         public string? studioId { get; set; }
 
         public Contract? contract { get; set; }
+        [JsonIgnore]
         public Professions professions { get; set; }
         public string JsonString { get; set; }
         public bool WasChanged
@@ -122,8 +123,8 @@ namespace HollyJson
 
                 t1 &= !CustomNameWasSetted;
 
-                bool t2 =
-                    professions.SetterVal == q.professions.SetterVal;
+                bool t2 = true;
+                    //professions.SetterVal == q.professions.SetterVal;
                 var cntr = q.contract;
                 if (q.contract is not null)
                 {
