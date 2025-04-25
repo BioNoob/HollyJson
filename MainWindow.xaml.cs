@@ -26,7 +26,7 @@ public partial class MainWindow : Window
     }
     private void LimitValidation(object sender, TextCompositionEventArgs e)
     {
-        Regex regex = new Regex(@"^[10](?:\.\d)$");
+        Regex regex = new Regex(@"^[0](?:\.\d+)|(1\.0)$");//@"^[10](?:\.\d)$");
         e.Handled = regex.IsMatch(e.Text);
     }
     private Boolean IsTextAllowed(String text)
