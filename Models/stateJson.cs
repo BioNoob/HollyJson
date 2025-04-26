@@ -1,7 +1,7 @@
 ﻿using PropertyChanged;
 using System.Collections.ObjectModel;
 
-namespace HollyJson
+namespace HollyJson.Models
 {
     [AddINotifyPropertyChangedInterface]
     public class stateJson
@@ -15,7 +15,10 @@ namespace HollyJson
         public string timePassed { get; set; }
         public DateTime Now => !string.IsNullOrEmpty(timePassed) ? GameStartTime.AddDays(int.Parse(timePassed.Split('.')[0])) : GameStartTime;
         public ObservableCollection<Character> characters { get; set; }
+        
         public Dictionary<string,DateTime> NextSpawnDays { get; set; }
+        //milestones POLICY = для открытия стадий бутика треша или херни
+
         //public ObservableCollection<Character> Mycharacters { get; set; }// => new ObservableCollection<Character>(characters.Where(t => t.studioId == "PL" && t.professions.GetProfession != Professions.Profession.Else).ToList());
 
     }

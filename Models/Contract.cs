@@ -1,6 +1,6 @@
 ﻿using PropertyChanged;
 
-namespace HollyJson
+namespace HollyJson.Models
 {
     [AddINotifyPropertyChangedInterface]
     public class Contract

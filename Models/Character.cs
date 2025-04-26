@@ -3,11 +3,48 @@ using PropertyChanged;
 using System.Globalization;
 using System.Collections.ObjectModel;
 
-namespace HollyJson
+namespace HollyJson.Models
 {
     [AddINotifyPropertyChangedInterface]
     public class Character
     {
+        public static List<string> Labels => new List<string>()
+        {
+            "HARDWORKING",
+            "LAZY",
+            "DISCIPLINED",
+            "UNDISCIPLINED",
+            "PERFECTIONIST",
+            "INDIFFERENT",
+            "HOTHEADED",
+            "CALM",
+            "LEADER",
+            "TEAM_PLAYER",
+            "OPEN_MINDED",
+            "RACIST",
+            "MISOGYNIST",
+            "XENOPHOBE",
+            "DEMANDING",
+            "MODEST",
+            "ARROGANT",
+            "SIMPLE",
+            "HEARTBREAKER",
+            "CHASTE",
+            "CHEERY",
+            "MELANCHOLIC",
+            "ALCOHOLIC",
+            "LUDOMANIAC",
+            "JUNKIE",
+            "UNWANTED_ACTOR",
+            "UNTOUCHABLE",
+            "STERILE",
+            "IMAGE_VIVID",
+            "IMAGE_SOPHISTIC",
+            "IMMORTAL",
+            "SUPER_IMMORTAL"
+        };
+
+
         private int age;
         private string birthDate1;
         private string normalFirst1;
@@ -15,6 +52,8 @@ namespace HollyJson
         private string customName1;
         private bool calcages = false;
         private string? myCustomName = null;
+        private string? studioId1;
+
         public double limit { get; set; }
         public double mood { get; set; }
         public double attitude { get; set; }
@@ -93,10 +132,8 @@ namespace HollyJson
         }
         [JsonIgnore]
         public ObservableCollection<WhiteTag> whiteTagsNEW { get; set; }
-        //ПРОВЕРИТЬ ЛОКАЛИЗАЦИЮ
         public List<string> aSins { get; set; }
-        public List<string> labels { get; set; }
-
+        public ObservableCollection<string> labels { get; set; }
         public void SetFullAge(DateTime now)
         {
             var age = now.Year - GetBirthDate.Year;
@@ -104,12 +141,60 @@ namespace HollyJson
             calcages = true;
             Age = age;
         }
-        public string? studioId { get; set; }
-
+        public string? studioId
+        {
+            get
+            {
+                if (studioId1 is null)
+                    return "NONE";
+                else
+                    return studioId1;
+            }
+            set
+            {
+                if (value == "NONE")
+                    studioId1 = null;
+                else
+                    studioId1 = value;
+            }
+        }
         public Contract? contract { get; set; }
         [JsonIgnore]
         public Professions professions { get; set; }
         public string JsonString { get; set; }
+        //1 = F, 0 = M
+        public int gender { get; set; }
+        public List<string> AvalibaleSkills
+        {
+            get
+            {
+                var answ = new List<string>()
+                {
+                    "ACTION",
+                    "DRAMA",
+                    "HISTORICAL",
+                    "THRILLER",
+                    "ROMANCE",
+                    "DETECTIVE",
+                    "COMEDY",
+                    "ADVENTURE"
+                };
+                switch (professions.GetProfession)
+                {
+                    case Professions.Profession.Scriptwriter:
+                    case Professions.Profession.Producer:
+                        return answ;
+                    case Professions.Profession.Cinematographer:
+                        return new List<string>() { "INDOOR", "OUTDOOR" };
+                    case Professions.Profession.Director:
+                    case Professions.Profession.Actor:
+                        answ.Add("COM");
+                        answ.Add("ART");
+                        return answ;
+                }
+                return new List<string>();
+            }
+        }
         public bool WasChanged
         {
             get
@@ -124,7 +209,6 @@ namespace HollyJson
                 t1 &= !CustomNameWasSetted;
 
                 bool t2 = true;
-                    //professions.SetterVal == q.professions.SetterVal;
                 var cntr = q.contract;
                 if (q.contract is not null)
                 {

@@ -26,13 +26,14 @@ public partial class MainWindow : Window
     }
     private void LimitValidation(object sender, TextCompositionEventArgs e)
     {
-        Regex regex = new Regex(@"^[0](?:\.\d+)|(1\.0)$");//@"^[10](?:\.\d)$");
+        Regex regex = new Regex(@"^[0](?:\.\d+)|(1\.0)$");
         e.Handled = regex.IsMatch(e.Text);
     }
-    private Boolean IsTextAllowed(String text)
+    private bool IsTextAllowed(string text)
     {
-        return Array.TrueForAll<Char>(text.ToCharArray(),
-            delegate (Char c) { return Char.IsDigit(c) || Char.IsControl(c); });
+
+        Regex regex = new Regex(@"^\d+(\.\d+)?$");
+        return regex.IsMatch(text);
     }
     private void PastingHandler(object sender, DataObjectPastingEventArgs e)
     {
@@ -45,18 +46,6 @@ public partial class MainWindow : Window
     }
     private void TextBox_KeyDownHandler(object sender, KeyEventArgs e)
     {
-        //var z = (sender as TextBox);
-
-        //switch (e.Key)
-        //{
-        //    case Key.Delete:
-        //    case Key.Back:
-        //        if (z.Text.Length <= 1)
-        //                e.Handled = true;
-        //        else if (z.Text.Length == 3 && z.Text.ElementAt(1) == '.')
-        //            e.Handled = true;
-        //        break;
-        //}
     }
 
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

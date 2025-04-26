@@ -34,7 +34,6 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
-    <PackageReference Include="System.Runtime.Caching" Version="9.0.4" />
   </ItemGroup>
 
 

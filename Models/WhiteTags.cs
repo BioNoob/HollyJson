@@ -1,7 +1,7 @@
 using PropertyChanged;
-namespace HollyJson
+namespace HollyJson.Models
 {
-    public enum Tags
+    public enum Skills
     {
         Romance,
         Drama,
@@ -42,43 +42,43 @@ namespace HollyJson
                 switch (value)
                 {
                     case "ROMANCE":
-                        Tagtype = Tags.Romance;
+                        Tagtype = Skills.Romance;
                         break;
                     case "DRAMA":
-                        Tagtype = Tags.Drama;
+                        Tagtype = Skills.Drama;
                         break;
                     case "THRILLER":
-                        Tagtype = Tags.Thriller;
+                        Tagtype = Skills.Thriller;
                         break;
                     case "COMEDY":
-                        Tagtype = Tags.Comedy;
+                        Tagtype = Skills.Comedy;
                         break;
                     case "DETECTIVE":
-                        Tagtype = Tags.Detective;
+                        Tagtype = Skills.Detective;
                         break;
                     case "ACTION":
-                        Tagtype = Tags.Action;
+                        Tagtype = Skills.Action;
                         break;
                     case "HISTORICAL":
-                        Tagtype = Tags.Historical;
+                        Tagtype = Skills.Historical;
                         break;
                     case "ADVENTURE":
-                        Tagtype = Tags.Adventure;
+                        Tagtype = Skills.Adventure;
                         break;
                     case "INDOOR":
-                        Tagtype = Tags.Indoor;
+                        Tagtype = Skills.Indoor;
                         break;
                     case "OUTDOOR":
-                        Tagtype = Tags.Outdoor;
+                        Tagtype = Skills.Outdoor;
                         break;
                     case "COM":
-                        Tagtype = Tags.COM;
+                        Tagtype = Skills.COM;
                         break;
                     case "ART":
-                        Tagtype = Tags.ART;
+                        Tagtype = Skills.ART;
                         break;
                     default:
-                        Tagtype = Tags.ELSE;
+                        Tagtype = Skills.ELSE;
                         break;
 
                 }
@@ -89,6 +89,6 @@ namespace HollyJson
         public int movieId { get; set; }
         public double value { get; set; }
         public bool IsOverall { get; set; }
-        public Tags Tagtype { get; set; }
+        public Skills Tagtype { get; set; }
     }
 }
