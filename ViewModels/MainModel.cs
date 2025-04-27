@@ -215,6 +215,30 @@ namespace HollyJson.ViewModels
                 }, (obj) => true);
             }
         }
+        public CommandHandler AddSkillCmd
+        {
+            get
+            {
+                return _addskill ??= new CommandHandler(obj =>
+                {
+                    if (SelectedChar.whiteTagsNEW.Any(t => t.id == (string)obj))
+                        return;
+                    SelectedChar.whiteTagsNEW.Add(new WhiteTag() { id = (string)obj, value = 7.0 }); //вроде как 7рки хватает на получение трейта.. овералл пока не ставим в тру.
+                                                                                                     //и вроде как менять 0 оверолл не надо при изменении значения (у многих он стоит в 0)
+                }, (obj) => !string.IsNullOrEmpty((string)obj));
+            }
+        }
+        public CommandHandler RemoveSkillCmd
+        {
+            get
+            {
+                return _removeskill ??= new CommandHandler(obj =>
+                {
+                    var a = SelectedChar.whiteTagsNEW.Single(t => t.id == (string)obj);
+                    SelectedChar.whiteTagsNEW.Remove(a);
+                }, (obj) => true);
+            }
+        }
         public async Task LoadLocaleFromJson(string path)
         {
             try

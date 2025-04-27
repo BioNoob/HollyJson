@@ -90,5 +90,21 @@ namespace HollyJson.Models
         public double value { get; set; }
         public bool IsOverall { get; set; }
         public Skills Tagtype { get; set; }
+        public WhiteTag()
+        {
+            dateAdded = stateJson.GameStartTime;
+            movieId = 0;
+            value = 0d;
+            IsOverall = false;
+            overallValues = new List<OverallValue>();
+            id = "";
+        }
+        //constr for add new
+        public WhiteTag(string idd, double val) : base()
+        {
+            id = idd;
+            value = val;
+            overallValues.Add(new OverallValue() { movieId = 0, dateAdded = dateAdded, value = val, sourceType = 0 });
+        }
     }
 }
