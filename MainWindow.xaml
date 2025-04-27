@@ -7,7 +7,7 @@
         xmlns:models="clr-namespace:HollyJson.Models"
         mc:Ignorable="d" ResizeMode="NoResize"
         Icon="/main.ico"
-        Title="Holly JsonEditor" Height="710" Width="600">
+        Title="Holly JsonEditor" Height="710" Width="730">
     <Window.DataContext>
         <local:MainModel/>
     </Window.DataContext>
@@ -41,8 +41,6 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Label Content="{Binding Info.studioName}" Grid.Row="0" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold"/>
-            <Label Content="{Binding SelectedChar.portraitBaseId}" HorizontalAlignment="Center"/>
-            <Label Content="{Binding SelectedChar.gender}" HorizontalAlignment="Center" Margin="123,0,0,0"/>
             <Label Content="{Binding Info.Now, Converter={StaticResource myDateConverter}}" Grid.Row="0" HorizontalAlignment="Right" VerticalContentAlignment="Center" FontWeight="Bold"/>
             <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,5,0,0">
                 <Grid.ColumnDefinitions>
@@ -68,6 +66,8 @@
                 <TextBox Text="{Binding Info.influence}" VerticalContentAlignment="Center" Height="22"
                          PreviewTextInput="NumberValidation" TextChanged="TextBox_TextChanged"  Grid.Column="7"/>
             </Grid>
+            <Button Click="Button_Click" CommandParameter="Names" Grid.Column="0" Height="25" Width="25" Margin="5,0,0,0"/>
+            <Button Click="Button_Click_1" CommandParameter="Names" Grid.Column="0" Height="25" Width="25" Margin="89,0,0,0"/>
             <Button Command="{Binding OpenFileCmd}" CommandParameter="Names" Grid.Column="1" Height="25" Width="25" Margin="5,0,0,0">
                 <Button.Content>
                     <Image Source="/Resources/user.png"/>
@@ -175,29 +175,32 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="85"/>
                         <ColumnDefinition Width="60"/>
                         <ColumnDefinition Width="75"/>
                         <ColumnDefinition Width="60"/>
                         <ColumnDefinition Width="75"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Name" Grid.Row="0" Grid.Column="0"/>
-                    <TextBox Text="{Binding SelectedChar.MyCustomName}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
+                    <Border Grid.RowSpan="3" Margin="5">
+                        <Image Source="{Binding SelectedChar.ImgPath}"/>
+                    </Border>
+                    <Label Content="Name" Grid.Row="0" Grid.Column="1"/>
+                    <TextBox Text="{Binding SelectedChar.MyCustomName}" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3"
                            HorizontalContentAlignment="Left"  Margin="12,5,12,5" />
-                    <Label Content="Studio Id" Grid.Row="1" Grid.Column="0"/>
-                    <ComboBox SelectedItem="{Binding SelectedChar.studioId}" Grid.Row="1" Grid.Column="1" Height="20" Margin="13,0,13,0"
+                    <Label Content="Studio Id" Grid.Row="1" Grid.Column="1"/>
+                    <ComboBox SelectedItem="{Binding SelectedChar.studioId}" Grid.Row="1" Grid.Column="2" Height="20" Margin="13,0,13,0"
                              Padding="0" Grid.ColumnSpan="3" ItemsSource="{Binding StudioListForChar}" VerticalContentAlignment="Center">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding ., Converter={StaticResource LocaleConverter}}" Padding="0" Margin="5,0,0,0"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
-
                     </ComboBox>
-                    <Label Content="Mood"  Grid.Row="2" Grid.Column="0" />
-                    <TextBox Text="{Binding SelectedChar.mood, StringFormat={}{0:0.00}}" Grid.Row="2" Grid.Column="1" Width="50" 
+                    <Label Content="Mood"  Grid.Row="2" Grid.Column="1" />
+                    <TextBox Text="{Binding SelectedChar.mood, StringFormat={}{0:0.00}}" Grid.Row="2" Grid.Column="2" Width="50" 
                              PreviewTextInput="DoubleValidation" DataObject.Pasting="PastingHandler"/>
-                    <Label Content="Attitude" Grid.Row="2" Grid.Column="2"/>
-                    <TextBox Text="{Binding SelectedChar.attitude, StringFormat={}{0:0.00}}" Grid.Row="2" Grid.Column="3" Width="50"
+                    <Label Content="Attitude" Grid.Row="2" Grid.Column="3"/>
+                    <TextBox Text="{Binding SelectedChar.attitude, StringFormat={}{0:0.00}}" Grid.Row="2" Grid.Column="4" Width="50"
                              PreviewTextInput="DoubleValidation" DataObject.Pasting="PastingHandler"/>
                 </Grid>
             </Border>
