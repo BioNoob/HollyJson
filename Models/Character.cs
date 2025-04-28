@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using HollyJson.ViewModels;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PropertyChanged;
-using System.Globalization;
 using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace HollyJson.Models
 {
@@ -53,6 +55,7 @@ namespace HollyJson.Models
         private bool calcages = false;
         private string? myCustomName = null;
         private string? studioId1;
+        private bool isDead;
 
         public double limit { get; set; }
         public double mood { get; set; }
@@ -60,6 +63,65 @@ namespace HollyJson.Models
         public int id { get; set; }
         public int portraitBaseId { get; set; }
         public string firstNameId { get; set; }
+        public string lastNameId { get; set; }
+        public string birthDate
+        {
+            get => birthDate1;
+            set
+            {
+                birthDate1 = value;
+            }
+        }
+        public string? studioId
+        {
+            get
+            {
+                if (studioId1 is null)
+                    return "NONE";
+                else
+                    return studioId1;
+            }
+            set
+            {
+                if (value == "NONE")
+                {
+                    studioId1 = null;
+                    contract = null;
+                }
+                else
+                {
+                    studioId1 = value;
+                    if(contract is null)
+                    {
+                        contract = new Contract(CurrNow);
+                    }
+                    else
+                        contract.DaysLeft = contract.amount * 365;
+                }
+                    
+            }
+        }
+        //1 = F, 0 = M
+        public int gender { get; set; }
+        [JsonIgnore]
+        public Professions professions { get; set; }
+        public Contract? contract { get; set; }
+        [JsonIgnore]
+        public ObservableCollection<WhiteTag> whiteTagsNEW { get; set; }
+        public List<string> aSins { get; set; }
+        public ObservableCollection<string> labels { get; set; }
+        public string deathDate { get; set; }
+        public int causeOfDeath { get; set; }
+
+        public Character()
+        {
+            whiteTagsNEW = [];
+            labels = [];
+            aSins = [];
+        }
+
+        #region custom
+        public string JsonString { get; set; }
         public string normalFirst
         {
             get
@@ -71,7 +133,6 @@ namespace HollyJson.Models
             }
             set => normalFirst1 = value;
         }
-        public string lastNameId { get; set; }
         public string normalLast
         {
             get
@@ -109,61 +170,100 @@ namespace HollyJson.Models
             set { customName1 = value; }
         }
         public bool CustomNameWasSetted => MyCustomName != customName;
-        public string birthDate
-        {
-            get => birthDate1;
-            set
-            {
-                birthDate1 = value;
-            }
-        } //"10-04-1902",
         public DateTime GetBirthDate => DateTime.ParseExact(birthDate, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+        public bool IsDead
+        {
+            get => isDead; set
+            {
+                isDead = value;
+                if (!value)
+                {
+                    deathDate = "01-01-0001";
+                    causeOfDeath = 0;
+                }
+                else
+                {
+                    deathDate = ReservDateOfDeath;
+                    causeOfDeath = ReservCauseOfDeath;
+                }
+            }
+        }
+        public string ReservDateOfDeath = string.Empty;
+        public int ReservCauseOfDeath = 0;
         public int Age
         {
             get => age;
             set
             {
                 if (!calcages)
-                    birthDate = GetBirthDate.AddYears(age - value).ToString("dd-MM-yyyy");
+                    birthDate = GetBirthDate.AddYears(age - value).ToString("dd-MM-yyyy", CultureInfo.InvariantCulture);
                 else
                     calcages = false;
                 age = value;
             }
         }
-        [JsonIgnore]
-        public ObservableCollection<WhiteTag> whiteTagsNEW { get; set; }
-        public List<string> aSins { get; set; }
-        public ObservableCollection<string> labels { get; set; }
+        private DateTime CurrNow = new DateTime();
         public void SetFullAge(DateTime now)
         {
             var age = now.Year - GetBirthDate.Year;
+            CurrNow = now;
             if (GetBirthDate.Date > now.AddYears(-age)) age--;
             calcages = true;
             Age = age;
         }
-        public string? studioId
+        public string ImgPath
         {
             get
             {
-                if (studioId1 is null)
-                    return "NONE";
+                string a = $"{App.PathToExe}Resources\\Profiles\\";
+                a += $"PRT_";
+                switch (professions.GetProfession)
+                {
+                    case Professions.Profession.Actor:
+                    case Professions.Profession.Composer:
+                    case Professions.Profession.Scriptwriter:
+                    case Professions.Profession.Cinematographer:
+                    case Professions.Profession.FilmEditor:
+                    case Professions.Profession.Producer:
+                    case Professions.Profession.Director:
+                    case Professions.Profession.Else:
+                        a += "TALENT_";
+                        break;
+                    case Professions.Profession.Agent:
+                        a += "AGENT_";
+                        break;
+                    case Professions.Profession.LieutScript:
+                    case Professions.Profession.LieutPrep:
+                    case Professions.Profession.LieutProd:
+                    case Professions.Profession.LieutPost:
+                    case Professions.Profession.LieutRelease:
+                    case Professions.Profession.LieutSecurity:
+                    case Professions.Profession.LieutProducers:
+                    case Professions.Profession.LieutInfrastructure:
+                    case Professions.Profession.LieutTech:
+                    case Professions.Profession.LieutMuseum:
+                    case Professions.Profession.LieutEscort:
+                    case Professions.Profession.CptHR:
+                    case Professions.Profession.CptLawyer:
+                    case Professions.Profession.CptFinancier:
+                    case Professions.Profession.CptPR:
+                        a += "LIEUT_";
+                        break;
+                }
+                if (gender == 1)
+                    a += "F_";
                 else
-                    return studioId1;
-            }
-            set
-            {
-                if (value == "NONE")
-                    studioId1 = null;
+                    a += "M_";
+                if (Age >= 60)
+                    a += "OLD_";
+                else if (Age > 40 & Age < 60)
+                    a += "MID_";
                 else
-                    studioId1 = value;
+                    a += "YOUNG_";
+                a += $"{portraitBaseId}.png";
+                return a;
             }
         }
-        public Contract? contract { get; set; }
-        [JsonIgnore]
-        public Professions professions { get; set; }
-        public string JsonString { get; set; }
-        //1 = F, 0 = M
-        public int gender { get; set; }
         public List<string> AvalibaleSkills
         {
             get
@@ -195,36 +295,97 @@ namespace HollyJson.Models
                 return new List<string>();
             }
         }
-        public bool WasChanged
+        #endregion
+
+        public static bool operator ==(Character a, Character b)
         {
-            get
-            {
-                var q = JsonConvert.DeserializeObject<Character>(JsonString);
-                bool t1 =
-                    limit == q.limit &&
-                    mood == q.mood &&
-                    attitude == q.attitude &&
-                    birthDate.Equals(q.birthDate);
+            if (a is null) return b is null;
+            if (b is null) return a is null;
 
-                t1 &= !CustomNameWasSetted;
+            bool whtg = false;
+            if (b.whiteTagsNEW is null) whtg = a.whiteTagsNEW is null;
+            else
+            if (a.whiteTagsNEW is null) whtg = b.whiteTagsNEW is null;
+            else whtg = b.whiteTagsNEW.SequenceEqual(a.whiteTagsNEW);
 
-                bool t2 = true;
-                var cntr = q.contract;
-                if (q.contract is not null)
-                {
-                    bool t3 =
-                        contract.weightToSalary == cntr.weightToSalary &&
-                        contract.monthlySalary == cntr.monthlySalary &&
-                        contract.amount == cntr.amount &&
-                        contract.startAmount == cntr.startAmount &&
-                        contract.dateOfSigning == cntr.dateOfSigning &&
-                        contract.initialFee == cntr.initialFee;
-                    return !(t1 && t2 && t3);
-                }
-                else
-                    return !(t1 && t2);
-            }
+            bool astg = false;
+            if (b.aSins is null) astg = a.aSins is null;
+            else
+            if (a.aSins is null) astg = b.aSins is null;
+            else astg = b.aSins.SequenceEqual(a.aSins);
+
+            bool lbtg = false;
+            if (b.labels is null) lbtg = a.labels is null;
+            else
+            if (a.labels is null) lbtg = b.labels is null;
+            else lbtg = b.labels.SequenceEqual(a.labels);
+
+            return
+                b.limit == a.limit &
+                b.mood == a.mood &
+                b.attitude == a.attitude &
+                b.id == a.id &
+                b.deathDate == a.deathDate &
+                b.causeOfDeath == a.causeOfDeath &
+                b.firstNameId == a.firstNameId &
+                b.lastNameId == a.lastNameId &
+                b.birthDate == a.birthDate &
+                b.gender == a.gender &
+                b.studioId == a.studioId &
+                b.contract! == b.contract! &
+                b.professions == a.professions &
+                whtg & lbtg & astg;
         }
+        public static bool operator !=(Character a, Character b) => !(a == b);
 
+        public bool WasChanged(DateTime Now)
+        {
+            Character backup = BuildCharacter(JToken.Parse(JsonString), Now);
+            return !(this == backup!);
+
+        }
+        public override string ToString()
+        {
+            return $"{MyCustomName} {professions.Name}";
+        }
+        public static Character? BuildCharacter(JToken json, DateTime Now)
+        {
+            Character z = JsonConvert.DeserializeObject<Character>(json.ToString());
+            if (z is not null)
+            {
+                z.isDead = z.deathDate != "01-01-0001";
+                z.ReservDateOfDeath = z.deathDate != "01-01-0001" ? z.deathDate : Now.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture); ;
+                z.ReservCauseOfDeath = z.causeOfDeath;
+                var prof_tkn = json.SelectToken("professions").ToObject<JObject>().Properties().ElementAt(0);
+                var q_prop = prof_tkn.Name;
+                var q_val = prof_tkn.Value.ToObject<double>();
+                z.professions = new Professions() { Name = q_prop, Value = q_val };
+                z.JsonString = json.ToString();
+                z.SetFullAge(Now);
+                if (z.contract is not null)
+                    z.contract.SetCalcDaysLeft(Now);
+                var tags = json.SelectToken("whiteTagsNEW");
+                if (tags?.Children().Count() > 0)
+                {
+                    z.whiteTagsNEW = [];
+                    foreach (var tag in tags.Children())
+                    {
+                        WhiteTag whiteTag = new WhiteTag();
+                        var in_tag = tag.First();
+                        whiteTag.id = in_tag.SelectToken("id")?.Value<string>();
+                        if (whiteTag.Tagtype == Skills.ELSE) //срезаем то что не отслеживаем, ибо нафиг
+                            continue;
+                        whiteTag.dateAdded = (DateTime)in_tag.SelectToken("dateAdded")?.Value<DateTime>();
+                        whiteTag.movieId = (int)in_tag.SelectToken("movieId")?.Value<int>();
+                        whiteTag.value = (double)in_tag.SelectToken("value")?.Value<double>();
+                        whiteTag.IsOverall = (bool)in_tag.SelectToken("IsOverall")?.Value<bool>();
+                        whiteTag.overallValues = JsonConvert.DeserializeObject<List<OverallValue>>(in_tag.SelectToken("overallValues").ToString());
+                        z.whiteTagsNEW.Add(whiteTag);
+                    }
+                }
+                return z;
+            }
+            return null;
+        }
     }
 }

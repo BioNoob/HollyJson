@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:HollyJson"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="Jura">pack://application:,,,/Resources/Jura-SemiBold.ttf#Jura SemiBold</FontFamily>
+        <!--<Style TargetType="{x:Type Window}">
+            <Setter Property="FontFamily" Value="{StaticResource Jura}"/>
+        </Style>-->
     </Application.Resources>
 </Application>

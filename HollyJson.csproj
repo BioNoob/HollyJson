@@ -15,15 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Resources\minus.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="main.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\backgrnd.jpg" />
+    <Resource Include="Resources\Jura-SemiBold.ttf" />
     <Resource Include="Resources\minus.png" />
     <Resource Include="Resources\ofd.png" />
     <Resource Include="Resources\plus.png" />
@@ -32,8 +29,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dirkster.NumericUpDownLib" Version="3.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\Localization.yz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Profiles.yz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 

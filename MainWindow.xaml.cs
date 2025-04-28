@@ -1,7 +1,11 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.IO.Compression;
+using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.IO.Packaging;
+using System.Diagnostics;
 
 namespace HollyJson;
 
@@ -13,6 +17,8 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        Style = (Style)FindResource(typeof(Window));
+        //ZipFile.CreateFromDirectory("C:\\Users\\bigja\\source\\repos\\HollyJson\\Resources\\Localization", "C:\\Users\\bigja\\source\\repos\\HollyJson\\Resources\\Localization.yz");
     }
     private void NumberValidation(object sender, TextCompositionEventArgs e)
     {
@@ -37,6 +43,12 @@ public partial class MainWindow : Window
     }
     private void PastingHandler(object sender, DataObjectPastingEventArgs e)
     {
+        if (sender.GetType().Name == "TextBox")
+        {
+            var t = (TextBox)sender;
+            if (t.Tag is not null && t.Tag.ToString() == "NoChecking")
+                return;
+        }
         if (e.DataObject.GetDataPresent(typeof(String)))
         {
             String text = (String)e.DataObject.GetData(typeof(String));
@@ -51,11 +63,13 @@ public partial class MainWindow : Window
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         var z = (sender as TextBox);
+        if (z.Tag is not null && z.Tag.ToString() == "NoChecking")
+            return;
         if (string.IsNullOrEmpty(z.Text))
         {
             e.Handled = true;
             z.Text = "0";
         }
-            
+
     }
 }

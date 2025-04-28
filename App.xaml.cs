@@ -9,5 +9,6 @@ namespace HollyJson;
 /// </summary>
 public partial class App : Application
 {
+    public static string PathToExe = AppDomain.CurrentDomain.BaseDirectory;
 }
 

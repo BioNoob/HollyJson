@@ -4,8 +4,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PropertyChanged;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.IO.Compression;
+using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -23,20 +26,83 @@ namespace HollyJson.ViewModels
         CommandHandler _removetrait;
         CommandHandler _addskill;
         CommandHandler _removeskill;
+
+        CommandHandler _setmoodandatt;
+        CommandHandler _setcontrdays;
+        CommandHandler _setskilltolimit;
+        CommandHandler _setskiiltocap;
+
+        CommandHandler _showspawndate;
+        CommandHandler _showtechs;
+        CommandHandler _unlocktechs;
+
         private string search_txt;
         JObject? jobj = null;
         private Character selectedChar;
         private string filter_Prof;
         private string filter_studio;
+        private ObservableCollection<Character> filtered_Obj;
+        private bool showOnlyTalent = false;
+        private bool showOnlyDead = false;
+        private bool showWithDead = true;
 
         public static Dictionary<string, string> LocaleNames { get; set; } = [];
         public static Dictionary<string, string> LocaleTranslator { get; set; } = [];
         public static string MyStudio { get; set; }
         public stateJson Info { get; set; }
-        public ObservableCollection<Character> Filtered_Obj { get; set; }
-        public Character SelectedChar { get => selectedChar; set => selectedChar = value; }
+        public ObservableCollection<Character> Filtered_Obj
+        {
+            get => filtered_Obj;
+            set
+            {
+                filtered_Obj = value;
+                if (SelectedChar is null)
+                {
+                    if (value?.Count > 0)
+                        SelectedChar = Filtered_Obj[0];
+                }
+            }
+        }
+        public Character SelectedChar
+        {
+            get => selectedChar;
+            set
+            {
+                selectedChar = value;
+            }
+        }
+        public string StatusBarText { get; set; } = "Hello";
+        public bool ShowSpawn { get; set; } = false;
+        public bool ShowTechs { get; set; } = false;
         public bool Save_Loaded { get; set; } = false;
         public bool Save_done { get; set; } = false;
+        public bool ShowOnlyTalent
+        {
+            get => showOnlyTalent;
+            set { showOnlyTalent = value; SetSearched(); }
+        }
+        public bool ShowOnlyDead
+        {
+            get => showOnlyDead;
+            set
+            {
+                showOnlyDead = value;
+                if (value && !ShowWithDead)
+                    ShowWithDead = true;
+                SetSearched();
+            }
+        }
+        public bool ShowWithDead
+        {
+            get => showWithDead;
+            set
+            {
+                showWithDead = value;
+                if (!value && ShowOnlyDead)
+                    ShowOnlyDead = false;
+                SetSearched();
+            }
+        }
         public List<string> StudioListForChar => StudioList is null ? new List<string>() : StudioList.Where(t => t != "All").ToList();
         public List<string> StudioList { get; set; }
         public List<string> ProfList { get; set; }
@@ -72,6 +138,9 @@ namespace HollyJson.ViewModels
             Filter_txt = "";
             Filter_studio = "";
             Filter_Prof = "";
+            StatusBarText = "Prepared to unzip";
+            UnzipResources();
+            StatusBarText = "Done";
         }
         public void SetSearched()
         {
@@ -90,40 +159,57 @@ namespace HollyJson.ViewModels
             {
                 q = q.Where(t => t.MyCustomName.Contains(Filter_txt, StringComparison.CurrentCultureIgnoreCase));
             }
+            if (ShowOnlyTalent)
+                q = q.Where(t => t.professions.IsTalent);
+            if (ShowOnlyDead)
+                q = q.Where(t => t.IsDead);
+            if (!ShowWithDead)
+                q = q.Where(t => !t.IsDead);
 
+
+            q = q.OrderBy(t => t.professions.ProfToDecode);
+            StatusBarText = $"Filtered {q.Count()} chars";
             Filtered_Obj = [.. q];
         }
-
-
-        private async void SetLocale(string path)
+        public async void UnzipResources()
         {
             try
             {
-                await LoadNamesFromJson(path);
-                await LoadLocaleFromJson(path);
-                RefershLocale();
+                await Task.Run(() =>
+                {
+                    string mi = $"{App.PathToExe}Resources";
+                    string local_dir = $"{mi}\\Localization\\";
+                    string prof_dir = $"{mi}\\Profiles\\";
+
+                    bool arch_loc_exist = Path.Exists($"{mi}\\Localization.yz");
+                    bool arch_prof_exits = Path.Exists($"{mi}\\Profiles.yz");
+
+                    if (arch_loc_exist)
+                    {
+                        if (!Path.Exists(local_dir))
+                        {
+                            StatusBarText = "Start extracting Localization";
+                            ZipFile.ExtractToDirectory($"{mi}\\Localization.yz", local_dir);
+                            StatusBarText = "End extracting Localization";
+                        }
+                        StatusBarText = "Set Localization";
+                        SetLocale(mi + "\\Localization\\RUS\\");
+                    }
+                    if (arch_prof_exits)
+                        if (!Path.Exists(prof_dir))
+                        {
+                            StatusBarText = "Start extracting Profile images";
+                            ZipFile.ExtractToDirectory($"{mi}\\Profiles.yz", prof_dir);
+                            StatusBarText = "End extracting Profile images";
+                        }
+                });
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
         }
-        void RefershLocale()
-        {
-            if (Info is not null && Info.characters is not null
-                && LocaleNames is not null && LocaleNames.Count > 0)
-                foreach (var t in Info.characters)
-                {
-                    t.normalLast = LocaleNames[t.lastNameId];
-                    t.normalFirst = LocaleNames[t.firstNameId];
-                }
-            //БУЭ
-            ProfList = ProfList;
-            StudioList = StudioList;
-            SelectedChar = SelectedChar;
-            SetSearched();
-        }
+        #region Cmd
         public CommandHandler OpenFileCmd
         {
             get
@@ -202,7 +288,7 @@ namespace HollyJson.ViewModels
                 return _addtrait ??= new CommandHandler(obj =>
                 {
                     SelectedChar.labels.Add((string)obj);
-                }, (obj) => true);
+                }, (obj) => !string.IsNullOrEmpty((string)obj));
             }
         }
         public CommandHandler RemoveTraitCmd
@@ -223,8 +309,8 @@ namespace HollyJson.ViewModels
                 {
                     if (SelectedChar.whiteTagsNEW.Any(t => t.id == (string)obj))
                         return;
-                    SelectedChar.whiteTagsNEW.Add(new WhiteTag() { id = (string)obj, value = 7.0 }); //вроде как 7рки хватает на получение трейта.. овералл пока не ставим в тру.
-                                                                                                     //и вроде как менять 0 оверолл не надо при изменении значения (у многих он стоит в 0)
+                    SelectedChar.whiteTagsNEW.Add(new WhiteTag((string)obj, 7.0));
+                    //и вроде как менять 0 оверолл не надо при изменении значения (у многих он стоит в 0)
                 }, (obj) => !string.IsNullOrEmpty((string)obj));
             }
         }
@@ -234,19 +320,140 @@ namespace HollyJson.ViewModels
             {
                 return _removeskill ??= new CommandHandler(obj =>
                 {
-                    var a = SelectedChar.whiteTagsNEW.Single(t => t.id == (string)obj);
+                    var a = SelectedChar.whiteTagsNEW.Single(t => t.id == ((WhiteTag)obj).id);
                     SelectedChar.whiteTagsNEW.Remove(a);
                 }, (obj) => true);
             }
+        }
+
+        public CommandHandler SetMoodAndAttCmd
+        {
+            get
+            {
+                return _setmoodandatt ??= new CommandHandler(obj =>
+                {
+                    if (filtered_Obj?.Count > 0)
+                        foreach (var item in Filtered_Obj)
+                        {
+                            item.mood = item.attitude = 1.00;
+                        }
+                }, (obj) => true);
+            }
+        }
+        public CommandHandler SetMaxContrDaysCmd
+        {
+            get
+            {
+                return _setcontrdays ??= new CommandHandler(obj =>
+                {
+                    if (filtered_Obj?.Count > 0)
+                        foreach (var item in Filtered_Obj)
+                        {
+                            item.contract.DaysLeft = item.contract.amount * 365;
+                        }
+                }, (obj) => true);
+            }
+        }
+        public CommandHandler SetSkillToLimitCmd
+        {
+            get
+            {
+                return _setskilltolimit ??= new CommandHandler(obj =>
+                {
+                    if (filtered_Obj?.Count > 0)
+                        foreach (var item in Filtered_Obj)
+                        {
+                            item.professions.Value = item.limit;
+                        }
+                }, (obj) => true);
+            }
+        }
+        public CommandHandler SetLimitToMaxCmd
+        {
+            get
+            {
+                return _setskiiltocap ??= new CommandHandler(obj =>
+                {
+                    if (filtered_Obj?.Count > 0)
+                        foreach (var item in Filtered_Obj)
+                        {
+                            item.limit = 1.00d;
+                        }
+                }, (obj) => true);
+            }
+        }
+        public CommandHandler ShowSpawnDateCmd
+        {
+            get
+            {
+                return _showspawndate ??= new CommandHandler(obj =>
+                {
+                    ShowSpawn = true;
+                }, (obj) => true);
+            }
+        }
+        public CommandHandler ShowTechsCmd
+        {
+            get
+            {
+                return _showtechs ??= new CommandHandler(obj =>
+                {
+                    ShowTechs = true;
+                }, (obj) => true);
+            }
+        }
+        public CommandHandler UnlockTechsCmd
+        {
+            get
+            {
+                return _unlocktechs ??= new CommandHandler(obj =>
+                {
+                    Info.openedPerks = new ObservableCollection<string>(stateJson.PreGenPerks);
+                }, (obj) => true);
+            }
+        }
+        #endregion
+        #region locale
+        private async void SetLocale(string path)
+        {
+            try
+            {
+                await LoadNamesFromJson(path);
+                await LoadLocaleFromJson(path);
+                StatusBarText = "Loaded jsons";
+                RefershLocale();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+        void RefershLocale()
+        {
+            StatusBarText = "Refresh loacales";
+            if (Info is not null && Info.characters is not null
+                && LocaleNames is not null && LocaleNames.Count > 0)
+                foreach (var t in Info.characters)
+                {
+                    t.normalLast = LocaleNames[t.lastNameId];
+                    t.normalFirst = LocaleNames[t.firstNameId];
+                }
+            //БУЭ
+            ProfList = ProfList;
+            StudioList = StudioList;
+            SelectedChar = SelectedChar;
+            SetSearched();
+            StatusBarText = "Refresh loacales done";
         }
         public async Task LoadLocaleFromJson(string path)
         {
             try
             {
                 path += "\\NON_EVENT.json";
-                string json = await File.ReadAllTextAsync(path); //"PROTAGONIST_WARRIOR": 26,
+                string json = await File.ReadAllTextAsync(path);
                 var map = JObject.Parse(json).SelectToken("IdMap");
-                var local = JObject.Parse(json).SelectToken("locStrings");//array[int] = answer
+                var local = JObject.Parse(json).SelectToken("locStrings");
                 List<string> getout = JsonConvert.DeserializeObject<List<string>>(local.ToString());
                 LocaleTranslator = new Dictionary<string, string>();
                 foreach (var item in map.Children<JProperty>())
@@ -285,10 +492,12 @@ namespace HollyJson.ViewModels
                 throw;
             }
         }
+        #endregion
         public async Task ParseJson(string path)
         {
             try
             {
+                StatusBarText = "Start parsing save...";
                 string jsonstr = await File.ReadAllTextAsync(path);
                 using (var str_reader = new StringReader(jsonstr))
                 {
@@ -302,7 +511,9 @@ namespace HollyJson.ViewModels
                     }
                 }
                 jsonstr = null;
+                StatusBarText = "Json save readed... Start parsing";
                 var aa = jobj.SelectToken("stateJson");
+                Info = null;
                 Info = new stateJson();
                 Info.budget = (int)(aa.SelectToken("budget")?.Value<int>());
                 Info.cash = (int)(aa.SelectToken("cash")?.Value<int>());
@@ -310,7 +521,20 @@ namespace HollyJson.ViewModels
                 Info.influence = (int)aa.SelectToken("influence")?.Value<int>();
                 Info.studioName = aa.SelectToken("studioName")?.Value<string>();
                 Info.timePassed = aa.SelectToken("timePassed")?.Value<string>();
-                Info.NextSpawnDays = [];
+
+                StatusBarText = "Loading milestones...";
+                List<Milestones> mm = new List<Milestones>();
+                foreach (var item in aa.SelectToken("milestones")?.Children())
+                {
+                    var q = item.ToObject<JProperty>();
+                    Milestones nm = JsonConvert.DeserializeObject<Milestones>(q.Value.ToString());
+                    if (!nm.id.Contains("POLICY_ENABLE_") && nm.id.Contains("POLICY_"))
+                        mm.Add(nm);
+                }
+                Info.milestones = [.. mm];
+                mm = null;
+                StatusBarText = "Loading next gen timers...";
+                Dictionary<string, DateTime> dt_d = new Dictionary<string, DateTime>();
                 var sp_d = aa.SelectToken("nextGenCharacterTimers")?.Children();
                 foreach (var item in sp_d)
                 {
@@ -318,57 +542,47 @@ namespace HollyJson.ViewModels
                     {
                         foreach (var prop in prof?.ToObject<JObject>().Properties())
                         {
-                            Info.NextSpawnDays.Add(prop.Name, prop.Value.ToObject<DateTime>());
+                            dt_d.Add($"PROFESSION_{prop.Name.ToUpper()}", prop.Value.ToObject<DateTime>());
                         }
                     }
                 }
+                Info.NextSpawnDays = new Dictionary<string, DateTime>(dt_d);
+                dt_d = null;
+
+                StatusBarText = "Loading opened perks...";
+                List<string> op_d = new List<string>();
+                var op_p = aa.SelectToken("openedPerks")?.Children();
+                foreach (var item in op_p)
+                {
+                    op_d.Add(item?.Value<string>()!);
+                }
+                Info.openedPerks = [.. op_d];
+                op_d = null;
+
                 Info.characters = [];
+
+                int cnt = (int)aa.SelectToken("characters")?.Children().Count();
+                StatusBarText = $"Loading characters lists... {cnt} char founded";
+                int counter = 1;
                 foreach (var item in aa.SelectToken("characters")?.Children())
                 {
                     if (item is not null)
                     {
-                        var z = JsonConvert.DeserializeObject<Character>(item.ToString());
-                        var qqq = item.SelectToken("professions").ToObject<JObject>().Properties().ElementAt(0);
-                        var q_prop = qqq.Name;
-                        var q_val = qqq.Value.ToObject<double>();
-                        if (z is not null)
-                        {
-                            z.professions = new Professions() { Name = q_prop, Value = q_val };
-                            z.JsonString = item.ToString();
-                            z.SetFullAge(Info.Now);
-                            if (z.contract is not null)
-                                z.contract.SetCalcDaysLeft(Info.Now);
-                            var tags = item.SelectToken("whiteTagsNEW");
-                            if (tags?.Children().Count() > 0)
-                            {
-                                z.whiteTagsNEW = [];
-                                foreach (var tag in tags.Children())
-                                {
-                                    WhiteTag whiteTag = new WhiteTag();
-                                    var in_tag = tag.First();
-                                    whiteTag.id = in_tag.SelectToken("id")?.Value<string>();
-                                    if (whiteTag.Tagtype == Skills.ELSE) //срезаем то что не отслеживаем, ибо нафиг
-                                        continue;
-                                    whiteTag.dateAdded = (DateTime)in_tag.SelectToken("dateAdded")?.Value<DateTime>();
-                                    whiteTag.movieId = (int)in_tag.SelectToken("movieId")?.Value<int>();
-                                    whiteTag.value = (double)in_tag.SelectToken("value")?.Value<double>();
-                                    whiteTag.IsOverall = (bool)in_tag.SelectToken("IsOverall")?.Value<bool>();
-                                    whiteTag.overallValues = JsonConvert.DeserializeObject<List<OverallValue>>(in_tag.SelectToken("overallValues").ToString());
-                                    z.whiteTagsNEW.Add(whiteTag);
-                                }
-                            }
-                            Info.characters.Add(z);
-                        }
+                        var charct = Character.BuildCharacter(item, Info.Now);
+                        if (charct is not null)
+                            Info.characters.Add(charct);
+                        counter++;
+                        StatusBarText = $"Loading characters lists... {(Math.Round((double)counter / (double)cnt, 2) * 100).ToString("0.0", CultureInfo.InvariantCulture)}%";
+                        //Debug.WriteLine(StatusBarText);
                     }
                 }
+                StatusBarText = "Loading characters done!";
                 StudioList = Info.characters.Select(t => t.studioId).Distinct().ToList()!;
                 StudioList.Insert(0, "All");
                 ProfList = Info.characters.Select(t => t.professions.ProfToDecode).Distinct().ToList()!;
                 ProfList.Insert(0, "All");
                 Filter_Prof = ProfList[0];
                 Filter_studio = StudioList[0];
-                //Info.Mycharacters = [.. Info.characters.Where(t => t.studioId == "PL" && t.professions.GetProfession != Professions.Profession.Else)];
-
             }
             catch (Exception ex)
             {
@@ -377,6 +591,7 @@ namespace HollyJson.ViewModels
         }
         public async Task<bool> WriteChange()
         {
+            //ПОСЛЕ СОХРАНЕННИЯ НАДО БУДЕТ ПЕРЕЧИТАТЬ ТЕЛЕГУ
             try
             {
                 SaveFileDialog sfd = new SaveFileDialog();
@@ -386,45 +601,159 @@ namespace HollyJson.ViewModels
                 sfd.RestoreDirectory = true;
                 sfd.Filter = "Json|*.json";
                 sfd.ShowHiddenItems = true;
+
                 if (sfd.ShowDialog() == true)
                 {
                     var z = jobj["stateJson"];
-                    z["reputation"] = Info.reputation;//.ToString("0.0", CultureInfo.InvariantCulture);
+                    z["reputation"] = Info.reputation;
                     z["budget"] = Info.budget;
                     z["cash"] = Info.cash;
                     z["influence"] = Info.influence;
 
-                    foreach (var item in Info.characters)
+                    //milestones
+                    foreach (var mil in Info.milestones)
                     {
-                        if (item.WasChanged)
+                        var b = z["milestones"].Children().
+                            SingleOrDefault(t => t.ToObject<JProperty>().Name == mil.id).ToObject<JProperty>();
+                        if (b is not null)
                         {
-                            var a = z["characters"];
-                            var b = a?.SingleOrDefault(t => t?["id"]?.Value<int>() == item.id, null);
-                            if (b is not null)
-                            {
-                                b["limit"] = item.limit;
-                                b["mood"] = item.mood;
-                                b["attitude"] = item.attitude;
-                                b["birthDate"] = item.birthDate;
-                                b["studioId"] = item.studioId;
-                                var cnt = b["contract"];
-                                if (cnt is not null && cnt.HasValues)
-                                {
-                                    cnt["amount"] = item.contract.amount;
-                                    cnt["startAmount"] = item.contract.startAmount;
-                                    cnt["initialFee"] = item.contract.initialFee;
-                                    cnt["monthlySalary"] = item.contract.monthlySalary;
-                                    cnt["weightToSalary"] = item.contract.weightToSalary;
-                                    cnt["dateOfSigning"] = item.contract.dateOfSigning;
-                                }
-                                if (item.CustomNameWasSetted)
-                                    b["customName"] = item.MyCustomName;
-                                //b["professions"][item.professions.ProfAsString] = item.professions.SetterVal;
-                            }
-
+                            b.Value["finished"] = mil.finished;
+                            b.Value["locked"] = mil.locked;
+                            b.Value["progress"] = mil.progress;
                         }
                     }
+                    //openedPerks (без ремува)
+                    foreach (var item in Info.openedPerks)
+                    {
+                        if (((JArray)z["openedPerks"])?.Any(x => x.ToString().Equals(item)) != true)
+                        {
+                            ((JArray)z["openedPerks"]).Add(item);
+                        }
+                    }
+                    //characters
+                    foreach (Character chr in Info.characters)
+                    {
+                        if (chr.WasChanged(Info.Now))
+                        {
+                            var a = z["characters"];
+                            var b = a?.SingleOrDefault(t => t?["id"]?.Value<int>() == chr.id, null);
+                            if (b is not null)
+                            {
+                                b["limit"] = chr.limit;
+                                b["mood"] = chr.mood;
+                                b["attitude"] = chr.attitude;
+                                b["birthDate"] = chr.birthDate;
+                                b["studioId"] = chr.studioId;
+                                b["deathDate"] = chr.deathDate;
+                                b["causeOfDeath"] = chr.causeOfDeath;
+                                if (chr.CustomNameWasSetted)
+                                    b["customName"] = chr.MyCustomName;
+                                //contract
+                                var cnt = b["contract"];
+                                if (cnt is not null)
+                                {
+                                    if (cnt.HasValues)
+                                    {
+                                        cnt["amount"] = chr.contract.amount;
+                                        cnt["startAmount"] = chr.contract.startAmount;
+                                        cnt["initialFee"] = chr.contract.initialFee;
+                                        cnt["monthlySalary"] = chr.contract.monthlySalary;
+                                        cnt["weightToSalary"] = chr.contract.weightToSalary;
+                                        cnt["dateOfSigning"] = chr.contract.dateOfSigning;
+                                        cnt["contractType"] = chr.contract.contractType;
+                                    }
+                                    else
+                                    {
+                                        b["contract"] = JToken.Parse(JsonConvert.SerializeObject(chr.contract));
+                                    }
+                                }
+                                cnt = null;
+                                //proffessions
+                                var prof = b["proffessions"];
+                                if (prof is not null && prof.HasValues)
+                                {
+                                    prof[chr.professions.Name] = chr.professions.Value;
+                                }
+                                prof = null;
+                                //labels
+                                var lbl = (JArray?)b["labels"];
+                                if (lbl is not null)
+                                {
+                                    if (chr.labels is not null)
+                                    {
+                                        foreach (var lablel in chr.labels) //эт на добавление
+                                        {
+                                            if (lbl.Any(x => x.ToString().Equals(lablel)) != true)
+                                            {
+                                                lbl.Add(lablel);
+                                            }
+                                        }
+                                        List<JToken> torem = new List<JToken>();
+                                        foreach (var lablel in lbl) //эт на удаление
+                                        {
+                                            if (!chr.labels.Contains(lablel.ToString()))
+                                            {
+                                                torem.Add(lablel);
+                                            }
+                                        }
+                                        torem.ForEach(t => t.Remove());
+                                        torem = null;
+                                    }
+                                }
+                                lbl = null;
+                                //whiteTagsNew
+                                var wtgs = b["whiteTagsNEW"];
+                                if (wtgs is not null)
+                                {
+                                    if (chr.whiteTagsNEW is not null)
+                                    {
+                                        foreach (var whiteTag in chr.whiteTagsNEW) //эт на добавление
+                                        {
+                                            if (wtgs.Children<JProperty>().Any(t => t.Value["id"]?.Value<string>() == whiteTag.id))
+                                            {
+                                                //ставим значения
+                                                var tochng_p = wtgs.Children<JProperty>().Single(t => t.Value["id"]?.Value<string>() == whiteTag.id);
+                                                var tochng = tochng_p.Value;
+                                                tochng["id"] = whiteTag.id;
+                                                tochng["dateAdded"] = whiteTag.dateAdded;
+                                                tochng["movieId"] = whiteTag.movieId;
+                                                tochng["value"] = whiteTag.value;
+                                                tochng["IsOverall"] = whiteTag.IsOverall;
+                                                //манипулируем только нулём
+                                                var t_over = tochng["overallValues"].Children().Single(t =>
+                                                t["movieId"]?.Value<int>() == 0 && t["sourceType"]?.Value<int>() == 0);
+                                                t_over["value"] = whiteTag.ZeroPoint.value;
+                                            }
+                                            else //нету
+                                            {
+                                                //добавляем
+                                                var prop = new JProperty(whiteTag.id);
+                                                prop.Value = JToken.Parse(JsonConvert.SerializeObject(whiteTag));
+                                                if (wtgs.HasValues)
+                                                    wtgs.Last.AddAfterSelf(prop);
+                                                else
+                                                    ((JObject)wtgs).Add(prop);
+                                            }
+                                        }
+                                        List<JProperty> torem = new List<JProperty>();
+                                        foreach (var whitetg in wtgs.Children<JProperty>()) //эт на удаление
+                                        {
+                                            if (!chr.whiteTagsNEW.Any(t => t.id == whitetg.Name))
+                                            {
+                                                if (WhiteTag.GetEnumVal(whitetg.Name) != Skills.ELSE)
+                                                    torem.Add(whitetg);
+                                            }
+                                        }
+                                        torem.ForEach(t => t.Remove());
+                                        torem = null;
+                                    }
+                                }
+                                wtgs = null;
 
+
+                            }
+                        }
+                    }
                     await File.WriteAllTextAsync(sfd.FileName, jobj.ToString(Formatting.None));
                     return true;
                 }
@@ -436,70 +765,7 @@ namespace HollyJson.ViewModels
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-
-
         }
     }
-    public class DateTimeToDateConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return ((DateTime)value).ToString("dd.MM.yyyy");
-        }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return DependencyProperty.UnsetValue;
-        }
-    }
-    public class LangStringConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            string str = (string?)value;
-            if (str == "COM" | str == "ART")
-                str = $"STATUS_{str}_SORT";
-            if (str == "INDOOR" | str == "OUTDOOR")
-                str = $"SKILL_{str}_SORT";
-            string str_out = MainModel.LocaleTranslator.ContainsKey(str) ? MainModel.LocaleTranslator[str] : str;
-
-            if (str_out is not null)
-                if (str_out.Contains("PROFESSION_"))
-                    return str_out.Replace("PROFESSION_", "").ToLower();
-                else if (str_out == "PL")
-                    return MainModel.MyStudio;
-            if (string.IsNullOrWhiteSpace(str_out))
-                return str;
-            return str_out!;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return DependencyProperty.UnsetValue;
-        }
-    }
-    public class CommandHandler : ICommand
-    {
-        public event EventHandler? CanExecuteChanged;
-        private readonly Action<object> _execute;
-        private readonly Predicate<object> _canExecute;
-
-        public CommandHandler(Action<object> execute, Predicate<object> canExecute)
-        {
-            _execute = execute;
-            _canExecute = canExecute;
-        }
-
-        public bool CanExecute(object? parameter)
-        {
-            if (_canExecute == null)
-                return true;
-            return _canExecute(parameter!);
-        }
-
-        public void Execute(object? parameter)
-        {
-            _execute?.Invoke(parameter!);
-        }
-    }
 }

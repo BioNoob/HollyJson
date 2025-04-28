@@ -103,5 +103,63 @@ namespace HollyJson.Models
             }
 
         }
+        public bool IsTalent
+        {
+            get
+            {
+                switch (GetProfession)
+                {
+                    case Profession.Actor:
+                    case Profession.Composer:
+                    case Profession.Scriptwriter:
+                    case Profession.Cinematographer:
+                    case Profession.FilmEditor:
+                    case Profession.Producer:
+                    case Profession.Director:
+                    case Profession.Agent:
+                        return true;
+                    case Profession.LieutScript:
+                    case Profession.LieutPrep:
+                    case Profession.LieutProd:
+                    case Profession.LieutPost:
+                    case Profession.LieutRelease:
+                    case Profession.LieutSecurity:
+                    case Profession.LieutProducers:
+                    case Profession.LieutInfrastructure:
+                    case Profession.LieutTech:
+                    case Profession.LieutMuseum:
+                    case Profession.LieutEscort:
+                    case Profession.CptHR:
+                    case Profession.CptLawyer:
+                    case Profession.CptFinancier:
+                    case Profession.CptPR:
+                    case Profession.Else:
+                    default:
+                        return false;
+                }
+            }
+        }
+
+        public static bool operator ==(Professions a, Professions b)
+        {
+            if (a is null) return b is null;
+            if (b is null) return a is null;
+            return
+            b.Name == a.Name &
+            b.Value == a.Value;
+        }
+        public static bool operator !=(Professions a, Professions b)
+        {
+            return !(a == b);
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj is not null)
+            {
+                return (obj as Professions)! == this;
+            }
+            else
+                return false;
+        }
     }
 }
