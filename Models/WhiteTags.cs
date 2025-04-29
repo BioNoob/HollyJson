@@ -180,6 +180,7 @@ namespace HollyJson.Models
             {
                 value1 = value;
                 if (ZeroPoint is not null)
+                    //“ут уйдем в минус
                     ZeroPoint.value = FreeToOverAllZero;
             }
         }
@@ -199,10 +200,18 @@ namespace HollyJson.Models
         public WhiteTag(string idd, double val)
         {
             id = idd;
-            value = val;
+            if(Tagtype == Skills.COM | Tagtype == Skills.ART)
+            {
+                if (val > 1.0d)
+                    value = 1.0;
+                else
+                    value = val;
+            }
+            else
+                value = val;
             dateAdded = stateJson.GameStartTime;
             movieId = 0;
-            overallValues = [new OverallValue() { movieId = 0, dateAdded = dateAdded, value = val, sourceType = 0 }];
+            overallValues = [new OverallValue() { movieId = 0, dateAdded = dateAdded, value = value, sourceType = 0 }];
         }
         public static bool operator ==(WhiteTag a, WhiteTag b)
         {

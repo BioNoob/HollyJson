@@ -10,7 +10,20 @@ namespace HollyJson.Models
         private int daysLeft;
 
         public int contractType { get; set; }
-        public int amount { get; set; }
+        public int amount
+        {
+            get => amount1;
+            set
+            { 
+                amount1 = value;
+                startAmount = value;
+                if(DaysLeft > value * 365)
+                {
+                    calceddays = true;
+                    DaysLeft = value * 365;
+                }
+            }
+        }
         public int startAmount { get; set; }
         public double initialFee { get; set; }
         public double monthlySalary { get; set; }
@@ -45,6 +58,8 @@ namespace HollyJson.Models
             }
         }
         private bool calceddays = false;
+        private int amount1;
+
         public void SetCalcDaysLeft(DateTime now)
         {
             var t = dateOfSigning.AddYears(amount);

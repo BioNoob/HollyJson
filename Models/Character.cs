@@ -95,8 +95,8 @@ namespace HollyJson.Models
                     {
                         contract = new Contract(CurrNow);
                     }
-                    else
-                        contract.DaysLeft = contract.amount * 365;
+                    //else
+                    //    contract.DaysLeft = contract.amount * 365;
                 }
                     
             }

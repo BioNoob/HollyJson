@@ -4,14 +4,10 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PropertyChanged;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Windows;
-using System.Windows.Data;
-using System.Windows.Input;
 
 namespace HollyJson.ViewModels
 {
@@ -287,7 +283,7 @@ namespace HollyJson.ViewModels
             {
                 return _addtrait ??= new CommandHandler(obj =>
                 {
-                    SelectedChar.labels.Add((string)obj);
+                    SelectedChar.labels.Insert(0,(string)obj);
                 }, (obj) => !string.IsNullOrEmpty((string)obj));
             }
         }
@@ -309,8 +305,7 @@ namespace HollyJson.ViewModels
                 {
                     if (SelectedChar.whiteTagsNEW.Any(t => t.id == (string)obj))
                         return;
-                    SelectedChar.whiteTagsNEW.Add(new WhiteTag((string)obj, 7.0));
-                    //и вроде как менять 0 оверолл не надо при изменении значения (у многих он стоит в 0)
+                    SelectedChar.whiteTagsNEW.Insert(0, new WhiteTag((string)obj, 12.0));
                 }, (obj) => !string.IsNullOrEmpty((string)obj));
             }
         }
@@ -594,6 +589,7 @@ namespace HollyJson.ViewModels
             //ПОСЛЕ СОХРАНЕННИЯ НАДО БУДЕТ ПЕРЕЧИТАТЬ ТЕЛЕГУ
             try
             {
+                StatusBarText = "Prepare to save";
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Title = "Select where to save";
                 sfd.DefaultExt = ".json";
@@ -654,17 +650,25 @@ namespace HollyJson.ViewModels
                                 {
                                     if (cnt.HasValues)
                                     {
-                                        cnt["amount"] = chr.contract.amount;
-                                        cnt["startAmount"] = chr.contract.startAmount;
-                                        cnt["initialFee"] = chr.contract.initialFee;
-                                        cnt["monthlySalary"] = chr.contract.monthlySalary;
-                                        cnt["weightToSalary"] = chr.contract.weightToSalary;
-                                        cnt["dateOfSigning"] = chr.contract.dateOfSigning;
-                                        cnt["contractType"] = chr.contract.contractType;
+                                        if(chr.contract is null)
+                                        {
+                                            cnt = null;
+                                        }
+                                        else
+                                        {
+                                            cnt["amount"] = chr.contract.amount;
+                                            cnt["startAmount"] = chr.contract.startAmount;
+                                            cnt["initialFee"] = chr.contract.initialFee;
+                                            cnt["monthlySalary"] = chr.contract.monthlySalary;
+                                            cnt["weightToSalary"] = chr.contract.weightToSalary;
+                                            cnt["dateOfSigning"] = chr.contract.dateOfSigning;
+                                            cnt["contractType"] = chr.contract.contractType;
+                                        }
+                                            
                                     }
                                     else
                                     {
-                                        b["contract"] = JToken.Parse(JsonConvert.SerializeObject(chr.contract));
+                                        cnt = JToken.Parse(JsonConvert.SerializeObject(chr.contract));
                                     }
                                 }
                                 cnt = null;
@@ -754,11 +758,17 @@ namespace HollyJson.ViewModels
                             }
                         }
                     }
-                    await File.WriteAllTextAsync(sfd.FileName, jobj.ToString(Formatting.None));
+                    StatusBarText = "Write file";
+                    await File.WriteAllTextAsync(sfd.FileName, jobj.ToString(Formatting.None)).ContinueWith(t => StatusBarText = "Save done!");
+
                     return true;
                 }
                 else
+                {
+                    StatusBarText = "Save canceled";
                     return false;
+                }
+                    
             }
             catch (Exception ex)
             {
