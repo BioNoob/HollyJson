@@ -27,14 +27,16 @@ namespace HollyJson.Models
 
         public int movieId { get; set; }
         public int sourceType { get; set; }
-        public double value { get => value1; 
-            set 
+        public double value
+        {
+            get => value1;
+            set
             {
                 value1 = Math.Round(value, 7, MidpointRounding.AwayFromZero);
-                if(value1 < 0d)
+                if (value1 < 0d)
                     value1 = 0;
             }
-        } 
+        }
         public DateTime dateAdded { get; set; }
         public static bool operator ==(OverallValue a, OverallValue b)
         {
@@ -198,6 +200,9 @@ namespace HollyJson.Models
         {
             get => value1; set
             {
+                if (Tagtype == Skills.COM | Tagtype == Skills.ART)
+                    if (value > 1.0d)
+                        value = 1.0d;
                 if (ZeroPoint is not null) //может ли быть такого что ее нет?
                 {
                     if (value >= MinimalValaue)

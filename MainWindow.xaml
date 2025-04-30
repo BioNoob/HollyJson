@@ -20,6 +20,7 @@
         <Style TargetType="{x:Type TextBox}" x:Key="txtbox">
             <Setter Property="IsEnabled" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.Save_Loaded}"/>
             <EventSetter Event="TextChanged" Handler="TextBox_TextChanged"/>
+            <EventSetter Event="PreviewTextInput" Handler="TextBox_PreviewTextInput"/>
             <EventSetter Event="DataObject.Pasting" Handler="PastingHandler"/>
         </Style>
         <Style TargetType="{x:Type Button}">
@@ -80,16 +81,16 @@
                 </Grid.Resources>
                 <Label Content="Budget" Grid.Column="0"/>
                 <TextBox Text="{Binding Info.budget}" Height="22" VerticalContentAlignment="Center"
-                         PreviewTextInput="NumberValidation" Grid.Column="1"/>
+                          Grid.Column="1" Tag="INT"/>
                 <Label Content="Cash" Grid.Column="2"/>
                 <TextBox Text="{Binding Info.cash}" VerticalContentAlignment="Center" Height="22"
-                         PreviewTextInput="NumberValidation" Grid.Column="3"/>
+                          Grid.Column="3" Tag="INT"/>
                 <Label Content="Reputation" Grid.Column="4"/>
                 <TextBox Text="{Binding Info.reputation, StringFormat={}{0:0.0}}" VerticalContentAlignment="Center" Height="22"
-                         PreviewTextInput="DoubleValidation" Grid.Column="5"/>
+                          Grid.Column="5" Tag="DBL"/>
                 <Label Content="Influence" Grid.Column="6"/>
                 <TextBox Text="{Binding Info.influence}" VerticalContentAlignment="Center" Height="22"
-                         PreviewTextInput="NumberValidation"  Grid.Column="7"/>
+                           Grid.Column="7" Tag="DBL"/>
                 <DockPanel  Grid.Row="1" Grid.ColumnSpan="8" Margin="5,5,0,0" >
                     <Label Content="Active studio politics"/>
                     <Label Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Content="{Binding Info.NameOfActivePolicy, Converter={StaticResource LocaleConverter}}" 
@@ -193,7 +194,7 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
             <TextBox Grid.Column="1" Margin="0,0,5,5" Text="{Binding Filter_txt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"
-                     Tag="NoChecking">
+                     Tag="STR">
                 <TextBox.Style>
                     <Style TargetType="TextBox" BasedOn="{StaticResource txtbox}"/>
                 </TextBox.Style>
@@ -203,7 +204,6 @@
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding ., Converter={StaticResource LocaleConverter}}" Padding="0" Margin="5,0,0,0" TextTrimming="CharacterEllipsis"/>
-
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
@@ -220,7 +220,6 @@
                 <CheckBox Content="Show only Talent" Grid.Column="2" VerticalAlignment="Center" VerticalContentAlignment="Center"
                       HorizontalAlignment="Center" Margin="0,0,0,5" IsChecked="{Binding ShowOnlyTalent}"/>
             </Grid>
-
             <ListView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding Filtered_Obj}" 
           SelectionMode="Single" SelectedItem="{Binding SelectedChar}" AlternationCount="2" Background="White">
                 <ListView.Resources>
@@ -239,7 +238,7 @@
                     <DataTemplate DataType="local:Character">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="150"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="{Binding MyCustomName}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0" Margin="0,0,5,0"
@@ -333,7 +332,7 @@
                     </Border>
                     <Label Content="Name" Grid.Row="0" Grid.Column="1"/>
                     <TextBox Text="{Binding SelectedChar.MyCustomName}" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3"
-                           HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Tag="NoChecking"/>
+                           HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Tag="STR"/>
                     <Label Content="Studio Id" Grid.Row="1" Grid.Column="1"/>
                     <ComboBox SelectedItem="{Binding SelectedChar.studioId}" Grid.Row="1" Grid.Column="2" Height="20" Margin="5,0,5,0"
                              Padding="0" Grid.ColumnSpan="3" ItemsSource="{Binding StudioListForChar}" VerticalContentAlignment="Center">
@@ -343,12 +342,12 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <Label Content="Mood"  Grid.Row="2" Grid.Column="1" />
+                    <Label Content="Mood" Grid.Row="2" Grid.Column="1" />
                     <TextBox Text="{Binding SelectedChar.mood, StringFormat={}{0:0.00}}" Grid.Row="2" Grid.Column="2"  
-                             PreviewTextInput="DoubleValidation" DataObject.Pasting="PastingHandler"/>
+                              Tag="LMT"/>
                     <Label Content="Attitude" Grid.Row="2" Grid.Column="3"/>
                     <TextBox Text="{Binding SelectedChar.attitude, StringFormat={}{0:0.00}}" Grid.Row="2" Grid.Column="4" 
-                             PreviewTextInput="DoubleValidation" DataObject.Pasting="PastingHandler"/>
+                              Tag="LMT"/>
                 </Grid>
             </Border>
             <Border Grid.Row="1" BorderThickness="1.5" BorderBrush="DarkGray" CornerRadius="5" Margin="5,5,0,0">
@@ -380,7 +379,7 @@
                              TextTrimming="CharacterEllipsis" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
                     <Label Content="Age"  Grid.Row="0" Grid.Column="2"/>
                     <TextBox Text="{Binding SelectedChar.Age}" Grid.Row="0" Grid.Column="3" 
-                             PreviewTextInput="NumberValidation" DataObject.Pasting="PastingHandler"/>
+                               Tag="AGE"/>
                     <Label Content="Birth" Grid.Row="1" Grid.Column="2"/>
                     <TextBlock Text="{Binding SelectedChar.GetBirthDate, Converter={StaticResource myDateConverter}}" Grid.Row="1" Grid.Column="3"
                                VerticalAlignment="Center" Margin="5,0,0,0"/>
@@ -400,10 +399,10 @@
                     </CheckBox>
                     <Label Content="Skill" Grid.Row="2" Grid.Column="2"/>
                     <TextBox Text="{Binding SelectedChar.professions.Value, StringFormat={}{0:0.00}}" Grid.Row="2" Grid.Column="3" 
-                             PreviewTextInput="DoubleValidation" DataObject.Pasting="PastingHandler" Tag="LimCheck"/>
+                               Tag="LMT"/>
                     <Label Content="Limit" Grid.Row="2" Grid.Column="0"/>
                     <TextBox Text="{Binding SelectedChar.limit, StringFormat={}{0:0.0}}" Grid.Row="2" Grid.Column="1" 
-                             PreviewTextInput="DoubleValidation" DataObject.Pasting="PastingHandler" Tag="LimCheck"/>
+                               Tag="LMT"/>
                 </Grid>
             </Border>
             <Border Grid.Row="2" BorderThickness="1.5" BorderBrush="DarkGray" CornerRadius="5" Margin="5,5,0,0">
@@ -432,8 +431,7 @@
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Content="Contract" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
                     <Label Grid.Row="0" Grid.Column="2" Content="Days Left"/>
-                    <TextBox Grid.Row="0" Grid.Column="3"  
-                             PreviewTextInput="NumberValidation" DataObject.Pasting="PastingHandler">
+                    <TextBox Grid.Row="0" Grid.Column="3" Tag="INT">
                         <TextBox.Style>
                             <Style TargetType="TextBox" BasedOn="{StaticResource txtbox}">
                                 <Setter Property="Margin" Value="5"/>
@@ -454,17 +452,17 @@
                     </TextBox>
                     <Label Grid.Row="1" Grid.Column="0" Content="Years"/>
                     <TextBox Text="{Binding SelectedChar.contract.amount}" Grid.Row="1" Grid.Column="1" 
-                             PreviewTextInput="NumberValidation" DataObject.Pasting="PastingHandler"/>
+                              Tag="INT"/>
                     <Label Grid.Row="1" Grid.Column="2" Content="Init fee"/>
                     <TextBox Text="{Binding SelectedChar.contract.initialFee}" Grid.Row="1" Grid.Column="3" 
-                             PreviewTextInput="NumberValidation" DataObject.Pasting="PastingHandler"/>
+                              Tag="INT"/>
                     <Label Grid.Row="2" Grid.Column="0" Content="M/s">
                         <Label.ToolTip>
                             <TextBlock Text="Mouth salary" Padding="0"/>
                         </Label.ToolTip>
                     </Label>
                     <TextBox Text="{Binding SelectedChar.contract.monthlySalary}" Grid.Row="2" Grid.Column="1"
-                             PreviewTextInput="NumberValidation" DataObject.Pasting="PastingHandler">
+                              Tag="INT">
                         <TextBox.ToolTip>
                             <TextBlock Text="Mouth salary" Padding="0"/>
                         </TextBox.ToolTip>
@@ -475,7 +473,7 @@
                         </Label.ToolTip>
                     </Label>
                     <TextBox Text="{Binding SelectedChar.contract.weightToSalary}" Grid.Row="2" Grid.Column="3" 
-                             PreviewTextInput="NumberValidation" DataObject.Pasting="PastingHandler">
+                              Tag="INT">
                         <TextBox.ToolTip>
                             <TextBlock Text="Weight salary" Padding="0"/>
                         </TextBox.ToolTip>
@@ -641,7 +639,7 @@
                                                    TextTrimming="CharacterEllipsis" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0" 
                                                    ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
                                         <TextBox Grid.Column="2" Text="{Binding Value, StringFormat={}{0:0.00}}" Margin="0,0,5,0" VerticalAlignment="Center"
-                                                 VerticalContentAlignment="Center"/>
+                                                 VerticalContentAlignment="Center" Tag="DBL"/>
                                         <Button Grid.Column="3" Width="18" Height="18" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" 
                                                 VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,15,0"
                                                 Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RemoveSkillCmd}" 

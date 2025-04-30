@@ -162,6 +162,10 @@ namespace HollyJson.Models
             }
             set
             {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    return;   
+                }
                 myCustomName = value;
             }
         }
