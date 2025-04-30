@@ -19,6 +19,14 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         Style = (Style)FindResource(typeof(Window));
+
+        //string mi = $"{App.PathToExe}Resources";
+        //string local_dir = $"{mi}\\Localization\\";
+        //string path_to_loc = $"{mi}\\Localization.yz";
+        //bool arch_loc_exist = Path.Exists(path_to_loc);
+        //if (arch_loc_exist)
+        //    File.Delete(path_to_loc);
+        //ZipFile.CreateFromDirectory(local_dir, path_to_loc);
         //ZipFile.CreateFromDirectory("C:\\Users\\bigja\\source\\repos\\HollyJson\\Resources\\Localization", "C:\\Users\\bigja\\source\\repos\\HollyJson\\Resources\\Localization.yz");
     }
     //на ввод посимвольно
