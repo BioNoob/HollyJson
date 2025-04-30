@@ -657,6 +657,7 @@ namespace HollyJson.ViewModels
                             var b = a?.SingleOrDefault(t => t?["id"]?.Value<int>() == chr.id, null);
                             if (b is not null)
                             {
+                                //activeOrPlannedMovies if count > 0 => NOT REMOVE! AND REPLACE ACTOR
                                 b["limit"] = chr.limit;
                                 b["mood"] = chr.mood;
                                 b["attitude"] = chr.attitude;
@@ -698,7 +699,7 @@ namespace HollyJson.ViewModels
                                 }
                                 cnt = null;
                                 //proffessions
-                                var prof = b["proffessions"];
+                                var prof = b["professions"];
                                 if (prof is not null && prof.HasValues)
                                 {
                                     prof[chr.professions.Name] = chr.professions.Value;

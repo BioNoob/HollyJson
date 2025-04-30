@@ -56,8 +56,20 @@ namespace HollyJson.Models
         private string? myCustomName = null;
         private string? studioId1;
         private bool isDead;
+        private DateTime CurrNow = new DateTime();
+        private double limit1;
 
-        public double limit { get; set; }
+        public double limit
+        {
+            get => limit1;
+            set
+            {
+                limit1 = value;
+                if (professions is not null)
+                    if (professions.Value > limit1)
+                        professions.Value = limit1;
+            }
+        }
         public double mood { get; set; }
         public double attitude { get; set; }
         public int id { get; set; }
@@ -164,7 +176,7 @@ namespace HollyJson.Models
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    return;   
+                    return;
                 }
                 myCustomName = value;
             }
@@ -213,7 +225,6 @@ namespace HollyJson.Models
                 age = value;
             }
         }
-        private DateTime CurrNow = new DateTime();
         public void SetFullAge(DateTime now)
         {
             var age = now.Year - GetBirthDate.Year;
