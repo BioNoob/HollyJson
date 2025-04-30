@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using HollyJson.ViewModels;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PropertyChanged;
 using System.Diagnostics.Contracts;
 
@@ -50,6 +52,10 @@ namespace HollyJson.Models
             get => daysLeft;
             set
             {
+                if(value > amount * 365)
+                {
+                    value = amount * 365;
+                }
                 if (!calceddays)
                     dateOfSigning = dateOfSigning.AddDays(value - daysLeft);
                 else
@@ -100,7 +106,8 @@ namespace HollyJson.Models
             startAmount = 3;
             monthlySalary = 0;
             weightToSalary = 100;
-            dateOfSigning = now;
+            dateOfSigning = now != new DateTime() ? now.AddDays(-1) : now;
+            SetCalcDaysLeft(dateOfSigning);
             initialFee = 100;
             contractType = 0;
 

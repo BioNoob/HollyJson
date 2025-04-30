@@ -15,6 +15,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\arrow_up.png" />
+    <None Remove="Resources\question.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\arrow_up.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="main.ico" />
   </ItemGroup>
 
@@ -24,6 +33,7 @@
     <Resource Include="Resources\minus.png" />
     <Resource Include="Resources\ofd.png" />
     <Resource Include="Resources\plus.png" />
+    <Resource Include="Resources\question.png" />
     <Resource Include="Resources\save.png" />
     <Resource Include="Resources\user.png" />
   </ItemGroup>

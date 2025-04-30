@@ -77,30 +77,37 @@ namespace HollyJson.Models
             get
             {
                 if (studioId1 is null)
-                    return "NONE";
-                else
-                    return studioId1;
+                    studioId1 = "NONE";
+                return studioId1;
             }
             set
             {
-                if (value == "NONE")
+                if (value == "NONE") //убираем студию
                 {
                     studioId1 = null;
                     contract = null;
+                    state = 0;
                 }
                 else
                 {
-                    studioId1 = value;
-                    if(contract is null)
+                    if (studioId is not null & value is not null) //меням сутдию
                     {
-                        contract = new Contract(CurrNow);
+                        if (value == "PL")
+                            state = 1026;
+                        else if (state == 1026)
+                            state = 36;
+
+                        if (contract is null)
+                        {
+                            contract = new Contract(CurrNow);
+                        }
                     }
-                    //else
-                    //    contract.DaysLeft = contract.amount * 365;
+                    studioId1 = value;
                 }
-                    
+
             }
         }
+        public int state { get; set; }
         //1 = F, 0 = M
         public int gender { get; set; }
         [JsonIgnore]
@@ -283,17 +290,52 @@ namespace HollyJson.Models
                 {
                     case Professions.Profession.Scriptwriter:
                     case Professions.Profession.Producer:
-                        return answ;
+                        break;
                     case Professions.Profession.Cinematographer:
-                        return new List<string>() { "INDOOR", "OUTDOOR" };
+                        answ = new List<string>() { "INDOOR", "OUTDOOR" };
+                        break;
                     case Professions.Profession.Director:
                     case Professions.Profession.Actor:
                         answ.Add("COM");
                         answ.Add("ART");
-                        return answ;
+                        break;
+                    default:
+                        return new List<string>();
                 }
-                return new List<string>();
+                foreach (var item in whiteTagsNEW.Select(t => t.id))
+                {
+                    if (answ.Any(t => t == item))
+                        answ.Remove(item);
+                }
+                return answ;
             }
+        }
+        public List<string> AvalibaleTraits
+        {
+            get
+            {
+                var answ = Character.Labels;
+                switch (professions.GetProfession)
+                {
+                    case Professions.Profession.Scriptwriter:
+                    case Professions.Profession.Producer:
+                    case Professions.Profession.FilmEditor:
+                    case Professions.Profession.Director:
+                    case Professions.Profession.Composer:
+                    case Professions.Profession.Cinematographer:
+                    case Professions.Profession.Actor:
+                        break;
+                    default:
+                        return new List<string>();
+                }
+                foreach (var item in labels)
+                {
+                    if (answ.Any(t => t == item))
+                        answ.Remove(item);
+                }
+                return answ;
+            }
+
         }
         #endregion
 
@@ -334,6 +376,7 @@ namespace HollyJson.Models
                 b.studioId == a.studioId &
                 b.contract! == b.contract! &
                 b.professions == a.professions &
+                b.state == a.state &
                 whtg & lbtg & astg;
         }
         public static bool operator !=(Character a, Character b) => !(a == b);
@@ -377,7 +420,7 @@ namespace HollyJson.Models
                             continue;
                         whiteTag.dateAdded = (DateTime)in_tag.SelectToken("dateAdded")?.Value<DateTime>();
                         whiteTag.movieId = (int)in_tag.SelectToken("movieId")?.Value<int>();
-                        whiteTag.value = (double)in_tag.SelectToken("value")?.Value<double>();
+                        whiteTag.Value = (double)in_tag.SelectToken("value")?.Value<double>();
                         whiteTag.IsOverall = (bool)in_tag.SelectToken("IsOverall")?.Value<bool>();
                         whiteTag.overallValues = JsonConvert.DeserializeObject<List<OverallValue>>(in_tag.SelectToken("overallValues").ToString());
                         z.whiteTagsNEW.Add(whiteTag);

@@ -27,13 +27,8 @@ public partial class MainWindow : Window
     }
     private void DoubleValidation(object sender, TextCompositionEventArgs e)
     {
-        Regex regex = new Regex(@"^\d+(?:\.\d+)$");
-        e.Handled = regex.IsMatch(e.Text);
-    }
-    private void LimitValidation(object sender, TextCompositionEventArgs e)
-    {
-        Regex regex = new Regex(@"^[0](?:\.\d+)|(1\.0)$");
-        e.Handled = regex.IsMatch(e.Text);
+        Regex regex = new Regex(@"[0-9]|\.");//(@"^\d+(?:\.\d+)$");
+        e.Handled = !regex.IsMatch(e.Text);
     }
     private bool IsTextAllowed(string text)
     {
@@ -63,13 +58,21 @@ public partial class MainWindow : Window
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         var z = (sender as TextBox);
-        if (z.Tag is not null && z.Tag.ToString() == "NoChecking")
-            return;
+        string tags = z.Tag?.ToString();
+        if (tags == "NoChecking")
+            return;        
         if (string.IsNullOrEmpty(z.Text))
         {
             e.Handled = true;
             z.Text = "0";
         }
+        //if(tags == "LimCheck")
+        //{
+        //    Regex regex = new Regex(@"^(0\.\d+)|(1\.0)|([1,0])$");
+        //    e.Handled = !regex.IsMatch(z.Text);
+        //    if (e.Handled)
+        //        z.Text = "0";
+        //}
 
     }
 }

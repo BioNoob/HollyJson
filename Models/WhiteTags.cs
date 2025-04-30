@@ -27,7 +27,14 @@ namespace HollyJson.Models
 
         public int movieId { get; set; }
         public int sourceType { get; set; }
-        public double value { get => value1; set => value1 = Math.Round(value, 7, MidpointRounding.AwayFromZero); }
+        public double value { get => value1; 
+            set 
+            {
+                value1 = Math.Round(value, 7, MidpointRounding.AwayFromZero);
+                if(value1 < 0d)
+                    value1 = 0;
+            }
+        } 
         public DateTime dateAdded { get; set; }
         public static bool operator ==(OverallValue a, OverallValue b)
         {
@@ -64,13 +71,25 @@ namespace HollyJson.Models
             get
             {
                 if (overallValues is not null)
-                    return overallValues.SingleOrDefault(t => t.movieId == 0 && t.sourceType == 0);
+                    return overallValues.SingleOrDefault(t => t.movieId == 0 & t.sourceType == 0);
                 else
                     return null;
             }
         }
         [JsonIgnore]
-        public double FreeToOverAllZero => value - Math.Round(overallValues.Sum(t => t.value), 2, MidpointRounding.AwayFromZero);
+        public double MinimalValaue
+        {
+            get
+            {
+                var ovl = overallValues.Where(t => t.movieId != 0 & t.sourceType != 0);
+                if (ovl.Any())
+                    return Math.Round(ovl.Sum(t => t.value), 2, MidpointRounding.AwayFromZero);
+                else
+                    return 0;
+            }
+        }
+        [JsonIgnore]
+        public bool IsZeroOverAllOnly => overallValues.Where(t => t.movieId != 0).Count() == 0;
         public static Skills GetEnumVal(string val)
         {
             Skills Tagtype = Skills.ELSE;
@@ -174,14 +193,26 @@ namespace HollyJson.Models
         }
         public DateTime dateAdded { get; set; }
         public int movieId { get; set; }
-        public double value
+        [JsonProperty("value")]
+        public double Value
         {
             get => value1; set
             {
-                value1 = value;
-                if (ZeroPoint is not null)
-                    //Тут уйдем в минус
-                    ZeroPoint.value = FreeToOverAllZero;
+                if (ZeroPoint is not null) //может ли быть такого что ее нет?
+                {
+                    if (value >= MinimalValaue)
+                    {
+                        ZeroPoint.value = value - MinimalValaue;
+                        //округления!
+                        value1 = value;
+                    }
+                    else
+                    {
+                        value1 = MinimalValaue;
+                    }
+                }
+                else
+                    value1 = value;
             }
         }
         public bool IsOverall { get; set; }
@@ -191,7 +222,7 @@ namespace HollyJson.Models
         {
             dateAdded = stateJson.GameStartTime;
             movieId = 0;
-            value = 0d;
+            Value = 0d;
             IsOverall = false;
             overallValues = new List<OverallValue>();
             id = "";
@@ -200,18 +231,18 @@ namespace HollyJson.Models
         public WhiteTag(string idd, double val)
         {
             id = idd;
-            if(Tagtype == Skills.COM | Tagtype == Skills.ART)
+            if (Tagtype == Skills.COM | Tagtype == Skills.ART)
             {
                 if (val > 1.0d)
-                    value = 1.0;
+                    Value = 1.0;
                 else
-                    value = val;
+                    Value = val;
             }
             else
-                value = val;
+                Value = val;
             dateAdded = stateJson.GameStartTime;
             movieId = 0;
-            overallValues = [new OverallValue() { movieId = 0, dateAdded = dateAdded, value = value, sourceType = 0 }];
+            overallValues = [new OverallValue() { movieId = 0, dateAdded = dateAdded, value = Value, sourceType = 0 }];
         }
         public static bool operator ==(WhiteTag a, WhiteTag b)
         {
@@ -221,7 +252,7 @@ namespace HollyJson.Models
             b.id == a.id &
             b.dateAdded == a.dateAdded &
             b.movieId == a.movieId &
-            b.value == a.value &
+            b.Value == a.Value &
             b.IsOverall == a.IsOverall &
             a.overallValues.SequenceEqual(b.overallValues);
         }

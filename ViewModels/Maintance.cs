@@ -45,10 +45,15 @@ namespace HollyJson.ViewModels
     }
     public class CommandHandler : ICommand
     {
-        public event EventHandler? CanExecuteChanged;
+        //public event EventHandler? CanExecuteChanged;
         private readonly Action<object> _execute;
         private readonly Predicate<object> _canExecute;
 
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
         public CommandHandler(Action<object> execute, Predicate<object> canExecute)
         {
             _execute = execute;
@@ -57,9 +62,10 @@ namespace HollyJson.ViewModels
 
         public bool CanExecute(object? parameter)
         {
-            if (_canExecute == null)
-                return true;
-            return _canExecute(parameter!);
+            //if (_canExecute == null)
+            //    return true;
+            //return _canExecute(parameter!);
+            return _canExecute == null || _canExecute(parameter!);
         }
 
         public void Execute(object? parameter)

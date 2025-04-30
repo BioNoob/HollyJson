@@ -18,8 +18,11 @@ namespace HollyJson.ViewModels
         private string opennedfileplace = string.Empty;
         CommandHandler _savefile;
         CommandHandler _openfile;
+
+        CommandHandler _removeTraitUp;
         CommandHandler _addtrait;
         CommandHandler _removetrait;
+
         CommandHandler _addskill;
         CommandHandler _removeskill;
 
@@ -75,7 +78,12 @@ namespace HollyJson.ViewModels
         public bool ShowOnlyTalent
         {
             get => showOnlyTalent;
-            set { showOnlyTalent = value; SetSearched(); }
+            set
+            {
+                showOnlyTalent = value;
+                ProfList = value ? ProfListWithOutNoTallent : ProfListWithNoTallent;
+                SetSearched();
+            }
         }
         public bool ShowOnlyDead
         {
@@ -102,6 +110,8 @@ namespace HollyJson.ViewModels
         public List<string> StudioListForChar => StudioList is null ? new List<string>() : StudioList.Where(t => t != "All").ToList();
         public List<string> StudioList { get; set; }
         public List<string> ProfList { get; set; }
+        private List<string> ProfListWithOutNoTallent { get; set; }
+        private List<string> ProfListWithNoTallent { get; set; }
         public string Filter_Prof
         {
             get => filter_Prof;
@@ -283,8 +293,19 @@ namespace HollyJson.ViewModels
             {
                 return _addtrait ??= new CommandHandler(obj =>
                 {
-                    SelectedChar.labels.Insert(0,(string)obj);
+                    SelectedChar.labels.Insert(0, (string)obj);
                 }, (obj) => !string.IsNullOrEmpty((string)obj));
+            }
+        }
+        public CommandHandler MoveTraitUpCmd
+        {
+            get
+            {
+                return _removeTraitUp ??= new CommandHandler(obj =>
+                {
+                    var ind = SelectedChar.labels.IndexOf((string)obj);
+                    SelectedChar.labels.Move(ind, ind - 1);
+                }, (obj) => !string.IsNullOrEmpty((string)obj) & SelectedChar?.labels.IndexOf((string)obj) > 0);
             }
         }
         public CommandHandler RemoveTraitCmd
@@ -332,7 +353,7 @@ namespace HollyJson.ViewModels
                         {
                             item.mood = item.attitude = 1.00;
                         }
-                }, (obj) => true);
+                }, (obj) => filtered_Obj?.Count > 0);
             }
         }
         public CommandHandler SetMaxContrDaysCmd
@@ -346,7 +367,7 @@ namespace HollyJson.ViewModels
                         {
                             item.contract.DaysLeft = item.contract.amount * 365;
                         }
-                }, (obj) => true);
+                }, (obj) => filtered_Obj?.Count > 0);
             }
         }
         public CommandHandler SetSkillToLimitCmd
@@ -360,7 +381,7 @@ namespace HollyJson.ViewModels
                         {
                             item.professions.Value = item.limit;
                         }
-                }, (obj) => true);
+                }, (obj) => filtered_Obj?.Count > 0);
             }
         }
         public CommandHandler SetLimitToMaxCmd
@@ -374,7 +395,7 @@ namespace HollyJson.ViewModels
                         {
                             item.limit = 1.00d;
                         }
-                }, (obj) => true);
+                }, (obj) => filtered_Obj?.Count > 0);
             }
         }
         public CommandHandler ShowSpawnDateCmd
@@ -383,7 +404,7 @@ namespace HollyJson.ViewModels
             {
                 return _showspawndate ??= new CommandHandler(obj =>
                 {
-                    ShowSpawn = true;
+                    ShowSpawn = ShowSpawn ? false : true;
                 }, (obj) => true);
             }
         }
@@ -393,7 +414,7 @@ namespace HollyJson.ViewModels
             {
                 return _showtechs ??= new CommandHandler(obj =>
                 {
-                    ShowTechs = true;
+                    ShowTechs = ShowTechs ? false : true;
                 }, (obj) => true);
             }
         }
@@ -574,9 +595,15 @@ namespace HollyJson.ViewModels
                 StatusBarText = "Loading characters done!";
                 StudioList = Info.characters.Select(t => t.studioId).Distinct().ToList()!;
                 StudioList.Insert(0, "All");
-                ProfList = Info.characters.Select(t => t.professions.ProfToDecode).Distinct().ToList()!;
-                ProfList.Insert(0, "All");
-                Filter_Prof = ProfList[0];
+                ProfListWithNoTallent = Info.characters.Select(t => t.professions.ProfToDecode).Distinct().ToList()!;
+                ProfListWithOutNoTallent = Info.characters
+                    .Where(t => t.professions.IsTalent)
+                    .Select(t => t.professions.ProfToDecode)
+                    .Distinct().ToList()!;
+                ProfListWithNoTallent.Insert(0, "All");
+                ProfListWithOutNoTallent.Insert(0, "All");
+                ProfList = ProfListWithNoTallent;
+                Filter_Prof = ProfListWithNoTallent[0];
                 Filter_studio = StudioList[0];
             }
             catch (Exception ex)
@@ -609,14 +636,9 @@ namespace HollyJson.ViewModels
                     //milestones
                     foreach (var mil in Info.milestones)
                     {
-                        var b = z["milestones"].Children().
-                            SingleOrDefault(t => t.ToObject<JProperty>().Name == mil.id).ToObject<JProperty>();
-                        if (b is not null)
-                        {
-                            b.Value["finished"] = mil.finished;
-                            b.Value["locked"] = mil.locked;
-                            b.Value["progress"] = mil.progress;
-                        }
+                        z["milestones"][mil.id]["finished"] = mil.finished;
+                        z["milestones"][mil.id]["locked"] = mil.locked;
+                        z["milestones"][mil.id]["progress"] = mil.progress;
                     }
                     //openedPerks (без ремува)
                     foreach (var item in Info.openedPerks)
@@ -639,8 +661,9 @@ namespace HollyJson.ViewModels
                                 b["mood"] = chr.mood;
                                 b["attitude"] = chr.attitude;
                                 b["birthDate"] = chr.birthDate;
-                                b["studioId"] = chr.studioId;
+                                b["studioId"] = chr.studioId == "NONE" ? null : chr.studioId;
                                 b["deathDate"] = chr.deathDate;
+                                b["state"] = chr.state;
                                 b["causeOfDeath"] = chr.causeOfDeath;
                                 if (chr.CustomNameWasSetted)
                                     b["customName"] = chr.MyCustomName;
@@ -650,12 +673,14 @@ namespace HollyJson.ViewModels
                                 {
                                     if (cnt.HasValues)
                                     {
-                                        if(chr.contract is null)
+                                        if (chr.contract is null)
                                         {
                                             cnt = null;
                                         }
                                         else
                                         {
+                                            //state = 1026 для тех кто устроился к нам!
+                                            //а еще почистить историю
                                             cnt["amount"] = chr.contract.amount;
                                             cnt["startAmount"] = chr.contract.startAmount;
                                             cnt["initialFee"] = chr.contract.initialFee;
@@ -664,7 +689,7 @@ namespace HollyJson.ViewModels
                                             cnt["dateOfSigning"] = chr.contract.dateOfSigning;
                                             cnt["contractType"] = chr.contract.contractType;
                                         }
-                                            
+
                                     }
                                     else
                                     {
@@ -721,7 +746,7 @@ namespace HollyJson.ViewModels
                                                 tochng["id"] = whiteTag.id;
                                                 tochng["dateAdded"] = whiteTag.dateAdded;
                                                 tochng["movieId"] = whiteTag.movieId;
-                                                tochng["value"] = whiteTag.value;
+                                                tochng["value"] = whiteTag.Value;
                                                 tochng["IsOverall"] = whiteTag.IsOverall;
                                                 //манипулируем только нулём
                                                 var t_over = tochng["overallValues"].Children().Single(t =>
@@ -768,7 +793,7 @@ namespace HollyJson.ViewModels
                     StatusBarText = "Save canceled";
                     return false;
                 }
-                    
+
             }
             catch (Exception ex)
             {
