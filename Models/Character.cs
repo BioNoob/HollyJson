@@ -1,5 +1,4 @@
-﻿using HollyJson.ViewModels;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PropertyChanged;
 using System.Collections.ObjectModel;
@@ -412,7 +411,8 @@ namespace HollyJson.Models
             if (z is not null)
             {
                 z.isDead = z.deathDate != "01-01-0001";
-                z.ReservDateOfDeath = z.deathDate != "01-01-0001" ? z.deathDate : Now.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture); ;
+                //now - 1 day
+                z.ReservDateOfDeath = z.IsDead ? z.deathDate : Now.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture);
                 z.ReservCauseOfDeath = z.causeOfDeath;
                 var prof_tkn = json.SelectToken("professions").ToObject<JObject>().Properties().ElementAt(0);
                 var q_prop = prof_tkn.Name;
@@ -421,11 +421,15 @@ namespace HollyJson.Models
                 z.JsonString = json.ToString();
                 z.SetFullAge(Now);
                 if (z.contract is not null)
-                    z.contract.SetCalcDaysLeft(Now);
+                {
+                    z.contract.dateOfNow = Now;
+                    z.contract.SetCalcDaysLeft();
+                    z.contract.IsInit = false;
+                }
                 var tags = json.SelectToken("whiteTagsNEW");
                 if (tags?.Children().Count() > 0)
                 {
-                    z.whiteTagsNEW = [];
+                    z.whiteTagsNEW = []; 
                     foreach (var tag in tags.Children())
                     {
                         WhiteTag whiteTag = new WhiteTag();

@@ -422,6 +422,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions >
                         <ColumnDefinition Width="60"/>
@@ -450,29 +451,32 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
-                    <Label Grid.Row="1" Grid.Column="0" Content="Years"/>
-                    <TextBox Text="{Binding SelectedChar.contract.amount}" Grid.Row="1" Grid.Column="1" 
+                    <Label Grid.Row="1" Grid.Column="2" Content="Date sign"/>
+                    <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding SelectedChar.contract.dateOfSigning}"
+                             IsReadOnly="True"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="Years"/>
+                    <TextBox Text="{Binding SelectedChar.contract.amount}" Grid.Row="2" Grid.Column="1" 
                               Tag="INT"/>
-                    <Label Grid.Row="1" Grid.Column="2" Content="Init fee"/>
-                    <TextBox Text="{Binding SelectedChar.contract.initialFee}" Grid.Row="1" Grid.Column="3" 
+                    <Label Grid.Row="2" Grid.Column="2" Content="Init fee"/>
+                    <TextBox Text="{Binding SelectedChar.contract.initialFee}" Grid.Row="2" Grid.Column="3" 
                               Tag="INT"/>
-                    <Label Grid.Row="2" Grid.Column="0" Content="M/s">
+                    <Label Grid.Row="3" Grid.Column="0" Content="M/s">
                         <Label.ToolTip>
                             <TextBlock Text="Mouth salary" Padding="0"/>
                         </Label.ToolTip>
                     </Label>
-                    <TextBox Text="{Binding SelectedChar.contract.monthlySalary}" Grid.Row="2" Grid.Column="1"
+                    <TextBox Text="{Binding SelectedChar.contract.monthlySalary}" Grid.Row="3" Grid.Column="1"
                               Tag="INT">
                         <TextBox.ToolTip>
                             <TextBlock Text="Mouth salary" Padding="0"/>
                         </TextBox.ToolTip>
                     </TextBox>
-                    <Label Grid.Row="2" Grid.Column="2" Content="W/s">
+                    <Label Grid.Row="3" Grid.Column="2" Content="W/s">
                         <Label.ToolTip>
                             <TextBlock Text="Weight salary" Padding="0"/>
                         </Label.ToolTip>
                     </Label>
-                    <TextBox Text="{Binding SelectedChar.contract.weightToSalary}" Grid.Row="2" Grid.Column="3" 
+                    <TextBox Text="{Binding SelectedChar.contract.weightToSalary}" Grid.Row="3" Grid.Column="3" 
                               Tag="INT">
                         <TextBox.ToolTip>
                             <TextBlock Text="Weight salary" Padding="0"/>
