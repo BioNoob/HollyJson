@@ -130,7 +130,19 @@ namespace HollyJson.Models
         public ObservableCollection<string> labels { get; set; }
         public string deathDate { get; set; }
         public int causeOfDeath { get; set; }
-
+        //CRUSH
+        public Array activeOrPlannedMovies { get; set; }
+        [JsonIgnore]
+        public bool IsNotBusyOnJob 
+        {
+            get
+            {
+                if (activeOrPlannedMovies is not null && activeOrPlannedMovies.Length > 0)
+                    return false;
+                else
+                    return true;
+            }
+        }
         public Character()
         {
             whiteTagsNEW = [];

@@ -584,6 +584,7 @@ namespace HollyJson.ViewModels
                 {
                     if (item is not null)
                     {
+                        var q = aa.SelectToken("activeOrPlannedMovies"); //crush!
                         var charct = Character.BuildCharacter(item, Info.Now);
                         if (charct is not null)
                             Info.characters.Add(charct);

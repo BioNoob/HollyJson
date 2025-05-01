@@ -336,6 +336,15 @@
                     <Label Content="Studio Id" Grid.Row="1" Grid.Column="1"/>
                     <ComboBox SelectedItem="{Binding SelectedChar.studioId}" Grid.Row="1" Grid.Column="2" Height="20" Margin="5,0,5,0"
                              Padding="0" Grid.ColumnSpan="3" ItemsSource="{Binding StudioListForChar}" VerticalContentAlignment="Center">
+                        <ComboBox.Style>
+                            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.SelectedChar.IsNotBusyOnJob}">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ComboBox.Style>
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding ., Converter={StaticResource LocaleConverter}}" Padding="0" Margin="5,0,0,0"/>
@@ -382,7 +391,7 @@
                                Tag="AGE"/>
                     <Label Content="Birth" Grid.Row="1" Grid.Column="2"/>
                     <TextBlock Text="{Binding SelectedChar.GetBirthDate, Converter={StaticResource myDateConverter}}" Grid.Row="1" Grid.Column="3"
-                               VerticalAlignment="Center" Margin="5,0,0,0"/>
+                               VerticalAlignment="Center" Margin="5,0"/>
                     <CheckBox Grid.Row="1" Grid.Column="1" Content="Is Dead" VerticalAlignment="Center"
                               HorizontalAlignment="Center" IsChecked="{Binding SelectedChar.IsDead}">
                         <CheckBox.Style>
@@ -452,8 +461,7 @@
                         </TextBox.Style>
                     </TextBox>
                     <Label Grid.Row="1" Grid.Column="2" Content="Date sign"/>
-                    <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding SelectedChar.contract.dateOfSigning}"
-                             IsReadOnly="True"/>
+                    <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding SelectedChar.contract.dateOfSigning, Converter={StaticResource myDateConverter}}" VerticalAlignment="Center" Margin="5,0"/>
                     <Label Grid.Row="2" Grid.Column="0" Content="Years"/>
                     <TextBox Text="{Binding SelectedChar.contract.amount}" Grid.Row="2" Grid.Column="1" 
                               Tag="INT"/>
