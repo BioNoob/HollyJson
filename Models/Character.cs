@@ -57,6 +57,8 @@ namespace HollyJson.Models
         private bool isDead;
         private DateTime CurrNow = new DateTime();
         private double limit1;
+        [JsonIgnore]
+        public bool IsInit { get; set; }
 
         public double limit
         {
@@ -107,15 +109,15 @@ namespace HollyJson.Models
                     {
                         if (value == "PL")
                             state = 1026;
-                        else if (state == 1026)
+                        else //if (state == 1026)
                             state = 36;
                         if (IsDead)
                             state = 20;
-
-                        if (contract is null)
-                        {
-                            contract = new Contract(CurrNow);
-                        }
+                        if (!IsInit)
+                            if (contract is null)
+                            {
+                                contract = new Contract(CurrNow);
+                            }
                     }
                     studioId1 = value;
                 }
@@ -138,6 +140,7 @@ namespace HollyJson.Models
         public bool IsBusyOnJob { get; set; }
         public Character()
         {
+            IsInit = true;
             whiteTagsNEW = [];
             labels = [];
             aSins = [];
@@ -221,7 +224,7 @@ namespace HollyJson.Models
                         else
                             state = 36;
                     }
-                        
+
                 }
                 else
                 {
@@ -433,7 +436,6 @@ namespace HollyJson.Models
             if (z is not null)
             {
                 z.isDead = z.deathDate != "01-01-0001";
-                //now - 1 day
                 z.ReservDateOfDeath = z.IsDead ? z.deathDate : Now.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture);
                 z.ReservCauseOfDeath = z.causeOfDeath;
                 z.ReservState = z.state;
@@ -475,6 +477,7 @@ namespace HollyJson.Models
                 }
                 z.SetAvSkills();
                 z.SetAvTraits();
+                z.IsInit = false;
                 return z;
             }
             return null;

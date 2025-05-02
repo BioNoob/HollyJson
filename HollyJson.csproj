@@ -8,6 +8,14 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>main.ico</ApplicationIcon>
 	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+	<Authors></Authors>
+	<Company></Company>
+	<PackageProjectUrl>https://github.com/BioNoob/HollyJson</PackageProjectUrl>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<RepositoryUrl>https://github.com/BioNoob/HollyJson</RepositoryUrl>
+	<Version></Version>
+	<AssemblyVersion>0.2.1</AssemblyVersion>
+	<FileVersion>0.2.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -45,6 +53,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Update="Resources\Localization.yz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
