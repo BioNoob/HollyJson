@@ -30,7 +30,15 @@ namespace HollyJson.Models
         public int influence { get; set; }
         public string studioName { get; set; }
         public string timePassed { get; set; }
-        public DateTime Now => !string.IsNullOrEmpty(timePassed) ? GameStartTime.AddDays(int.Parse(timePassed.Split('.')[0])) : GameStartTime;
+        public DateTime Now
+        {
+            get
+            {
+                int days = 0;
+                int.TryParse(timePassed.Split('.')[0], out days); //дни есть
+                return !string.IsNullOrEmpty(timePassed) ? GameStartTime.AddDays(days) : GameStartTime;
+            }
+        }
         public ObservableCollection<Character> characters { get; set; }
 
         public Dictionary<string, DateTime> NextSpawnDays { get; set; }
