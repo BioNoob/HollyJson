@@ -315,7 +315,7 @@
                 <Button Grid.Column="1" Grid.Row="0" Content="Set Mood and Att to 1.0" Command="{Binding SetMoodAndAttCmd}"/>
                 <Button Grid.Column="2" Grid.Row="0" Content="Set Contract days to max" Command="{Binding SetMaxContrDaysCmd}"/>
                 <Button Grid.Column="1" Grid.Row="1" Content="Set Skill to Limit" Command="{Binding SetSkillToLimitCmd}"/>
-                <Button Grid.Column="2" Grid.Row="1" Content="Raise Skill to 1.0" Command="{Binding SetLimitToMaxCmd}"/>
+                <Button Grid.Column="2" Grid.Row="1" Content="Raise Limit to 1.0" Command="{Binding SetLimitToMaxCmd}"/>
                 <Image Grid.Column="3" Grid.RowSpan="2" Source="/Resources/arrow_up.png" Width="25"/>
             </Grid>
         </Grid>
