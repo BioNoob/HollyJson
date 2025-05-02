@@ -1,13 +1,8 @@
-﻿using System.IO.Compression;
-using System.IO;
+﻿using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.IO.Packaging;
-using System.Diagnostics;
-using System.Globalization;
-using HollyJson.ViewModels;
 
 namespace HollyJson;
 
@@ -91,15 +86,6 @@ public partial class MainWindow : Window
                     break;
                 case "LMT":
                     valid = CheckLimitOneFull(val);
-                    //if (e.Handled)
-                    //{
-                    //    double val = 0.0d;
-                    //    if (double.TryParse(z.Text, CultureInfo.InvariantCulture, out val))
-                    //    {
-                    //        if (val > 1.0d)
-                    //            z.Text = 1.0d.ToString("0.00", CultureInfo.InvariantCulture);
-                    //    }
-                    //}
                     break;
                 default:
                     break;

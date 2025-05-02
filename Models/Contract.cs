@@ -9,6 +9,7 @@ namespace HollyJson.Models
         private int daysLeft;
         private int amount1;
         private bool lockamount = false;
+        [JsonIgnore]
         public bool IsInit { get; set; }
         public int contractType { get; set; }
         public int amount
@@ -107,40 +108,6 @@ namespace HollyJson.Models
                             dateOfSigning = dateOfSigning.AddDays(-1 * (daysafternow - 1));
                         }
                     }
-                    //
-                    //300 -> 400 = +100
-                    //if (value - daysLeft > 0)
-                    //{
-                    //    DateTime calc_date = dateOfSigning.AddDays(value - daysLeft);
-                    //    if (dateOfNow != new DateTime())
-                    //    {
-                    //        if (calc_date >= dateOfNow.AddDays(-1)) //если по дате
-                    //                                                //подписания вылетим за текущую дату
-                    //                                                //то увеличим кол-во лет контракта
-                    //                                                //но установим дату подписнаия на вчера
-                    //        {
-                    //            var b = ((calc_date - dateOfNow).TotalDays) / 365.2425;
-                    //            amount += (int)Math.Ceiling(b); //чтоб влезть от текущей даты
-                    //            dateOfSigning = dateOfNow.AddDays(-1);
-                    //        }
-                    //    }
-                    //}
-                    ////-100
-                    //else
-                    //{
-                    //    if(dateOfNow != new DateTime())
-                    //    {
-                    //        DateTime calc_date = dateOfSigning.AddDays(value - daysLeft);
-                    //        DateTime end_date = calc_date.AddYears(amount);
-                    //        //если окончание стало меньше чем сейчас.. то надо:
-                    //        //уменьшить срок контракта.. если после этого все равно меньше то
-                    //        //
-                    //        if (end_date < dateOfNow.AddDays(1))
-                    //        {
-                                
-                    //        }
-                    //    }
-                    //}
                 }
 
 

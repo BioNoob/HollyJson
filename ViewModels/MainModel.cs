@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PropertyChanged;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
@@ -780,7 +779,7 @@ namespace HollyJson.ViewModels
                                     }
                                     else
                                     {
-                                        cnt = JToken.Parse(JsonConvert.SerializeObject(chr.contract));
+                                        b["contract"] = JToken.Parse(JsonConvert.SerializeObject(chr.contract));
                                     }
                                 }
                                 cnt = null;
