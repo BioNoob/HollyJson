@@ -372,7 +372,8 @@ namespace HollyJson.ViewModels
                     if (filtered_Obj?.Count > 0)
                         foreach (var item in Filtered_Obj)
                         {
-                            item.contract.DaysLeft = item.contract.amount * 365;
+                            if (item.contract is not null)
+                                item.contract.DaysLeft = item.contract.amount * 365;
                         }
                 }, (obj) => filtered_Obj?.Count > 0);
             }
@@ -441,9 +442,9 @@ namespace HollyJson.ViewModels
             {
                 return _unlocktechs ??= new CommandHandler(obj =>
                 {
-                    if(Info.AvailablePerks.Count > 0)
+                    if (Info.AvailablePerks.Count > 0)
                     {
-                        foreach(var item in Info.AvailablePerks)
+                        foreach (var item in Info.AvailablePerks)
                         {
                             Info.openedPerks.Add(item);
                         }
@@ -503,7 +504,7 @@ namespace HollyJson.ViewModels
             ProfListWithNoTallent = ProfListWithNoTallent;
             ProfListWithOutNoTallent = ProfListWithOutNoTallent;
             StudioList = StudioList;
-            StudioListForChar = StudioList is not null ?  StudioList.Where(t => t != "All").ToList() : new List<string>();
+            StudioListForChar = StudioList is not null ? StudioList.Where(t => t != "All").ToList() : new List<string>();
             SelectedChar = null;
             SelectedChar = Filtered_Obj is not null ? Filtered_Obj[0] : null;
             SetSearched();
