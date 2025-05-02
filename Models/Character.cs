@@ -413,7 +413,7 @@ namespace HollyJson.Models
                 b.birthDate == a.birthDate &
                 b.gender == a.gender &
                 b.studioId == a.studioId &
-                b.contract! == b.contract! &
+                b.contract! == a.contract! &
                 b.professions == a.professions &
                 b.state == a.state &
                 whtg & lbtg & astg;
