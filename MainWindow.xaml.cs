@@ -135,6 +135,8 @@ public partial class MainWindow : Window
         var z = (sender as TextBox);
         //все таки по тагу смотреть... и переключаться на нужные проверки...
         string tags = z.Tag?.ToString();
+        if (z.Text == "∞")
+            return;
         switch (tags)
         {
             case "STR":

@@ -130,19 +130,8 @@ namespace HollyJson.Models
         public ObservableCollection<string> labels { get; set; }
         public string deathDate { get; set; }
         public int causeOfDeath { get; set; }
-        //CRUSH
-        public Array activeOrPlannedMovies { get; set; }
         [JsonIgnore]
-        public bool IsNotBusyOnJob 
-        {
-            get
-            {
-                if (activeOrPlannedMovies is not null && activeOrPlannedMovies.Length > 0)
-                    return false;
-                else
-                    return true;
-            }
-        }
+        public bool IsBusyOnJob { get; set; }
         public Character()
         {
             whiteTagsNEW = [];
@@ -426,6 +415,11 @@ namespace HollyJson.Models
                 //now - 1 day
                 z.ReservDateOfDeath = z.IsDead ? z.deathDate : Now.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture);
                 z.ReservCauseOfDeath = z.causeOfDeath;
+                var aopm = json.SelectToken("activeOrPlannedMovies");
+                if (aopm is not null && aopm.HasValues)
+                {
+                    z.IsBusyOnJob = true;
+                }
                 var prof_tkn = json.SelectToken("professions").ToObject<JObject>().Properties().ElementAt(0);
                 var q_prop = prof_tkn.Name;
                 var q_val = prof_tkn.Value.ToObject<double>();

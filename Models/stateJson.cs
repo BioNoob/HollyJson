@@ -4,6 +4,22 @@ using System.Collections.ObjectModel;
 namespace HollyJson.Models
 {
     [AddINotifyPropertyChangedInterface]
+    public class TagPool
+    {
+        public string Item1 { get; set; }
+        public DateTime Item2 { get; set; }
+        public TagPool()
+        {
+            Item1 = string.Empty;
+            Item2 = new DateTime();
+        }
+        public TagPool(string item1, DateTime item2)
+        {
+            Item1 = item1;
+            Item2 = item2;
+        }
+    }
+    [AddINotifyPropertyChangedInterface]
     public class stateJson
     {
 
@@ -90,6 +106,14 @@ namespace HollyJson.Models
         }
 
         public ObservableCollection<string> openedPerks { get; set; }
+        /// <summary>
+        /// Закрытые тэги
+        /// </summary>
+        public ObservableCollection<string> tagBank { get; set; }
+        /// <summary>
+        /// Открытые тэги
+        /// </summary>
+        public ObservableCollection<TagPool> tagPool { get; set; }
         public static List<string> PreGenPerks => new List<string>()
         {
             "BANK_LOAN",

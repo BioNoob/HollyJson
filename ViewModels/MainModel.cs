@@ -31,9 +31,11 @@ namespace HollyJson.ViewModels
         CommandHandler _setskilltolimit;
         CommandHandler _setskiiltocap;
 
+        CommandHandler _showtags;
         CommandHandler _showspawndate;
         CommandHandler _showtechs;
         CommandHandler _unlocktechs;
+        CommandHandler _unlocktags;
 
         private string search_txt;
         JObject? jobj = null;
@@ -72,6 +74,7 @@ namespace HollyJson.ViewModels
         }
         public string StatusBarText { get; set; } = "Hello";
         public bool ShowSpawn { get; set; } = false;
+        public bool ShowTags { get; set; } = false;
         public bool ShowTechs { get; set; } = false;
         public bool Save_Loaded { get; set; } = false;
         public bool Save_done { get; set; } = false;
@@ -408,6 +411,16 @@ namespace HollyJson.ViewModels
                 }, (obj) => true);
             }
         }
+        public CommandHandler ShowTagsCmd
+        {
+            get
+            {
+                return _showtags ??= new CommandHandler(obj =>
+                {
+                    ShowTags = ShowTags ? false : true;
+                }, (obj) => true);
+            }
+        }
         public CommandHandler ShowTechsCmd
         {
             get
@@ -425,6 +438,23 @@ namespace HollyJson.ViewModels
                 return _unlocktechs ??= new CommandHandler(obj =>
                 {
                     Info.openedPerks = new ObservableCollection<string>(stateJson.PreGenPerks);
+                }, (obj) => true);
+            }
+        }
+        public CommandHandler UnlockTagsCmd
+        {
+            get
+            {
+                return _unlocktags ??= new CommandHandler(obj =>
+                {
+                    if (Info.tagBank.Count > 0)
+                    {
+                        foreach (string tag in Info.tagBank)
+                        {
+                            Info.tagPool.Add(new TagPool(tag, Info.Now.AddDays(-1)));
+                        }
+                        Info.tagBank.Clear();
+                    }
                 }, (obj) => true);
             }
         }
@@ -564,6 +594,7 @@ namespace HollyJson.ViewModels
                 }
                 Info.NextSpawnDays = new Dictionary<string, DateTime>(dt_d);
                 dt_d = null;
+                //sp_d = null;
 
                 StatusBarText = "Loading opened perks...";
                 List<string> op_d = new List<string>();
@@ -574,6 +605,24 @@ namespace HollyJson.ViewModels
                 }
                 Info.openedPerks = [.. op_d];
                 op_d = null;
+                //op_p = null;
+
+                StatusBarText = "Loading closed tags...";
+                op_d = new List<string>();
+                op_p = aa.SelectToken("tagBank")?.Children();
+                foreach (var item in op_p)
+                {
+                    op_d.Add(item?.Value<string>()!);
+                }
+                Info.tagBank = [.. op_d];
+                op_d = null;
+                //op_p = null;
+
+                StatusBarText = "Loading opened tags...";
+                ObservableCollection<TagPool> tags =
+                    JsonConvert.DeserializeObject<ObservableCollection<TagPool>>(aa.SelectToken("tagPool").ToString());
+                Info.tagPool = [.. tags];
+                tags = null;
 
                 Info.characters = [];
 
@@ -584,7 +633,6 @@ namespace HollyJson.ViewModels
                 {
                     if (item is not null)
                     {
-                        var q = aa.SelectToken("activeOrPlannedMovies"); //crush!
                         var charct = Character.BuildCharacter(item, Info.Now);
                         if (charct is not null)
                             Info.characters.Add(charct);
@@ -644,11 +692,27 @@ namespace HollyJson.ViewModels
                     //openedPerks (без ремува)
                     foreach (var item in Info.openedPerks)
                     {
-                        if (((JArray)z["openedPerks"])?.Any(x => x.ToString().Equals(item)) != true)
+                        if (((JArray)z["openedPerks"])?.Any(x => x.ToString(Formatting.None).Equals(item)) != true)
                         {
                             ((JArray)z["openedPerks"]).Add(item);
                         }
                     }
+                    //tags work
+                    foreach (var item in Info.tagPool)
+                    {
+                        var w = JsonConvert.SerializeObject(item);
+                        if (((JArray)z["tagPool"])?.Any(x => x.ToString(Formatting.None).Equals(w)) != true)
+                        {
+                            ((JArray)z["tagPool"]).Add(w);
+                        }
+                    }
+
+                    //надо удалить из jtokena 
+                    //так как мы можем только либо почистить все, либо ничего не менять
+                    //то, если в объекте нихрена нет, можем грохать все элементы
+                    if (Info.tagBank.Count < 1)
+                        ((JArray)z["tagBank"]).Clear();
+
                     //characters
                     foreach (Character chr in Info.characters)
                     {
@@ -658,7 +722,6 @@ namespace HollyJson.ViewModels
                             var b = a?.SingleOrDefault(t => t?["id"]?.Value<int>() == chr.id, null);
                             if (b is not null)
                             {
-                                //activeOrPlannedMovies if count > 0 => NOT REMOVE! AND REPLACE ACTOR
                                 b["limit"] = chr.limit;
                                 b["mood"] = chr.mood;
                                 b["attitude"] = chr.attitude;
@@ -682,7 +745,7 @@ namespace HollyJson.ViewModels
                                         else
                                         {
                                             //state = 1026 для тех кто устроился к нам!
-                                            //а еще почистить историю
+                                            //а еще почистить историю?
                                             cnt["amount"] = chr.contract.amount;
                                             cnt["startAmount"] = chr.contract.startAmount;
                                             cnt["initialFee"] = chr.contract.initialFee;
