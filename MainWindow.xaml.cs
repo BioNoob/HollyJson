@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.IO.Packaging;
 using System.Diagnostics;
 using System.Globalization;
+using HollyJson.ViewModels;
 
 namespace HollyJson;
 
@@ -19,7 +20,6 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         Style = (Style)FindResource(typeof(Window));
-
         //string mi = $"{App.PathToExe}Resources";
         //string local_dir = $"{mi}\\Localization\\";
         //string path_to_loc = $"{mi}\\Localization.yz";
@@ -29,6 +29,7 @@ public partial class MainWindow : Window
         //ZipFile.CreateFromDirectory(local_dir, path_to_loc);
         //ZipFile.CreateFromDirectory("C:\\Users\\bigja\\source\\repos\\HollyJson\\Resources\\Localization", "C:\\Users\\bigja\\source\\repos\\HollyJson\\Resources\\Localization.yz");
     }
+
     //на ввод посимвольно
     //целык
     private void NumberValidation(object sender, TextCompositionEventArgs e)

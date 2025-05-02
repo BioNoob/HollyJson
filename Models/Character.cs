@@ -98,6 +98,8 @@ namespace HollyJson.Models
                     studioId1 = null;
                     contract = null;
                     state = 0;
+                    if (IsDead)
+                        state = 16;
                 }
                 else
                 {
@@ -107,6 +109,8 @@ namespace HollyJson.Models
                             state = 1026;
                         else if (state == 1026)
                             state = 36;
+                        if (IsDead)
+                            state = 20;
 
                         if (contract is null)
                         {
@@ -196,23 +200,43 @@ namespace HollyJson.Models
         public DateTime GetBirthDate => DateTime.ParseExact(birthDate, "dd-MM-yyyy", CultureInfo.InvariantCulture);
         public bool IsDead
         {
-            get => isDead; set
+            get => isDead;
+            set
             {
                 isDead = value;
                 if (!value)
                 {
                     deathDate = "01-01-0001";
                     causeOfDeath = 0;
+                    if (ReservState != 16 && ReservState != 20)
+                    {
+                        state = ReservState;
+                    }
+                    else
+                    {
+                        if (studioId == "PL")
+                            state = 1026;
+                        else if (studioId == "NONE")
+                            state = 0;
+                        else
+                            state = 36;
+                    }
+                        
                 }
                 else
                 {
                     deathDate = ReservDateOfDeath;
                     causeOfDeath = ReservCauseOfDeath;
+                    if (studioId == "NONE")
+                        state = 16;
+                    else
+                        state = 20;
                 }
             }
         }
         public string ReservDateOfDeath = string.Empty;
         public int ReservCauseOfDeath = 0;
+        public int ReservState = 64;
         public int Age
         {
             get => age;
@@ -286,11 +310,10 @@ namespace HollyJson.Models
                 return a;
             }
         }
-        public List<string> AvalibaleSkills
+        public List<string> AvalibaleSkills { get; set; }
+        public void SetAvSkills()
         {
-            get
-            {
-                var answ = new List<string>()
+            var answ = new List<string>()
                 {
                     "ACTION",
                     "DRAMA",
@@ -301,56 +324,54 @@ namespace HollyJson.Models
                     "COMEDY",
                     "ADVENTURE"
                 };
-                switch (professions.GetProfession)
-                {
-                    case Professions.Profession.Scriptwriter:
-                    case Professions.Profession.Producer:
-                        break;
-                    case Professions.Profession.Cinematographer:
-                        answ = new List<string>() { "INDOOR", "OUTDOOR" };
-                        break;
-                    case Professions.Profession.Director:
-                    case Professions.Profession.Actor:
-                        answ.Add("COM");
-                        answ.Add("ART");
-                        break;
-                    default:
-                        return new List<string>();
-                }
-                foreach (var item in whiteTagsNEW.Select(t => t.id))
-                {
-                    if (answ.Any(t => t == item))
-                        answ.Remove(item);
-                }
-                return answ;
-            }
-        }
-        public List<string> AvalibaleTraits
-        {
-            get
+            switch (professions.GetProfession)
             {
-                var answ = Character.Labels;
-                switch (professions.GetProfession)
-                {
-                    case Professions.Profession.Scriptwriter:
-                    case Professions.Profession.Producer:
-                    case Professions.Profession.FilmEditor:
-                    case Professions.Profession.Director:
-                    case Professions.Profession.Composer:
-                    case Professions.Profession.Cinematographer:
-                    case Professions.Profession.Actor:
-                        break;
-                    default:
-                        return new List<string>();
-                }
-                foreach (var item in labels)
-                {
-                    if (answ.Any(t => t == item))
-                        answ.Remove(item);
-                }
-                return answ;
+                case Professions.Profession.Scriptwriter:
+                case Professions.Profession.Producer:
+                    break;
+                case Professions.Profession.Cinematographer:
+                    answ = new List<string>() { "INDOOR", "OUTDOOR" };
+                    break;
+                case Professions.Profession.Director:
+                case Professions.Profession.Actor:
+                    answ.Add("COM");
+                    answ.Add("ART");
+                    break;
+                default:
+                    AvalibaleSkills = new List<string>();
+                    return;
             }
-
+            foreach (var item in whiteTagsNEW.Select(t => t.id))
+            {
+                if (answ.Any(t => t == item))
+                    answ.Remove(item);
+            }
+            AvalibaleSkills = answ;
+        }
+        public List<string> AvalibaleTraits { get; set; }
+        public void SetAvTraits()
+        {
+            var answ = Character.Labels;
+            switch (professions.GetProfession)
+            {
+                case Professions.Profession.Scriptwriter:
+                case Professions.Profession.Producer:
+                case Professions.Profession.FilmEditor:
+                case Professions.Profession.Director:
+                case Professions.Profession.Composer:
+                case Professions.Profession.Cinematographer:
+                case Professions.Profession.Actor:
+                    break;
+                default:
+                    AvalibaleTraits = new List<string>();
+                    return;
+            }
+            foreach (var item in labels)
+            {
+                if (answ.Any(t => t == item))
+                    answ.Remove(item);
+            }
+            AvalibaleTraits = answ;
         }
         #endregion
 
@@ -415,6 +436,7 @@ namespace HollyJson.Models
                 //now - 1 day
                 z.ReservDateOfDeath = z.IsDead ? z.deathDate : Now.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture);
                 z.ReservCauseOfDeath = z.causeOfDeath;
+                z.ReservState = z.state;
                 var aopm = json.SelectToken("activeOrPlannedMovies");
                 if (aopm is not null && aopm.HasValues)
                 {
@@ -435,7 +457,7 @@ namespace HollyJson.Models
                 var tags = json.SelectToken("whiteTagsNEW");
                 if (tags?.Children().Count() > 0)
                 {
-                    z.whiteTagsNEW = []; 
+                    z.whiteTagsNEW = [];
                     foreach (var tag in tags.Children())
                     {
                         WhiteTag whiteTag = new WhiteTag();
@@ -451,6 +473,8 @@ namespace HollyJson.Models
                         z.whiteTagsNEW.Add(whiteTag);
                     }
                 }
+                z.SetAvSkills();
+                z.SetAvTraits();
                 return z;
             }
             return null;

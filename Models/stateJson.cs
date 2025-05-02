@@ -104,6 +104,7 @@ namespace HollyJson.Models
                     return "NONE";
             }
         }
+        public ObservableCollection<string> AvailablePerks { get; set; }
 
         public ObservableCollection<string> openedPerks { get; set; }
         /// <summary>

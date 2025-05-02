@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\backgrnd.jpg" />
+    <Resource Include="Resources\backgrnd.png" />
     <Resource Include="Resources\Jura-SemiBold.ttf" />
     <Resource Include="Resources\minus.png" />
     <Resource Include="Resources\ofd.png" />

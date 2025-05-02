@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PropertyChanged;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
@@ -110,7 +111,7 @@ namespace HollyJson.ViewModels
                 SetSearched();
             }
         }
-        public List<string> StudioListForChar => StudioList is null ? new List<string>() : StudioList.Where(t => t != "All").ToList();
+        public List<string> StudioListForChar { get; set; }// => StudioList is null ? new List<string>() : StudioList.Where(t => t != "All").ToList();
         public List<string> StudioList { get; set; }
         public List<string> ProfList { get; set; }
         private List<string> ProfListWithOutNoTallent { get; set; }
@@ -297,6 +298,7 @@ namespace HollyJson.ViewModels
                 return _addtrait ??= new CommandHandler(obj =>
                 {
                     SelectedChar.labels.Insert(0, (string)obj);
+                    SelectedChar.SetAvTraits();
                 }, (obj) => !string.IsNullOrEmpty((string)obj));
             }
         }
@@ -318,6 +320,7 @@ namespace HollyJson.ViewModels
                 return _removetrait ??= new CommandHandler(obj =>
                 {
                     SelectedChar.labels.Remove((string)obj);
+                    SelectedChar.SetAvTraits();
                 }, (obj) => true);
             }
         }
@@ -330,6 +333,7 @@ namespace HollyJson.ViewModels
                     if (SelectedChar.whiteTagsNEW.Any(t => t.id == (string)obj))
                         return;
                     SelectedChar.whiteTagsNEW.Insert(0, new WhiteTag((string)obj, 12.0));
+                    SelectedChar.SetAvSkills();
                 }, (obj) => !string.IsNullOrEmpty((string)obj));
             }
         }
@@ -341,6 +345,7 @@ namespace HollyJson.ViewModels
                 {
                     var a = SelectedChar.whiteTagsNEW.Single(t => t.id == ((WhiteTag)obj).id);
                     SelectedChar.whiteTagsNEW.Remove(a);
+                    SelectedChar.SetAvSkills();
                 }, (obj) => true);
             }
         }
@@ -437,7 +442,15 @@ namespace HollyJson.ViewModels
             {
                 return _unlocktechs ??= new CommandHandler(obj =>
                 {
-                    Info.openedPerks = new ObservableCollection<string>(stateJson.PreGenPerks);
+                    if(Info.AvailablePerks.Count > 0)
+                    {
+                        foreach(var item in Info.AvailablePerks)
+                        {
+                            Info.openedPerks.Add(item);
+                        }
+                        Info.AvailablePerks.Clear();
+                    }
+                    //Info.openedPerks = new ObservableCollection<string>(stateJson.PreGenPerks);
                 }, (obj) => true);
             }
         }
@@ -485,10 +498,15 @@ namespace HollyJson.ViewModels
                     t.normalLast = LocaleNames[t.lastNameId];
                     t.normalFirst = LocaleNames[t.firstNameId];
                 }
+
             //БУЭ
             ProfList = ProfList;
+            ProfListWithNoTallent = ProfListWithNoTallent;
+            ProfListWithOutNoTallent = ProfListWithOutNoTallent;
             StudioList = StudioList;
-            SelectedChar = SelectedChar;
+            StudioListForChar = StudioList is not null ?  StudioList.Where(t => t != "All").ToList() : new List<string>();
+            SelectedChar = null;
+            SelectedChar = Filtered_Obj is not null ? Filtered_Obj[0] : null;
             SetSearched();
             StatusBarText = "Refresh loacales done";
         }
@@ -602,8 +620,11 @@ namespace HollyJson.ViewModels
                 foreach (var item in op_p)
                 {
                     op_d.Add(item?.Value<string>()!);
+
                 }
                 Info.openedPerks = [.. op_d];
+                //разница между преген и моими(опенед)
+                Info.AvailablePerks = [.. stateJson.PreGenPerks.Except(Info.openedPerks)];
                 op_d = null;
                 //op_p = null;
 
@@ -703,7 +724,8 @@ namespace HollyJson.ViewModels
                         var w = JsonConvert.SerializeObject(item);
                         if (((JArray)z["tagPool"])?.Any(x => x.ToString(Formatting.None).Equals(w)) != true)
                         {
-                            ((JArray)z["tagPool"]).Add(w);
+                            var tt = JObject.Parse(w);
+                            ((JArray)z["tagPool"]).Add(tt);
                         }
                     }
 
