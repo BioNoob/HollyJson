@@ -70,25 +70,27 @@ namespace HollyJson.Models
                 if (!IsInit)
                 {
 
-                    var daysbeforenow = (dateOfNow - dateOfSigning).TotalDays; //370
-                    var daysafternow = (dateOfEnding - dateOfNow).TotalDays; //350
-                    var differernce = value - DaysLeft; // 380 //30
+                    var daysbeforenow = (dateOfNow - dateOfSigning).TotalDays; //1089
+                    var daysafternow = (dateOfEnding - dateOfNow).TotalDays; //6
+                    var differernce = value - DaysLeft; //val = 2560 left = 6 dif = 2554
                     if (differernce > 0) //увеличиваем кол-во дней
                     {
                         if (differernce > daysbeforenow) //не осталось для смещения вперед
                         {
                             //докинули год лет
                             lockamount = true;
-                            amount += (int)Math.Ceiling((differernce - daysbeforenow) / 365.2425);
+                            amount += (int)Math.Ceiling((differernce - daysbeforenow) / 365.2425); //3->8
                             lockamount = false;
                             //сколько всего должно получится дней
-                            var im_need = differernce + daysbeforenow; // 730
+                            //var im_need = differernce + daysbeforenow; // 3643
                                                                        //пересчитали новую концову
-                            daysafternow = (dateOfSigning.AddYears(amount) - dateOfNow).TotalDays; //715
-                                                                                                   //определили сколько должно быть до начала контракта
-                            var to_move = daysafternow - im_need; //15
-                            var daystoremovefromstart = to_move - daysbeforenow; //-355
-                            dateOfSigning = dateOfSigning.AddDays(daystoremovefromstart);
+                            daysafternow = (dateOfSigning.AddYears(amount) - dateOfNow).TotalDays; //1883
+                            //определили сколько должно быть до начала контракта
+
+
+                            var to_move = daysafternow - value; //-1810
+                            //var daystoremovefromstart = to_move - daysbeforenow; //-2899
+                            dateOfSigning = dateOfSigning.AddDays(-1*to_move);
                         }
                         else 
                         {
