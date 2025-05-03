@@ -7,7 +7,7 @@
         xmlns:models="clr-namespace:HollyJson.Models" xmlns:numericupdownlib="clr-namespace:NumericUpDownLib;assembly=NumericUpDownLib"
         mc:Ignorable="d"
         Icon="/main.ico"
-        Title="Holly JsonEditor" Height="790" Width="730" MinWidth="700">
+        Title="Holly JsonEditor" Height="790" Width="730" MinWidth="700" MinHeight="790">
     <Window.DataContext>
         <local:MainModel/>
     </Window.DataContext>
@@ -103,7 +103,7 @@
                                 <TextBlock Padding="0" TextAlignment="Center" TextTrimming="CharacterEllipsis" Text="Show Spawns"/>
                             </Button.Content>
                         </Button>
-                        <Button Padding="5,0,5,0" Command="{Binding ShowTechsCmd}" Margin="5,0,5,0" Width="110">
+                        <Button Padding="5,0,5,0" Command="{Binding ShowTechsCmd}" Margin="5,0,5,0" Width="115">
                             <Button.Content>
                                 <TextBlock Padding="0" TextAlignment="Center" TextTrimming="CharacterEllipsis" Text="Show closed Techs"/>
                             </Button.Content>
