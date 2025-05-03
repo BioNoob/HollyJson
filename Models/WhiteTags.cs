@@ -83,6 +83,8 @@ namespace HollyJson.Models
         {
             get
             {
+                if (Tagtype == Skills.Indoor || Tagtype == Skills.Outdoor)
+                    return 0.1;
                 var ovl = overallValues.Where(t => t.movieId != 0 & t.sourceType != 0);
                 if (ovl.Any())
                     return Math.Round(ovl.Sum(t => t.value), 2, MidpointRounding.AwayFromZero);
@@ -91,7 +93,15 @@ namespace HollyJson.Models
             }
         }
         [JsonIgnore]
-        public bool IsZeroOverAllOnly => overallValues.Where(t => t.movieId != 0).Count() == 0;
+        public bool IsZeroOverAllOnly
+        {
+            get
+            {
+                if (Tagtype == Skills.Indoor | Tagtype == Skills.Outdoor)
+                    return false;
+                return overallValues.Where(t => t.movieId != 0).Count() == 0;
+            }
+        }
         public static Skills GetEnumVal(string val)
         {
             Skills Tagtype = Skills.ELSE;
@@ -203,6 +213,9 @@ namespace HollyJson.Models
                 if (Tagtype == Skills.COM | Tagtype == Skills.ART)
                     if (value > 1.0d)
                         value = 1.0d;
+                if (Tagtype == Skills.Indoor | Tagtype == Skills.Outdoor)
+                    if (value > 1.0d)
+                        value = 0.4d;
                 if (ZeroPoint is not null) //может ли быть такого что ее нет?
                 {
                     if (value >= MinimalValaue)

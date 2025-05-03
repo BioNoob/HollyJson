@@ -20,14 +20,14 @@ namespace HollyJson.Models
                 amount1 = value;
                 startAmount = value;
                 //имеет приоритет перед кол-во дней!
-                if(!IsInit)
+                if (!IsInit)
                 {
-                    if(!lockamount)
+                    if (!lockamount)
                     {
                         //менять кол-во дней
                         IsInit = true;
                         DaysLeft = (int)Math.Ceiling((dateOfEnding - dateOfNow).TotalDays);
-                        if(DaysLeft < 1)
+                        if (DaysLeft < 1)
                         {
                             dateOfSigning = dateOfSigning.AddDays(Math.Abs(DaysLeft) + 1);//+ сколько то чтоб получился 1 день?
                             DaysLeft = 1;
@@ -83,23 +83,23 @@ namespace HollyJson.Models
                             lockamount = false;
                             //сколько всего должно получится дней
                             //var im_need = differernce + daysbeforenow; // 3643
-                                                                       //пересчитали новую концову
+                            //пересчитали новую концову
                             daysafternow = (dateOfSigning.AddYears(amount) - dateOfNow).TotalDays; //1883
                             //определили сколько должно быть до начала контракта
 
 
                             var to_move = daysafternow - value; //-1810
                             //var daystoremovefromstart = to_move - daysbeforenow; //-2899
-                            dateOfSigning = dateOfSigning.AddDays(-1*to_move);
+                            dateOfSigning = dateOfSigning.AddDays(-1 * to_move);
                         }
-                        else 
+                        else
                         {
                             dateOfSigning = dateOfSigning.AddDays(differernce);
                         }
                     }
                     else //Уменьшаем кол-во дней //-340
                     {
-                        if((daysafternow - differernce) > 0) //10
+                        if ((daysafternow - differernce) > 0) //10
                         {
                             var to_move = differernce;
                             dateOfSigning = dateOfSigning.AddDays(differernce);
@@ -109,6 +109,16 @@ namespace HollyJson.Models
                             value = 1;
                             dateOfSigning = dateOfSigning.AddDays(-1 * (daysafternow - 1));
                         }
+                    }
+                    if (dateOfEnding <= dateOfNow)
+                    {
+                        var tt = dateOfNow - dateOfEnding;
+                        dateOfSigning = dateOfSigning.AddDays(tt.TotalDays + 1);
+                    }
+                    if (dateOfSigning >= dateOfNow)
+                    {
+                        var tt = dateOfSigning - dateOfNow;
+                        dateOfSigning = dateOfSigning.AddDays((-1 * tt.TotalDays) - 1);
                     }
                 }
 

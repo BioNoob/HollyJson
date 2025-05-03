@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PropertyChanged;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
@@ -30,6 +31,9 @@ namespace HollyJson.ViewModels
         CommandHandler _setcontrdays;
         CommandHandler _setskilltolimit;
         CommandHandler _setskiiltocap;
+
+        CommandHandler _setagetoyoung;
+        CommandHandler _setallskills;
 
         CommandHandler _showtags;
         CommandHandler _showspawndate;
@@ -373,7 +377,54 @@ namespace HollyJson.ViewModels
                         foreach (var item in Filtered_Obj)
                         {
                             if (item.contract is not null)
-                                item.contract.DaysLeft = item.contract.amount * 365;
+                            {
+                                if (item.contract.contractType != 2)
+                                {
+                                    //Debug.Write($"{item.MyCustomName} {item.professions.Name} from {item.contract.DaysLeft} ({item.contract.dateOfSigning})");
+                                    item.contract.DaysLeft = item.contract.amount * 365;
+                                    //Debug.WriteLine($" to {item.contract.DaysLeft} ({item.contract.dateOfSigning})");
+                                }
+
+                            }
+
+                        }
+                }, (obj) => filtered_Obj?.Count > 0);
+            }
+        }
+        public CommandHandler SetAgeToYoungCmd
+        {
+            get
+            {
+                return _setagetoyoung ??= new CommandHandler(obj =>
+                {
+                    if (filtered_Obj?.Count > 0)
+                        foreach (var item in Filtered_Obj)
+                        {
+                            item.Age = 18;
+                        }
+                }, (obj) => filtered_Obj?.Count > 0);
+            }
+        }
+        public CommandHandler SetAllSkillsCmd
+        {
+            get
+            {
+                return _setallskills ??= new CommandHandler(obj =>
+                {
+                    if (filtered_Obj?.Count > 0)
+                        foreach (var item in Filtered_Obj)
+                        {
+
+                            foreach (var skill in item.whiteTagsNEW)
+                            {
+                                if (skill.Value < 12)
+                                    skill.Value = 12.0;
+                            }
+                            foreach (var avsk in item.AvalibaleSkills)
+                            {
+                                item.whiteTagsNEW.Insert(0, new WhiteTag(avsk, 12.0));
+                            }
+                            item.SetAvSkills();
                         }
                 }, (obj) => filtered_Obj?.Count > 0);
             }
@@ -450,7 +501,6 @@ namespace HollyJson.ViewModels
                         }
                         Info.AvailablePerks.Clear();
                     }
-                    //Info.openedPerks = new ObservableCollection<string>(stateJson.PreGenPerks);
                 }, (obj) => true);
             }
         }
