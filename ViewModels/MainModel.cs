@@ -722,9 +722,10 @@ namespace HollyJson.ViewModels
                     .Distinct().ToList()!;
                 ProfListWithNoTallent.Insert(0, "All");
                 ProfListWithOutNoTallent.Insert(0, "All");
-                ProfList = ProfListWithNoTallent;
-                Filter_Prof = ProfListWithNoTallent[0];
+                ProfList = ShowOnlyTalent ? ProfListWithOutNoTallent : ProfListWithNoTallent;
+                Filter_Prof = ProfList[0];
                 Filter_studio = StudioList[0];
+                SetSearched();
             }
             catch (Exception ex)
             {
