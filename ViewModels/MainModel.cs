@@ -74,6 +74,7 @@ namespace HollyJson.ViewModels
             set
             {
                 selectedChar = value;
+                //Debug.WriteLine(SelectedChar?.contract?.contractType);
             }
         }
         public string StatusBarText { get; set; } = "Hello";
@@ -154,6 +155,9 @@ namespace HollyJson.ViewModels
             StatusBarText = "Prepared to unzip";
             UnzipResources();
             StatusBarText = "Done";
+            SubModulesVM b = new SubModulesVM();
+            b.ReadBuildingsData("D:\\Downloads\\Perks.json");
+            b.ReadGameVarData("D:\\Downloads\\GameVariables.json");
         }
         public void SetSearched()
         {
