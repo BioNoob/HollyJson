@@ -1,0 +1,758 @@
+{
+  "EXP_NEW_TAG_FAILED": {
+    "Id": 1,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutScript": 10,
+      "Scriptwriter": 50
+    }
+  },
+  "EXP_NEW_TAG_SUCCESS": {
+    "Id": 2,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutScript": 25,
+      "Scriptwriter": 250
+    }
+  },
+  "EXP_NEW_TRASH_TAG": {
+    "Id": 3,
+    "xpType": 0,
+    "xpForProfession": {
+      "Scriptwriter": 250
+    }
+  },
+  "EXP_NEW_TRASH_RECIPE_SUCCESS": {
+    "Id": 4,
+    "xpType": 0,
+    "xpForProfession": {
+      "Scriptwriter": 250
+    }
+  },
+  "EXP_NEW_TRASH_RECIPE_FAILED": {
+    "Id": 5,
+    "xpType": 0,
+    "xpForProfession": {
+      "Scriptwriter": 50
+    }
+  },
+  "EXP_SCRIPT_FINISHED": {
+    "Id": 6,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutScript": 20,
+      "Scriptwriter": 150
+    }
+  },
+  "EXP_SCRIPT_FINISHED_BONUS_PLUS": {
+    "Id": 7,
+    "xpType": 1,
+    "xpForProfession": {
+      "Scriptwriter": 200
+    }
+  },
+  "EXP_SCRIPT_FINISHED_BONUS_NEW_TAG": {
+    "Id": 8,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutScript": 25,
+      "Scriptwriter": 20
+    }
+  },
+  "EXP_SCRIPT_FINISHED_BONUS_SEQUEL": {
+    "Id": 9,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutScript": 25,
+      "Scriptwriter": 10
+    }
+  },
+  "EXP_SCRIPT_FINISHED_BONUS_NEW_SLOT": {
+    "Id": 10,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutScript": 25,
+      "Scriptwriter": 10
+    }
+  },
+  "EXP_RELEASE_FINISHED": {
+    "Id": 11,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutScript": 50,
+      "LieutPrep": 30,
+      "LieutProd": 50,
+      "LieutPost": 50,
+      "LieutRelease": 100,
+      "Director": 150,
+      "Actor": 150,
+      "Scriptwriter": 150,
+      "Cinematographer": 150,
+      "Producer": 150,
+      "FilmEditor": 100,
+      "Composer": 100
+    }
+  },
+  "EXP_RELEASE_SUCCESS": {
+    "Id": 12,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutScript": 75,
+      "LieutPrep": 50,
+      "LieutProd": 100,
+      "LieutPost": 100,
+      "LieutRelease": 115,
+      "Director": 200,
+      "Actor": 200,
+      "Scriptwriter": 200,
+      "Cinematographer": 200,
+      "Producer": 200,
+      "FilmEditor": 150,
+      "Composer": 150
+    }
+  },
+  "EXP_TOPS": {
+    "Id": 13,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutScript": 10,
+      "LieutPrep": 10,
+      "LieutProd": 20,
+      "LieutPost": 10,
+      "LieutRelease": 20
+    }
+  },
+  "EXP_RELEASE_BONUS_NEW_PERIOD": {
+    "Id": 14,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutRelease": 10
+    }
+  },
+  "EXP_RELEASE_ADS": {
+    "Id": 15,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutRelease": 10
+    }
+  },
+  "EXP_NOMINATED_FILM": {
+    "Id": 16,
+    "xpType": 0,
+    "xpForProfession": {
+      "Director": 100,
+      "Actor": 50,
+      "Scriptwriter": 50,
+      "Cinematographer": 50,
+      "Producer": 25,
+      "FilmEditor": 50,
+      "Composer": 50
+    }
+  },
+  "EXP_AWARDED_FILM": {
+    "Id": 17,
+    "xpType": 0,
+    "xpForProfession": {
+      "Director": 150,
+      "Actor": 100,
+      "Scriptwriter": 100,
+      "Cinematographer": 100,
+      "Producer": 50,
+      "FilmEditor": 100,
+      "Composer": 100
+    }
+  },
+  "EXP_TECH_SOLD": {
+    "Id": 18,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutTech": 500
+    }
+  },
+  "EXP_NOMINATED_CHARACTER": {
+    "Id": 19,
+    "xpType": 0,
+    "xpForProfession": {
+      "Director": 400,
+      "Actor": 200,
+      "Scriptwriter": 200,
+      "Cinematographer": 200,
+      "FilmEditor": 200,
+      "Composer": 200
+    }
+  },
+  "EXP_AWARDED_CHARACTER": {
+    "Id": 20,
+    "xpType": 0,
+    "xpForProfession": {
+      "Director": 700,
+      "Actor": 500,
+      "Scriptwriter": 500,
+      "Cinematographer": 400,
+      "FilmEditor": 400,
+      "Composer": 400
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_REHEARSAL": {
+    "Id": 21,
+    "xpType": 1,
+    "xpForProfession": {
+      "Director": 50,
+      "Actor": 50,
+      "Cinematographer": 50,
+      "Producer": 25
+    }
+  },
+  "EXP_PREP_FINISHED": {
+    "Id": 22,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutPrep": 30
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_PLUS": {
+    "Id": 23,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPrep": 40,
+      "Director": 100,
+      "Cinematographer": 100,
+      "Producer": 50
+    }
+  },
+  "EXP_PROD_FINISHED": {
+    "Id": 24,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutProd": 100,
+      "Director": 200,
+      "Actor": 200,
+      "Cinematographer": 200,
+      "Producer": 25
+    }
+  },
+  "EXP_PROD_FINISHED_BONUS_PLUS": {
+    "Id": 25,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutProd": 110,
+      "Director": 250,
+      "Actor": 250,
+      "Cinematographer": 250,
+      "Producer": 50
+    }
+  },
+  "EXP_POST_FINISHED": {
+    "Id": 26,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutPost": 150,
+      "Director": 50,
+      "Producer": 50,
+      "FilmEditor": 200,
+      "Composer": 200
+    }
+  },
+  "EXP_POST_FINISHED_BONUS_PLUS": {
+    "Id": 27,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPost": 160,
+      "Director": 100,
+      "Producer": 100,
+      "FilmEditor": 250,
+      "Composer": 250
+    }
+  },
+  "EXP_HIRED_SCRIPTWRITER": {
+    "Id": 28,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutScript": 25
+    }
+  },
+  "EXP_HIRED_PRODUCER": {
+    "Id": 29,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutProducers": 25
+    }
+  },
+  "EXP_HIRED_TALENT": {
+    "Id": 30,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutPrep": 30
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_DECORATIONS_2": {
+    "Id": 31,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPrep": 25
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_DECORATIONS_3": {
+    "Id": 32,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPrep": 25
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_DECORATIONS_4": {
+    "Id": 33,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPrep": 25
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_COSTUMESANDPROPS_2": {
+    "Id": 34,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPrep": 25
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_COSTUMESANDPROPS_3": {
+    "Id": 35,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPrep": 25
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_COSTUMESANDPROPS_4": {
+    "Id": 36,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPrep": 25
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_LOCATION_2": {
+    "Id": 37,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPrep": 25
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_LOCATION_3": {
+    "Id": 38,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPrep": 25
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_LOCATION_4": {
+    "Id": 39,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPrep": 25
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_EXTRAS_2": {
+    "Id": 40,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPrep": 25
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_EXTRAS_3": {
+    "Id": 41,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPrep": 25
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_EXTRAS_4": {
+    "Id": 42,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPrep": 25
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_EXTRAS_5": {
+    "Id": 43,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPrep": 25
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_SEQUEL": {
+    "Id": 44,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPrep": 50
+    }
+  },
+  "EXP_PROD_FINISHED_BONUS_SERVICE_1": {
+    "Id": 45,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutProd": 25
+    }
+  },
+  "EXP_PROD_FINISHED_BONUS_SERVICE_2": {
+    "Id": 46,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutProd": 25
+    }
+  },
+  "EXP_PROD_FINISHED_BONUS_SERVICE_3": {
+    "Id": 47,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutProd": 25
+    }
+  },
+  "EXP_PROD_FINISHED_BONUS_SERVICE_4": {
+    "Id": 48,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutProd": 25
+    }
+  },
+  "EXP_PROD_FINISHED_BONUS_SECOND_UNIT": {
+    "Id": 49,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutProd": 25
+    }
+  },
+  "EXP_PROD_FINISHED_BONUS_URGENT_DOUBLE_SEARCH": {
+    "Id": 50,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutProd": 25
+    }
+  },
+  "EXP_PROD_FINISHED_BONUS_URGENT_EXTRAS_SEARCH": {
+    "Id": 51,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutProd": 25
+    }
+  },
+  "EXP_PROD_FINISHED_BONUS_URGENT_CREW_SEARCH": {
+    "Id": 52,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutProd": 25
+    }
+  },
+  "EXP_PROD_FINISHED_BONUS_URGENT_LOCATION_SEARCH": {
+    "Id": 53,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutProd": 25
+    }
+  },
+  "EXP_PROD_FINISHED_BONUS_FLEX_SCHEDULE": {
+    "Id": 54,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutProd": 25
+    }
+  },
+  "EXP_POST_FINISHED_BONUS_SOUND_STUDIO_1": {
+    "Id": 55,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPost": 10
+    }
+  },
+  "EXP_POST_FINISHED_BONUS_SOUND_STUDIO_2": {
+    "Id": 56,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPost": 10
+    }
+  },
+  "EXP_POST_FINISHED_BONUS_MUSIC_STUDIO_1": {
+    "Id": 57,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPost": 10
+    }
+  },
+  "EXP_POST_FINISHED_BONUS_MUSIC_STUDIO_2": {
+    "Id": 58,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPost": 10
+    }
+  },
+  "EXP_POST_FINISHED_BONUS_FILM_STUDIO_1": {
+    "Id": 59,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPost": 10
+    }
+  },
+  "EXP_POST_FINISHED_BONUS_FILM_STUDIO_2": {
+    "Id": 60,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPost": 10
+    }
+  },
+  "EXP_POST_FINISHED_BONUS_NEW_CONTRACTOR": {
+    "Id": 61,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutPost": 10
+    }
+  },
+  "EXP_RELEASE_FINISHED_BONUS_NEW_CONTRACTOR": {
+    "Id": 62,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutRelease": 10
+    }
+  },
+  "EXP_RELEASE_FINISHED_BONUS_PRINITING_STUDIO": {
+    "Id": 63,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutRelease": 10
+    }
+  },
+  "EXP_PRESENTS_FINISHED_LEGAL": {
+    "Id": 64,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutEscort": 25
+    }
+  },
+  "EXP_PRESENTS_FINISHED_ILLEGAL": {
+    "Id": 65,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutEscort": 30
+    }
+  },
+  "EXP_NEGOTIATIONS_NEW_ELEMENTS": {
+    "Id": 66,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutEscort": 20
+    }
+  },
+  "EXP_TECH_CREATED": {
+    "Id": 67,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutTech": 10
+    }
+  },
+  "EXP_TECH_CREATED_PLUS": {
+    "Id": 68,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutTech": 250
+    }
+  },
+  "EXP_TECH_UPGRADED": {
+    "Id": 69,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutTech": 50
+    }
+  },
+  "EXP_BUILDING_BUILDED": {
+    "Id": 70,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutInfrastructure": 250
+    }
+  },
+  "EXP_BUILDING_REPARED": {
+    "Id": 71,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutInfrastructure": 50
+    }
+  },
+  "EXP_BUILDING_DESTROYED": {
+    "Id": 72,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutInfrastructure": 50
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_WITHOUT_TALENT": {
+    "Id": 73,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutProducers": 50
+    }
+  },
+  "EXP_SURVEILLANCE_FAILED": {
+    "Id": 74,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutSecurity": 5,
+      "Agent": 5
+    }
+  },
+  "EXP_SURVEILLANCE_UNSUCCESS": {
+    "Id": 75,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutSecurity": 10,
+      "Agent": 50
+    }
+  },
+  "EXP_SURVEILLANCE_SUCCESS": {
+    "Id": 76,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutSecurity": 50,
+      "Agent": 200
+    }
+  },
+  "EXP_SECRET_UNSUCCESS": {
+    "Id": 77,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutSecurity": 25,
+      "Agent": 25
+    }
+  },
+  "EXP_SECRET_FAILED": {
+    "Id": 78,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutSecurity": 5,
+      "Agent": 5
+    }
+  },
+  "EXP_SECRET_SUCCESS": {
+    "Id": 79,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutSecurity": 100,
+      "Agent": 300
+    }
+  },
+  "EXP_ESPIONAGE_FAILED": {
+    "Id": 80,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutSecurity": 5,
+      "Agent": 5
+    }
+  },
+  "EXP_ESPIONAGE_UNSUCCESS": {
+    "Id": 81,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutSecurity": 10,
+      "Agent": 50
+    }
+  },
+  "EXP_ESPIONAGE_SUCCESS": {
+    "Id": 82,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutSecurity": 75,
+      "Agent": 250
+    }
+  },
+  "EXP_PROTECTION_SUCCESS": {
+    "Id": 83,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutSecurity": 25,
+      "Agent": 50
+    }
+  },
+  "EXP_RAID_WARN": {
+    "Id": 84,
+    "xpType": 0,
+    "xpForProfession": {
+      "Agent": 25
+    }
+  },
+  "EXP_RAID_BRIBE_SUCCESS": {
+    "Id": 85,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutSecurity": 25,
+      "Agent": 50
+    }
+  },
+  "EXP_PREP_FINISHED_BONUS_AGENT": {
+    "Id": 86,
+    "xpType": 1,
+    "xpForProfession": {
+      "LieutSecurity": 25,
+      "Agent": 50
+    }
+  },
+  "EXP_INVESTIGATION_UNSUCCESS": {
+    "Id": 87,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutSecurity": 5,
+      "Agent": 5
+    }
+  },
+  "EXP_INVESTIGATION_SUCCESS": {
+    "Id": 88,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutSecurity": 50,
+      "Agent": 150
+    }
+  },
+  "EXP_RELEASE_FINISHED_TRICK_CANCELLED": {
+    "Id": 89,
+    "xpType": 0,
+    "xpForProfession": {
+      "Agent": 5
+    }
+  },
+  "EXP_RELEASE_FINISHED_TRICK_FAILED": {
+    "Id": 90,
+    "xpType": 0,
+    "xpForProfession": {
+      "Agent": 10
+    }
+  },
+  "EXP_RELEASE_FINISHED_TRICK_SUCCESS": {
+    "Id": 91,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutRelease": 20,
+      "Agent": 50
+    }
+  },
+  "EXP_SOUNDSTAGE_FOR_RENT": {
+    "Id": 92,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutProd": 25
+    }
+  },
+  "EXP_LANDSCAPING_FOR_YEAR_2": {
+    "Id": 93,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutInfrastructure": 150
+    }
+  },
+  "EXP_LANDSCAPING_FOR_YEAR_3": {
+    "Id": 94,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutInfrastructure": 300
+    }
+  },
+  "EXP_LANDSCAPING_FOR_YEAR_4": {
+    "Id": 95,
+    "xpType": 0,
+    "xpForProfession": {
+      "LieutInfrastructure": 500
+    }
+  }
+}

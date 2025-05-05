@@ -1,0 +1,5845 @@
+{
+  "BLDG_ESCORT_DOMINION": {
+    "domain": 1,
+    "department": "HR",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 100,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_ESCORT_DOMINION"
+  },
+  "ETHNIC_COMPOSITION": {
+    "domain": 1,
+    "department": "HR",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "ETHNIC_COMPOSITION"
+  },
+  "ILLEGAL_WORKERS": {
+    "domain": 1,
+    "department": "HR",
+    "unlockedByPerks": [
+      "ETHNIC_COMPOSITION"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 700,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "ILLEGAL_WORKERS"
+  },
+  "CHEAP_ILLEGALS": {
+    "domain": 1,
+    "department": "HR",
+    "unlockedByPerks": [
+      "ILLEGAL_WORKERS"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CHEAP_ILLEGALS"
+  },
+  "STAFF_LARGE1": {
+    "domain": 1,
+    "department": "HR",
+    "unlockedByPerks": [
+      "ETHNIC_COMPOSITION"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "STAFF_LARGE1"
+  },
+  "STAFF_LARGE2": {
+    "domain": 1,
+    "department": "HR",
+    "unlockedByPerks": [
+      "STAFF_LARGE1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "STAFF_LARGE2"
+  },
+  "BUILDINGS_CONSERVATION": {
+    "domain": 1,
+    "department": "HR",
+    "unlockedByPerks": [
+      "ETHNIC_COMPOSITION"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 600,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "BUILDINGS_CONSERVATION"
+  },
+  "CONSERVATION_COOLDOWN": {
+    "domain": 1,
+    "department": "HR",
+    "unlockedByPerks": [
+      "BUILDINGS_CONSERVATION"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CONSERVATION_COOLDOWN"
+  },
+  "SALARY_CUT": {
+    "domain": 1,
+    "department": "HR",
+    "unlockedByPerks": [
+      "BUILDINGS_CONSERVATION"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SALARY_CUT"
+  },
+  "IMPROVEMENT_0_NO_SADNESS": {
+    "domain": 1,
+    "department": "HR",
+    "unlockedByPerks": [
+      "BLDG_ESCORT_DOMINION"
+    ],
+    "dependsOnBuildings": [
+      "ESCORT_DOMINION"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "IMPROVEMENT_0_NO_SADNESS"
+  },
+  "HIRING_BONUSES": {
+    "domain": 1,
+    "department": "HR",
+    "unlockedByPerks": [
+      "IMPROVEMENT_0_NO_SADNESS"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "HIRING_BONUSES"
+  },
+  "NOMINATION_LOSS_NO_SADNESS": {
+    "domain": 1,
+    "department": "HR",
+    "unlockedByPerks": [
+      "HIRING_BONUSES"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "NOMINATION_LOSS_NO_SADNESS"
+  },
+  "MOVIE_RELEASE_MOOD_BOOST": {
+    "domain": 1,
+    "department": "HR",
+    "unlockedByPerks": [
+      "HIRING_BONUSES"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "MOVIE_RELEASE_MOOD_BOOST"
+  },
+  "PERSONNEL_X2": {
+    "domain": 1,
+    "department": "HR",
+    "unlockedByPerks": [
+      "MOVIE_RELEASE_MOOD_BOOST"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "PERSONNEL_X2"
+  },
+  "BAD_ATTITUDE_NO_SADNESS": {
+    "domain": 1,
+    "department": "HR",
+    "unlockedByPerks": [
+      "HIRING_BONUSES"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "BAD_ATTITUDE_NO_SADNESS"
+  },
+  "BANK_LOAN": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "BANK_LOAN"
+  },
+  "BANK_LOAN_EARLY_REPAYMENT": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "BANK_LOAN"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "BANK_LOAN_EARLY_REPAYMENT"
+  },
+  "BANK_LOAN_INT_RATE_REDUCTION_1": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "BANK_LOAN_EARLY_REPAYMENT"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "BANK_LOAN_INT_RATE_REDUCTION_1"
+  },
+  "BANK_LOAN_INT_RATE_REDUCTION_2": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "BANK_LOAN_INT_RATE_REDUCTION_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "BANK_LOAN_INT_RATE_REDUCTION_2"
+  },
+  "BANK_LOAN_AMOUNT_1": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "BANK_LOAN_EARLY_REPAYMENT"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "BANK_LOAN_AMOUNT_1"
+  },
+  "BANK_LOAN_AMOUNT_2": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "BANK_LOAN_AMOUNT_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "BANK_LOAN_AMOUNT_2"
+  },
+  "BANK_LOAN_TERM_1": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "BANK_LOAN_EARLY_REPAYMENT"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "BANK_LOAN_TERM_1"
+  },
+  "BANK_LOAN_TERM_2": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "BANK_LOAN_TERM_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "BANK_LOAN_TERM_2"
+  },
+  "BANK_LOAN_REFINANCING": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "BANK_LOAN_EARLY_REPAYMENT"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "BANK_LOAN_REFINANCING"
+  },
+  "BANK_LOAN_MICROLOAN": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "BANK_LOAN_REFINANCING"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "BANK_LOAN_MICROLOAN"
+  },
+  "BANK_LOAN_COOLDOWN_REDUCTION": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "BANK_LOAN_REFINANCING"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "BANK_LOAN_COOLDOWN_REDUCTION"
+  },
+  "CASH_FLOW_1": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "BANK_LOAN"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CASH_FLOW_1"
+  },
+  "CASH_FLOW_2": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "CASH_FLOW_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CASH_FLOW_2"
+  },
+  "QUARTERLY_REPORT_CASH_1": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "CASH_FLOW_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "QUARTERLY_REPORT_CASH_1"
+  },
+  "QUARTERLY_REPORT_CASH_2": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "QUARTERLY_REPORT_CASH_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "QUARTERLY_REPORT_CASH_2"
+  },
+  "QUARTERLY_REPORT_CASH_3": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "QUARTERLY_REPORT_CASH_2"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "QUARTERLY_REPORT_CASH_3"
+  },
+  "TAX_BASE_REDUCTION_1": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "BANK_LOAN"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "TAX_BASE_REDUCTION_1"
+  },
+  "TAX_BASE_REDUCTION_2": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "TAX_BASE_REDUCTION_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "TAX_BASE_REDUCTION_2"
+  },
+  "TAX_BASE_REDUCTION_3": {
+    "domain": 1,
+    "department": "FINANCE",
+    "unlockedByPerks": [
+      "TAX_BASE_REDUCTION_2"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "TAX_BASE_REDUCTION_3"
+  },
+  "LEGAL_DEFENSE_1": {
+    "domain": 1,
+    "department": "LAW",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "LEGAL_DEFENSE_1"
+  },
+  "LEGAL_DEFENSE_2": {
+    "domain": 1,
+    "department": "LAW",
+    "unlockedByPerks": [
+      "LEGAL_DEFENSE_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "LEGAL_DEFENSE_2"
+  },
+  "LEGAL_DEFENSE_3": {
+    "domain": 1,
+    "department": "LAW",
+    "unlockedByPerks": [
+      "LEGAL_DEFENSE_2"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "LEGAL_DEFENSE_3"
+  },
+  "CONTRACT_TERMINATION_FREE": {
+    "domain": 1,
+    "department": "LAW",
+    "unlockedByPerks": [
+      "LEGAL_DEFENSE_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 3500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CONTRACT_TERMINATION_FREE"
+  },
+  "CONTRACT_TERMINATION_FEE_1": {
+    "domain": 1,
+    "department": "LAW",
+    "unlockedByPerks": [
+      "LEGAL_DEFENSE_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CONTRACT_TERMINATION_FEE_1"
+  },
+  "CONTRACT_TERMINATION_FEE_2": {
+    "domain": 1,
+    "department": "LAW",
+    "unlockedByPerks": [
+      "CONTRACT_TERMINATION_FEE_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CONTRACT_TERMINATION_FEE_2"
+  },
+  "CONTRACT_PAYMENTS_50_50": {
+    "domain": 1,
+    "department": "LAW",
+    "unlockedByPerks": [
+      "LEGAL_DEFENSE_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CONTRACT_PAYMENTS_50_50"
+  },
+  "CONTRACT_GROSS": {
+    "domain": 1,
+    "department": "LAW",
+    "unlockedByPerks": [
+      "CONTRACT_PAYMENTS_50_50"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "CONTRACT_GROSS"
+  },
+  "CONTRACT_5_YEARS": {
+    "domain": 1,
+    "department": "LAW",
+    "unlockedByPerks": [
+      "CONTRACT_PAYMENTS_50_50"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "CONTRACT_YEARS_MAX",
+        "value": "5",
+        "triggerType": 65,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CONTRACT_5_YEARS"
+  },
+  "CONTRACT_10_YEARS": {
+    "domain": 1,
+    "department": "LAW",
+    "unlockedByPerks": [
+      "CONTRACT_5_YEARS"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "CONTRACT_YEARS_MAX",
+        "value": "10",
+        "triggerType": 65,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CONTRACT_10_YEARS"
+  },
+  "CONTRACT_5_MOVIES": {
+    "domain": 1,
+    "department": "LAW",
+    "unlockedByPerks": [
+      "CONTRACT_PAYMENTS_50_50"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "CONTRACT_MOVIES_MAX",
+        "value": "5",
+        "triggerType": 66,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CONTRACT_5_MOVIES"
+  },
+  "CONTRACT_10_MOVIES": {
+    "domain": 1,
+    "department": "LAW",
+    "unlockedByPerks": [
+      "CONTRACT_5_MOVIES"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "CONTRACT_MOVIES_MAX",
+        "value": "10",
+        "triggerType": 66,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CONTRACT_10_MOVIES"
+  },
+  "CHARITY_TO_REP": {
+    "domain": 1,
+    "department": "PR",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CHARITY_TO_REP"
+  },
+  "PROFITABLE_MOVIE_REP_2": {
+    "domain": 1,
+    "department": "PR",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 800,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "PROFITABLE_MOVIE_REP_2"
+  },
+  "GOOD_ATTITUDE_REP_1": {
+    "domain": 1,
+    "department": "PR",
+    "unlockedByPerks": [
+      "PROFITABLE_MOVIE_REP_2"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "GOOD_ATTITUDE_REP_1"
+  },
+  "GOOD_ATTITUDE_REP_2": {
+    "domain": 1,
+    "department": "PR",
+    "unlockedByPerks": [
+      "GOOD_ATTITUDE_REP_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "GOOD_ATTITUDE_REP_2"
+  },
+  "ICON_REP_1": {
+    "domain": 1,
+    "department": "PR",
+    "unlockedByPerks": [
+      "GOOD_ATTITUDE_REP_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "ICON_REP_1"
+  },
+  "LEGEND_REP_1": {
+    "domain": 1,
+    "department": "PR",
+    "unlockedByPerks": [
+      "GOOD_ATTITUDE_REP_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "LEGEND_REP_1"
+  },
+  "SKILLED_ACTOR_REP": {
+    "domain": 1,
+    "department": "PR",
+    "unlockedByPerks": [
+      "ICON_REP_1",
+      "LEGEND_REP_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SKILLED_ACTOR_REP"
+  },
+  "PREMIERE_REP_1": {
+    "domain": 1,
+    "department": "PR",
+    "unlockedByPerks": [
+      "PROFITABLE_MOVIE_REP_2"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "PREMIERE_REP_1"
+  },
+  "SUPER_PREMIERE_REP_1": {
+    "domain": 1,
+    "department": "PR",
+    "unlockedByPerks": [
+      "PREMIERE_REP_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "SUPER_PREMIERE_REP_1"
+  },
+  "SUPER_PREMIERE_PP_1": {
+    "domain": 1,
+    "department": "PR",
+    "unlockedByPerks": [
+      "PREMIERE_REP_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "SUPER_PREMIERE_PP_1"
+  },
+  "MOVIE_PALACE_PP_1": {
+    "domain": 1,
+    "department": "PR",
+    "unlockedByPerks": [
+      "SUPER_PREMIERE_REP_1",
+      "SUPER_PREMIERE_PP_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "MOVIE_PALACE_PP_1"
+  },
+  "TOP1_TOP3": {
+    "domain": 1,
+    "department": "PR",
+    "unlockedByPerks": [
+      "PREMIERE_REP_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TOP1_TOP3"
+  },
+  "TECH_SALE_PP": {
+    "domain": 1,
+    "department": "PR",
+    "unlockedByPerks": [
+      "TOP1_TOP3"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TECH_SALE_PP"
+  },
+  "INITIATIVE_PP_FREE": {
+    "domain": 1,
+    "department": "PR",
+    "unlockedByPerks": [
+      "TECH_SALE_PP"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 3500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "INITIATIVE_PP_FREE"
+  },
+  "EDITS_ON_GO": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "EDITS_ON_GO"
+  },
+  "SCEN_IDEAS_STORAGE_1": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SCEN_IDEAS_STORAGE_1"
+  },
+  "SCEN_IDEAS_GEN_AMT_1": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SCEN_IDEAS_STORAGE_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "MIN_MONTHLY_GENERATED_IDEAS",
+        "value": "3",
+        "triggerType": 64,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SCEN_IDEAS_GEN_AMT_1"
+  },
+  "SCEN_IDEAS_GEN_AMT_2": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SCEN_IDEAS_GEN_AMT_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "MIN_MONTHLY_GENERATED_IDEAS",
+        "value": "5",
+        "triggerType": 64,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SCEN_IDEAS_GEN_AMT_2"
+  },
+  "BLDG_CONSTRUCTOR": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 50,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_CONSTRUCTOR"
+  },
+  "TAGS_RESEARCH": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_CONSTRUCTOR"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 100,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TAGS_RESEARCH"
+  },
+  "TAGS_RESEARCH_DIRECTION": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TAGS_RESEARCH"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 700,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TAGS_RESEARCH_DIRECTION"
+  },
+  "TAGS_SLOTS_6": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TAGS_RESEARCH"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 100,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SET_TAG_SLOT_MAX",
+        "value": "6",
+        "triggerType": 63,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TAGS_SLOTS_6"
+  },
+  "TAGS_SLOTS_7": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TAGS_SLOTS_6"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SET_TAG_SLOT_MAX",
+        "value": "7",
+        "triggerType": 63,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TAGS_SLOTS_7"
+  },
+  "TAGS_SLOTS_8": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TAGS_SLOTS_7"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SET_TAG_SLOT_MAX",
+        "value": "8",
+        "triggerType": 63,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TAGS_SLOTS_8"
+  },
+  "TAGS_SLOTS_9": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TAGS_SLOTS_8"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SET_TAG_SLOT_MAX",
+        "value": "9",
+        "triggerType": 63,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TAGS_SLOTS_9"
+  },
+  "TAGS_SLOTS_10": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TAGS_SLOTS_9"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SET_TAG_SLOT_MAX",
+        "value": "10",
+        "triggerType": 63,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TAGS_SLOTS_10"
+  },
+  "NEW_TAG_BY_LT_1": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TAGS_RESEARCH"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SCRIPT_LIEUT_TAG_RESEARCH_SPEED",
+        "value": "1",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "NEW_TAG_BY_LT_1"
+  },
+  "NEW_TAG_BY_LT_2": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "NEW_TAG_BY_LT_1"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SCRIPT_LIEUT_TAG_RESEARCH_SPEED",
+        "value": "2",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "NEW_TAG_BY_LT_2"
+  },
+  "NEW_TAG_BY_LT_3": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "NEW_TAG_BY_LT_2"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 5000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SCRIPT_LIEUT_TAG_RESEARCH_SPEED",
+        "value": "6",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "NEW_TAG_BY_LT_3"
+  },
+  "TAGS_RESEARCH_TIME_RED_1": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TAGS_RESEARCH"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SCRIPTWRITER_TAG_RESEARCH_SPEED",
+        "value": "0.15",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TAGS_RESEARCH_TIME_RED_1"
+  },
+  "TAGS_RESEARCH_TIME_RED_2": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TAGS_RESEARCH_TIME_RED_1"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SCRIPTWRITER_TAG_RESEARCH_SPEED",
+        "value": "0.3",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TAGS_RESEARCH_TIME_RED_2"
+  },
+  "TAGS_RESEARCH_TIME_RED_3": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TAGS_RESEARCH_TIME_RED_2"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SCRIPTWRITER_TAG_RESEARCH_SPEED",
+        "value": "0.5",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TAGS_RESEARCH_TIME_RED_3"
+  },
+  "TAGS_NEW_PP_BONUS": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TAGS_RESEARCH_TIME_RED_2"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TAGS_NEW_PP_BONUS"
+  },
+  "TAGS_XP_BONUS_1": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TAGS_RESEARCH_TIME_RED_1"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TAGS_XP_BONUS_1"
+  },
+  "TAGS_XP_BONUS_2": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TAGS_XP_BONUS_1"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TAGS_XP_BONUS_2"
+  },
+  "TAGS_XP_BONUS_3": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TAGS_XP_BONUS_2"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TAGS_XP_BONUS_3"
+  },
+  "BLDG_FREELANCE": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 100,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_FREELANCE"
+  },
+  "SCREENPLAYS_AMT_1": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_FREELANCE"
+    ],
+    "dependsOnBuildings": [
+      "FREELANCE"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SCRIPTS_FOR_SALE_ADDITIONAL_AMOUNT",
+        "value": "1",
+        "triggerType": 64,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      },
+      {
+        "name": "SCRIPTS_FOR_SALE_MAX_AMOUNT",
+        "value": "2",
+        "triggerType": 64,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "SCREENPLAYS_AMT_1"
+  },
+  "SCREENPLAYS_AMT_2": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SCREENPLAYS_AMT_1"
+    ],
+    "dependsOnBuildings": [
+      "FREELANCE"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SCRIPTS_FOR_SALE_ADDITIONAL_AMOUNT",
+        "value": "2",
+        "triggerType": 64,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      },
+      {
+        "name": "SCRIPTS_FOR_SALE_MAX_AMOUNT",
+        "value": "5",
+        "triggerType": 64,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "SCREENPLAYS_AMT_2"
+  },
+  "SCRIPT_DOCTORS": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_FREELANCE"
+    ],
+    "dependsOnBuildings": [
+      "FREELANCE"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SCRIPT_DOCTORS"
+  },
+  "SCRIPT_DOCTORS_FASTER": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SCRIPT_DOCTORS"
+    ],
+    "dependsOnBuildings": [
+      "FREELANCE"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SCRIPT_DOCTORS_FASTER"
+  },
+  "SCRIPT_DOCTORS_CHEAPER": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SCRIPT_DOCTORS"
+    ],
+    "dependsOnBuildings": [
+      "FREELANCE"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SCRIPT_DOCTORS_CHEAPER"
+  },
+  "SCRIPT_DOCTORS_RANGE": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SCRIPT_DOCTORS_FASTER",
+      "SCRIPT_DOCTORS_CHEAPER"
+    ],
+    "dependsOnBuildings": [
+      "FREELANCE"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SCRIPT_DOCTORS_RANGE"
+  },
+  "SCRIPT_DOCTORS_SCORES": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SCRIPT_DOCTORS_RANGE"
+    ],
+    "dependsOnBuildings": [
+      "FREELANCE"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SCRIPT_DOCTORS_SCORES"
+  },
+  "MOVIE_RELEASE_XP_1": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "MOVIE_RELEASE_XP_1"
+  },
+  "MOVIE_RELEASE_XP_2": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "MOVIE_RELEASE_XP_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "MOVIE_RELEASE_XP_2"
+  },
+  "MOVIE_RELEASE_XP_3": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "MOVIE_RELEASE_XP_2"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "MOVIE_RELEASE_XP_3"
+  },
+  "MOVIE_RELEASE_MOOD_1": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "MOVIE_RELEASE_XP_2"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "MOVIE_RELEASE_MOOD_1"
+  },
+  "MOVIE_RELEASE_ATTITUDE_1": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "MOVIE_RELEASE_XP_2"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "MOVIE_RELEASE_ATTITUDE_1"
+  },
+  "MOVIE_RELEASE_TOP10_COM_XP_1": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "MOVIE_RELEASE_XP_3"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "MOVIE_RELEASE_TOP10_COM_XP_1"
+  },
+  "MOVIE_RELEASE_TOP10_ART_XP_1": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "MOVIE_RELEASE_XP_3"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "MOVIE_RELEASE_TOP10_ART_XP_1"
+  },
+  "MOVIE_RELEASE_TOP10_AUD_XP_1": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "MOVIE_RELEASE_XP_3"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "MOVIE_RELEASE_TOP10_AUD_XP_1"
+  },
+  "MOVIE_SEQUEL": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_CONSTRUCTOR"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "MOVIE_SEQUEL"
+  },
+  "MOVIE_SEQUEL_LEGACY": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "MOVIE_SEQUEL"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "MOVIE_SEQUEL_LEGACY"
+  },
+  "MOVIE_SEQUEL_ORIGINALITY": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "MOVIE_SEQUEL"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "MOVIE_SEQUEL_ORIGINALITY"
+  },
+  "BLDG_COPYRIGHT": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "MOVIE_SEQUEL"
+    ],
+    "dependsOnBuildings": [
+      "CONSTRUCTOR"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 6,
+    "id": "BLDG_COPYRIGHT"
+  },
+  "PRINT_MEDIA": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_COPYRIGHT"
+    ],
+    "dependsOnBuildings": [
+      "COPYRIGHT"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "COPYRIGHT",
+        "value": "20",
+        "triggerType": 73,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      },
+      {
+        "name": "COPYRIGHT",
+        "value": "50",
+        "triggerType": 74,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      },
+      {
+        "name": "COPYRIGHT",
+        "value": "200",
+        "triggerType": 75,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "PRINT_MEDIA"
+  },
+  "BROADCAST_MEDIA": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_COPYRIGHT"
+    ],
+    "dependsOnBuildings": [
+      "COPYRIGHT"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "COPYRIGHT",
+        "value": "40",
+        "triggerType": 73,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      },
+      {
+        "name": "COPYRIGHT",
+        "value": "200",
+        "triggerType": 74,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      },
+      {
+        "name": "COPYRIGHT",
+        "value": "300",
+        "triggerType": 75,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "BROADCAST_MEDIA"
+  },
+  "PUBLIC_DOMAIN": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "PRINT_MEDIA",
+      "BROADCAST_MEDIA"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "PUBLIC_DOMAIN"
+  },
+  "LITERARY_WORK_RESEARCH_TIME_1": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "PUBLIC_DOMAIN"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "LITERARY_WORK_RESEARCH_TIME_1"
+  },
+  "SCREENPLAY_TIME_RED_1": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SCRIPTWRITER_SCRIPTWRITING_SPEED",
+        "value": "1.15",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SCREENPLAY_TIME_RED_1"
+  },
+  "SCREENPLAY_TIME_RED_2": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SCREENPLAY_TIME_RED_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SCRIPTWRITER_SCRIPTWRITING_SPEED",
+        "value": "1.3",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SCREENPLAY_TIME_RED_2"
+  },
+  "SCREENPLAY_TIME_RED_3": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SCREENPLAY_TIME_RED_2"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SCRIPTWRITER_SCRIPTWRITING_SPEED",
+        "value": "2",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SCREENPLAY_TIME_RED_3"
+  },
+  "NEW_SCREENPLAY_PP_BONUS_1": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SCREENPLAY_TIME_RED_2"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "NEW_SCREENPLAY_PP_BONUS_1"
+  },
+  "NEW_SCREENPLAY_PP_BONUS_2": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "NEW_SCREENPLAY_PP_BONUS_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "NEW_SCREENPLAY_PP_BONUS_2"
+  },
+  "NEW_SCREENPLAY_XP_BONUS_1": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SCREENPLAY_TIME_RED_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "NEW_SCREENPLAY_XP_BONUS_1"
+  },
+  "NEW_SCREENPLAY_XP_BONUS_2": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "NEW_SCREENPLAY_XP_BONUS_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "NEW_SCREENPLAY_XP_BONUS_2"
+  },
+  "NEW_SCREENPLAY_XP_BONUS_3": {
+    "domain": 2,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "NEW_SCREENPLAY_XP_BONUS_2"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "NEW_SCREENPLAY_XP_BONUS_3"
+  },
+  "BLDG_SUPPLY": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 400,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_SUPPLY"
+  },
+  "BLDG_CASTING": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 70,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "PERK_UNLOCK_EXTRAS",
+        "value": "1",
+        "triggerType": 67,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_CASTING"
+  },
+  "PREPROD_PROD_DIR_CIN_XP_1": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_CASTING"
+    ],
+    "dependsOnBuildings": [
+      "CASTING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "PREPROD_PROD_DIR_CIN_XP_MODIFIER",
+        "value": "1",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "PREPROD_PROD_DIR_CIN_XP_1"
+  },
+  "PREPROD_PROD_DIR_CIN_XP_2": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "PREPROD_PROD_DIR_CIN_XP_1"
+    ],
+    "dependsOnBuildings": [
+      "CASTING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "PREPROD_PROD_DIR_CIN_XP_MODIFIER",
+        "value": "2",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "PREPROD_PROD_DIR_CIN_XP_2"
+  },
+  "EXTRAS_2": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_CASTING"
+    ],
+    "dependsOnBuildings": [
+      "CASTING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "PERK_UNLOCK_EXTRAS",
+        "value": "2",
+        "triggerType": 67,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "EXTRAS_2"
+  },
+  "EXTRAS_3": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "EXTRAS_2"
+    ],
+    "dependsOnBuildings": [
+      "CASTING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "PERK_UNLOCK_EXTRAS",
+        "value": "3",
+        "triggerType": 67,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "EXTRAS_3"
+  },
+  "EXTRAS_4": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "EXTRAS_3"
+    ],
+    "dependsOnBuildings": [
+      "CASTING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "PERK_UNLOCK_EXTRAS",
+        "value": "4",
+        "triggerType": 67,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "EXTRAS_4"
+  },
+  "ADDITIONAL_REHEARSAL_1": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_CASTING"
+    ],
+    "dependsOnBuildings": [
+      "CASTING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "ADDITIONAL_REHEARSAL_1"
+  },
+  "ADDITIONAL_REHEARSAL_2": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "ADDITIONAL_REHEARSAL_1"
+    ],
+    "dependsOnBuildings": [
+      "CASTING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "ADDITIONAL_REHEARSAL_2"
+  },
+  "BLDG_SCOUT": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 400,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "PERK_UNLOCK_LOCATION_QLT",
+        "value": "2",
+        "triggerType": 68,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_SCOUT"
+  },
+  "LOCATION_SEARCH_TIME_1": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_SCOUT"
+    ],
+    "dependsOnBuildings": [
+      "SCOUT"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "LOCATION_SEARCH_TIME_MODIFIER",
+        "value": "0.8",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "LOCATION_SEARCH_TIME_1"
+  },
+  "LOCATION_SEARCH_TIME_2": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "LOCATION_SEARCH_TIME_1"
+    ],
+    "dependsOnBuildings": [
+      "SCOUT"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "LOCATION_SEARCH_TIME_MODIFIER",
+        "value": "0.6",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "LOCATION_SEARCH_TIME_2"
+  },
+  "LOCATION_SEARCH_WORLD": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_SCOUT"
+    ],
+    "dependsOnBuildings": [
+      "SCOUT"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "LOCATION_SEARCH_WORLD"
+  },
+  "LOCATION_QLT_1": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_SCOUT"
+    ],
+    "dependsOnBuildings": [
+      "SCOUT"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "PERK_UNLOCK_LOCATION_QLT",
+        "value": "3",
+        "triggerType": 68,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "LOCATION_QLT_1"
+  },
+  "LOCATION_QLT_2": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "LOCATION_QLT_1"
+    ],
+    "dependsOnBuildings": [
+      "SCOUT"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "PERK_UNLOCK_LOCATION_QLT",
+        "value": "4",
+        "triggerType": 68,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "LOCATION_QLT_2"
+  },
+  "BLDG_WORKSHOP": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "PERK_UNLOCK_SETS_QLT",
+        "value": "2",
+        "triggerType": 69,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      },
+      {
+        "name": "PERK_UNLOCK_PROPS_QLT",
+        "value": "2",
+        "triggerType": 70,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_WORKSHOP"
+  },
+  "SETS_QLT_2": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_WORKSHOP"
+    ],
+    "dependsOnBuildings": [
+      "WORKSHOP"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "PERK_UNLOCK_SETS_QLT",
+        "value": "3",
+        "triggerType": 69,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SETS_QLT_2"
+  },
+  "SETS_QLT_3": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SETS_QLT_2"
+    ],
+    "dependsOnBuildings": [
+      "WORKSHOP"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "PERK_UNLOCK_SETS_QLT",
+        "value": "4",
+        "triggerType": 69,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SETS_QLT_3"
+  },
+  "PROPS_QLT_2": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_WORKSHOP"
+    ],
+    "dependsOnBuildings": [
+      "WORKSHOP"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "PERK_UNLOCK_PROPS_QLT",
+        "value": "3",
+        "triggerType": 70,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "PROPS_QLT_2"
+  },
+  "PROPS_QLT_3": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "PROPS_QLT_2"
+    ],
+    "dependsOnBuildings": [
+      "WORKSHOP"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "PERK_UNLOCK_PROPS_QLT",
+        "value": "4",
+        "triggerType": 70,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "PROPS_QLT_3"
+  },
+  "SETS_TIME_RED_1": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_WORKSHOP"
+    ],
+    "dependsOnBuildings": [
+      "WORKSHOP"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SETS_TIME_RED_1"
+  },
+  "SETS_TIME_RED_2": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SETS_TIME_RED_1"
+    ],
+    "dependsOnBuildings": [
+      "WORKSHOP"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SETS_TIME_RED_MODIFIER",
+        "value": "0.8",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SETS_TIME_RED_2"
+  },
+  "SETS_TIME_RED_3": {
+    "domain": 3,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SETS_TIME_RED_2"
+    ],
+    "dependsOnBuildings": [
+      "WORKSHOP"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 2500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "SETS_TIME_RED_MODIFIER",
+        "value": "0.7",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SETS_TIME_RED_3"
+  },
+  "PROD_DIR_CIN_ACT_XP_1": {
+    "domain": 4,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "PROD_DIR_CIN_ACT_XP_MODIFIER",
+        "value": "2",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "PROD_DIR_CIN_ACT_XP_1"
+  },
+  "BLDG_LINE_PRODUCTION": {
+    "domain": 4,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_LINE_PRODUCTION"
+  },
+  "SECOND_UNIT": {
+    "domain": 4,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_LINE_PRODUCTION"
+    ],
+    "dependsOnBuildings": [
+      "LINE_PRODUCTION"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SECOND_UNIT"
+  },
+  "URGENT_DOUBLE_SEARCH": {
+    "domain": 4,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SECOND_UNIT"
+    ],
+    "dependsOnBuildings": [
+      "LINE_PRODUCTION"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "URGENT_DOUBLE_SEARCH"
+  },
+  "URGENT_EXTRAS_SEARCH": {
+    "domain": 4,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SECOND_UNIT"
+    ],
+    "dependsOnBuildings": [
+      "LINE_PRODUCTION"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "URGENT_EXTRAS_SEARCH"
+  },
+  "URGENT_CREW_SEARCH": {
+    "domain": 4,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SECOND_UNIT"
+    ],
+    "dependsOnBuildings": [
+      "LINE_PRODUCTION"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "URGENT_CREW_SEARCH"
+  },
+  "URGENT_LOCATION_SEARCH": {
+    "domain": 4,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SECOND_UNIT"
+    ],
+    "dependsOnBuildings": [
+      "LINE_PRODUCTION"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "URGENT_LOCATION_SEARCH"
+  },
+  "FLEX_SCHEDULE": {
+    "domain": 4,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "URGENT_DOUBLE_SEARCH",
+      "URGENT_EXTRAS_SEARCH",
+      "URGENT_CREW_SEARCH",
+      "URGENT_LOCATION_SEARCH"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "FLEX_SCHEDULE"
+  },
+  "BLDG_LOGISTICS": {
+    "domain": 4,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 600,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_LOGISTICS"
+  },
+  "TEAM_SERVICE_1": {
+    "domain": 4,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_LOGISTICS"
+    ],
+    "dependsOnBuildings": [
+      "LOGISTICS"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TEAM_SERVICE_1"
+  },
+  "TEAM_SERVICE_2": {
+    "domain": 4,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TEAM_SERVICE_1"
+    ],
+    "dependsOnBuildings": [
+      "LOGISTICS"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 2500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TEAM_SERVICE_2"
+  },
+  "BLDG_PAVILION_II": {
+    "domain": 4,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 300,
+    "staff": 121,
+    "electricity": "45.000",
+    "water": "70.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_PAVILION_II"
+  },
+  "BLDG_PAVILION_III": {
+    "domain": 4,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_PAVILION_II"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_PAVILION_III"
+  },
+  "BLDG_PAVILION_IV": {
+    "domain": 4,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_PAVILION_III"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 5000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_PAVILION_IV"
+  },
+  "PAVILION_RENT_1": {
+    "domain": 4,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_PAVILION_II"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "PAVILION_RENT_1"
+  },
+  "PAVILION_RENT_2": {
+    "domain": 4,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "PAVILION_RENT_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "PAVILION_RENT_2"
+  },
+  "BLDG_SOUND": {
+    "domain": 5,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_SOUND"
+  },
+  "SOUND_INHOUSE_IMPROVED": {
+    "domain": 5,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_SOUND"
+    ],
+    "dependsOnBuildings": [
+      "SOUND"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SOUND_INHOUSE_IMPROVED"
+  },
+  "SOUND_INHOUSE_TIME_1": {
+    "domain": 5,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SOUND_INHOUSE_IMPROVED"
+    ],
+    "dependsOnBuildings": [
+      "SOUND"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "OTHER_SOUND_INHOUSE_TIME_MODIFIER",
+        "value": "0.75",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SOUND_INHOUSE_TIME_1"
+  },
+  "POST_DIR_MONT_COMP_XP_1": {
+    "domain": 5,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "POST_DIR_MONT_COMP_XP_MODIFIER",
+        "value": "2",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "POST_DIR_MONT_COMP_XP_1"
+  },
+  "BLDG_CONCERT": {
+    "domain": 5,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 600,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_CONCERT"
+  },
+  "CONCERT_INHOUSE_MPROVED": {
+    "domain": 5,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_CONCERT"
+    ],
+    "dependsOnBuildings": [
+      "CONCERT"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CONCERT_INHOUSE_MPROVED"
+  },
+  "CONCERT_INHOUSE_TIME_1": {
+    "domain": 5,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "CONCERT_INHOUSE_MPROVED"
+    ],
+    "dependsOnBuildings": [
+      "CONCERT"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "MUSIC_INHOUSE_TIME_MODIFIER",
+        "value": "0.75",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CONCERT_INHOUSE_TIME_1"
+  },
+  "FOCUS_OUTSOURCE": {
+    "domain": 5,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "FOCUS_OUTSOURCE"
+  },
+  "BLDG_FOCUS": {
+    "domain": 5,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "FOCUS_OUTSOURCE"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 6,
+    "id": "BLDG_FOCUS"
+  },
+  "FOCUS_QLT_1": {
+    "domain": 5,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_FOCUS"
+    ],
+    "dependsOnBuildings": [
+      "FOCUS"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "FOCUS_QLT_1"
+  },
+  "FOCUS_QLT_2": {
+    "domain": 5,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "FOCUS_QLT_1"
+    ],
+    "dependsOnBuildings": [
+      "FOCUS"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "FOCUS_QLT_2"
+  },
+  "BLDG_LAB": {
+    "domain": 5,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 400,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_LAB"
+  },
+  "LAB_INHOUSE_IMPROVED": {
+    "domain": 5,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_LAB"
+    ],
+    "dependsOnBuildings": [
+      "LAB"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "LAB_INHOUSE_IMPROVED"
+  },
+  "LAB_INHOUSE_TIME_1": {
+    "domain": 5,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "LAB_INHOUSE_IMPROVED"
+    ],
+    "dependsOnBuildings": [
+      "LAB"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "MONTAGE_INHOUSE_TIME_MODIFIER",
+        "value": "0.75",
+        "triggerType": 72,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "LAB_INHOUSE_TIME_1"
+  },
+  "BLDG_DISTRIBUTION": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 400,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_DISTRIBUTION"
+  },
+  "MOVIE_THEATRE_SLOT_ADD_1": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_DISTRIBUTION"
+    ],
+    "dependsOnBuildings": [
+      "DISTRIBUTION"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "MOVIE_THEATRE_SLOT_ADD_1"
+  },
+  "MOVIE_THEATRE_SLOT_RENT": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_DISTRIBUTION"
+    ],
+    "dependsOnBuildings": [
+      "DISTRIBUTION"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "MOVIE_THEATRE_SLOT_RENT"
+  },
+  "MOVIE_PALACE": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "MOVIE_THEATRE_SLOT_ADD_1",
+      "MOVIE_THEATRE_SLOT_RENT"
+    ],
+    "dependsOnBuildings": [
+      "DISTRIBUTION"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "MOVIE_PALACE"
+  },
+  "MARKET_INTERVIEW": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_MARKETING"
+    ],
+    "dependsOnBuildings": [
+      "MARKETING"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "MARKET_INTERVIEW"
+  },
+  "BLDG_ANALYTICS": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_ANALYTICS"
+  },
+  "ANALYSIS_GROUPS": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_ANALYTICS"
+    ],
+    "dependsOnBuildings": [
+      "ANALYTICS"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "ANALYSIS_GROUPS"
+  },
+  "MOVIEGOERS_NUMBER_WIDE": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "ANALYSIS_GROUPS"
+    ],
+    "dependsOnBuildings": [
+      "ANALYTICS"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "MOVIEGOERS_NUMBER_WIDE"
+  },
+  "MOVIEGOERS_NUMBER_NARROW": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "MOVIEGOERS_NUMBER_WIDE"
+    ],
+    "dependsOnBuildings": [
+      "ANALYTICS"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "MOVIEGOERS_NUMBER_NARROW"
+  },
+  "POSTRELEASE_ANALYSIS": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_ANALYTICS"
+    ],
+    "dependsOnBuildings": [
+      "ANALYTICS"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "POSTRELEASE_ANALYSIS"
+  },
+  "ANALYSIS_VISION_DEPTH_1": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_ANALYTICS"
+    ],
+    "dependsOnBuildings": [
+      "ANALYTICS"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "ANALYSIS_VISION_DEPTH_1"
+  },
+  "ANALYSIS_VISION_DEPTH_2": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "ANALYSIS_VISION_DEPTH_1"
+    ],
+    "dependsOnBuildings": [
+      "ANALYTICS"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "ANALYSIS_VISION_DEPTH_2"
+  },
+  "ANALYSIS_ENTIRE_CAST": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "ANALYSIS_VISION_DEPTH_1"
+    ],
+    "dependsOnBuildings": [
+      "ANALYTICS"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "ANALYSIS_ENTIRE_CAST"
+  },
+  "ANALYSIS_TAGS": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "ANALYSIS_ENTIRE_CAST"
+    ],
+    "dependsOnBuildings": [
+      "ANALYTICS"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "ANALYSIS_TAGS"
+  },
+  "ANALYSIS_BUDGET": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "ANALYSIS_ENTIRE_CAST"
+    ],
+    "dependsOnBuildings": [
+      "ANALYTICS"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "ANALYSIS_BUDGET"
+  },
+  "ANALYSIS_SCREENPLAY": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "ANALYSIS_ENTIRE_CAST"
+    ],
+    "dependsOnBuildings": [
+      "ANALYTICS"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "ANALYSIS_SCREENPLAY"
+  },
+  "BLDG_PRINT": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_PRINT"
+  },
+  "PRINT_INHOUSE_QLT_1": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_PRINT"
+    ],
+    "dependsOnBuildings": [
+      "PRINT"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "PRINT_INHOUSE_QLT_1"
+  },
+  "PRINT_INHOUSE_QLT_2": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "PRINT_INHOUSE_QLT_1"
+    ],
+    "dependsOnBuildings": [
+      "PRINT"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "PRINT_INHOUSE_QLT_2"
+  },
+  "PRINT_EMERGENCY": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_DISTRIBUTION"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "PRINT_EMERGENCY"
+  },
+  "BLDG_MARKETING": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_MARKETING"
+  },
+  "PREMIERE": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_MARKETING"
+    ],
+    "dependsOnBuildings": [
+      "MARKETING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "PREMIERE"
+  },
+  "SUPER_PREMIERE": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "PREMIERE"
+    ],
+    "dependsOnBuildings": [
+      "MARKETING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "SUPER_PREMIERE"
+  },
+  "WM_HOSPICE": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_MARKETING"
+    ],
+    "dependsOnBuildings": [
+      "MARKETING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "WM_HOSPICE"
+  },
+  "WM_ORPHANAGE": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "WM_HOSPICE"
+    ],
+    "dependsOnBuildings": [
+      "MARKETING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 50,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "WM_ORPHANAGE"
+  },
+  "WM_WEDDING": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "WM_ORPHANAGE"
+    ],
+    "dependsOnBuildings": [
+      "MARKETING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 50,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "WM_WEDDING"
+  },
+  "WM_HOMELESS": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "WM_WEDDING"
+    ],
+    "dependsOnBuildings": [
+      "MARKETING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 50,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "WM_HOMELESS"
+  },
+  "WM_DEBT": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "WM_HOMELESS"
+    ],
+    "dependsOnBuildings": [
+      "MARKETING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 50,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "WM_DEBT"
+  },
+  "BM_UNLOCK": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_MARKETING"
+    ],
+    "dependsOnBuildings": [
+      "MARKETING"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 100,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 24,
+    "id": "BM_UNLOCK"
+  },
+  "BM_DROWNING": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BM_UNLOCK"
+    ],
+    "dependsOnBuildings": [
+      "MARKETING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 50,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 8,
+    "id": "BM_DROWNING"
+  },
+  "BM_DRUNKARD": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BM_DROWNING"
+    ],
+    "dependsOnBuildings": [
+      "MARKETING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 50,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 8,
+    "id": "BM_DRUNKARD"
+  },
+  "BM_FIGHT": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BM_DRUNKARD"
+    ],
+    "dependsOnBuildings": [
+      "MARKETING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 50,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 8,
+    "id": "BM_FIGHT"
+  },
+  "BM_CRIMINAL": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BM_FIGHT"
+    ],
+    "dependsOnBuildings": [
+      "MARKETING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 50,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 8,
+    "id": "BM_CRIMINAL"
+  },
+  "BM_HOUSE_BURN": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BM_CRIMINAL"
+    ],
+    "dependsOnBuildings": [
+      "MARKETING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 50,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 8,
+    "id": "BM_HOUSE_BURN"
+  },
+  "SCANDAL_COVER_UP_MONEY": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_MARKETING"
+    ],
+    "dependsOnBuildings": [
+      "MARKETING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SCANDAL_COVER_UP_MONEY"
+  },
+  "SCANDAL_COVER_UP_PP": {
+    "domain": 6,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SCANDAL_COVER_UP_MONEY"
+    ],
+    "dependsOnBuildings": [
+      "MARKETING"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SCANDAL_COVER_UP_PP"
+  },
+  "PASSIVE_PROTECTION_1": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "PASSIVE_PROTECTION_1"
+  },
+  "PASSIVE_PROTECTION_2": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "PASSIVE_PROTECTION_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "PASSIVE_PROTECTION_2"
+  },
+  "PASSIVE_PROTECTION_3": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "PASSIVE_PROTECTION_2"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "PASSIVE_PROTECTION_3"
+  },
+  "BLDG_SPIES": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_SPIES"
+  },
+  "SPYING_XP_BONUS_1": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_SPIES"
+    ],
+    "dependsOnBuildings": [
+      "SPIES"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SPYING_XP_BONUS_1"
+  },
+  "SPYING_XP_BONUS_2": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SPYING_XP_BONUS_1"
+    ],
+    "dependsOnBuildings": [
+      "SPIES"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 2500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SPYING_XP_BONUS_2"
+  },
+  "SPYING_LVL_2": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_SPIES"
+    ],
+    "dependsOnBuildings": [
+      "SPIES"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SPYING_LVL_2"
+  },
+  "INVESTIGATION_BEATING": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SPYING_LVL_2"
+    ],
+    "dependsOnBuildings": [
+      "SPIES"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "INVESTIGATION_BEATING"
+  },
+  "INVESTIGATION_KIDNAPPING": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SPYING_LVL_2"
+    ],
+    "dependsOnBuildings": [
+      "SPIES"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "INVESTIGATION_KIDNAPPING"
+  },
+  "INVESTIGATION_MURDER": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SPYING_LVL_2"
+    ],
+    "dependsOnBuildings": [
+      "SPIES"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "INVESTIGATION_MURDER"
+  },
+  "FAIL_NO_DISCLOSURE": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_SPIES"
+    ],
+    "dependsOnBuildings": [
+      "SPIES"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "FAIL_NO_DISCLOSURE"
+  },
+  "ACTIVE_PROTECTION": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 30,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "ACTIVE_PROTECTION"
+  },
+  "ACTIVE_PROTECTION_XP_BONUS_1": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "ACTIVE_PROTECTION"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "ACTIVE_PROTECTION_XP_BONUS_1"
+  },
+  "ACTIVE_PROTECTION_XP_BONUS_2": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "ACTIVE_PROTECTION_XP_BONUS_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "ACTIVE_PROTECTION_XP_BONUS_2"
+  },
+  "BLDG_SHENANIGANS": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": true,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_SHENANIGANS"
+  },
+  "SECRETS_HIDE_EFFECT_BOOST": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_SHENANIGANS"
+    ],
+    "dependsOnBuildings": [
+      "SHENANIGANS"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "SECRETS_HIDE_EFFECT_BOOST"
+  },
+  "FAIL_DISCLOSURE_NO_LEAK": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SECRETS_HIDE_EFFECT_BOOST"
+    ],
+    "dependsOnBuildings": [
+      "SHENANIGANS"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 2500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "FAIL_DISCLOSURE_NO_LEAK"
+  },
+  "SHENANIGANS_KIDNAPPING": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_SHENANIGANS"
+    ],
+    "dependsOnBuildings": [
+      "SHENANIGANS"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SHENANIGANS_KIDNAPPING"
+  },
+  "SHENANIGANS_MURDER": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_SHENANIGANS"
+    ],
+    "dependsOnBuildings": [
+      "SHENANIGANS"
+    ],
+    "hasHiddenObjects": true,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SHENANIGANS_MURDER"
+  },
+  "LEAK_RISK_REDUCE_1": {
+    "domain": 7,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "SHENANIGANS_KIDNAPPING",
+      "SHENANIGANS_MURDER"
+    ],
+    "dependsOnBuildings": [
+      "SHENANIGANS"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 1000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "LEAK_RISK_REDUCE_1"
+  },
+  "WG_WATCHES": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 100,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "WG_WATCHES"
+  },
+  "WG_CIGARS": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "WG_WATCHES"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "WG_CIGARS"
+  },
+  "WG_ALCOHOL": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "WG_WATCHES"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "WG_ALCOHOL"
+  },
+  "WG_HAUTE_WARDROBE": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "WG_CIGARS",
+      "WG_ALCOHOL"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "WG_HAUTE_WARDROBE"
+  },
+  "WG_SPORTCAR": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "WG_HAUTE_WARDROBE"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "WG_SPORTCAR"
+  },
+  "BG_UNLOCK": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 100,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 24,
+    "id": "BG_UNLOCK"
+  },
+  "BG_NARCOTICS": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BG_UNLOCK"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 100,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 8,
+    "id": "BG_NARCOTICS"
+  },
+  "BG_NARCOTICS_2": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BG_NARCOTICS"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 100,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 8,
+    "id": "BG_NARCOTICS_2"
+  },
+  "BG_SAFARI": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BG_NARCOTICS_2"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 150,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 8,
+    "id": "BG_SAFARI"
+  },
+  "BG_XXX": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BG_NARCOTICS_2"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 8,
+    "id": "BG_XXX"
+  },
+  "BG_BRAINS": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BG_NARCOTICS_2"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 250,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 8,
+    "id": "BG_BRAINS"
+  },
+  "BG_KILLING": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BG_NARCOTICS_2"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 150,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 8,
+    "id": "BG_KILLING"
+  },
+  "BG_CANNIBAL": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BG_SAFARI",
+      "BG_XXX",
+      "BG_BRAINS",
+      "BG_KILLING"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 8,
+    "id": "BG_CANNIBAL"
+  },
+  "BG_UNDERAGE": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BG_CANNIBAL"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 8,
+    "id": "BG_UNDERAGE"
+  },
+  "BLDG_EVENTS_STAGE": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 6,
+    "id": "BLDG_EVENTS_STAGE"
+  },
+  "WRAP_UP_PARTY": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_EVENTS_STAGE"
+    ],
+    "dependsOnBuildings": [
+      "EVENTS_STAGE"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 300,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "WRAP_UP_PARTY"
+  },
+  "OFFICIAL_RECEPTION_1": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "WRAP_UP_PARTY"
+    ],
+    "dependsOnBuildings": [
+      "EVENTS_STAGE"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 350,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "OFFICIAL_RECEPTION_1"
+  },
+  "OFFICIAL_RECEPTION_2": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "OFFICIAL_RECEPTION_1"
+    ],
+    "dependsOnBuildings": [
+      "EVENTS_STAGE"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "OFFICIAL_RECEPTION_2"
+  },
+  "OFFICIAL_RECEPTION_3": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "OFFICIAL_RECEPTION_2"
+    ],
+    "dependsOnBuildings": [
+      "EVENTS_STAGE"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "OFFICIAL_RECEPTION_3"
+  },
+  "PARTY_1": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "WRAP_UP_PARTY"
+    ],
+    "dependsOnBuildings": [
+      "EVENTS_STAGE"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 350,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "PARTY_1"
+  },
+  "PARTY_2": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "PARTY_1"
+    ],
+    "dependsOnBuildings": [
+      "EVENTS_STAGE"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "PARTY_2"
+  },
+  "PARTY_3": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "PARTY_2"
+    ],
+    "dependsOnBuildings": [
+      "EVENTS_STAGE"
+    ],
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "PARTY_3"
+  },
+  "INSURANCE_PLUS": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "UNLOCK_SERVICE",
+        "value": "EXPANDED_INSURANCE",
+        "triggerType": 71,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "INSURANCE_PLUS"
+  },
+  "HOUSEMAID": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "INSURANCE_PLUS"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "UNLOCK_SERVICE",
+        "value": "MAID",
+        "triggerType": 71,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "HOUSEMAID"
+  },
+  "NANNY": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "HOUSEMAID"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "UNLOCK_SERVICE",
+        "value": "NANNY",
+        "triggerType": 71,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "NANNY"
+  },
+  "ASSISTANT": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "HOUSEMAID"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "UNLOCK_SERVICE",
+        "value": "ASSISTANT",
+        "triggerType": 71,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "ASSISTANT"
+  },
+  "SPOUSES_ASSISTANT": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "ASSISTANT"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "UNLOCK_SERVICE",
+        "value": "SPOUSES_ASSISTANT",
+        "triggerType": 71,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "SPOUSES_ASSISTANT"
+  },
+  "CHEF": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "HOUSEMAID"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "UNLOCK_SERVICE",
+        "value": "PERSONAL_CHEF",
+        "triggerType": 71,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CHEF"
+  },
+  "BUTLER": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "ASSISTANT",
+      "CHEF"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "UNLOCK_SERVICE",
+        "value": "BUTLER",
+        "triggerType": 71,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "BUTLER"
+  },
+  "HOTEL_SUITE": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "INSURANCE_PLUS"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "UNLOCK_SERVICE",
+        "value": "HOTEL_ROOM",
+        "triggerType": 71,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "HOTEL_SUITE"
+  },
+  "VILLA": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "HOTEL_SUITE"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "UNLOCK_SERVICE",
+        "value": "VILLA",
+        "triggerType": 71,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "VILLA"
+  },
+  "PENTHOUSE": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "HOTEL_SUITE"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "UNLOCK_SERVICE",
+        "value": "PENTHOUSE",
+        "triggerType": 71,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "PENTHOUSE"
+  },
+  "PERSONAL_DRIVER": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "INSURANCE_PLUS"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "UNLOCK_SERVICE",
+        "value": "CAR_WITH_DRIVER",
+        "triggerType": 71,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "PERSONAL_DRIVER"
+  },
+  "PERSONAL_DRIVER_PREMIUM": {
+    "domain": 8,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "PERSONAL_DRIVER"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 150,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "UNLOCK_SERVICE",
+        "value": "PREMIUM_CAR",
+        "triggerType": 71,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "PERSONAL_DRIVER_PREMIUM"
+  },
+  "TWO_PROJECTS": {
+    "domain": 9,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "TWO_PROJECTS"
+  },
+  "PREPROD_NO_ACT": {
+    "domain": 9,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TWO_PROJECTS"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "PREPROD_NO_ACT"
+  },
+  "PREPROD_NO_DIR": {
+    "domain": 9,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "PREPROD_NO_ACT"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "PREPROD_NO_DIR"
+  },
+  "PREPROD_NO_CIN": {
+    "domain": 9,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "PREPROD_NO_ACT"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 900,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "PREPROD_NO_CIN"
+  },
+  "CONTRACT_WEIGHT": {
+    "domain": 9,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "TWO_PROJECTS"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "CONTRACT_WEIGHT"
+  },
+  "FOCUS_INHOUSE_RED_TIME_1": {
+    "domain": 9,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "CONTRACT_WEIGHT"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "FOCUS_INHOUSE_RED_TIME_1"
+  },
+  "FOCUS_INHOUSE_RED_PRICE_1": {
+    "domain": 9,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "FOCUS_INHOUSE_RED_TIME_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "FOCUS_INHOUSE_RED_PRICE_1"
+  },
+  "IP_HYPE": {
+    "domain": 9,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "FOCUS_INHOUSE_RED_TIME_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "IP_HYPE"
+  },
+  "IP_HYPE_RED_TIME_1": {
+    "domain": 9,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "IP_HYPE"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "IP_HYPE_RED_TIME_1"
+  },
+  "IP_HYPE_RED_PRICE_1": {
+    "domain": 9,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "IP_HYPE_RED_TIME_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "IP_HYPE_RED_PRICE_1"
+  },
+  "IP_KEEPER": {
+    "domain": 9,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "IP_HYPE"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "IP_KEEPER"
+  },
+  "IP_CONTRACT_WEIGHT": {
+    "domain": 9,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "IP_KEEPER"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "IP_CONTRACT_WEIGHT"
+  },
+  "IP_TALANTS_LNT_BONUS_XP": {
+    "domain": 9,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "IP_KEEPER"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "IP_TALANTS_LNT_BONUS_XP"
+  },
+  "START_PROD_NO_ACT": {
+    "domain": 9,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "PREPROD_NO_ACT"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "START_PROD_NO_ACT"
+  },
+  "IP_MOVIE_THEATRE_CHEAP": {
+    "domain": 9,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "IP_KEEPER"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "IP_MOVIE_THEATRE_CHEAP"
+  },
+  "REPAIR_TEAM_1": {
+    "domain": 10,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "REPAIR_TEAM_1"
+  },
+  "BLDG_WATER_TOWER_I": {
+    "domain": 10,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_WATER_TOWER_I"
+  },
+  "BLDG_WATER_TOWER_II": {
+    "domain": 10,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_WATER_TOWER_I"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 6,
+    "id": "BLDG_WATER_TOWER_II"
+  },
+  "BLDG_WATER_TOWER_III": {
+    "domain": 10,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_WATER_TOWER_II"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 5000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 6,
+    "id": "BLDG_WATER_TOWER_III"
+  },
+  "WATER_TOWER_AMT_3": {
+    "domain": 10,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_WATER_TOWER_II"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "WATER_TOWER_AMT_3"
+  },
+  "BLDG_POWERPLANT_I": {
+    "domain": 10,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_POWERPLANT_I"
+  },
+  "BLDG_POWERPLANT_II": {
+    "domain": 10,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_POWERPLANT_I"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 6,
+    "id": "BLDG_POWERPLANT_II"
+  },
+  "BLDG_POWERPLANT_III": {
+    "domain": 10,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_POWERPLANT_II"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 6,
+    "id": "BLDG_POWERPLANT_III"
+  },
+  "POWERPLANT_AMT_3": {
+    "domain": 10,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_POWERPLANT_II"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 5000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "POWERPLANT_AMT_3"
+  },
+  "IMPROVEMENT_I": {
+    "domain": 10,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 400,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "IMROVEMENT_LVLS_MAX",
+        "value": "2",
+        "triggerType": 64,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "IMPROVEMENT_I"
+  },
+  "IMPROVEMENT_II": {
+    "domain": 10,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "IMPROVEMENT_I"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "IMROVEMENT_LVLS_MAX",
+        "value": "3",
+        "triggerType": 64,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "IMPROVEMENT_II"
+  },
+  "IMPROVEMENT_III": {
+    "domain": 10,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "IMPROVEMENT_II"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "IMROVEMENT_LVLS_MAX",
+        "value": "4",
+        "triggerType": 64,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 2,
+    "behaviour": 4,
+    "id": "IMPROVEMENT_III"
+  },
+  "STUDIO_TECH": {
+    "domain": 11,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "STUDIO_TECH"
+  },
+  "STUDIO_TECH_ADD_RND": {
+    "domain": 11,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "STUDIO_TECH"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1200,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "STUDIO_TECH_ADD_RND"
+  },
+  "STUDIO_TECH_RED_TIME_1": {
+    "domain": 11,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "STUDIO_TECH"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 1500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "STUDIO_TECH_RED_TIME_1"
+  },
+  "STUDIO_TECH_RED_TIME_2": {
+    "domain": 11,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "STUDIO_TECH_RED_TIME_1"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 3500,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [],
+    "shapeType": 2,
+    "behaviour": 0,
+    "id": "STUDIO_TECH_RED_TIME_2"
+  },
+  "BLDG_RND_I": {
+    "domain": 11,
+    "department": "NONE",
+    "unlockedByPerks": null,
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "BLDG_RND_MAX",
+        "value": "1",
+        "triggerType": 64,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_RND_I"
+  },
+  "BLDG_RND_II": {
+    "domain": 11,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_RND_I"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 2000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "BLDG_RND_MAX",
+        "value": "2",
+        "triggerType": 64,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_RND_II"
+  },
+  "BLDG_RND_III": {
+    "domain": 11,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_RND_II"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 3000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "BLDG_RND_MAX",
+        "value": "3",
+        "triggerType": 64,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_RND_III"
+  },
+  "BLDG_RND_IV": {
+    "domain": 11,
+    "department": "NONE",
+    "unlockedByPerks": [
+      "BLDG_RND_III"
+    ],
+    "dependsOnBuildings": null,
+    "hasHiddenObjects": false,
+    "duration": 5000,
+    "staff": 0,
+    "electricity": "0.000",
+    "water": "0.000",
+    "triggers": [
+      {
+        "name": "BLDG_RND_MAX",
+        "value": "4",
+        "triggerType": 64,
+        "buffType": 1,
+        "duration": -1,
+        "probability": "1.000",
+        "delay": 0
+      }
+    ],
+    "shapeType": 4,
+    "behaviour": 2,
+    "id": "BLDG_RND_IV"
+  }
+}

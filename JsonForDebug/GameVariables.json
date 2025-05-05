@@ -1,0 +1,3446 @@
+{
+  "start_date": {
+    "Key": "start_date",
+    "Value": "01-01-1929"
+  },
+  "starting_budget_small": {
+    "Key": "starting_budget_small",
+    "Value": "5,600,000.00"
+  },
+  "starting_budget": {
+    "Key": "starting_budget",
+    "Value": "7,600,000.00"
+  },
+  "starting_budget_big": {
+    "Key": "starting_budget_big",
+    "Value": "9,600,000.00"
+  },
+  "starting_cash": {
+    "Key": "starting_cash",
+    "Value": "6,500.00"
+  },
+  "max_reputation": {
+    "Key": "max_reputation",
+    "Value": "100"
+  },
+  "starting_reputation": {
+    "Key": "starting_reputation",
+    "Value": "50.00"
+  },
+  "starting_influence": {
+    "Key": "starting_influence",
+    "Value": "100.00"
+  },
+  "logos_amount": {
+    "Key": "logos_amount",
+    "Value": "22"
+  },
+  "season_per_month": {
+    "Key": "season_per_month",
+    "Value": "0;0;1;1;1;2;2;2;3;3;3;0"
+  },
+  "time_of_day_durations": {
+    "Key": "time_of_day_durations",
+    "Value": "300;10"
+  },
+  "secret_risk_level_leak_probabilities": {
+    "Key": "secret_risk_level_leak_probabilities",
+    "Value": "0.05;0.10;0.20;0.30;0.40"
+  },
+  "secret_initial_leak_immunity": {
+    "Key": "secret_initial_leak_immunity",
+    "Value": "30"
+  },
+  "secret_leak_roll_period": {
+    "Key": "secret_leak_roll_period",
+    "Value": "30"
+  },
+  "secret_hide_chance_penalty_risk_level": {
+    "Key": "secret_hide_chance_penalty_risk_level",
+    "Value": "0.40;0.20;0;0.15;0.30"
+  },
+  "secret_hide_success_chance_penalty_severity": {
+    "Key": "secret_hide_success_chance_penalty_severity",
+    "Value": "0;0.10;0.20;0.30"
+  },
+  "secret_hide_duration_mod_risk_level": {
+    "Key": "secret_hide_duration_mod_risk_level",
+    "Value": "-0.40;-0.20;0;0.20;0.40"
+  },
+  "secret_hide_duration_mod_severity": {
+    "Key": "secret_hide_duration_mod_severity",
+    "Value": "0;0.10;0.20;0.30"
+  },
+  "secret_min_agent_skill_duration": {
+    "Key": "secret_min_agent_skill_duration",
+    "Value": "80"
+  },
+  "secret_max_agent_skill_duration": {
+    "Key": "secret_max_agent_skill_duration",
+    "Value": "40"
+  },
+  "secret_min_agent_skill_outcome_probabilities": {
+    "Key": "secret_min_agent_skill_outcome_probabilities",
+    "Value": "0.2;0.55;0.25"
+  },
+  "secret_max_agent_skill_outcome_probabilities": {
+    "Key": "secret_max_agent_skill_outcome_probabilities",
+    "Value": "0.85;0.1;0.05"
+  },
+  "secret_random_duration_offset": {
+    "Key": "secret_random_duration_offset",
+    "Value": "3"
+  },
+  "secret_failure_duration_offset_range": {
+    "Key": "secret_failure_duration_offset_range",
+    "Value": "-4_-9"
+  },
+  "secret_fubar_duration_offset_range": {
+    "Key": "secret_fubar_duration_offset_range",
+    "Value": "-7_-11"
+  },
+  "time_winter_months_range": {
+    "Key": "time_winter_months_range",
+    "Value": "10_1"
+  },
+  "time_speed_default": {
+    "Key": "time_speed_default",
+    "Value": "1"
+  },
+  "time_tick_intervals": {
+    "Key": "time_tick_intervals",
+    "Value": "4;2;1;0.5; 0.1;0.05"
+  },
+  "time_scales": {
+    "Key": "time_scales",
+    "Value": "1.4;3.7;8;35;1;1"
+  },
+  "event_notification_timeout": {
+    "Key": "event_notification_timeout",
+    "Value": "3"
+  },
+  "tag_research_duration": {
+    "Key": "tag_research_duration",
+    "Value": "100"
+  },
+  "tag_research_duration_max_random_offset": {
+    "Key": "tag_research_duration_max_random_offset",
+    "Value": "10"
+  },
+  "tag_research_success_probability": {
+    "Key": "tag_research_success_probability",
+    "Value": "0;1"
+  },
+  "tag_research_success_max_probability": {
+    "Key": "tag_research_success_max_probability",
+    "Value": "0.8"
+  },
+  "generated_ideas_range": {
+    "Key": "generated_ideas_range",
+    "Value": "3_5"
+  },
+  "ideas_duration_range": {
+    "Key": "ideas_duration_range",
+    "Value": "60_120"
+  },
+  "content_tags_in_script_range": {
+    "Key": "content_tags_in_script_range",
+    "Value": "3_5"
+  },
+  "log_keeping_cutoff": {
+    "Key": "log_keeping_cutoff",
+    "Value": "101"
+  },
+  "auto_save_cooldown": {
+    "Key": "auto_save_cooldown",
+    "Value": "60"
+  },
+  "money_per_10_perk_research_speedup": {
+    "Key": "money_per_10_perk_research_speedup",
+    "Value": "10000"
+  },
+  "influence_points_per_1_perk_research_speedup": {
+    "Key": "influence_points_per_1_perk_research_speedup",
+    "Value": "20"
+  },
+  "domenion_aura_radius": {
+    "Key": "domenion_aura_radius",
+    "Value": "20"
+  },
+  "sidescroll_movement_speed": {
+    "Key": "sidescroll_movement_speed",
+    "Value": "0.2"
+  },
+  "clouds_speed_factors": {
+    "Key": "clouds_speed_factors",
+    "Value": "30;20;20;15"
+  },
+  "random_review_probability": {
+    "Key": "random_review_probability",
+    "Value": "0.1"
+  },
+  "good_gay_review_baseline": {
+    "Key": "good_gay_review_baseline",
+    "Value": "0.75"
+  },
+  "good_woman_review_baseline": {
+    "Key": "good_woman_review_baseline",
+    "Value": "0.75"
+  },
+  "reviews_max_count": {
+    "Key": "reviews_max_count",
+    "Value": "6"
+  },
+  "passive_notifications_keeping_cutoff": {
+    "Key": "passive_notifications_keeping_cutoff",
+    "Value": "31"
+  },
+  "suicide_mood_threshold": {
+    "Key": "suicide_mood_threshold",
+    "Value": "15"
+  },
+  "suicide_chance": {
+    "Key": "suicide_chance",
+    "Value": "3"
+  },
+  "suicide_low_mood_days": {
+    "Key": "suicide_low_mood_days",
+    "Value": "90"
+  },
+  "short_illness_probability": {
+    "Key": "short_illness_probability",
+    "Value": "0.004;0.01;0.016;0.02;0.015;0.01;0.004"
+  },
+  "long_illness_probability": {
+    "Key": "long_illness_probability",
+    "Value": "0.002;0.01;0.016;0.02;0.018;0.015;0.01"
+  },
+  "old_age_death_male_probability": {
+    "Key": "old_age_death_male_probability",
+    "Value": "0;0;0;0;0.02;0.03;0.05"
+  },
+  "old_age_death_female_probability": {
+    "Key": "old_age_death_female_probability",
+    "Value": "0;0;0;0;0.01;0.02;0.04"
+  },
+  "age_gradation_for_death": {
+    "Key": "age_gradation_for_death",
+    "Value": "18;26;36;46;56;66;76"
+  },
+  "progressive_death_step": {
+    "Key": "progressive_death_step",
+    "Value": "0.0125"
+  },
+  "pollux_nomination_ip_and_rep_bonus_best_movie": {
+    "Key": "pollux_nomination_ip_and_rep_bonus_best_movie",
+    "Value": "200_30"
+  },
+  "pollux_nomination_ip_and_rep_bonus_best_directing": {
+    "Key": "pollux_nomination_ip_and_rep_bonus_best_directing",
+    "Value": "101_11"
+  },
+  "pollux_nomination_ip_and_rep_bonus_best_script": {
+    "Key": "pollux_nomination_ip_and_rep_bonus_best_script",
+    "Value": "102_12"
+  },
+  "pollux_nomination_ip_and_rep_bonus_best_cinematography": {
+    "Key": "pollux_nomination_ip_and_rep_bonus_best_cinematography",
+    "Value": "103_13"
+  },
+  "pollux_nomination_ip_and_rep_bonus_best_male_role": {
+    "Key": "pollux_nomination_ip_and_rep_bonus_best_male_role",
+    "Value": "104_14"
+  },
+  "pollux_nomination_ip_and_rep_bonus_best_female_role": {
+    "Key": "pollux_nomination_ip_and_rep_bonus_best_female_role",
+    "Value": "105_15"
+  },
+  "pollux_win_ip_and_rep_bonus_best_movie": {
+    "Key": "pollux_win_ip_and_rep_bonus_best_movie",
+    "Value": "200_30"
+  },
+  "pollux_win_ip_and_rep_bonus_best_directing": {
+    "Key": "pollux_win_ip_and_rep_bonus_best_directing",
+    "Value": "101_11"
+  },
+  "pollux_win_ip_and_rep_bonus_best_script": {
+    "Key": "pollux_win_ip_and_rep_bonus_best_script",
+    "Value": "102_12"
+  },
+  "pollux_win_ip_and_rep_bonus_best_cinematography": {
+    "Key": "pollux_win_ip_and_rep_bonus_best_cinematography",
+    "Value": "103_13"
+  },
+  "pollux_win_ip_and_rep_bonus_best_male_role": {
+    "Key": "pollux_win_ip_and_rep_bonus_best_male_role",
+    "Value": "104_14"
+  },
+  "pollux_win_ip_and_rep_bonus_best_female_role": {
+    "Key": "pollux_win_ip_and_rep_bonus_best_female_role",
+    "Value": "105_15"
+  },
+  "pollux_loss_mood_penalty": {
+    "Key": "pollux_loss_mood_penalty",
+    "Value": "0.35"
+  },
+  "bonus_idea_generation_range": {
+    "Key": "bonus_idea_generation_range",
+    "Value": "0_1"
+  },
+  "script_lieut_tag_research_base_duration": {
+    "Key": "script_lieut_tag_research_base_duration",
+    "Value": "180;90;30"
+  },
+  "overall_tag_threshold": {
+    "Key": "overall_tag_threshold",
+    "Value": "12"
+  },
+  "overall_tag_threshold_speed_for_actors": {
+    "Key": "overall_tag_threshold_speed_for_actors",
+    "Value": "1.7"
+  },
+  "overall_tag_threshold_speed_for_directors": {
+    "Key": "overall_tag_threshold_speed_for_directors",
+    "Value": "4"
+  },
+  "overall_tag_threshold_speed_for_producers": {
+    "Key": "overall_tag_threshold_speed_for_producers",
+    "Value": "1"
+  },
+  "domenion_staff_salary_per_month": {
+    "Key": "domenion_staff_salary_per_month",
+    "Value": "80"
+  },
+  "race_percentage": {
+    "Key": "race_percentage",
+    "Value": "0.5;0.1;0.2;0.05;0.15"
+  },
+  "legal_and_illegal_workers_percentage": {
+    "Key": "legal_and_illegal_workers_percentage",
+    "Value": "1;0"
+  },
+  "race_salary": {
+    "Key": "race_salary",
+    "Value": "120;100;110;70;85"
+  },
+  "legal_and_illegal_salary_percent": {
+    "Key": "legal_and_illegal_salary_percent",
+    "Value": "0.75;0.5"
+  },
+  "min_salary": {
+    "Key": "min_salary",
+    "Value": "10"
+  },
+  "captain_time_bonus_per_exp_year": {
+    "Key": "captain_time_bonus_per_exp_year",
+    "Value": "0.01"
+  },
+  "cash_from_one_employee": {
+    "Key": "cash_from_one_employee",
+    "Value": "5"
+  },
+  "staff_requests_tired_b_cooldown": {
+    "Key": "staff_requests_tired_b_cooldown",
+    "Value": "90"
+  },
+  "staff_requests_force_major_cooldown": {
+    "Key": "staff_requests_force_major_cooldown",
+    "Value": "365"
+  },
+  "staff_requests_caprice_cooldown": {
+    "Key": "staff_requests_caprice_cooldown",
+    "Value": "180"
+  },
+  "staff_requests_queue_delay": {
+    "Key": "staff_requests_queue_delay",
+    "Value": "5"
+  },
+  "staff_scriptwriter_break_lookback": {
+    "Key": "staff_scriptwriter_break_lookback",
+    "Value": "5"
+  },
+  "staff_scriptwriter_required_break": {
+    "Key": "staff_scriptwriter_required_break",
+    "Value": "15"
+  },
+  "staff_actor_first_stage_break_lookback": {
+    "Key": "staff_actor_first_stage_break_lookback",
+    "Value": "3"
+  },
+  "staff_actor_first_stage_required_break": {
+    "Key": "staff_actor_first_stage_required_break",
+    "Value": "30"
+  },
+  "staff_director_first_stage_break_lookback": {
+    "Key": "staff_director_first_stage_break_lookback",
+    "Value": "2"
+  },
+  "staff_director_first_stage_required_break": {
+    "Key": "staff_director_first_stage_required_break",
+    "Value": "30"
+  },
+  "staff_actor_second_stage_break_lookback": {
+    "Key": "staff_actor_second_stage_break_lookback",
+    "Value": "5"
+  },
+  "staff_actor_second_stage_required_break": {
+    "Key": "staff_actor_second_stage_required_break",
+    "Value": "60"
+  },
+  "staff_director_second_stage_break_lookback": {
+    "Key": "staff_director_second_stage_break_lookback",
+    "Value": "5"
+  },
+  "staff_director_second_stage_required_break": {
+    "Key": "staff_director_second_stage_required_break",
+    "Value": "60"
+  },
+  "staff_requests_tired_b_probability": {
+    "Key": "staff_requests_tired_b_probability",
+    "Value": "0.05"
+  },
+  "staff_requests_force_major_a_probability": {
+    "Key": "staff_requests_force_major_a_probability",
+    "Value": "0.01"
+  },
+  "staff_requests_force_major_b_probability": {
+    "Key": "staff_requests_force_major_b_probability",
+    "Value": "0.01"
+  },
+  "staff_requests_force_major_c_probability": {
+    "Key": "staff_requests_force_major_c_probability",
+    "Value": "0.01"
+  },
+  "staff_requests_caprice_probability": {
+    "Key": "staff_requests_caprice_probability",
+    "Value": "0.02"
+  },
+  "staff_raise_request_ignored_mood_penalty": {
+    "Key": "staff_raise_request_ignored_mood_penalty",
+    "Value": "0.25"
+  },
+  "staff_raise_request_ignored_attitude_penalty": {
+    "Key": "staff_raise_request_ignored_attitude_penalty",
+    "Value": "0.25"
+  },
+  "staff_raise_request_attitude_threshold": {
+    "Key": "staff_raise_request_attitude_threshold",
+    "Value": "0.8"
+  },
+  "staff_raise_request_ignored_demanded_salary_increase": {
+    "Key": "staff_raise_request_ignored_demanded_salary_increase",
+    "Value": "0.1"
+  },
+  "staff_raise_request_salary_undervalue_threshold": {
+    "Key": "staff_raise_request_salary_undervalue_threshold",
+    "Value": "0.5"
+  },
+  "staff_will_definitely_leave_attitude_threshold": {
+    "Key": "staff_will_definitely_leave_attitude_threshold",
+    "Value": "0.1"
+  },
+  "competitors_hiring_delay": {
+    "Key": "competitors_hiring_delay",
+    "Value": "10"
+  },
+  "character_generator_skill_curve_discretization": {
+    "Key": "character_generator_skill_curve_discretization",
+    "Value": "10"
+  },
+  "character_generator_skill_curve": {
+    "Key": "character_generator_skill_curve",
+    "Value": "0.05; 0.15;0.25;0.2;0.2;0.1;0.05;0;0;0"
+  },
+  "character_generator_personnel_skill_curve": {
+    "Key": "character_generator_personnel_skill_curve",
+    "Value": "0.2;0.5;0.25;0.05;0;0;0;0;0;0"
+  },
+  "character_generator_contract_talents_skill_curve": {
+    "Key": "character_generator_contract_talents_skill_curve",
+    "Value": "0.65;0.35;0;0;0;0;0;0;0;0"
+  },
+  "talents_xp_for_level": {
+    "Key": "talents_xp_for_level",
+    "Value": "750;1250;2000;2500;3500;4500;6000;7500;9500;12500"
+  },
+  "lieutenants_xp_for_level": {
+    "Key": "lieutenants_xp_for_level",
+    "Value": "500;750;1000;2500;3000;3500;4000;4500;5000;5500"
+  },
+  "agents_xp_for_level": {
+    "Key": "agents_xp_for_level",
+    "Value": "1750;2500;3250;4000;4750;5500;6250;7000;7750"
+  },
+  "base_xp_increase": {
+    "Key": "base_xp_increase",
+    "Value": "110"
+  },
+  "lieutenant_shady_probability": {
+    "Key": "lieutenant_shady_probability",
+    "Value": "0.4"
+  },
+  "lieutenant_common_shady_probability": {
+    "Key": "lieutenant_common_shady_probability",
+    "Value": "0.4"
+  },
+  "lieutenant_escort_shady_probability": {
+    "Key": "lieutenant_escort_shady_probability",
+    "Value": "0.4"
+  },
+  "lieutenant_release_shady_probability": {
+    "Key": "lieutenant_release_shady_probability",
+    "Value": "0.65"
+  },
+  "character_generator_min_skill": {
+    "Key": "character_generator_min_skill",
+    "Value": "0.1"
+  },
+  "character_generator_starter_personnel_skill_curve": {
+    "Key": "character_generator_starter_personnel_skill_curve",
+    "Value": "0.1;0.27;0.35;0.28;0;0;0;0;0;0"
+  },
+  "character_generator_starter_skill_curve": {
+    "Key": "character_generator_starter_skill_curve",
+    "Value": "0.05;0.22;0.185;0.067;0.11;0.1;0.1;0.1;0.058;0.01"
+  },
+  "character_generator_starter_contract_talents_skill_curve": {
+    "Key": "character_generator_starter_contract_talents_skill_curve",
+    "Value": "0.05;0.425;0.325;0.15;0.05;0;0;0;0;0"
+  },
+  "character_generator_limit_curve": {
+    "Key": "character_generator_limit_curve",
+    "Value": "0.05; 0.15;0.25;0.25;0.2;0.1;0;0;0;0"
+  },
+  "character_generator_starter_limit_curve": {
+    "Key": "character_generator_starter_limit_curve",
+    "Value": "0.05;0.25;0.35;0.075;0.08;0.1;0.05;0.03;0.01;0.005"
+  },
+  "character_generator_label_curve": {
+    "Key": "character_generator_label_curve",
+    "Value": "0.1;0.8;0.1"
+  },
+  "character_generator_label_frequent_probability": {
+    "Key": "character_generator_label_frequent_probability",
+    "Value": "0.6"
+  },
+  "character_generator_label_average_probability": {
+    "Key": "character_generator_label_average_probability",
+    "Value": "0.3"
+  },
+  "character_generator_label_rare_probability": {
+    "Key": "character_generator_label_rare_probability",
+    "Value": "0.1"
+  },
+  "character_generator_status_curve": {
+    "Key": "character_generator_status_curve",
+    "Value": "0.72; 0.145; 0.075; 0.04; 0.02"
+  },
+  "character_generator_status_skill_prob_bonus": {
+    "Key": "character_generator_status_skill_prob_bonus",
+    "Value": "0_0.225"
+  },
+  "character_generator_indoor_outdoor_curve": {
+    "Key": "character_generator_indoor_outdoor_curve",
+    "Value": "0.0; 0.6; 0.25; 0.1; 0.05"
+  },
+  "character_generator_indoor_outdoor_skill_prob_bonus": {
+    "Key": "character_generator_indoor_outdoor_skill_prob_bonus",
+    "Value": "0.0_0.15"
+  },
+  "character_indoor_levels_min": {
+    "Key": "character_indoor_levels_min",
+    "Value": "0; 0.5; 0.3; 0.15; 0.05"
+  },
+  "character_outdoor_levels_min": {
+    "Key": "character_outdoor_levels_min",
+    "Value": "0; 0.5; 0.3; 0.15; 0.05"
+  },
+  "character_generator_mood_ranges": {
+    "Key": "character_generator_mood_ranges",
+    "Value": "0; 0.2; 0.4; 0.6; 0.8; 1"
+  },
+  "character_generator_mood_probability_curve": {
+    "Key": "character_generator_mood_probability_curve",
+    "Value": "0.025; 0.075; 0.20; 0.50; 0.20"
+  },
+  "character_generator_black_white_tag_pair_probabilities": {
+    "Key": "character_generator_black_white_tag_pair_probabilities",
+    "Value": "0.6; 0.1; 0.1; 0.13; 0.03; 0.04"
+  },
+  "character_generator_newbie_mood": {
+    "Key": "character_generator_newbie_mood",
+    "Value": "0.87"
+  },
+  "character_generator_attitude": {
+    "Key": "character_generator_attitude",
+    "Value": "0.5_1"
+  },
+  "character_generator_starter_sin_amount": {
+    "Key": "character_generator_starter_sin_amount",
+    "Value": "16"
+  },
+  "character_generator_sins_per_year_amount": {
+    "Key": "character_generator_sins_per_year_amount",
+    "Value": "6"
+  },
+  "character_generator_max_sins_per_character_amount": {
+    "Key": "character_generator_max_sins_per_character_amount",
+    "Value": "2"
+  },
+  "characters_preferred_gift_change_range": {
+    "Key": "characters_preferred_gift_change_range",
+    "Value": "8_15"
+  },
+  "captain_salary_range": {
+    "Key": "captain_salary_range",
+    "Value": "1800_16500"
+  },
+  "lieutenant_salary_range": {
+    "Key": "lieutenant_salary_range",
+    "Value": "1100_3000"
+  },
+  "agent_salary_range": {
+    "Key": "agent_salary_range",
+    "Value": "500_1900"
+  },
+  "personnel_salary_curve": {
+    "Key": "personnel_salary_curve",
+    "Value": "IN_QUAD"
+  },
+  "starter_hires_contract_term": {
+    "Key": "starter_hires_contract_term",
+    "Value": "3"
+  },
+  "next_newbie_generation_timespan_deviation": {
+    "Key": "next_newbie_generation_timespan_deviation",
+    "Value": "0.75"
+  },
+  "skill_to_overall_tag_presence_probability_curve": {
+    "Key": "skill_to_overall_tag_presence_probability_curve",
+    "Value": "IN_QUAD"
+  },
+  "skill_to_overall_tag_presence_probability_curve_range": {
+    "Key": "skill_to_overall_tag_presence_probability_curve_range",
+    "Value": "0_0.52"
+  },
+  "skill_to_overall_tag_presence_probability_min_skill": {
+    "Key": "skill_to_overall_tag_presence_probability_min_skill",
+    "Value": "0.01"
+  },
+  "overall_tag_amount_probabilities": {
+    "Key": "overall_tag_amount_probabilities",
+    "Value": "0.75;0.25;"
+  },
+  "skill_to_age_conversion_talent_skewed_distribution_mean": {
+    "Key": "skill_to_age_conversion_talent_skewed_distribution_mean",
+    "Value": "30"
+  },
+  "skill_to_age_conversion_talent_skewed_distribution_deviance": {
+    "Key": "skill_to_age_conversion_talent_skewed_distribution_deviance",
+    "Value": "25"
+  },
+  "skill_to_age_conversion_talent_skewed_distribution_skew_multiplier": {
+    "Key": "skill_to_age_conversion_talent_skewed_distribution_skew_multiplier",
+    "Value": "80"
+  },
+  "skill_to_age_conversion_talent_skewed_distribution_hard_min": {
+    "Key": "skill_to_age_conversion_talent_skewed_distribution_hard_min",
+    "Value": "18"
+  },
+  "skill_to_age_conversion_talent_skewed_distribution_hard_max": {
+    "Key": "skill_to_age_conversion_talent_skewed_distribution_hard_max",
+    "Value": "80"
+  },
+  "skill_to_age_conversion_talent_skewed_distribution_add_skew": {
+    "Key": "skill_to_age_conversion_talent_skewed_distribution_add_skew",
+    "Value": "0"
+  },
+  "skill_to_age_conversion_skewed_distribution_add_skew": {
+    "Key": "skill_to_age_conversion_skewed_distribution_add_skew",
+    "Value": "0"
+  },
+  "skill_to_age_conversion_skewed_distribution_mean": {
+    "Key": "skill_to_age_conversion_skewed_distribution_mean",
+    "Value": "48"
+  },
+  "skill_to_age_conversion_skewed_distribution_deviance": {
+    "Key": "skill_to_age_conversion_skewed_distribution_deviance",
+    "Value": "17"
+  },
+  "skill_to_age_conversion_skewed_distribution_skew_multiplier": {
+    "Key": "skill_to_age_conversion_skewed_distribution_skew_multiplier",
+    "Value": "0"
+  },
+  "skill_to_age_conversion_skewed_distribution_hard_min": {
+    "Key": "skill_to_age_conversion_skewed_distribution_hard_min",
+    "Value": "31"
+  },
+  "skill_to_age_conversion_skewed_distribution_hard_max": {
+    "Key": "skill_to_age_conversion_skewed_distribution_hard_max",
+    "Value": "65"
+  },
+  "employee_history_days_gap": {
+    "Key": "employee_history_days_gap",
+    "Value": "1_180"
+  },
+  "character_birthday_from_config_offset": {
+    "Key": "character_birthday_from_config_offset",
+    "Value": "100"
+  },
+  "character_generator_min_level_for_art_status": {
+    "Key": "character_generator_min_level_for_art_status",
+    "Value": "0.6"
+  },
+  "character_generator_min_level_for_com_status": {
+    "Key": "character_generator_min_level_for_com_status",
+    "Value": "0.3"
+  },
+  "readiness_for_tricks_probability": {
+    "Key": "readiness_for_tricks_probability",
+    "Value": "0.6;0.3;0.1;"
+  },
+  "jewish_probability": {
+    "Key": "jewish_probability",
+    "Value": "0.02"
+  },
+  "black_probability": {
+    "Key": "black_probability",
+    "Value": "0.02"
+  },
+  "asian_probability": {
+    "Key": "asian_probability",
+    "Value": "0.02"
+  },
+  "latinos_probability": {
+    "Key": "latinos_probability",
+    "Value": "0.02"
+  },
+  "nationality_probability": {
+    "Key": "nationality_probability",
+    "Value": "0.951;0.005;0.007;0.002;0.015"
+  },
+  "competitor_movies_brute_force_accuracy_threshold": {
+    "Key": "competitor_movies_brute_force_accuracy_threshold",
+    "Value": "0.2"
+  },
+  "competitor_movies_max_attempts": {
+    "Key": "competitor_movies_max_attempts",
+    "Value": "100"
+  },
+  "competitor_movies_continue_release_audience_threshold": {
+    "Key": "competitor_movies_continue_release_audience_threshold",
+    "Value": "0.3"
+  },
+  "competitor_movies_limit_releases_per_week": {
+    "Key": "competitor_movies_limit_releases_per_week",
+    "Value": "3"
+  },
+  "competitor_movies_attack_score_impact": {
+    "Key": "competitor_movies_attack_score_impact",
+    "Value": "-0.08"
+  },
+  "competitor_movies_attack_budget_impact": {
+    "Key": "competitor_movies_attack_budget_impact",
+    "Value": "0.06"
+  },
+  "competitor_defence_cost_per_person": {
+    "Key": "competitor_defence_cost_per_person",
+    "Value": "2500"
+  },
+  "competitors_release_team_xp_increase": {
+    "Key": "competitors_release_team_xp_increase",
+    "Value": "100"
+  },
+  "competitors_release_team_xp_bonus_base": {
+    "Key": "competitors_release_team_xp_bonus_base",
+    "Value": "1000"
+  },
+  "competitors_release_team_xp_bonus_max": {
+    "Key": "competitors_release_team_xp_bonus_max",
+    "Value": "400"
+  },
+  "competitors_continue_release_threshold": {
+    "Key": "competitors_continue_release_threshold",
+    "Value": "0.2"
+  },
+  "competitors_have_to_leave_free_slots": {
+    "Key": "competitors_have_to_leave_free_slots",
+    "Value": "4000"
+  },
+  "max_profile_amount": {
+    "Key": "max_profile_amount",
+    "Value": "3"
+  },
+  "tag_compatibility_score_range": {
+    "Key": "tag_compatibility_score_range",
+    "Value": "1_5"
+  },
+  "recent_movies_amount": {
+    "Key": "recent_movies_amount",
+    "Value": "5"
+  },
+  "stars_max": {
+    "Key": "stars_max",
+    "Value": "4"
+  },
+  "extras_options_amount": {
+    "Key": "extras_options_amount",
+    "Value": "5"
+  },
+  "extras_options_starter_amount": {
+    "Key": "extras_options_starter_amount",
+    "Value": "2"
+  },
+  "locations_options_starter_amount": {
+    "Key": "locations_options_starter_amount",
+    "Value": "1"
+  },
+  "locations_options_max_amount": {
+    "Key": "locations_options_max_amount",
+    "Value": "4"
+  },
+  "sets_options_starter_amount": {
+    "Key": "sets_options_starter_amount",
+    "Value": "1"
+  },
+  "props_options_starter_amount": {
+    "Key": "props_options_starter_amount",
+    "Value": "1"
+  },
+  "crew_options_amount": {
+    "Key": "crew_options_amount",
+    "Value": "2"
+  },
+  "min_genre_fraction_for_bonus": {
+    "Key": "min_genre_fraction_for_bonus",
+    "Value": "0.35"
+  },
+  "lieutenants_bonus_cards_max": {
+    "Key": "lieutenants_bonus_cards_max",
+    "Value": "4"
+  },
+  "lieutenants_bonus_cards_time": {
+    "Key": "lieutenants_bonus_cards_time",
+    "Value": "0; 0.01; 0.02; 0.03; 0.04; 0.05"
+  },
+  "lieutenants_bonus_cards_money": {
+    "Key": "lieutenants_bonus_cards_money",
+    "Value": "0; 0.1; 0.2; 0.3; 0.4; 0.5"
+  },
+  "lieutenants_bonus_cards_influence_points": {
+    "Key": "lieutenants_bonus_cards_influence_points",
+    "Value": "0; 0.1; 0.2; 0.3; 0.4; 0.5"
+  },
+  "max_score": {
+    "Key": "max_score",
+    "Value": "9.9"
+  },
+  "score_precision": {
+    "Key": "score_precision",
+    "Value": "1"
+  },
+  "negative_bonus_curve": {
+    "Key": "negative_bonus_curve",
+    "Value": "IN_CUBIC"
+  },
+  "positive_bonus_curve": {
+    "Key": "positive_bonus_curve",
+    "Value": "OUT_CUBIC"
+  },
+  "actor_replace_and_continue_baseline_penalties": {
+    "Key": "actor_replace_and_continue_baseline_penalties",
+    "Value": "0.3;0.2;0.1"
+  },
+  "director_replace_and_continue_baseline_penalties": {
+    "Key": "director_replace_and_continue_baseline_penalties",
+    "Value": "0.3;0.2;0.1"
+  },
+  "replace_and_continue_penalty_skill_ranges": {
+    "Key": "replace_and_continue_penalty_skill_ranges",
+    "Value": "0;4;7"
+  },
+  "max_value_change_per_content_tag": {
+    "Key": "max_value_change_per_content_tag",
+    "Value": "0.05"
+  },
+  "max_negative_value_script_change": {
+    "Key": "max_negative_value_script_change",
+    "Value": "0.9"
+  },
+  "max_value_change_per_tag_type_group": {
+    "Key": "max_value_change_per_tag_type_group",
+    "Value": "0.084"
+  },
+  "script_gen_writer_skill_to_baseline": {
+    "Key": "script_gen_writer_skill_to_baseline",
+    "Value": "0.01;0.1;0.215;0.33;0.42;0.5;0.54;0.64;0.73;0.79;0.85"
+  },
+  "script_gen_writer_skill_to_baseline_skill_ranges": {
+    "Key": "script_gen_writer_skill_to_baseline_skill_ranges",
+    "Value": "0.01;0.1;0.2;0.3;0.4;0.5;0.6;0.7;0.8;0.9;1"
+  },
+  "white_tag_factor": {
+    "Key": "white_tag_factor",
+    "Value": "1.2"
+  },
+  "gray_tag_factor": {
+    "Key": "gray_tag_factor",
+    "Value": "1"
+  },
+  "black_tag_factor": {
+    "Key": "black_tag_factor",
+    "Value": "0.8"
+  },
+  "min_genre_fraction": {
+    "Key": "min_genre_fraction",
+    "Value": "0.1"
+  },
+  "genre_fraction_substep": {
+    "Key": "genre_fraction_substep",
+    "Value": "0.001"
+  },
+  "genre_fraction_step": {
+    "Key": "genre_fraction_step",
+    "Value": "0.05"
+  },
+  "genre_new_added_steps": {
+    "Key": "genre_new_added_steps",
+    "Value": "4"
+  },
+  "genres_reduced_new_added_steps_threshold": {
+    "Key": "genres_reduced_new_added_steps_threshold",
+    "Value": "5"
+  },
+  "genres_reduced_new_added_steps": {
+    "Key": "genres_reduced_new_added_steps",
+    "Value": "2"
+  },
+  "genres_reduced_new_added_take_from_above": {
+    "Key": "genres_reduced_new_added_take_from_above",
+    "Value": "0.1"
+  },
+  "max_setting_tags_amount": {
+    "Key": "max_setting_tags_amount",
+    "Value": "1"
+  },
+  "max_content_tags_amount": {
+    "Key": "max_content_tags_amount",
+    "Value": "5"
+  },
+  "max_content_tags_supporting_character_amount": {
+    "Key": "max_content_tags_supporting_character_amount",
+    "Value": "5"
+  },
+  "max_content_tags_themes_and_events_amount": {
+    "Key": "max_content_tags_themes_and_events_amount",
+    "Value": "5"
+  },
+  "min_amount_of_tags": {
+    "Key": "min_amount_of_tags",
+    "Value": "1"
+  },
+  "negative_genres_weight": {
+    "Key": "negative_genres_weight",
+    "Value": "20"
+  },
+  "negative_setting_weight": {
+    "Key": "negative_setting_weight",
+    "Value": "5"
+  },
+  "negative_content_weight": {
+    "Key": "negative_content_weight",
+    "Value": "3"
+  },
+  "outsource_scriptwriter_budget_multiplier": {
+    "Key": "outsource_scriptwriter_budget_multiplier",
+    "Value": "1.5"
+  },
+  "script_for_sale_cost_multiplier": {
+    "Key": "script_for_sale_cost_multiplier",
+    "Value": "2.2"
+  },
+  "genres_pair_sum": {
+    "Key": "genres_pair_sum",
+    "Value": "0.7"
+  },
+  "genres_pair_min": {
+    "Key": "genres_pair_min",
+    "Value": "0.35"
+  },
+  "genres_unpaired_min": {
+    "Key": "genres_unpaired_min",
+    "Value": "0.5"
+  },
+  "genres_per_generated_script_probabilities": {
+    "Key": "genres_per_generated_script_probabilities",
+    "Value": "0.4;0.3;0.2;0.1;"
+  },
+  "script_gen_scores": {
+    "Key": "script_gen_scores",
+    "Value": "3.9;6.9;8.9;9.9"
+  },
+  "script_gen_baseline_propability": {
+    "Key": "script_gen_baseline_propability",
+    "Value": "0.15;0.63;0.2;0.02"
+  },
+  "script_gen_scores_offset": {
+    "Key": "script_gen_scores_offset",
+    "Value": "0.3"
+  },
+  "real_script_gen_start_date": {
+    "Key": "real_script_gen_start_date",
+    "Value": "04-17-1930"
+  },
+  "script_del_max_amount": {
+    "Key": "script_del_max_amount",
+    "Value": "2"
+  },
+  "script_gen_max_amount": {
+    "Key": "script_gen_max_amount",
+    "Value": "2"
+  },
+  "script_max_amount_for_buy": {
+    "Key": "script_max_amount_for_buy",
+    "Value": "5"
+  },
+  "script_from_new_to_old_period": {
+    "Key": "script_from_new_to_old_period",
+    "Value": "90"
+  },
+  "script_deleting_period": {
+    "Key": "script_deleting_period",
+    "Value": "90"
+  },
+  "script_cost_bonus_for_script": {
+    "Key": "script_cost_bonus_for_script",
+    "Value": "0.2_0.3"
+  },
+  "scriptwriter_salary_monts_amount": {
+    "Key": "scriptwriter_salary_monts_amount",
+    "Value": "6"
+  },
+  "usual_script_cost_weight": {
+    "Key": "usual_script_cost_weight",
+    "Value": "0.7"
+  },
+  "unusual_cost_bonus": {
+    "Key": "unusual_cost_bonus",
+    "Value": "0.3_0.5"
+  },
+  "unknown_tag_cost_bonus": {
+    "Key": "unknown_tag_cost_bonus",
+    "Value": "0.5"
+  },
+  "white_tag_probability": {
+    "Key": "white_tag_probability",
+    "Value": "0.6"
+  },
+  "white_tag_weight": {
+    "Key": "white_tag_weight",
+    "Value": "0.35"
+  },
+  "unknown_tag_probability": {
+    "Key": "unknown_tag_probability",
+    "Value": "0.03"
+  },
+  "negative_bonus_range": {
+    "Key": "negative_bonus_range",
+    "Value": "-0.1_-0.3"
+  },
+  "positive_bonus_range": {
+    "Key": "positive_bonus_range",
+    "Value": "0.3_0.1"
+  },
+  "prep_art_max_bonus": {
+    "Key": "prep_art_max_bonus",
+    "Value": "0.25"
+  },
+  "prep_com_max_bonus": {
+    "Key": "prep_com_max_bonus",
+    "Value": "0.25"
+  },
+  "creator_art_bonus": {
+    "Key": "creator_art_bonus",
+    "Value": "0.1"
+  },
+  "creator_com_bonus": {
+    "Key": "creator_com_bonus",
+    "Value": "0.1"
+  },
+  "extras_com_bonus": {
+    "Key": "extras_com_bonus",
+    "Value": "0.05"
+  },
+  "protagonist_weight": {
+    "Key": "protagonist_weight",
+    "Value": "4"
+  },
+  "antagonist_weight": {
+    "Key": "antagonist_weight",
+    "Value": "2"
+  },
+  "supporting_character_weight": {
+    "Key": "supporting_character_weight",
+    "Value": "2"
+  },
+  "genres_recent_skill_bonus": {
+    "Key": "genres_recent_skill_bonus",
+    "Value": "0.12"
+  },
+  "genres_overall_skill_bonus": {
+    "Key": "genres_overall_skill_bonus",
+    "Value": "0.28"
+  },
+  "content_recent_skill_bonus": {
+    "Key": "content_recent_skill_bonus",
+    "Value": "0.18"
+  },
+  "content_overall_skill_bonus": {
+    "Key": "content_overall_skill_bonus",
+    "Value": "0.42"
+  },
+  "cinematographer_skill_bonus_range": {
+    "Key": "cinematographer_skill_bonus_range",
+    "Value": "0_0.4"
+  },
+  "character_skill_bonus_range": {
+    "Key": "character_skill_bonus_range",
+    "Value": "0.3_0.03"
+  },
+  "actors_bonus_fraction": {
+    "Key": "actors_bonus_fraction",
+    "Value": "0.3"
+  },
+  "director_bonus_fraction": {
+    "Key": "director_bonus_fraction",
+    "Value": "0.2"
+  },
+  "producer_bonus_fraction": {
+    "Key": "producer_bonus_fraction",
+    "Value": "0.15"
+  },
+  "cinematographer_bonus_fraction": {
+    "Key": "cinematographer_bonus_fraction",
+    "Value": "0.1"
+  },
+  "locations_bonus_fraction": {
+    "Key": "locations_bonus_fraction",
+    "Value": "0.15"
+  },
+  "costumes_and_props_bonus_fraction": {
+    "Key": "costumes_and_props_bonus_fraction",
+    "Value": "0.05"
+  },
+  "extras_bonus_fraction": {
+    "Key": "extras_bonus_fraction",
+    "Value": "0.05"
+  },
+  "stars_bonuses": {
+    "Key": "stars_bonuses",
+    "Value": "0.7;0.9;1"
+  },
+  "character_art_statuses_min": {
+    "Key": "character_art_statuses_min",
+    "Value": "0; 0.15; 0.3; 0.7; 1"
+  },
+  "character_art_statuses_bonus_factor": {
+    "Key": "character_art_statuses_bonus_factor",
+    "Value": "0; 0.15; 0.3; 0.7; 1"
+  },
+  "character_com_statuses_min": {
+    "Key": "character_com_statuses_min",
+    "Value": "0; 0.15; 0.3; 0.7; 1"
+  },
+  "character_com_statuses_bonus_factor": {
+    "Key": "character_com_statuses_bonus_factor",
+    "Value": "0; 0.15; 0.3; 0.7; 1"
+  },
+  "indoor_locations_quality_com_penalty_factors": {
+    "Key": "indoor_locations_quality_com_penalty_factors",
+    "Value": "1; 0.75; 0.6; 0.5"
+  },
+  "actor_mismatch_penalty_factor": {
+    "Key": "actor_mismatch_penalty_factor",
+    "Value": "0.8"
+  },
+  "character_base_skill": {
+    "Key": "character_base_skill",
+    "Value": "0.5"
+  },
+  "character_base_skill_step": {
+    "Key": "character_base_skill_step",
+    "Value": "0.1"
+  },
+  "script_content_tags_base": {
+    "Key": "script_content_tags_base",
+    "Value": "4"
+  },
+  "actors_base_duration_range": {
+    "Key": "actors_base_duration_range",
+    "Value": "60_90"
+  },
+  "actors_payment_under_base_range_factor": {
+    "Key": "actors_payment_under_base_range_factor",
+    "Value": "0.7"
+  },
+  "actors_payment_over_base_range_factor": {
+    "Key": "actors_payment_over_base_range_factor",
+    "Value": "1.3"
+  },
+  "protagonist_base_duration_factor": {
+    "Key": "protagonist_base_duration_factor",
+    "Value": "0.8"
+  },
+  "protagonist_min_duration_factor": {
+    "Key": "protagonist_min_duration_factor",
+    "Value": "0.6"
+  },
+  "supporting_character_base_duration_factor": {
+    "Key": "supporting_character_base_duration_factor",
+    "Value": "0.5"
+  },
+  "supporting_character_min_duration_factor": {
+    "Key": "supporting_character_min_duration_factor",
+    "Value": "0.4"
+  },
+  "antagonist_base_duration_factor": {
+    "Key": "antagonist_base_duration_factor",
+    "Value": "0.3"
+  },
+  "antagonist_min_duration_factor": {
+    "Key": "antagonist_min_duration_factor",
+    "Value": "0.3"
+  },
+  "actor_slot_duration_step_per_same_role": {
+    "Key": "actor_slot_duration_step_per_same_role",
+    "Value": "0.1"
+  },
+  "default_film": {
+    "Key": "default_film",
+    "Value": "FILM_35_BW"
+  },
+  "default_audio": {
+    "Key": "default_audio",
+    "Value": "AUDIO_1"
+  },
+  "actor_payment_range": {
+    "Key": "actor_payment_range",
+    "Value": "500_100000"
+  },
+  "cinematographer_payment_range": {
+    "Key": "cinematographer_payment_range",
+    "Value": "500_100000"
+  },
+  "director_payment_range": {
+    "Key": "director_payment_range",
+    "Value": "500_100000"
+  },
+  "scriptwriter_payment_range": {
+    "Key": "scriptwriter_payment_range",
+    "Value": "500_100000"
+  },
+  "extras_cost": {
+    "Key": "extras_cost",
+    "Value": "800"
+  },
+  "location_cost": {
+    "Key": "location_cost",
+    "Value": "10000"
+  },
+  "crew_cost": {
+    "Key": "crew_cost",
+    "Value": "2000"
+  },
+  "film_cost": {
+    "Key": "film_cost",
+    "Value": "200"
+  },
+  "audio_cost": {
+    "Key": "audio_cost",
+    "Value": "200"
+  },
+  "costumes_and_props_cost": {
+    "Key": "costumes_and_props_cost",
+    "Value": "12000"
+  },
+  "location_duration": {
+    "Key": "location_duration",
+    "Value": "20"
+  },
+  "costumes_and_props_duration": {
+    "Key": "costumes_and_props_duration",
+    "Value": "12"
+  },
+  "scriptwriter_base_duration": {
+    "Key": "scriptwriter_base_duration",
+    "Value": "50"
+  },
+  "production_base_duration": {
+    "Key": "production_base_duration",
+    "Value": "60"
+  },
+  "character_art_statuses_budget_factor": {
+    "Key": "character_art_statuses_budget_factor",
+    "Value": "1; 1.15; 1.3; 1.7; 4"
+  },
+  "character_com_statuses_budget_factor": {
+    "Key": "character_com_statuses_budget_factor",
+    "Value": "1; 1.15; 1.3; 1.7; 5"
+  },
+  "creators_budget_curve": {
+    "Key": "creators_budget_curve",
+    "Value": "IN_CUBIC"
+  },
+  "female_budget_factor": {
+    "Key": "female_budget_factor",
+    "Value": "0.7"
+  },
+  "script_duration_add_per_genre": {
+    "Key": "script_duration_add_per_genre",
+    "Value": "0.1"
+  },
+  "script_duration_add_per_content_over_base": {
+    "Key": "script_duration_add_per_content_over_base",
+    "Value": "0.05"
+  },
+  "script_duration_multiplier_by_content_tag_amount": {
+    "Key": "script_duration_multiplier_by_content_tag_amount",
+    "Value": "0;0;0;0;0;0;0.5;1;2;2.5;4"
+  },
+  "script_duration_multiplier_range_for_freelancers": {
+    "Key": "script_duration_multiplier_range_for_freelancers",
+    "Value": "2_2.5"
+  },
+  "script_content_tag_compatibility_bonus_sum_multiplier": {
+    "Key": "script_content_tag_compatibility_bonus_sum_multiplier",
+    "Value": "0.9"
+  },
+  "script_content_tag_compatibility_penalty_sum_multiplier": {
+    "Key": "script_content_tag_compatibility_penalty_sum_multiplier",
+    "Value": "1.25"
+  },
+  "location_quality_budget_factors": {
+    "Key": "location_quality_budget_factors",
+    "Value": "1;1.5;2;3"
+  },
+  "location_outdoor_budget_factor": {
+    "Key": "location_outdoor_budget_factor",
+    "Value": "1.4"
+  },
+  "location_indoor_budget_factor": {
+    "Key": "location_indoor_budget_factor",
+    "Value": "1"
+  },
+  "location_quality_duration_factors": {
+    "Key": "location_quality_duration_factors",
+    "Value": "1;1.5;2;3"
+  },
+  "location_outdoor_duration_factor": {
+    "Key": "location_outdoor_duration_factor",
+    "Value": "1.4"
+  },
+  "location_indoor_duration_factor": {
+    "Key": "location_indoor_duration_factor",
+    "Value": "1"
+  },
+  "production_location_quality_budget_factors": {
+    "Key": "production_location_quality_budget_factors",
+    "Value": "1;1.5;2;3"
+  },
+  "production_location_outdoor_budget_factor": {
+    "Key": "production_location_outdoor_budget_factor",
+    "Value": "0.4"
+  },
+  "production_location_indoor_budget_factor": {
+    "Key": "production_location_indoor_budget_factor",
+    "Value": "1"
+  },
+  "production_location_primary_factor": {
+    "Key": "production_location_primary_factor",
+    "Value": "1.33"
+  },
+  "production_location_secondary_factor": {
+    "Key": "production_location_secondary_factor",
+    "Value": "1"
+  },
+  "production_location_outdoor_duration_factor": {
+    "Key": "production_location_outdoor_duration_factor",
+    "Value": "1.4"
+  },
+  "production_location_indoor_duration_factor": {
+    "Key": "production_location_indoor_duration_factor",
+    "Value": "1"
+  },
+  "location_indoor_quality_budget_factors": {
+    "Key": "location_indoor_quality_budget_factors",
+    "Value": "0.5;0.8;1;1.5"
+  },
+  "location_outdoor_quality_budget_factors": {
+    "Key": "location_outdoor_quality_budget_factors",
+    "Value": "0.6;0.9;1.1;1.6"
+  },
+  "location_indoor_quality_duration_factors": {
+    "Key": "location_indoor_quality_duration_factors",
+    "Value": "0.5;0.8;1.1;1.5"
+  },
+  "location_outdoor_quality_duration_factors": {
+    "Key": "location_outdoor_quality_duration_factors",
+    "Value": "0.4274;0.55;0.7;1"
+  },
+  "extras_budget": {
+    "Key": "extras_budget",
+    "Value": "50;200;500;1800;3000"
+  },
+  "extras_costumes_and_props_budget_factors": {
+    "Key": "extras_costumes_and_props_budget_factors",
+    "Value": "1; 1.1; 1.2; 1.3; 1.4"
+  },
+  "extras_costumes_and_props_duration_factors": {
+    "Key": "extras_costumes_and_props_duration_factors",
+    "Value": "0.75; 0.8; 0.9; 1; 1.05"
+  },
+  "extras_duration_factors": {
+    "Key": "extras_duration_factors",
+    "Value": "0.5625; 0.75; 1.0875; 1.5375; 2.175"
+  },
+  "service_base_cost_per_tick": {
+    "Key": "service_base_cost_per_tick",
+    "Value": "100"
+  },
+  "service_attitude_effect": {
+    "Key": "service_attitude_effect",
+    "Value": "-0.05; 0.05; 0.1; 0.17; 0.25"
+  },
+  "service_mood_effect": {
+    "Key": "service_mood_effect",
+    "Value": "0; 0.0015; 0.0025; 0.0035; 0.005"
+  },
+  "service_budget_factors": {
+    "Key": "service_budget_factors",
+    "Value": "0;1;1.5;4.5;10;50"
+  },
+  "crew_budget": {
+    "Key": "crew_budget",
+    "Value": "100;150"
+  },
+  "costumes_and_props_quality_budget": {
+    "Key": "costumes_and_props_quality_budget",
+    "Value": "12000; 19200;24000;36000"
+  },
+  "costumes_and_props_quality_duration": {
+    "Key": "costumes_and_props_quality_duration",
+    "Value": "0.75;1.5;2.25;3"
+  },
+  "second_unit_production_bonus": {
+    "Key": "second_unit_production_bonus",
+    "Value": "0.15"
+  },
+  "second_unit_production_cost_per_tick": {
+    "Key": "second_unit_production_cost_per_tick",
+    "Value": "1000"
+  },
+  "skip_scenes_factor": {
+    "Key": "skip_scenes_factor",
+    "Value": "0.2"
+  },
+  "reduce_quality_factor": {
+    "Key": "reduce_quality_factor",
+    "Value": "0.2"
+  },
+  "overtime_payment_fraction": {
+    "Key": "overtime_payment_fraction",
+    "Value": "0.3"
+  },
+  "production_overtime_hour_attitude_rates": {
+    "Key": "production_overtime_hour_attitude_rates",
+    "Value": "0.005;0;-0.01"
+  },
+  "production_overtime_days_mood_rates": {
+    "Key": "production_overtime_days_mood_rates",
+    "Value": "0;-0.01;-0.02"
+  },
+  "production_positive_baseline_bonus_avg_mood": {
+    "Key": "production_positive_baseline_bonus_avg_mood",
+    "Value": "0.9"
+  },
+  "production_positive_baseline_bonus_fraction": {
+    "Key": "production_positive_baseline_bonus_fraction",
+    "Value": "0.05"
+  },
+  "production_negative_baseline_bonus_avg_mood": {
+    "Key": "production_negative_baseline_bonus_avg_mood",
+    "Value": "0.1"
+  },
+  "production_negative_baseline_bonus_fraction": {
+    "Key": "production_negative_baseline_bonus_fraction",
+    "Value": "-0.05"
+  },
+  "production_speed_factors_for_workhours": {
+    "Key": "production_speed_factors_for_workhours",
+    "Value": "0.75;1;1.5"
+  },
+  "available_workhours": {
+    "Key": "available_workhours",
+    "Value": "8;12;16"
+  },
+  "default_workhours": {
+    "Key": "default_workhours",
+    "Value": "1"
+  },
+  "production_mood_baseline_bonus_per_character": {
+    "Key": "production_mood_baseline_bonus_per_character",
+    "Value": "-0.00015_0.00015"
+  },
+  "production_attitude_baseline_bonus_per_character": {
+    "Key": "production_attitude_baseline_bonus_per_character",
+    "Value": "0_0"
+  },
+  "production_mood_baseline_bonus_fractional_limit": {
+    "Key": "production_mood_baseline_bonus_fractional_limit",
+    "Value": "0.1"
+  },
+  "production_mood_baseline_penalty_fractional_limit": {
+    "Key": "production_mood_baseline_penalty_fractional_limit",
+    "Value": "-0.2"
+  },
+  "production_attitude_baseline_bonus_fractional_limit": {
+    "Key": "production_attitude_baseline_bonus_fractional_limit",
+    "Value": "0"
+  },
+  "production_attitude_baseline_penalty_fractional_limit": {
+    "Key": "production_attitude_baseline_penalty_fractional_limit",
+    "Value": "0"
+  },
+  "payment_timeline_display_days": {
+    "Key": "payment_timeline_display_days",
+    "Value": "30"
+  },
+  "min_actual_load": {
+    "Key": "min_actual_load",
+    "Value": "0.1"
+  },
+  "postprod_base_duration_prod_fraction": {
+    "Key": "postprod_base_duration_prod_fraction",
+    "Value": "0.33"
+  },
+  "postprod_montage_base_cost": {
+    "Key": "postprod_montage_base_cost",
+    "Value": "500"
+  },
+  "postprod_music_base_cost": {
+    "Key": "postprod_music_base_cost",
+    "Value": "100"
+  },
+  "postprod_sound_base_cost": {
+    "Key": "postprod_sound_base_cost",
+    "Value": "100"
+  },
+  "postprod_rank_diff_bonus_scale": {
+    "Key": "postprod_rank_diff_bonus_scale",
+    "Value": "0.1"
+  },
+  "film_editor_bonus_fraction": {
+    "Key": "film_editor_bonus_fraction",
+    "Value": "0.5"
+  },
+  "composer_bonus_fraction": {
+    "Key": "composer_bonus_fraction",
+    "Value": "0.5"
+  },
+  "composer_payment_range": {
+    "Key": "composer_payment_range",
+    "Value": "1000_5000"
+  },
+  "postprod_quality_negative_bonus_range": {
+    "Key": "postprod_quality_negative_bonus_range",
+    "Value": "-0.065_-0.125"
+  },
+  "postprod_quality_positive_bonus_range": {
+    "Key": "postprod_quality_positive_bonus_range",
+    "Value": "0.033_0.01"
+  },
+  "postprod_character_negative_bonus_range": {
+    "Key": "postprod_character_negative_bonus_range",
+    "Value": "-0.065_-0.125"
+  },
+  "postprod_character_positive_bonus_range": {
+    "Key": "postprod_character_positive_bonus_range",
+    "Value": "0.033_0.01"
+  },
+  "quality_recommendation_intevals": {
+    "Key": "quality_recommendation_intevals",
+    "Value": "0.35;0.7"
+  },
+  "montage_fraction": {
+    "Key": "montage_fraction",
+    "Value": "0.2"
+  },
+  "music_fraction": {
+    "Key": "music_fraction",
+    "Value": "0.2"
+  },
+  "other_sound_fraction": {
+    "Key": "other_sound_fraction",
+    "Value": "0.2"
+  },
+  "average_event_amount_per_prep_prod_post": {
+    "Key": "average_event_amount_per_prep_prod_post",
+    "Value": "3.5"
+  },
+  "max_event_amount_per_prep_prod_post_duration_based": {
+    "Key": "max_event_amount_per_prep_prod_post_duration_based",
+    "Value": "2;4;6;9"
+  },
+  "per_prep_prod_post_duration_intervals": {
+    "Key": "per_prep_prod_post_duration_intervals",
+    "Value": "60;90;130"
+  },
+  "average_amount_of_general_events_per_production": {
+    "Key": "average_amount_of_general_events_per_production",
+    "Value": "1000"
+  },
+  "indoor_quality_event_probablities": {
+    "Key": "indoor_quality_event_probablities",
+    "Value": "0.85;0.85;0.85;0.85"
+  },
+  "outoor_quality_event_probablities": {
+    "Key": "outoor_quality_event_probablities",
+    "Value": "0.85;0.85;0.85;0.85"
+  },
+  "costumes_quality_event_probablities": {
+    "Key": "costumes_quality_event_probablities",
+    "Value": "0.85;0.85;0.85;0.85"
+  },
+  "extras_quality_event_probablities": {
+    "Key": "extras_quality_event_probablities",
+    "Value": "0.85;0.85;0.85;0.85"
+  },
+  "sequel_event_probability": {
+    "Key": "sequel_event_probability",
+    "Value": "60"
+  },
+  "label_event_probablity": {
+    "Key": "label_event_probablity",
+    "Value": "0.85"
+  },
+  "label_event_probablity_production": {
+    "Key": "label_event_probablity_production",
+    "Value": "0.85"
+  },
+  "mood_event_probability_range": {
+    "Key": "mood_event_probability_range",
+    "Value": "1_1"
+  },
+  "attitude_event_probability_range": {
+    "Key": "attitude_event_probability_range",
+    "Value": "1_1"
+  },
+  "average_amount_of_general_events_per_preproduction": {
+    "Key": "average_amount_of_general_events_per_preproduction",
+    "Value": "1"
+  },
+  "label_event_probablity_preproduction": {
+    "Key": "label_event_probablity_preproduction",
+    "Value": "0.85"
+  },
+  "pollux_interlude_event_per_day_probability": {
+    "Key": "pollux_interlude_event_per_day_probability",
+    "Value": "1"
+  },
+  "average_amount_of_general_events_per_postproduction": {
+    "Key": "average_amount_of_general_events_per_postproduction",
+    "Value": "1"
+  },
+  "min_rank_difference_montage_mismatch": {
+    "Key": "min_rank_difference_montage_mismatch",
+    "Value": "3"
+  },
+  "min_rank_difference_sound_mismatch": {
+    "Key": "min_rank_difference_sound_mismatch",
+    "Value": "3"
+  },
+  "min_stars_difference_indoor_mismatch": {
+    "Key": "min_stars_difference_indoor_mismatch",
+    "Value": "2"
+  },
+  "min_stars_difference_outdoor_mismatch": {
+    "Key": "min_stars_difference_outdoor_mismatch",
+    "Value": "2"
+  },
+  "focus_group_base_duration": {
+    "Key": "focus_group_base_duration",
+    "Value": "10"
+  },
+  "focus_group_base_budget": {
+    "Key": "focus_group_base_budget",
+    "Value": "1500"
+  },
+  "notification_close_delay": {
+    "Key": "notification_close_delay",
+    "Value": "15"
+  },
+  "widget_completed_item_days_delay": {
+    "Key": "widget_completed_item_days_delay",
+    "Value": "3"
+  },
+  "widget_movie_budget_stages": {
+    "Key": "widget_movie_budget_stages",
+    "Value": "100000; 500000; 1000000"
+  },
+  "widget_movie_budget_stages_scale": {
+    "Key": "widget_movie_budget_stages_scale",
+    "Value": "0.8; 0.85; 0.9; 1"
+  },
+  "widget_reel_actual_load_stages": {
+    "Key": "widget_reel_actual_load_stages",
+    "Value": "0.1; 0.5; 1; 1.5; 2; 3"
+  },
+  "widget_reel_speeds": {
+    "Key": "widget_reel_speeds",
+    "Value": "0.01; 0.025; 0.05; 0.25; 0.5; 1; 1.5"
+  },
+  "widget_reel_time_control_multipliers": {
+    "Key": "widget_reel_time_control_multipliers",
+    "Value": "0;0.5;1;2;4;8"
+  },
+  "widget_collapse_distance_threshold": {
+    "Key": "widget_collapse_distance_threshold",
+    "Value": "68"
+  },
+  "release_extension_express_cost_per_copy": {
+    "Key": "release_extension_express_cost_per_copy",
+    "Value": "12"
+  },
+  "release_ad_pattern_repeat_period": {
+    "Key": "release_ad_pattern_repeat_period",
+    "Value": "380"
+  },
+  "weeks_per_release": {
+    "Key": "weeks_per_release",
+    "Value": "4"
+  },
+  "ads_efficiency": {
+    "Key": "ads_efficiency",
+    "Value": "0.15;0.30;0.50"
+  },
+  "ads_campaign_efficiency_graphic": {
+    "Key": "ads_campaign_efficiency_graphic",
+    "Value": "0.25;0.45;0.60;0.70;0.80;0.90;0.95;1.00;1.00;0.95;0.90;0.85;0.75;0.60;0.30;0.10"
+  },
+  "ads_campaign_drop_graphic": {
+    "Key": "ads_campaign_drop_graphic",
+    "Value": "0.95;0.85;0.70;0.20"
+  },
+  "ads_campaign_max_duration_in_weeks": {
+    "Key": "ads_campaign_max_duration_in_weeks",
+    "Value": "16"
+  },
+  "films_copy_budget_per_copy_base": {
+    "Key": "films_copy_budget_per_copy_base",
+    "Value": "100"
+  },
+  "films_copy_duration_base": {
+    "Key": "films_copy_duration_base",
+    "Value": "20"
+  },
+  "our_release_slots_per_copy": {
+    "Key": "our_release_slots_per_copy",
+    "Value": "35"
+  },
+  "other_release_slots_per_copy": {
+    "Key": "other_release_slots_per_copy",
+    "Value": "22.54"
+  },
+  "price_per_other_slot": {
+    "Key": "price_per_other_slot",
+    "Value": "18.4"
+  },
+  "base_audience_fraction": {
+    "Key": "base_audience_fraction",
+    "Value": "0.55"
+  },
+  "art_audience_fraction": {
+    "Key": "art_audience_fraction",
+    "Value": "0.15"
+  },
+  "com_audience_fraction": {
+    "Key": "com_audience_fraction",
+    "Value": "0.3"
+  },
+  "all_cinemas": {
+    "Key": "all_cinemas",
+    "Value": "1500"
+  },
+  "additional_cinemas_1940": {
+    "Key": "additional_cinemas_1940",
+    "Value": "250"
+  },
+  "additional_cinemas_date_1940": {
+    "Key": "additional_cinemas_date_1940",
+    "Value": "01-01-1940"
+  },
+  "additional_cinemas_dates": {
+    "Key": "additional_cinemas_dates",
+    "Value": "01-01-1936: 40; 01-01-1938: 40; 01-01-1940: 250"
+  },
+  "one_cinema_cost": {
+    "Key": "one_cinema_cost",
+    "Value": "30000"
+  },
+  "cinema_sell_cost_modificator": {
+    "Key": "cinema_sell_cost_modificator",
+    "Value": "0.7"
+  },
+  "our_cinemas_total": {
+    "Key": "our_cinemas_total",
+    "Value": "91"
+  },
+  "our_slots_per_cinema": {
+    "Key": "our_slots_per_cinema",
+    "Value": "5"
+  },
+  "our_one_cinema_service_cost": {
+    "Key": "our_one_cinema_service_cost",
+    "Value": "200"
+  },
+  "our_slots_total": {
+    "Key": "our_slots_total",
+    "Value": "3185"
+  },
+  "other_slots_total": {
+    "Key": "other_slots_total",
+    "Value": "3000"
+  },
+  "all_audience": {
+    "Key": "all_audience",
+    "Value": "30000000"
+  },
+  "too_many_rented_slots_for_first_non_tutorial_movie": {
+    "Key": "too_many_rented_slots_for_first_non_tutorial_movie",
+    "Value": "30000"
+  },
+  "recommended_slots_per_week": {
+    "Key": "recommended_slots_per_week",
+    "Value": "5000"
+  },
+  "occupancy_average_base": {
+    "Key": "occupancy_average_base",
+    "Value": "1"
+  },
+  "seats_per_slot_base": {
+    "Key": "seats_per_slot_base",
+    "Value": "400"
+  },
+  "price_per_seat_base": {
+    "Key": "price_per_seat_base",
+    "Value": "0.23"
+  },
+  "default_audience_first_week_ads_efficiency_id": {
+    "Key": "default_audience_first_week_ads_efficiency_id",
+    "Value": "8"
+  },
+  "ads_budget": {
+    "Key": "ads_budget",
+    "Value": "10000"
+  },
+  "release_min_income_ranges": {
+    "Key": "release_min_income_ranges",
+    "Value": "0_11;0.01_0.03;12_9999;0.001_0.003"
+  },
+  "release_magic_number": {
+    "Key": "release_magic_number",
+    "Value": "3"
+  },
+  "paper_writers_range": {
+    "Key": "paper_writers_range",
+    "Value": "1_4"
+  },
+  "paper_writers_lifetime_range": {
+    "Key": "paper_writers_lifetime_range",
+    "Value": "1_25"
+  },
+  "kinomark_audience_weight": {
+    "Key": "kinomark_audience_weight",
+    "Value": "0.4"
+  },
+  "kinomark_movie_score_weights": {
+    "Key": "kinomark_movie_score_weights",
+    "Value": "0.25;0.5;0.25"
+  },
+  "kinomark_score_weights": {
+    "Key": "kinomark_score_weights",
+    "Value": "0.16;0.23;0.30;0.37;0.44;0.51;0.58;0.65;0.72;0.79;0.86;0.93"
+  },
+  "release_holiday_week_bonus_fraction": {
+    "Key": "release_holiday_week_bonus_fraction",
+    "Value": "1"
+  },
+  "release_holiday_adjacent_week_bonus_fraction": {
+    "Key": "release_holiday_adjacent_week_bonus_fraction",
+    "Value": "0.5"
+  },
+  "movie_budget_rate": {
+    "Key": "movie_budget_rate",
+    "Value": "100000;500000;1000000"
+  },
+  "review_stars_amount": {
+    "Key": "review_stars_amount",
+    "Value": "5"
+  },
+  "negotiation_contract_multiplier_years": {
+    "Key": "negotiation_contract_multiplier_years",
+    "Value": "0.85;2.2;3.2;4;5;6;7;8;9;10"
+  },
+  "negotiation_contract_multiplier_movies": {
+    "Key": "negotiation_contract_multiplier_movies",
+    "Value": "0;0.75;1.5;2.1;2.6;3.1;3.6;4.0;4.5;5"
+  },
+  "contract_extension_weight_multiplier": {
+    "Key": "contract_extension_weight_multiplier",
+    "Value": "3"
+  },
+  "negotiation_skill_multiplier_ranges": {
+    "Key": "negotiation_skill_multiplier_ranges",
+    "Value": "0;0.2;0.5;0.7"
+  },
+  "negotiation_skill_multipliers": {
+    "Key": "negotiation_skill_multipliers",
+    "Value": "1;3;4;5;"
+  },
+  "negotiation_services_and_gifts_max_weight_fraction": {
+    "Key": "negotiation_services_and_gifts_max_weight_fraction",
+    "Value": "0.7"
+  },
+  "negotiation_preferred_dark_present_multiplier": {
+    "Key": "negotiation_preferred_dark_present_multiplier",
+    "Value": "3"
+  },
+  "negotiation_argument_skill_weight_multiplier": {
+    "Key": "negotiation_argument_skill_weight_multiplier",
+    "Value": "0.1417"
+  },
+  "negotiation_argument_years_of_service_weight_multiplier": {
+    "Key": "negotiation_argument_years_of_service_weight_multiplier",
+    "Value": "1.5"
+  },
+  "negotiation_argument_status_com_weight_multiplier": {
+    "Key": "negotiation_argument_status_com_weight_multiplier",
+    "Value": "0.0625"
+  },
+  "negotiation_argument_status_art_weight_multiplier": {
+    "Key": "negotiation_argument_status_art_weight_multiplier",
+    "Value": "0.05"
+  },
+  "negotiation_argument_roles_recent_weight_multiplier": {
+    "Key": "negotiation_argument_roles_recent_weight_multiplier",
+    "Value": "0"
+  },
+  "negotiation_argument_roles_established_weight_multiplier": {
+    "Key": "negotiation_argument_roles_established_weight_multiplier",
+    "Value": "0.14085"
+  },
+  "negotiation_argument_genres_recent_weight_multiplier": {
+    "Key": "negotiation_argument_genres_recent_weight_multiplier",
+    "Value": "0"
+  },
+  "negotiation_argument_genres_established_weight_multiplier": {
+    "Key": "negotiation_argument_genres_established_weight_multiplier",
+    "Value": "0.2817"
+  },
+  "negotiation_argument_indoor_skill_weight_multiplier": {
+    "Key": "negotiation_argument_indoor_skill_weight_multiplier",
+    "Value": "10"
+  },
+  "negotiation_argument_outdoor_skill_weight_multiplier": {
+    "Key": "negotiation_argument_outdoor_skill_weight_multiplier",
+    "Value": "10"
+  },
+  "negotiation_argument_bonus_time_weight_multiplier": {
+    "Key": "negotiation_argument_bonus_time_weight_multiplier",
+    "Value": "20"
+  },
+  "negotiation_argument_bonus_influence_weight_multiplier": {
+    "Key": "negotiation_argument_bonus_influence_weight_multiplier",
+    "Value": "20"
+  },
+  "negotiation_argument_bonus_money_weight_multiplier": {
+    "Key": "negotiation_argument_bonus_money_weight_multiplier",
+    "Value": "20"
+  },
+  "negotiation_scriptwriter_whitetag_weight": {
+    "Key": "negotiation_scriptwriter_whitetag_weight",
+    "Value": "2.3"
+  },
+  "negotiation_scriptwriter_blacktag_weight": {
+    "Key": "negotiation_scriptwriter_blacktag_weight",
+    "Value": "-1.8"
+  },
+  "negotiation_unwanted_actor_weight": {
+    "Key": "negotiation_unwanted_actor_weight",
+    "Value": "300"
+  },
+  "negotiation_unusual_female_role": {
+    "Key": "negotiation_unusual_female_role",
+    "Value": "400"
+  },
+  "negotiation_reputation_min_max": {
+    "Key": "negotiation_reputation_min_max",
+    "Value": "0_300"
+  },
+  "negotiation_reputation_negative_range": {
+    "Key": "negotiation_reputation_negative_range",
+    "Value": "-100_-30"
+  },
+  "negotiation_reputation_positive_range": {
+    "Key": "negotiation_reputation_positive_range",
+    "Value": "30_60"
+  },
+  "negotiation_attitude_min_max": {
+    "Key": "negotiation_attitude_min_max",
+    "Value": "0.2_0.8"
+  },
+  "negotiation_attitude_negative_range": {
+    "Key": "negotiation_attitude_negative_range",
+    "Value": "0.1_0.1"
+  },
+  "negotiation_attitude_positive_range": {
+    "Key": "negotiation_attitude_positive_range",
+    "Value": "-0.15_-0.15"
+  },
+  "negotiation_gender_male_multiplier": {
+    "Key": "negotiation_gender_male_multiplier",
+    "Value": "1"
+  },
+  "negotiation_gender_female_multiplier": {
+    "Key": "negotiation_gender_female_multiplier",
+    "Value": "0.7"
+  },
+  "negotiation_pollux_win_argument_weight": {
+    "Key": "negotiation_pollux_win_argument_weight",
+    "Value": "200"
+  },
+  "negotiation_pollux_nomination_argument_weight": {
+    "Key": "negotiation_pollux_nomination_argument_weight",
+    "Value": "100"
+  },
+  "contract_years_range": {
+    "Key": "contract_years_range",
+    "Value": "1_3"
+  },
+  "contract_movies_range": {
+    "Key": "contract_movies_range",
+    "Value": "1_3"
+  },
+  "contract_years_demanded_range": {
+    "Key": "contract_years_demanded_range",
+    "Value": "3_6"
+  },
+  "surveillance_min_agent_skill_duration": {
+    "Key": "surveillance_min_agent_skill_duration",
+    "Value": "35"
+  },
+  "surveillance_max_agent_skill_duration": {
+    "Key": "surveillance_max_agent_skill_duration",
+    "Value": "22"
+  },
+  "surveillance_min_agent_skill_outcome_probabilities": {
+    "Key": "surveillance_min_agent_skill_outcome_probabilities",
+    "Value": "0.2;0.55;0.25"
+  },
+  "surveillance_max_agent_skill_outcome_probabilities": {
+    "Key": "surveillance_max_agent_skill_outcome_probabilities",
+    "Value": "0.85;0.1;0.05"
+  },
+  "surveillance_random_duration_offset": {
+    "Key": "surveillance_random_duration_offset",
+    "Value": "3"
+  },
+  "surveillance_failure_duration_offset_range": {
+    "Key": "surveillance_failure_duration_offset_range",
+    "Value": "-4_-9"
+  },
+  "surveillance_fubar_duration_offset_range": {
+    "Key": "surveillance_fubar_duration_offset_range",
+    "Value": "-7_-11"
+  },
+  "threat_min_agent_skill_duration": {
+    "Key": "threat_min_agent_skill_duration",
+    "Value": "35"
+  },
+  "threat_max_agent_skill_duration": {
+    "Key": "threat_max_agent_skill_duration",
+    "Value": "22"
+  },
+  "threat_min_agent_skill_outcome_probabilities": {
+    "Key": "threat_min_agent_skill_outcome_probabilities",
+    "Value": "0.2;0.55;0.25"
+  },
+  "threat_max_agent_skill_outcome_probabilities": {
+    "Key": "threat_max_agent_skill_outcome_probabilities",
+    "Value": "0.85;0.1;0.05"
+  },
+  "threat_random_duration_offset": {
+    "Key": "threat_random_duration_offset",
+    "Value": "3"
+  },
+  "threat_failure_duration_offset_range": {
+    "Key": "threat_failure_duration_offset_range",
+    "Value": "-4_-9"
+  },
+  "threat_fubar_duration_offset_range": {
+    "Key": "threat_fubar_duration_offset_range",
+    "Value": "-7_-11"
+  },
+  "threat_negotiation_bonus_weight": {
+    "Key": "threat_negotiation_bonus_weight",
+    "Value": "-1800"
+  },
+  "threat_negotiation_bonus_duration": {
+    "Key": "threat_negotiation_bonus_duration",
+    "Value": "180"
+  },
+  "beating_min_agent_skill_duration": {
+    "Key": "beating_min_agent_skill_duration",
+    "Value": "35"
+  },
+  "beating_max_agent_skill_duration": {
+    "Key": "beating_max_agent_skill_duration",
+    "Value": "22"
+  },
+  "beating_min_agent_skill_outcome_probabilities": {
+    "Key": "beating_min_agent_skill_outcome_probabilities",
+    "Value": "0.2;0.55;0.25"
+  },
+  "beating_max_agent_skill_outcome_probabilities": {
+    "Key": "beating_max_agent_skill_outcome_probabilities",
+    "Value": "0.85;0.1;0.05"
+  },
+  "beating_random_duration_offset": {
+    "Key": "beating_random_duration_offset",
+    "Value": "3"
+  },
+  "beating_failure_duration_offset_range": {
+    "Key": "beating_failure_duration_offset_range",
+    "Value": "-4_-9"
+  },
+  "beating_fubar_duration_offset_range": {
+    "Key": "beating_fubar_duration_offset_range",
+    "Value": "-7_-11"
+  },
+  "beating_negotiation_bonus_weight": {
+    "Key": "beating_negotiation_bonus_weight",
+    "Value": "-2400"
+  },
+  "beating_negotiation_bonus_duration": {
+    "Key": "beating_negotiation_bonus_duration",
+    "Value": "240"
+  },
+  "kidnapping_min_agent_skill_duration": {
+    "Key": "kidnapping_min_agent_skill_duration",
+    "Value": "35"
+  },
+  "kidnapping_max_agent_skill_duration": {
+    "Key": "kidnapping_max_agent_skill_duration",
+    "Value": "22"
+  },
+  "kidnapping_min_agent_skill_outcome_probabilities": {
+    "Key": "kidnapping_min_agent_skill_outcome_probabilities",
+    "Value": "0.2;0.55;0.25"
+  },
+  "kidnapping_max_agent_skill_outcome_probabilities": {
+    "Key": "kidnapping_max_agent_skill_outcome_probabilities",
+    "Value": "0.85;0.1;0.05"
+  },
+  "kidnapping_random_duration_offset": {
+    "Key": "kidnapping_random_duration_offset",
+    "Value": "3"
+  },
+  "kidnapping_failure_duration_offset_range": {
+    "Key": "kidnapping_failure_duration_offset_range",
+    "Value": "-4_-9"
+  },
+  "kidnapping_fubar_duration_offset_range": {
+    "Key": "kidnapping_fubar_duration_offset_range",
+    "Value": "-7_-11"
+  },
+  "protection_min_agent_skill_duration": {
+    "Key": "protection_min_agent_skill_duration",
+    "Value": "180"
+  },
+  "protection_max_agent_skill_duration": {
+    "Key": "protection_max_agent_skill_duration",
+    "Value": "180"
+  },
+  "protection_min_agent_skill_outcome_probabilities": {
+    "Key": "protection_min_agent_skill_outcome_probabilities",
+    "Value": "0.2;0.55;0.25"
+  },
+  "protection_max_agent_skill_outcome_probabilities": {
+    "Key": "protection_max_agent_skill_outcome_probabilities",
+    "Value": "0.85;0.1;0.05"
+  },
+  "protection_random_duration_offset": {
+    "Key": "protection_random_duration_offset",
+    "Value": "0"
+  },
+  "protection_failure_duration_offset_range": {
+    "Key": "protection_failure_duration_offset_range",
+    "Value": "0_0"
+  },
+  "protection_fubar_duration_offset_range": {
+    "Key": "protection_fubar_duration_offset_range",
+    "Value": "0_0"
+  },
+  "protection_success_probability": {
+    "Key": "protection_success_probability",
+    "Value": "0.15;0.85"
+  },
+  "passive_protection": {
+    "Key": "passive_protection",
+    "Value": "0.05;0.1;0.15;0.25"
+  },
+  "prisoner_keep_cost": {
+    "Key": "prisoner_keep_cost",
+    "Value": "-1"
+  },
+  "ransom_duration_range": {
+    "Key": "ransom_duration_range",
+    "Value": "5_7"
+  },
+  "meat_per_person": {
+    "Key": "meat_per_person",
+    "Value": "1"
+  },
+  "torture_death_probability": {
+    "Key": "torture_death_probability",
+    "Value": "0.5"
+  },
+  "ransom_family_cash": {
+    "Key": "ransom_family_cash",
+    "Value": "100000"
+  },
+  "ransom_studio_cash_per_weight": {
+    "Key": "ransom_studio_cash_per_weight",
+    "Value": "100"
+  },
+  "assasination_min_agent_skill_duration": {
+    "Key": "assasination_min_agent_skill_duration",
+    "Value": "45"
+  },
+  "assasination_max_agent_skill_duration": {
+    "Key": "assasination_max_agent_skill_duration",
+    "Value": "32"
+  },
+  "assasination_min_agent_skill_outcome_probabilities": {
+    "Key": "assasination_min_agent_skill_outcome_probabilities",
+    "Value": "0.05;0.55;0.4"
+  },
+  "assasination_max_agent_skill_outcome_probabilities": {
+    "Key": "assasination_max_agent_skill_outcome_probabilities",
+    "Value": "0.85;0.1;0.05"
+  },
+  "assasination_random_duration_offset": {
+    "Key": "assasination_random_duration_offset",
+    "Value": "3"
+  },
+  "assasination_failure_duration_offset_range": {
+    "Key": "assasination_failure_duration_offset_range",
+    "Value": "-4_-9"
+  },
+  "assasination_fubar_duration_offset_range": {
+    "Key": "assasination_fubar_duration_offset_range",
+    "Value": "-7_-11"
+  },
+  "competitors_attack_sabotage_maintenance_cost": {
+    "Key": "competitors_attack_sabotage_maintenance_cost",
+    "Value": "10000"
+  },
+  "competitors_attack_beatings_maintenance_cost": {
+    "Key": "competitors_attack_beatings_maintenance_cost",
+    "Value": "5000"
+  },
+  "competitors_attack_murder_maintenance_cost": {
+    "Key": "competitors_attack_murder_maintenance_cost",
+    "Value": "50000"
+  },
+  "competitors_attack_kidnappings_maintenance_cost": {
+    "Key": "competitors_attack_kidnappings_maintenance_cost",
+    "Value": "100000"
+  },
+  "competitors_attack_sabotage_base_probability_per_week": {
+    "Key": "competitors_attack_sabotage_base_probability_per_week",
+    "Value": "0"
+  },
+  "competitors_attack_beatings_base_probability_per_week": {
+    "Key": "competitors_attack_beatings_base_probability_per_week",
+    "Value": "0.006557377"
+  },
+  "competitors_attack_murder_base_probability_per_week": {
+    "Key": "competitors_attack_murder_base_probability_per_week",
+    "Value": "0.003278688525"
+  },
+  "competitors_attack_kidnappings_base_probability_per_week": {
+    "Key": "competitors_attack_kidnappings_base_probability_per_week",
+    "Value": "0.00273224"
+  },
+  "competitors_attack_cooldown_in_weeks": {
+    "Key": "competitors_attack_cooldown_in_weeks",
+    "Value": "18"
+  },
+  "building_capacity_per_point": {
+    "Key": "building_capacity_per_point",
+    "Value": "1"
+  },
+  "building_maintenance_cost_per_point": {
+    "Key": "building_maintenance_cost_per_point",
+    "Value": "1"
+  },
+  "building_cost_per_point": {
+    "Key": "building_cost_per_point",
+    "Value": "1000"
+  },
+  "buildings_degree_of_wear": {
+    "Key": "buildings_degree_of_wear",
+    "Value": "0.25"
+  },
+  "building_duration_per_point": {
+    "Key": "building_duration_per_point",
+    "Value": "1.2"
+  },
+  "water_unit_overflow_cost": {
+    "Key": "water_unit_overflow_cost",
+    "Value": "0.185"
+  },
+  "electricity_unit_overflow_cost": {
+    "Key": "electricity_unit_overflow_cost",
+    "Value": "0.225"
+  },
+  "water_usage_per_staff": {
+    "Key": "water_usage_per_staff",
+    "Value": "4"
+  },
+  "electricity_usage_per_staff": {
+    "Key": "electricity_usage_per_staff",
+    "Value": "5"
+  },
+  "building_wear_per_day": {
+    "Key": "building_wear_per_day",
+    "Value": "0.000076923077"
+  },
+  "water_units_generated_by_water_tower": {
+    "Key": "water_units_generated_by_water_tower",
+    "Value": "75"
+  },
+  "electricity_units_generated_by_power_plant": {
+    "Key": "electricity_units_generated_by_power_plant",
+    "Value": "100"
+  },
+  "building_wear_thresholds": {
+    "Key": "building_wear_thresholds",
+    "Value": "0.3;0.6;1"
+  },
+  "building_repair_multipliers": {
+    "Key": "building_repair_multipliers",
+    "Value": "1.33;1;0.25"
+  },
+  "infrastructure_improvement_lvl_water_usage": {
+    "Key": "infrastructure_improvement_lvl_water_usage",
+    "Value": "0;45;115;320"
+  },
+  "infrastructure_improvement_lvl_electricity_usage": {
+    "Key": "infrastructure_improvement_lvl_electricity_usage",
+    "Value": "0;80;200;550"
+  },
+  "infrastructure_improvement_lvl_budget": {
+    "Key": "infrastructure_improvement_lvl_budget",
+    "Value": "0;7500;50000;115000"
+  },
+  "max_possible_improvement_levels": {
+    "Key": "max_possible_improvement_levels",
+    "Value": "4"
+  },
+  "building_demolish_point_thresholds": {
+    "Key": "building_demolish_point_thresholds",
+    "Value": "0;50;100"
+  },
+  "building_demolish_durations": {
+    "Key": "building_demolish_durations",
+    "Value": "5;6;7"
+  },
+  "building_demolish_cost_per_point": {
+    "Key": "building_demolish_cost_per_point",
+    "Value": "100"
+  },
+  "building_freeze_block_timer": {
+    "Key": "building_freeze_block_timer",
+    "Value": "70"
+  },
+  "building_freeze_block_timer_with_perk": {
+    "Key": "building_freeze_block_timer_with_perk",
+    "Value": "35"
+  },
+  "building_freeze_salary_cut_factor": {
+    "Key": "building_freeze_salary_cut_factor",
+    "Value": "0.5; 0.25"
+  },
+  "movie_element_establishment_levels": {
+    "Key": "movie_element_establishment_levels",
+    "Value": "4"
+  },
+  "movie_element_establishment_freshness": {
+    "Key": "movie_element_establishment_freshness",
+    "Value": "1;0.5;0;0"
+  },
+  "movie_element_establishment_continuity": {
+    "Key": "movie_element_establishment_continuity",
+    "Value": "0;0.33;0.66;1"
+  },
+  "sequel_legacy_perk_bonus": {
+    "Key": "sequel_legacy_perk_bonus",
+    "Value": "10"
+  },
+  "sequel_freshness_perk_bonus": {
+    "Key": "sequel_freshness_perk_bonus",
+    "Value": "10"
+  },
+  "fanbase_decay_rate": {
+    "Key": "fanbase_decay_rate",
+    "Value": "0.0164"
+  },
+  "fanbase_gain_fraction": {
+    "Key": "fanbase_gain_fraction",
+    "Value": "0.33"
+  },
+  "fanbase_gain_droprate_threshold": {
+    "Key": "fanbase_gain_droprate_threshold",
+    "Value": "0.4"
+  },
+  "fanbase_continuity_penalty_interval": {
+    "Key": "fanbase_continuity_penalty_interval",
+    "Value": "0.3_0"
+  },
+  "tech_com_factor_8_mm": {
+    "Key": "tech_com_factor_8_mm",
+    "Value": "-0.15"
+  },
+  "tech_com_factor_16_mm": {
+    "Key": "tech_com_factor_16_mm",
+    "Value": "-0.5"
+  },
+  "tech_com_factor_35_mm": {
+    "Key": "tech_com_factor_35_mm",
+    "Value": "0.5"
+  },
+  "tech_com_factor_70_mm": {
+    "Key": "tech_com_factor_70_mm",
+    "Value": "0.1"
+  },
+  "tech_com_factor_mono_on_disk": {
+    "Key": "tech_com_factor_mono_on_disk",
+    "Value": "-0.5"
+  },
+  "tech_com_factor_mono_on_film": {
+    "Key": "tech_com_factor_mono_on_film",
+    "Value": "0"
+  },
+  "tech_com_factor_stereo": {
+    "Key": "tech_com_factor_stereo",
+    "Value": "0.5"
+  },
+  "tech_quality_time_bonus": {
+    "Key": "tech_quality_time_bonus",
+    "Value": "0.033"
+  },
+  "tech_quality_time_penalty": {
+    "Key": "tech_quality_time_penalty",
+    "Value": "-0.05"
+  },
+  "tech_practicality_prod_duration_bonus": {
+    "Key": "tech_practicality_prod_duration_bonus",
+    "Value": "0.02"
+  },
+  "tech_prod_duration_factor_8_mm": {
+    "Key": "tech_prod_duration_factor_8_mm",
+    "Value": "0.5"
+  },
+  "tech_prod_duration_factor_16_mm": {
+    "Key": "tech_prod_duration_factor_16_mm",
+    "Value": "0.8"
+  },
+  "tech_prod_duration_factor_35_mm": {
+    "Key": "tech_prod_duration_factor_35_mm",
+    "Value": "1"
+  },
+  "tech_prod_duration_factor_70_mm": {
+    "Key": "tech_prod_duration_factor_70_mm",
+    "Value": "1.5"
+  },
+  "tech_film_base_cost_per_day": {
+    "Key": "tech_film_base_cost_per_day",
+    "Value": "900"
+  },
+  "tech_audio_base_cost_per_day": {
+    "Key": "tech_audio_base_cost_per_day",
+    "Value": "900"
+  },
+  "tech_film_min_cost_per_day": {
+    "Key": "tech_film_min_cost_per_day",
+    "Value": "10"
+  },
+  "tech_audio_min_cost_per_day": {
+    "Key": "tech_audio_min_cost_per_day",
+    "Value": "10"
+  },
+  "tech_quality_point_cost_per_day": {
+    "Key": "tech_quality_point_cost_per_day",
+    "Value": "0.3"
+  },
+  "tech_practicality_point_cost_per_day": {
+    "Key": "tech_practicality_point_cost_per_day",
+    "Value": "0.15"
+  },
+  "tech_economy_point_cost_per_day": {
+    "Key": "tech_economy_point_cost_per_day",
+    "Value": "0.15"
+  },
+  "tech_colored_cost_per_day": {
+    "Key": "tech_colored_cost_per_day",
+    "Value": "1.7"
+  },
+  "tech_black_and_white_cost_per_day": {
+    "Key": "tech_black_and_white_cost_per_day",
+    "Value": "1"
+  },
+  "tech_colored_event_probability": {
+    "Key": "tech_colored_event_probability",
+    "Value": "0.05"
+  },
+  "tech_black_and_white_event_probability": {
+    "Key": "tech_black_and_white_event_probability",
+    "Value": "0.05"
+  },
+  "tech_practicality_event_probability_per_one": {
+    "Key": "tech_practicality_event_probability_per_one",
+    "Value": "0.05"
+  },
+  "tech_event_probability_8_mm": {
+    "Key": "tech_event_probability_8_mm",
+    "Value": "0.05"
+  },
+  "tech_event_probability_16_mm": {
+    "Key": "tech_event_probability_16_mm",
+    "Value": "0.05"
+  },
+  "tech_event_probability_35_mm": {
+    "Key": "tech_event_probability_35_mm",
+    "Value": "0.05"
+  },
+  "tech_event_probability_70_mm": {
+    "Key": "tech_event_probability_70_mm",
+    "Value": "0.05"
+  },
+  "tech_event_probability_mono_on_disk": {
+    "Key": "tech_event_probability_mono_on_disk",
+    "Value": "0.05"
+  },
+  "tech_event_probability_mono_on_film": {
+    "Key": "tech_event_probability_mono_on_film",
+    "Value": "0.05"
+  },
+  "tech_event_probability_stereo": {
+    "Key": "tech_event_probability_stereo",
+    "Value": "0.05"
+  },
+  "tech_cost_per_day_8_mm": {
+    "Key": "tech_cost_per_day_8_mm",
+    "Value": "0.15"
+  },
+  "tech_cost_per_day_16_mm": {
+    "Key": "tech_cost_per_day_16_mm",
+    "Value": "0.5"
+  },
+  "tech_cost_per_day_35_mm": {
+    "Key": "tech_cost_per_day_35_mm",
+    "Value": "1"
+  },
+  "tech_cost_per_day_70_mm": {
+    "Key": "tech_cost_per_day_70_mm",
+    "Value": "2.5"
+  },
+  "tech_cost_per_day_mono_on_disk": {
+    "Key": "tech_cost_per_day_mono_on_disk",
+    "Value": "1"
+  },
+  "tech_cost_per_day_mono_on_film": {
+    "Key": "tech_cost_per_day_mono_on_film",
+    "Value": "1.3"
+  },
+  "tech_cost_per_day_stereo": {
+    "Key": "tech_cost_per_day_stereo",
+    "Value": "3"
+  },
+  "tech_improvement_days_per_point_below_average": {
+    "Key": "tech_improvement_days_per_point_below_average",
+    "Value": "100"
+  },
+  "tech_improvement_days_per_point_average": {
+    "Key": "tech_improvement_days_per_point_average",
+    "Value": "200"
+  },
+  "tech_improvement_days_per_point_above_average": {
+    "Key": "tech_improvement_days_per_point_above_average",
+    "Value": "300"
+  },
+  "tech_improvement_total_duration_multiplier": {
+    "Key": "tech_improvement_total_duration_multiplier",
+    "Value": "10"
+  },
+  "tech_creation_days_per_point_below_average": {
+    "Key": "tech_creation_days_per_point_below_average",
+    "Value": "100"
+  },
+  "tech_creation_days_per_point_average": {
+    "Key": "tech_creation_days_per_point_average",
+    "Value": "200"
+  },
+  "tech_creation_days_per_point_above_average": {
+    "Key": "tech_creation_days_per_point_above_average",
+    "Value": "300"
+  },
+  "tech_improvement_red_time_per_rnd": {
+    "Key": "tech_improvement_red_time_per_rnd",
+    "Value": "1"
+  },
+  "tech_creation_red_time_per_rnd": {
+    "Key": "tech_creation_red_time_per_rnd",
+    "Value": "1"
+  },
+  "tech_creation_red_time_1_perk": {
+    "Key": "tech_creation_red_time_1_perk",
+    "Value": "0.25"
+  },
+  "tech_creation_red_time_2_perk": {
+    "Key": "tech_creation_red_time_2_perk",
+    "Value": "0.5"
+  },
+  "tech_sell_point_cost_base": {
+    "Key": "tech_sell_point_cost_base",
+    "Value": "30000"
+  },
+  "tech_sell_point_below_avg_bonus": {
+    "Key": "tech_sell_point_below_avg_bonus",
+    "Value": "-0.7"
+  },
+  "tech_sell_point_above_avg_bonus": {
+    "Key": "tech_sell_point_above_avg_bonus",
+    "Value": "0.5"
+  },
+  "tech_sell_unique_diff": {
+    "Key": "tech_sell_unique_diff",
+    "Value": "3"
+  },
+  "tech_sell_unique_bonus": {
+    "Key": "tech_sell_unique_bonus",
+    "Value": "1"
+  },
+  "tech_sell_trash_bonus": {
+    "Key": "tech_sell_trash_bonus",
+    "Value": "-0.2"
+  },
+  "tech_sell_major_bonus": {
+    "Key": "tech_sell_major_bonus",
+    "Value": "0.4"
+  },
+  "tech_sell_each_sold_bonus": {
+    "Key": "tech_sell_each_sold_bonus",
+    "Value": "0.2"
+  },
+  "tech_sell_format_8_bonus": {
+    "Key": "tech_sell_format_8_bonus",
+    "Value": "0"
+  },
+  "tech_sell_format_16_bonus": {
+    "Key": "tech_sell_format_16_bonus",
+    "Value": "0"
+  },
+  "tech_sell_format_35_bonus": {
+    "Key": "tech_sell_format_35_bonus",
+    "Value": "0"
+  },
+  "tech_sell_format_70_bonus": {
+    "Key": "tech_sell_format_70_bonus",
+    "Value": "0"
+  },
+  "tech_sell_format_mono_disk_bonus": {
+    "Key": "tech_sell_format_mono_disk_bonus",
+    "Value": "0"
+  },
+  "tech_sell_format_mono_film_bonus": {
+    "Key": "tech_sell_format_mono_film_bonus",
+    "Value": "0"
+  },
+  "tech_sell_format_stereo_bonus": {
+    "Key": "tech_sell_format_stereo_bonus",
+    "Value": "0"
+  },
+  "tech_sell_min_price_bonus": {
+    "Key": "tech_sell_min_price_bonus",
+    "Value": "-0.5"
+  },
+  "tech_sell_max_price_bonus": {
+    "Key": "tech_sell_max_price_bonus",
+    "Value": "0.5"
+  },
+  "policy_major_image_chance1_days": {
+    "Key": "policy_major_image_chance1_days",
+    "Value": "200"
+  },
+  "policy_major_image_chance2_days": {
+    "Key": "policy_major_image_chance2_days",
+    "Value": "600"
+  },
+  "policy_major_image_price1": {
+    "Key": "policy_major_image_price1",
+    "Value": "100000"
+  },
+  "policy_major_image_influence1": {
+    "Key": "policy_major_image_influence1",
+    "Value": "300"
+  },
+  "policy_major_image_duration1": {
+    "Key": "policy_major_image_duration1",
+    "Value": "90"
+  },
+  "policy_major_image_price2": {
+    "Key": "policy_major_image_price2",
+    "Value": "120000"
+  },
+  "policy_major_image_influence2": {
+    "Key": "policy_major_image_influence2",
+    "Value": "320"
+  },
+  "policy_major_image_duration2": {
+    "Key": "policy_major_image_duration2",
+    "Value": "95"
+  },
+  "policy_major_retreat_price": {
+    "Key": "policy_major_retreat_price",
+    "Value": "100000"
+  },
+  "policy_major_retreat_influence": {
+    "Key": "policy_major_retreat_influence",
+    "Value": "300"
+  },
+  "policy_major_retreat_duration": {
+    "Key": "policy_major_retreat_duration",
+    "Value": "9"
+  },
+  "policy_boutique_school_chance1_months": {
+    "Key": "policy_boutique_school_chance1_months",
+    "Value": "1"
+  },
+  "policy_boutique_school_chance1_price": {
+    "Key": "policy_boutique_school_chance1_price",
+    "Value": "100000"
+  },
+  "policy_boutique_school_chance2_months": {
+    "Key": "policy_boutique_school_chance2_months",
+    "Value": "1"
+  },
+  "policy_boutique_school_chance2_price": {
+    "Key": "policy_boutique_school_chance2_price",
+    "Value": "120000"
+  },
+  "policy_boutique_cap_days": {
+    "Key": "policy_boutique_cap_days",
+    "Value": "10"
+  },
+  "policy_boutique_cap_price": {
+    "Key": "policy_boutique_cap_price",
+    "Value": "100000"
+  },
+  "policy_boutique_prospective_pool_months": {
+    "Key": "policy_boutique_prospective_pool_months",
+    "Value": "10"
+  },
+  "policy_boutique_prospective_probabilities": {
+    "Key": "policy_boutique_prospective_probabilities",
+    "Value": "10;15;15;15;15;15;15"
+  },
+  "legal_defence_cost": {
+    "Key": "legal_defence_cost",
+    "Value": "100000;400000;800000"
+  },
+  "trial_win_chance_by_severity": {
+    "Key": "trial_win_chance_by_severity",
+    "Value": "0.00;0.05;0.10;0.25;0.50;0.75"
+  },
+  "trial_influence_bonus_cost": {
+    "Key": "trial_influence_bonus_cost",
+    "Value": "50"
+  },
+  "trial_influence_bonus_value": {
+    "Key": "trial_influence_bonus_value",
+    "Value": "0.25"
+  },
+  "game_log_max_messages": {
+    "Key": "game_log_max_messages",
+    "Value": "20"
+  },
+  "game_log_character_low_mood": {
+    "Key": "game_log_character_low_mood",
+    "Value": "0.1"
+  },
+  "game_log_building_quality": {
+    "Key": "game_log_building_quality",
+    "Value": "0.25;0.5"
+  },
+  "association_yearly_fee_on_founding": {
+    "Key": "association_yearly_fee_on_founding",
+    "Value": "3000"
+  },
+  "association_join_fee_on_founding": {
+    "Key": "association_join_fee_on_founding",
+    "Value": "5000"
+  },
+  "association_yearly_fee": {
+    "Key": "association_yearly_fee",
+    "Value": "5000"
+  },
+  "association_join_fee": {
+    "Key": "association_join_fee",
+    "Value": "10000"
+  },
+  "association_competitor_intent_vote_against_multipliers": {
+    "Key": "association_competitor_intent_vote_against_multipliers",
+    "Value": "0.5;1"
+  },
+  "association_competitor_intent_vote_for_multipliers": {
+    "Key": "association_competitor_intent_vote_for_multipliers",
+    "Value": "0.5;1"
+  },
+  "association_competitor_weekly_propobal_base_probability": {
+    "Key": "association_competitor_weekly_propobal_base_probability",
+    "Value": "0.25"
+  },
+  "association_pollux_votes": {
+    "Key": "association_pollux_votes",
+    "Value": "GB:400; EM:100; SU: 120; HE: 50; MA: 60"
+  },
+  "association_codex_first_votes": {
+    "Key": "association_codex_first_votes",
+    "Value": "SU:313; EM:233; GB:492; PL:0; HE:75; MA:28;"
+  },
+  "association_codex_second_votes": {
+    "Key": "association_codex_second_votes",
+    "Value": "HE:116; SU:455; EM:343; MA:33; PL:0; GB:100;"
+  },
+  "voting_for_adding_usual_tag_to_codex": {
+    "Key": "voting_for_adding_usual_tag_to_codex",
+    "Value": "HE:1; SU:1; EM:1; MA:1; GB:1;"
+  },
+  "voting_for_adding_trash_tag_to_codex": {
+    "Key": "voting_for_adding_trash_tag_to_codex",
+    "Value": "HE:2; SU:2; EM:2; MA:2; GB:2;"
+  },
+  "voting_for_removing_usual_tag_from_codex": {
+    "Key": "voting_for_removing_usual_tag_from_codex",
+    "Value": "HE:-1; SU:-1; EM:-1; MA:-1; GB:-1;"
+  },
+  "voting_for_removing_trash_tag_from_codex": {
+    "Key": "voting_for_removing_trash_tag_from_codex",
+    "Value": "HE:-2; SU:-2; EM:-2; MA:-2; GB:-2;"
+  },
+  "codex_can_be_cancelled_before_date": {
+    "Key": "codex_can_be_cancelled_before_date",
+    "Value": "05-08-1928"
+  },
+  "codex_can_be_cancelled_after_date": {
+    "Key": "codex_can_be_cancelled_after_date",
+    "Value": "05-08-1945"
+  },
+  "codex_cant_be_cancelled_period": {
+    "Key": "codex_cant_be_cancelled_period",
+    "Value": "07-01-1934_05-08-1950"
+  },
+  "spicy_tags": {
+    "Key": "spicy_tags",
+    "Value": "EVENTS_RAPE,EVENTS_DIVORCE,FINALE_ANTAGONIST_ESCAPES_JUSTICE,FINALE_PROTAGONIST_COMMITS_SUICIDE,FINALE_PROTAGONIST_AVOIDS_PUNISHMENT,EVENTS_NUDITY,EVENTS_CHEATING_SPOUSE,ANTAGONIST_CORRUPT_OFFICIAL,THEME_ALCOHOL_FREEDOM,EVENTS_EXCESSIVE_VIOLENCE,EVENTS_PROMISCUITY,EVENTS_ABUNDANT_PROFANITY,THEME_FIGHT_HYPOCRITICAL_AMERICAN,THEME_WHITE_SUPREMACY"
+  },
+  "all_unethical_tags": {
+    "Key": "all_unethical_tags",
+    "Value": "PROTAGONIST_TOXIC_VIGILANTE,PROTAGONIST_SHERIFFS_CONJOINED_TWINS,PROTAGONIST_СORNLIMBED_ROMANTIC,PROTAGONIST_PARENT_IN_INVISIBLE_CLOTHES,PROTAGONIST_VAMPIRE_SHIT-SUCKER,PROTAGONIST_GIRL_WITH_A_SWEARING_VAGINA_WITH_TURRET_SYNDROME,PROTAGONIST_LOVELACE_WITH_POISONOUS_BALLS,ANTAGONIST_TOASTER_KILLER,ANTAGONIST_ROBOT_RAPIST,ANTAGONIST_ROBBER_WITH_A_HUNDRED_DICKS,ANTAGONIST_SCHOOLGIRL_POSSESSED_DEMON,ANTAGONIST_HEADLESS_MIDGETS_HYPNOTISTS,ANTAGONIST_WOMENS_BOOK_CLUB_OF_CANNIBALS,THEME_WAR_WITH_SORCERERS,EVENTS_SURVIVAL_TOURNAMENT"
+  },
+  "association_fine": {
+    "Key": "association_fine",
+    "Value": "3000000"
+  },
+  "association_join_price_after_dismissing": {
+    "Key": "association_join_price_after_dismissing",
+    "Value": "1000"
+  },
+  "association_join_price_percent": {
+    "Key": "association_join_price_percent",
+    "Value": "0.05"
+  },
+  "association_surveillance_duration": {
+    "Key": "association_surveillance_duration",
+    "Value": "7"
+  },
+  "association_add_tag_to_codex_period": {
+    "Key": "association_add_tag_to_codex_period",
+    "Value": "180"
+  },
+  "association_available_for_adding_in_codex_period": {
+    "Key": "association_available_for_adding_in_codex_period",
+    "Value": "120"
+  },
+  "pollux_genre_factors": {
+    "Key": "pollux_genre_factors",
+    "Value": "DRAMA:1; ROMANCE: 0.75; COMEDY:0.5; HISTORICAL: 0.4; DETECTIVE: 0.375; ADVENTURE: 0.35; ACTION: 0.325; THRILLER: 0.3; SCIENCE_FICTION: 0.175; HORROR: 0.1;"
+  },
+  "pollux_art_status_bonus": {
+    "Key": "pollux_art_status_bonus",
+    "Value": "1;2;3;4"
+  },
+  "pollux_com_status_bonus": {
+    "Key": "pollux_com_status_bonus",
+    "Value": "0.5;1;1.5;2"
+  },
+  "script_doctor_fee": {
+    "Key": "script_doctor_fee",
+    "Value": "20000"
+  },
+  "script_doctor_duration": {
+    "Key": "script_doctor_duration",
+    "Value": "25"
+  },
+  "script_doctor_improvement_interval_points": {
+    "Key": "script_doctor_improvement_interval_points",
+    "Value": "0;0.1;0.2;0.3;0.4;0.5;0.6;0.7;0.8;0.9;1"
+  },
+  "script_doctor_improvement_interval_ranges": {
+    "Key": "script_doctor_improvement_interval_ranges",
+    "Value": "0.02_0.05; 0.03_0.06; 0.04_0.09; 0.04_0.11; 0.04_0.12; 0.05_0.13; 0.04_0.12; 0.04_0.11; 0.04_0.09; 0.025_0.06;0_0;"
+  },
+  "script_doctor_success_probability": {
+    "Key": "script_doctor_success_probability",
+    "Value": "0.4"
+  },
+  "script_doctor_success_probability_with_perk": {
+    "Key": "script_doctor_success_probability_with_perk",
+    "Value": "0.8"
+  },
+  "script_doctor_improvement_lower_range_perk_multiplier": {
+    "Key": "script_doctor_improvement_lower_range_perk_multiplier",
+    "Value": "2"
+  },
+  "script_doctor_improvement_duration_perk_multiplier": {
+    "Key": "script_doctor_improvement_duration_perk_multiplier",
+    "Value": "0.5"
+  },
+  "script_doctor_improvement_cost_perk_multiplier": {
+    "Key": "script_doctor_improvement_cost_perk_multiplier",
+    "Value": "0.5"
+  },
+  "min_review_amount_for_top_by_critics": {
+    "Key": "min_review_amount_for_top_by_critics",
+    "Value": "4"
+  },
+  "next_police_raid_immune_days_period": {
+    "Key": "next_police_raid_immune_days_period",
+    "Value": "90"
+  },
+  "next_police_raid_max_days_ahead": {
+    "Key": "next_police_raid_max_days_ahead",
+    "Value": "365"
+  },
+  "days_before_police_raid_to_know": {
+    "Key": "days_before_police_raid_to_know",
+    "Value": "10_15"
+  },
+  "police_raid_bribe_cost": {
+    "Key": "police_raid_bribe_cost",
+    "Value": "10000"
+  },
+  "penalty_per_disrepair_building": {
+    "Key": "penalty_per_disrepair_building",
+    "Value": "25000"
+  },
+  "disrepair_building_cover_options_raw": {
+    "Key": "disrepair_building_cover_options_raw",
+    "Value": "NONE:200:IP:KEEP;NONE:250:CASH:KEEP"
+  },
+  "penalty_per_illegal_worker": {
+    "Key": "penalty_per_illegal_worker",
+    "Value": "42"
+  },
+  "illegal_worker_cover_options_raw": {
+    "Key": "illegal_worker_cover_options_raw",
+    "Value": "NONE:70:IP:KEEP;NONE:250:CASH:KEEP"
+  },
+  "cash_seizure_ratio_range": {
+    "Key": "cash_seizure_ratio_range",
+    "Value": "0.2_0.5"
+  },
+  "cash_cover_options_raw": {
+    "Key": "cash_cover_options_raw",
+    "Value": "NONE:0:CONVERT:DESTROY;NONE:5:CASHBACK:KEEP;NONE:10:IP:KEEP"
+  },
+  "cover_cash_price_percent": {
+    "Key": "cover_cash_price_percent",
+    "Value": "0.05"
+  },
+  "police_raid_max_events_count": {
+    "Key": "police_raid_max_events_count",
+    "Value": "2"
+  },
+  "police_surveillance_msg_delay_days": {
+    "Key": "police_surveillance_msg_delay_days",
+    "Value": "5"
+  },
+  "police_raid_fine_for_competitors": {
+    "Key": "police_raid_fine_for_competitors",
+    "Value": "0.2"
+  },
+  "doyle_profession_rebranding_date": {
+    "Key": "doyle_profession_rebranding_date",
+    "Value": "12-05-1933"
+  },
+  "start_tax_percent": {
+    "Key": "start_tax_percent",
+    "Value": "0.11"
+  },
+  "gift_accept_thanks_replies_amount": {
+    "Key": "gift_accept_thanks_replies_amount",
+    "Value": "7"
+  },
+  "gift_accept_repeat1_replies_amount": {
+    "Key": "gift_accept_repeat1_replies_amount",
+    "Value": "5"
+  },
+  "gift_accept_repeat2_replies_amount": {
+    "Key": "gift_accept_repeat2_replies_amount",
+    "Value": "5"
+  },
+  "gift_repetition_attitude_penalty": {
+    "Key": "gift_repetition_attitude_penalty",
+    "Value": "-0.05"
+  },
+  "attitude_drop_services_blocked": {
+    "Key": "attitude_drop_services_blocked",
+    "Value": "0.2"
+  },
+  "mood_drop_services_blocked": {
+    "Key": "mood_drop_services_blocked",
+    "Value": "0.4"
+  },
+  "attitude_recover_services_unblocked": {
+    "Key": "attitude_recover_services_unblocked",
+    "Value": "0.1"
+  },
+  "mood_recover_services_unblocked": {
+    "Key": "mood_recover_services_unblocked",
+    "Value": "0.2"
+  },
+  "services_block_delay_days": {
+    "Key": "services_block_delay_days",
+    "Value": "10"
+  },
+  "trash_recipe_research_duration": {
+    "Key": "trash_recipe_research_duration",
+    "Value": "60"
+  },
+  "trash_tag_research_duration": {
+    "Key": "trash_tag_research_duration",
+    "Value": "60"
+  },
+  "ready_scripts_to_show_button": {
+    "Key": "ready_scripts_to_show_button",
+    "Value": "3"
+  },
+  "trash_audience_bonus": {
+    "Key": "trash_audience_bonus",
+    "Value": "0.1"
+  },
+  "trash_double_feature_audience_bonus": {
+    "Key": "trash_double_feature_audience_bonus",
+    "Value": "0.3"
+  },
+  "trash_baseline_modificator": {
+    "Key": "trash_baseline_modificator",
+    "Value": "0.3"
+  },
+  "trash_second_tag_power": {
+    "Key": "trash_second_tag_power",
+    "Value": "0.5"
+  },
+  "trash_production_speedup": {
+    "Key": "trash_production_speedup",
+    "Value": "2"
+  },
+  "audience_numbers_wide": {
+    "Key": "audience_numbers_wide",
+    "Value": "0;1000000;3000000;5000000;10000000;20000000;40000000;80000000"
+  },
+  "analytics_process_duration": {
+    "Key": "analytics_process_duration",
+    "Value": "14"
+  },
+  "analytics_cost": {
+    "Key": "analytics_cost",
+    "Value": "100"
+  },
+  "nazis_script": {
+    "Key": "nazis_script",
+    "Value": "HEADER: MOVIE_TITLE_ID=1002&SCRIPTWRITER_ID=55,\nSLIDE: TAG=PROTAGONIST_WARRIOR&CATHEGORY=Protagonist,\nSLIDE: TAG=ANTAGONIST_TRIBAL_CHIEF&CATHEGORY=Antagonist,\nSLIDE: EMPTY,\nSLIDE: TAG=EVENTS_CAPTURED_AND_TORTURED&CATHEGORY=EventTheme,\nSLIDE: EMPTY,\nSLIDE: TAG=EVENTS_RESCUE_MISSION,\nSLIDE: EMPTY,\nSLIDE: TAG=FINALE_PROTAGONIST_DIES_HEROICALLY&CATHEGORY=Finale&LAST"
+  },
+  "italian_script": {
+    "Key": "italian_script",
+    "Value": "HEADER: MOVIE_TITLE_ID=1003&SCRIPTWRITER_ID=56,\nSLIDE: TAG=PROTAGONIST_HOPELESS_ROMANTIC&CATHEGORY=Protagonist,\nSLIDE: TAG=EVENTS_RUNAWAY&CATHEGORY=EventTheme,\nSLIDE: TAG=SUPPORTINGCHARACTER_PARENT_FIGURE&CATHEGORY=Supporting,\nSLIDE: TAG=SUPPORTINGCHARACTER_LOVE_INTEREST,\nSLIDE: TAG=ANTAGONIST_CRIMINAL_MASTERMIND&CATHEGORY=Antagonist,\nSLIDE: EMPTY,\nSLIDE: EMPTY,\nSLIDE: EMPTY,\nSLIDE: TAG=THEME_AVENGING_LOVED_ONES,\nSLIDE: TAG=FINALE_ANTAGONIST_GETS_KILLED&CATHEGORY=Finale,\nSLIDE: EMPTY&EMPTY&LAST"
+  },
+  "charity_object": {
+    "Key": "charity_object",
+    "Value": "ID=CHARITY#FROM_TYPE=BUDGET#TO_TYPE=REPUTATION#EXCHANGE_RATE=10000#STEP_FROM=10000#COOLDOWN=30#PROGRESS_EXCHANGE_STEP=100#PROGRESS_EXCHANGE_MAX=0.7"
+  },
+  "reputation_fine_for_trial": {
+    "Key": "reputation_fine_for_trial",
+    "Value": "-0.1"
+  },
+  "reputation_weight_fine_for_hiring": {
+    "Key": "reputation_weight_fine_for_hiring",
+    "Value": "-700"
+  },
+  "reputation_weight_bonus_for_hiring": {
+    "Key": "reputation_weight_bonus_for_hiring",
+    "Value": "400"
+  },
+  "reputation_pos_amount_for_bonus": {
+    "Key": "reputation_pos_amount_for_bonus",
+    "Value": "300"
+  },
+  "reputation_for_max_improvement_level": {
+    "Key": "reputation_for_max_improvement_level",
+    "Value": "100"
+  },
+  "reputation_for_good_attitude": {
+    "Key": "reputation_for_good_attitude",
+    "Value": "5"
+  },
+  "average_good_attitude": {
+    "Key": "average_good_attitude",
+    "Value": "0.7"
+  },
+  "reputation_for_negative_attitude": {
+    "Key": "reputation_for_negative_attitude",
+    "Value": "-5"
+  },
+  "average_negative_attitude": {
+    "Key": "average_negative_attitude",
+    "Value": "0.3"
+  },
+  "reputation_for_idols": {
+    "Key": "reputation_for_idols",
+    "Value": "5"
+  },
+  "reputation_for_icons": {
+    "Key": "reputation_for_icons",
+    "Value": "5"
+  },
+  "reputation_for_top": {
+    "Key": "reputation_for_top",
+    "Value": "20"
+  },
+  "reputation_for_unprofitable": {
+    "Key": "reputation_for_unprofitable",
+    "Value": "-15"
+  },
+  "reputation_for_profitable": {
+    "Key": "reputation_for_profitable",
+    "Value": "15"
+  },
+  "reputation_for_skilled_actor": {
+    "Key": "reputation_for_skilled_actor",
+    "Value": "10"
+  },
+  "reputation_for_negative_balance": {
+    "Key": "reputation_for_negative_balance",
+    "Value": "-30"
+  },
+  "reputation_for_overdue_taxes": {
+    "Key": "reputation_for_overdue_taxes",
+    "Value": "-30"
+  },
+  "neg_reputation_presents_fine": {
+    "Key": "neg_reputation_presents_fine",
+    "Value": "2"
+  },
+  "neg_reputation_services_fine": {
+    "Key": "neg_reputation_services_fine",
+    "Value": "1.5"
+  },
+  "neg_reputation_improvement_fine": {
+    "Key": "neg_reputation_improvement_fine",
+    "Value": "1.5"
+  },
+  "neg_reputation_rent_slots_fine": {
+    "Key": "neg_reputation_rent_slots_fine",
+    "Value": "2"
+  },
+  "neg_reputation_charity_fine": {
+    "Key": "neg_reputation_charity_fine",
+    "Value": "1.5"
+  },
+  "ip_new_tag": {
+    "Key": "ip_new_tag",
+    "Value": "5"
+  },
+  "ip_new_tag_perk_mod": {
+    "Key": "ip_new_tag_perk_mod",
+    "Value": "2"
+  },
+  "ip_tech_sold": {
+    "Key": "ip_tech_sold",
+    "Value": "20"
+  },
+  "ip_tech_sold_perk_mod": {
+    "Key": "ip_tech_sold_perk_mod",
+    "Value": "2"
+  },
+  "ip_new_script": {
+    "Key": "ip_new_script",
+    "Value": "5"
+  },
+  "ip_new_script_perk_mod_1": {
+    "Key": "ip_new_script_perk_mod_1",
+    "Value": "2"
+  },
+  "ip_new_script_perk_mod_2": {
+    "Key": "ip_new_script_perk_mod_2",
+    "Value": "3"
+  },
+  "ip_movie_top": {
+    "Key": "ip_movie_top",
+    "Value": "10"
+  },
+  "ip_first_release": {
+    "Key": "ip_first_release",
+    "Value": "5"
+  },
+  "cash_monthly_1": {
+    "Key": "cash_monthly_1",
+    "Value": "500"
+  },
+  "cash_monthly_2": {
+    "Key": "cash_monthly_2",
+    "Value": "1000"
+  },
+  "days_after_left_prison_to_request_raise": {
+    "Key": "days_after_left_prison_to_request_raise",
+    "Value": "90"
+  },
+  "month_mood_drop_beautification_level_1": {
+    "Key": "month_mood_drop_beautification_level_1",
+    "Value": "-0.01"
+  },
+  "analysis_vision_depth_0_weeks": {
+    "Key": "analysis_vision_depth_0_weeks",
+    "Value": "6"
+  },
+  "analysis_vision_depth_1_weeks": {
+    "Key": "analysis_vision_depth_1_weeks",
+    "Value": "12"
+  },
+  "analysis_vision_depth_2_weeks": {
+    "Key": "analysis_vision_depth_2_weeks",
+    "Value": "24"
+  },
+  "bank_loan_peny": {
+    "Key": "bank_loan_peny",
+    "Value": "0.004"
+  },
+  "bank_loan_amount_0": {
+    "Key": "bank_loan_amount_0",
+    "Value": "1000000"
+  },
+  "bank_loan_amount_1": {
+    "Key": "bank_loan_amount_1",
+    "Value": "2000000"
+  },
+  "bank_loan_amount_2": {
+    "Key": "bank_loan_amount_2",
+    "Value": "6000000"
+  },
+  "bank_loan_term_0": {
+    "Key": "bank_loan_term_0",
+    "Value": "1"
+  },
+  "bank_loan_term_1": {
+    "Key": "bank_loan_term_1",
+    "Value": "3"
+  },
+  "bank_loan_term_2": {
+    "Key": "bank_loan_term_2",
+    "Value": "5"
+  },
+  "bank_loan_int_rate_0": {
+    "Key": "bank_loan_int_rate_0",
+    "Value": "0.22"
+  },
+  "bank_loan_int_rate_1": {
+    "Key": "bank_loan_int_rate_1",
+    "Value": "0.18"
+  },
+  "bank_loan_int_rate_2": {
+    "Key": "bank_loan_int_rate_2",
+    "Value": "0.14"
+  },
+  "bank_loan_cooldown_0": {
+    "Key": "bank_loan_cooldown_0",
+    "Value": "12"
+  },
+  "bank_loan_cooldown_1": {
+    "Key": "bank_loan_cooldown_1",
+    "Value": "6"
+  },
+  "microloan_amount": {
+    "Key": "microloan_amount",
+    "Value": "100000"
+  },
+  "microloan_period": {
+    "Key": "microloan_period",
+    "Value": "3"
+  },
+  "microloan_scale_period": {
+    "Key": "microloan_scale_period",
+    "Value": "3"
+  },
+  "loan_warn_days": {
+    "Key": "loan_warn_days",
+    "Value": "15"
+  },
+  "ultimate_request_cooldown": {
+    "Key": "ultimate_request_cooldown",
+    "Value": "5_7"
+  },
+  "building_health_min_to_hire": {
+    "Key": "building_health_min_to_hire",
+    "Value": "0.3"
+  },
+  "inflation_years": {
+    "Key": "inflation_years",
+    "Value": "1"
+  },
+  "inflation_rate": {
+    "Key": "inflation_rate",
+    "Value": "1.2"
+  },
+  "hiring_bonus_mood": {
+    "Key": "hiring_bonus_mood",
+    "Value": "0.25"
+  },
+  "hiring_bonus_attitude": {
+    "Key": "hiring_bonus_attitude",
+    "Value": "0.25"
+  },
+  "movie_release_mood_boost": {
+    "Key": "movie_release_mood_boost",
+    "Value": "0.35"
+  },
+  "bad_attitude_limit_montly_mood_lose": {
+    "Key": "bad_attitude_limit_montly_mood_lose",
+    "Value": "0.1"
+  },
+  "bad_attitude_montly_mood_lose": {
+    "Key": "bad_attitude_montly_mood_lose",
+    "Value": "0.01"
+  },
+  "idea_life_time_months_0": {
+    "Key": "idea_life_time_months_0",
+    "Value": "6"
+  },
+  "idea_life_time_months_1": {
+    "Key": "idea_life_time_months_1",
+    "Value": "12"
+  },
+  "tags_xp_bonus_1": {
+    "Key": "tags_xp_bonus_1",
+    "Value": "0.25"
+  },
+  "tags_xp_bonus_2": {
+    "Key": "tags_xp_bonus_2",
+    "Value": "0.5"
+  },
+  "tags_xp_bonus_3": {
+    "Key": "tags_xp_bonus_3",
+    "Value": "1"
+  },
+  "movie_release_xp_1": {
+    "Key": "movie_release_xp_1",
+    "Value": "0.25"
+  },
+  "movie_release_xp_2": {
+    "Key": "movie_release_xp_2",
+    "Value": "0.5"
+  },
+  "movie_release_xp_3": {
+    "Key": "movie_release_xp_3",
+    "Value": "1"
+  },
+  "preprod_prod_dir_cin_xp": {
+    "Key": "preprod_prod_dir_cin_xp",
+    "Value": "1"
+  },
+  "prod_dir_cin_act_xp": {
+    "Key": "prod_dir_cin_act_xp",
+    "Value": "1"
+  },
+  "post_dir_mont_comp_xp": {
+    "Key": "post_dir_mont_comp_xp",
+    "Value": "1"
+  },
+  "spying_xp_bonus_1": {
+    "Key": "spying_xp_bonus_1",
+    "Value": "0.5"
+  },
+  "spying_xp_bonus_2": {
+    "Key": "spying_xp_bonus_2",
+    "Value": "1"
+  },
+  "active_protection_xp_bonus_1": {
+    "Key": "active_protection_xp_bonus_1",
+    "Value": "0.5"
+  },
+  "active_protection_xp_bonus_2": {
+    "Key": "active_protection_xp_bonus_2",
+    "Value": "1"
+  },
+  "contract_weight_min_skill": {
+    "Key": "contract_weight_min_skill",
+    "Value": "0.5"
+  },
+  "start_date_ww2_volunteers": {
+    "Key": "start_date_ww2_volunteers",
+    "Value": "12-06-1941"
+  },
+  "end_date_ww2_volunteers": {
+    "Key": "end_date_ww2_volunteers",
+    "Value": "08-30-1945"
+  },
+  "ww2_boost_movies_period": {
+    "Key": "ww2_boost_movies_period",
+    "Value": "12-11-1945_12-31-1946"
+  },
+  "gerstein_antitrust_budget": {
+    "Key": "gerstein_antitrust_budget",
+    "Value": "2000000"
+  },
+  "gerstein_antitrust_cash": {
+    "Key": "gerstein_antitrust_cash",
+    "Value": "35000"
+  },
+  "gerstein_antitrust_influence": {
+    "Key": "gerstein_antitrust_influence",
+    "Value": "1000"
+  }
+}
