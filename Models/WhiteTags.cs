@@ -215,7 +215,7 @@ namespace HollyJson.Models
                         value = 1.0d;
                 if (Tagtype == Skills.Indoor | Tagtype == Skills.Outdoor)
                     if (value > 1.0d)
-                        value = 0.4d;
+                        value = 0.5d;
                 if (ZeroPoint is not null) //может ли быть такого что ее нет?
                 {
                     if (value >= MinimalValaue)

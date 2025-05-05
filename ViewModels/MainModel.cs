@@ -651,6 +651,20 @@ namespace HollyJson.ViewModels
                 }
                 Info.milestones = [.. mm];
                 mm = null;
+
+                StatusBarText = "Loading tags in codex...";
+                List<TagInCodex> ltgc = new List<TagInCodex>();
+                foreach (var item in aa.SelectToken("currentTagsInCodex")?.Children())
+                {
+                    var q = item.ToObject<JProperty>();
+                    TagInCodex nm = JsonConvert.DeserializeObject<TagInCodex>(q.Value.ToString());
+                    ltgc.Add(nm);
+                }
+                Info.currentTagsInCodex = [.. ltgc];
+                Info.isCodexOpened = aa.SelectToken("isCodexOpened")?.Value<bool>();
+                ltgc = null;
+
+
                 StatusBarText = "Loading next gen timers...";
                 Dictionary<string, DateTime> dt_d = new Dictionary<string, DateTime>();
                 var sp_d = aa.SelectToken("nextGenCharacterTimers")?.Children();
@@ -680,7 +694,6 @@ namespace HollyJson.ViewModels
                 //разница между преген и моими(опенед)
                 Info.AvailablePerks = [.. stateJson.PreGenPerks.Except(Info.openedPerks)];
                 op_d = null;
-                //op_p = null;
 
                 StatusBarText = "Loading closed tags...";
                 op_d = new List<string>();
@@ -691,7 +704,6 @@ namespace HollyJson.ViewModels
                 }
                 Info.tagBank = [.. op_d];
                 op_d = null;
-                //op_p = null;
 
                 StatusBarText = "Loading opened tags...";
                 ObservableCollection<TagPool> tags =
@@ -784,6 +796,23 @@ namespace HollyJson.ViewModels
                         }
                     }
 
+                    //codextags NEED TEST
+                    var ctic = z["currentTagsInCodex"];
+                    if (ctic is not null)
+                    {
+                        List<JProperty> torem = new List<JProperty>();
+                        foreach (var label in z.Children<JProperty>())
+                        {
+                            if (!Info.currentTagsInCodex.Any(t => t.id == label.Name)) //ANTAGONIST_CORRUPT_OFFICIAL property
+                            {
+                                torem.Add(label);
+                            }
+                        }
+                        torem.ForEach(t => t.Remove());
+                        torem = null;
+                    }
+                    z["isCodexOpened"] = Info.isCodexOpened;
+
                     //надо удалить из jtokena 
                     //так как мы можем только либо почистить все, либо ничего не менять
                     //то, если в объекте нихрена нет, можем грохать все элементы
@@ -791,6 +820,7 @@ namespace HollyJson.ViewModels
                         ((JArray)z["tagBank"]).Clear();
 
                     //characters
+                    var cult = CultureInfo.InvariantCulture;
                     foreach (Character chr in Info.characters)
                     {
                         if (chr.WasChanged(Info.Now))
@@ -799,9 +829,9 @@ namespace HollyJson.ViewModels
                             var b = a?.SingleOrDefault(t => t?["id"]?.Value<int>() == chr.id, null);
                             if (b is not null)
                             {
-                                b["limit"] = chr.limit;
-                                b["mood"] = chr.mood;
-                                b["attitude"] = chr.attitude;
+                                b["limit"] = chr.limit.ToString("0.000", cult);
+                                b["mood"] = chr.mood.ToString("0.000", cult);
+                                b["attitude"] = chr.attitude.ToString("0.000", cult);
                                 b["birthDate"] = chr.birthDate;
                                 b["studioId"] = chr.studioId == "NONE" ? null : chr.studioId;
                                 b["deathDate"] = chr.deathDate;
@@ -825,9 +855,9 @@ namespace HollyJson.ViewModels
                                             //а еще почистить историю?
                                             cnt["amount"] = chr.contract.amount;
                                             cnt["startAmount"] = chr.contract.startAmount;
-                                            cnt["initialFee"] = chr.contract.initialFee;
-                                            cnt["monthlySalary"] = chr.contract.monthlySalary;
-                                            cnt["weightToSalary"] = chr.contract.weightToSalary;
+                                            cnt["initialFee"] = chr.contract.initialFee.ToString("#0.000", cult); 
+                                            cnt["monthlySalary"] = chr.contract.monthlySalary.ToString("#0.000", cult); 
+                                            cnt["weightToSalary"] = chr.contract.weightToSalary.ToString("#0.000", cult); 
                                             cnt["dateOfSigning"] = chr.contract.dateOfSigning;
                                             cnt["contractType"] = chr.contract.contractType;
                                         }
@@ -843,7 +873,7 @@ namespace HollyJson.ViewModels
                                 var prof = b["professions"];
                                 if (prof is not null && prof.HasValues)
                                 {
-                                    prof[chr.professions.Name] = chr.professions.Value;
+                                    prof[chr.professions.Name] = chr.professions.Value.ToString("0.000", cult); ;
                                 }
                                 prof = null;
                                 //labels
@@ -888,7 +918,7 @@ namespace HollyJson.ViewModels
                                                 tochng["id"] = whiteTag.id;
                                                 tochng["dateAdded"] = whiteTag.dateAdded;
                                                 tochng["movieId"] = whiteTag.movieId;
-                                                tochng["value"] = whiteTag.Value;
+                                                tochng["value"] = whiteTag.Value.ToString("0.000", cult);
                                                 tochng["IsOverall"] = whiteTag.IsOverall;
                                                 //манипулируем только нулём
                                                 var t_over = tochng["overallValues"].Children().Single(t =>

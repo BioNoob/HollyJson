@@ -115,9 +115,7 @@ namespace HollyJson.Models
                             state = 20;
                         if (!IsInit)
                             if (contract is null)
-                            {
                                 contract = new Contract(CurrNow, professions.GetProfession);
-                            }
                     }
                     studioId1 = value;
                 }
@@ -300,15 +298,25 @@ namespace HollyJson.Models
                         break;
                 }
                 if (gender == 1)
+                {
                     a += "F_";
+                    if (Age <= 34)
+                        a += "YOUNG_";
+                    else if (Age > 34 | Age <= 49)
+                        a += "MID_";
+                    else
+                        a += "OLD_";
+                }
                 else
+                {
                     a += "M_";
-                if (Age >= 60)
-                    a += "OLD_";
-                else if (Age > 40 & Age < 60)
-                    a += "MID_";
-                else
-                    a += "YOUNG_";
+                    if (Age <= 39)
+                        a += "YOUNG_";
+                    else if (Age > 39 | Age <= 59)
+                        a += "MID_";
+                    else
+                        a += "OLD_";
+                }
                 a += $"{portraitBaseId}.png";
                 return a;
             }

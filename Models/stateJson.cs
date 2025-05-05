@@ -4,6 +4,16 @@ using System.Collections.ObjectModel;
 namespace HollyJson.Models
 {
     [AddINotifyPropertyChangedInterface]
+    public class TagInCodex
+    {
+        public TagInCodex() { }
+        //currentTagsInCodex
+        //queueTagsForCodex
+        public string id { get; set; }
+        public string addingDate { get; set; }
+        public string fromStudioId { get; set; }
+    }
+    [AddINotifyPropertyChangedInterface]
     public class TagPool
     {
         public string Item1 { get; set; }
@@ -123,6 +133,8 @@ namespace HollyJson.Models
         /// Открытые тэги
         /// </summary>
         public ObservableCollection<TagPool> tagPool { get; set; }
+        public ObservableCollection<TagInCodex> currentTagsInCodex { get; set; }
+        public bool? isCodexOpened { get; set; }
         public static List<string> PreGenPerks => new List<string>()
         {
             "BANK_LOAN",
