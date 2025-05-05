@@ -116,7 +116,7 @@ namespace HollyJson.Models
                         if (!IsInit)
                             if (contract is null)
                             {
-                                contract = new Contract(CurrNow);
+                                contract = new Contract(CurrNow, professions.GetProfession);
                             }
                     }
                     studioId1 = value;

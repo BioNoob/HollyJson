@@ -164,20 +164,30 @@ namespace HollyJson.Models
         {
             IsInit = true;
         }
-        public Contract(DateTime now)
+        public Contract(DateTime now, Professions.Profession prof)
         {
             IsInit = true;
-            amount = 3;
-            startAmount = 3;
+            amount = 5;
+            startAmount = 5;
             monthlySalary = 0;
             weightToSalary = 100;
             dateOfSigning = now != new DateTime() ? now.AddDays(-1) : now;
             dateOfNow = now;
             SetCalcDaysLeft();
             initialFee = 100;
-            contractType = 0;
-
-
+            switch (prof)
+            {
+                case Professions.Profession.Agent:
+                case Professions.Profession.Composer:
+                case Professions.Profession.FilmEditor:
+                case Professions.Profession.Scriptwriter:
+                    contractType = 2;
+                    break;
+                case Professions.Profession.Else:
+                default:
+                    contractType = 0;
+                    break;
+            }
             is5050 = false;
             payed5050 = false;
             raiseIgn = false;
