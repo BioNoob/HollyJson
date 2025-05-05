@@ -1,12 +1,8 @@
 ﻿using PropertyChanged;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HollyJson.Models
 {
+    [AddINotifyPropertyChangedInterface]
     public class Trigger
     {
         public string name { get; set; }
@@ -18,7 +14,7 @@ namespace HollyJson.Models
         public int delay { get; set; }
     }
     [AddINotifyPropertyChangedInterface]
-    public class BuildingInfo
+    public class TechInfo
     {
         public int domain { get; set; }
         public string department { get; set; }

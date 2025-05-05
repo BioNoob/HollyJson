@@ -1,24 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HollyJson.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using HollyJson.Models;
-using System.IO;
 using System.Collections.ObjectModel;
+using System.IO;
 
 namespace HollyJson.ViewModels
 {
     public class SubModulesVM
     {
-        public ObservableCollection<BuildingInfo> BuildCollLst { get; set; }
-        public Dictionary<string,string> GameVarLst { get; set; }
-        public SubModulesVM() 
+        CommandHandler _unlocktags;
+        CommandHandler _setdurationtime;
+        public DateTime Now { get; set; }
+        public ObservableCollection<string> TagBank { get; set; }
+        public ObservableCollection<TagPool> TagPool { get; set; }
+        public ObservableCollection<TechInfo> TechCollLst { get; set; }
+        public Dictionary<string, string> GameVarLst { get; set; }
+        public SubModulesVM()
         {
-            BuildCollLst = [];
+            TechCollLst = [];
             GameVarLst = [];
+        }
+
+        public CommandHandler UnlockTagsCmd
+        {
+            get
+            {
+                return _unlocktags ??= new CommandHandler(obj =>
+                {
+                    if (TagBank.Count > 0)
+                    {
+                        foreach (string tag in TagBank)
+                        {
+                            TagPool.Add(new TagPool(tag, Now.AddDays(-1)));
+                        }
+                        TagBank.Clear();
+                    }
+                }, (obj) => true);
+            }
+        }
+        public CommandHandler SetDurationTimeTech
+        {
+            get
+            {
+                return _setdurationtime ??= new CommandHandler(obj =>
+                {
+                    foreach (var item in TechCollLst)
+                    {
+                        item.duration = (int)obj;
+                    }
+                    return;
+                }, (obj) => true);
+            }
         }
         public async Task ReadBuildingsData(string path)
         {
@@ -39,8 +71,8 @@ namespace HollyJson.ViewModels
             foreach (var item in jobj.Children())
             {
                 var q = item.ToObject<JProperty>();
-                BuildingInfo nm = JsonConvert.DeserializeObject<BuildingInfo>(q.Value.ToString());
-                BuildCollLst.Add(nm!);
+                TechInfo nm = JsonConvert.DeserializeObject<TechInfo>(q.Value.ToString());
+                TechCollLst.Add(nm!);
             }
         }
         public async Task ReadGameVarData(string path)
@@ -62,12 +94,11 @@ namespace HollyJson.ViewModels
             foreach (var item in jobj.Children())
             {
                 var q = item.ToObject<JProperty>().Value;
-                //Dictionary<string,string> nm = JsonConvert.DeserializeObject<Dictionary<string, string>>(q.Value.ToString());
                 GameVarLst.Add(q.SelectToken("Key")?.Value<string>()!, q.SelectToken("Value")?.Value<string>()!);
             }
         }
 
 
     }
-    
+
 }
