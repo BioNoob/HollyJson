@@ -1,11 +1,13 @@
 ﻿using HollyJson.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PropertyChanged;
 using System.Collections.ObjectModel;
 using System.IO;
 
 namespace HollyJson.ViewModels
 {
+    [AddINotifyPropertyChangedInterface]
     public class SubModulesVM
     {
         CommandHandler _unlocktags;
