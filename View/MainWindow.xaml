@@ -1,4 +1,4 @@
-﻿<Window x:Class="HollyJson.MainWindow"
+﻿<Window x:Class="HollyJson.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -103,8 +103,10 @@
                            HorizontalAlignment="Center" Width="100" Margin="5,0"/>
                     <numericupdownlib:NumericUpDown Grid.Row="1" Grid.Column="4" IsMouseDragEnabled="False" MinValue="0" MaxValue="3" IsEnabled="{Binding Info.HaveActivePolicy}"
                                 Value="{Binding Info.ValOfActivePolicy, Mode=TwoWay}" NumberStyle="Integer" IsLargeStepEnabled="False"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Height="22" Margin="0,0,5,0">
-                        <Button Padding="5,0,5,0" Command="{Binding ShowSpawnDateCmd}" Margin="0,0,5,0" Width="85">
+                    <Button HorizontalAlignment="Right" Width="25">
+                        <Image Source="/Resources/menu.png"/>
+                    </Button>
+                    <!--<Button Padding="5,0,5,0" Command="{Binding ShowSpawnDateCmd}" Margin="0,0,5,0" Width="85">
                             <Button.Content>
                                 <TextBlock Padding="0" TextAlignment="Center" TextTrimming="CharacterEllipsis" Text="Show Spawns"/>
                             </Button.Content>
@@ -118,10 +120,9 @@
                             <Button.Content>
                                 <TextBlock Padding="0" TextAlignment="Center" TextTrimming="CharacterEllipsis" Text="Show closed Tags"/>
                             </Button.Content>
-                        </Button>
-                    </StackPanel>
+                        </Button>-->
                 </DockPanel>
-                <Popup StaysOpen="False" PopupAnimation="Fade" Placement="MousePoint" VerticalOffset="1.5" IsOpen="{Binding ShowSpawn}"
+                <!--<Popup StaysOpen="False" PopupAnimation="Fade" Placement="MousePoint" VerticalOffset="1.5" IsOpen="{Binding ShowSpawn}"
                        AllowsTransparency="True">
                     <Border BorderThickness="2" CornerRadius="6">
                         <Border.Effect>
@@ -233,7 +234,7 @@
                             </Button>
                         </StackPanel>
                     </Border>
-                </Popup>
+                </Popup>-->
             </Grid>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="0" Margin="5,5,0,0">
@@ -597,7 +598,7 @@
                 </Grid>
             </GroupBox>
             <GroupBox Grid.Row="2" BorderThickness="1.5" BorderBrush="DarkGray" Margin="5,5,0,0" Header="Contract">
-                <Grid>
+                <Grid >
                     <Grid.Resources>
                         <Style TargetType="{x:Type TextBox}">
                             <Setter Property="Margin" Value="5"/>
@@ -613,16 +614,16 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions >
                         <ColumnDefinition Width="60"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="60"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Grid.Column="2" Content="Days Left"/>
-                    <TextBox Grid.Row="0" Grid.Column="3" Tag="INT">
+                    <TextBox Tag="INT" Grid.Row="0" Grid.Column="3">
                         <TextBox.Style>
                             <Style TargetType="TextBox" BasedOn="{StaticResource txtbox}">
                                 <Setter Property="Margin" Value="5"/>
@@ -640,38 +641,42 @@
                                 </Style.Triggers>
                             </Style>
                         </TextBox.Style>
+                        <TextBox.ToolTip>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Date end"/>
+                                <TextBlock Grid.Row="1" Text="{Binding SelectedChar.contract.dateOfEnding, Converter={StaticResource myDateConverter}}" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                            </StackPanel>
+                        </TextBox.ToolTip>
                     </TextBox>
-                    <Button Grid.Column="4" Height="18" Width="18" Grid.Row="0" HorizontalAlignment="Center"
+                    <Button Grid.Column="4" Height="18" Width="18" HorizontalAlignment="Left"
                             Command="{Binding SetConnDaysSingleCmd}">
                         <Image Source="/Resources/arrow_up.png"/>
                     </Button>
-                    <Label Grid.Row="1" Grid.Column="0" Content="Date sign"/>
-                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SelectedChar.contract.dateOfSigning, Converter={StaticResource myDateConverter}}" VerticalAlignment="Center" Margin="5,0"/>
-                    <Label Grid.Row="1" Grid.Column="2" Content="Date end"/>
-                    <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding SelectedChar.contract.dateOfEnding, Converter={StaticResource myDateConverter}}" VerticalAlignment="Center" Margin="5,0"/>
-                    <Label Grid.Row="2" Grid.Column="0" Content="Years"/>
-                    <TextBox Text="{Binding SelectedChar.contract.amount}" Grid.Row="2" Grid.Column="1" 
+                    <Label Grid.Row="0" Grid.Column="0" Content="Date sign"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding SelectedChar.contract.dateOfSigning, Converter={StaticResource myDateConverter}}" VerticalAlignment="Center" Margin="5,0"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Years"/>
+                    <TextBox Text="{Binding SelectedChar.contract.amount}" Grid.Row="1" Grid.Column="1" 
                               Tag="INT"/>
-                    <Label Grid.Row="2" Grid.Column="2" Content="Init fee"/>
-                    <TextBox Text="{Binding SelectedChar.contract.initialFee}" Grid.Row="2" Grid.Column="3" 
+                    <Label Grid.Row="1" Grid.Column="2" Content="Init fee"/>
+                    <TextBox Text="{Binding SelectedChar.contract.initialFee}" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
                               Tag="INT"/>
-                    <Label Grid.Row="3" Grid.Column="0" Content="M/s">
+                    <Label Grid.Row="2" Grid.Column="0" Content="M/s">
                         <Label.ToolTip>
                             <TextBlock Text="Mouth salary" Padding="0"/>
                         </Label.ToolTip>
                     </Label>
-                    <TextBox Text="{Binding SelectedChar.contract.monthlySalary}" Grid.Row="3" Grid.Column="1"
+                    <TextBox Text="{Binding SelectedChar.contract.monthlySalary}" Grid.Row="2" Grid.Column="1"
                               Tag="INT">
                         <TextBox.ToolTip>
                             <TextBlock Text="Mouth salary" Padding="0"/>
                         </TextBox.ToolTip>
                     </TextBox>
-                    <Label Grid.Row="3" Grid.Column="2" Content="W/s">
+                    <Label Grid.Row="2" Grid.Column="2" Content="W/s">
                         <Label.ToolTip>
                             <TextBlock Text="Weight salary" Padding="0"/>
                         </Label.ToolTip>
                     </Label>
-                    <TextBox Text="{Binding SelectedChar.contract.weightToSalary}" Grid.Row="3" Grid.Column="3" 
+                    <TextBox Text="{Binding SelectedChar.contract.weightToSalary}" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
                               Tag="INT">
                         <TextBox.ToolTip>
                             <TextBlock Text="Weight salary" Padding="0"/>
@@ -937,7 +942,7 @@
                 <Label Content="{Binding Info.studioName}" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" Grid.Column="0"/>
                 <TextBlock Text="{Binding PathToSaveFile}"  VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Margin="5,0"/>
                 <Label Content="{Binding Info.Now, Converter={StaticResource myDateConverter}}" HorizontalAlignment="Right" VerticalContentAlignment="Center" FontWeight="Bold" Grid.Column="2"/>
-                
+
             </Grid>
             <StackPanel Orientation="Horizontal" Grid.Column="1">
                 <Button Command="{Binding OpenFileCmd}" CommandParameter="Names"  Grid.Column="0"  Height="25" Width="25" Margin="5,0,0,0" IsEnabled="True">
@@ -959,7 +964,5 @@
             </StackPanel>
 
         </Grid>
-
-
     </Grid>
 </Window>

@@ -448,22 +448,17 @@ namespace HollyJson.ViewModels
             {
                 return _setallskills ??= new CommandHandler(obj =>
                 {
-                    if (filtered_Obj?.Count > 0)
-                        foreach (var item in Filtered_Obj)
-                        {
-
-                            foreach (var skill in item.whiteTagsNEW)
-                            {
-                                if (skill.Value < 12)
-                                    skill.Value = 12.0;
-                            }
-                            foreach (var avsk in item.AvalibaleSkills)
-                            {
-                                item.whiteTagsNEW.Insert(0, new WhiteTag(avsk, 12.0));
-                            }
-                            item.SetAvSkills();
-                        }
-                }, (obj) => filtered_Obj?.Count > 0);
+                    foreach (var skill in SelectedChar.whiteTagsNEW)
+                    {
+                        if (skill.Value < 12)
+                            skill.Value = 12.0;
+                    }
+                    foreach (var avsk in SelectedChar.AvalibaleSkills)
+                    {
+                        SelectedChar.whiteTagsNEW.Insert(0, new WhiteTag(avsk, 12.0));
+                    }
+                    SelectedChar.SetAvSkills();
+                }, (obj) => SelectedChar is not null);
             }
         }
         public CommandHandler SetSkillToLimitCmd

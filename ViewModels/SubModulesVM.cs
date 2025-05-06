@@ -12,15 +12,32 @@ namespace HollyJson.ViewModels
     {
         CommandHandler _unlocktags;
         CommandHandler _setdurationtime;
+        public string PathToConfDir { get; set; }
+        //FROM CONF FILES
+        public ObservableCollection<TechInfo> Techs{ get; set; }
+        public ObservableCollection<Titans> Titans { get; set; }
+        public ObservableCollection<Building> Buildings { get; set; }
+        public Dictionary<string, string> GameVarLst { get; set; }
+        public ObservableCollection<CharXp> CharXps { get; set; }
+        //FROM state JSON
         public DateTime Now { get; set; }
         public ObservableCollection<string> TagBank { get; set; }
-        public ObservableCollection<TagPool> TagPool { get; set; }
-        public ObservableCollection<TechInfo> TechCollLst { get; set; }
-        public Dictionary<string, string> GameVarLst { get; set; }
+        public ObservableCollection<TagPool> TagPools { get; set; }
+        public Dictionary<string, DateTime> NextSpawnDays { get; set; }
+        public ObservableCollection<TagInCodex> currentTagsInCodex { get; set; }
+        public bool? isCodexOpened { get; set; }
+
         public SubModulesVM()
         {
-            TechCollLst = [];
+            TagBank = [];
+            TagPools = [];
+            Techs = [];
             GameVarLst = [];
+            Titans = [];
+            Buildings = [];
+            NextSpawnDays = [];
+            currentTagsInCodex = [];
+            CharXps = [];
         }
 
         public CommandHandler UnlockTagsCmd
@@ -33,7 +50,7 @@ namespace HollyJson.ViewModels
                     {
                         foreach (string tag in TagBank)
                         {
-                            TagPool.Add(new TagPool(tag, Now.AddDays(-1)));
+                            TagPools.Add(new TagPool(tag, Now.AddDays(-1)));
                         }
                         TagBank.Clear();
                     }
@@ -46,7 +63,7 @@ namespace HollyJson.ViewModels
             {
                 return _setdurationtime ??= new CommandHandler(obj =>
                 {
-                    foreach (var item in TechCollLst)
+                    foreach (var item in Techs)
                     {
                         item.duration = (int)obj;
                     }
@@ -74,7 +91,7 @@ namespace HollyJson.ViewModels
             {
                 var q = item.ToObject<JProperty>();
                 TechInfo nm = JsonConvert.DeserializeObject<TechInfo>(q.Value.ToString());
-                TechCollLst.Add(nm!);
+                Techs.Add(nm!);
             }
         }
         public async Task ReadGameVarData(string path)

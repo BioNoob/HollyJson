@@ -3,6 +3,7 @@
 namespace HollyJson.Models
 {
     [AddINotifyPropertyChangedInterface]
+    ///Studio politics
     public class Milestones
     {
         public string id { get; set; }

@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="HollyJson.View.SubModulesControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HollyJson.View"
+             xmlns:vm="clr-namespace:HollyJson.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="400">
+    <UserControl.DataContext>
+        <vm:SubModulesVM/>
+    </UserControl.DataContext>
+    <Grid Background="White" Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="{Binding PathToConfDir}" Padding="0" Margin="5,0"/>
+        <Button Command="{Binding OpenFileCmd}" CommandParameter="OFD" Grid.Column="1" Height="25" Width="25" 
+                Margin="5,0,0,0" IsEnabled="True">
+            <Button.Content>
+                <Image Source="/Resources/ofd.png"/>
+            </Button.Content>
+            <Button.ToolTip>
+                <TextBlock Padding="0" Text="Open config folder"/>
+            </Button.ToolTip>
+        </Button>
+        <WrapPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5,0,0">
+            <WrapPanel.Resources>
+                <Style TargetType="{x:Type GroupBox}">
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="BorderBrush" Value="DarkGray"/>
+                    <Setter Property="BorderThickness" Value="1.5"/>
+                </Style>
+            </WrapPanel.Resources>
+            <GroupBox Header="Current tags">
+                
+            </GroupBox>
+            <GroupBox Header="Tags in codex">
+
+            </GroupBox>
+            <GroupBox Header="Next Spawn Dates">
+
+            </GroupBox>
+            <GroupBox Header="Buildings">
+
+            </GroupBox>
+            <GroupBox Header="Research spd">
+
+            </GroupBox>
+            <GroupBox Header="Characters XP">
+
+            </GroupBox>
+            <GroupBox Header="Boutique spd">
+
+            </GroupBox>
+            <GroupBox Header="Technologies Speed">
+
+            </GroupBox>
+            <GroupBox Header="Friends titans">
+
+            </GroupBox>
+        </WrapPanel>
+    </Grid>
+</UserControl>

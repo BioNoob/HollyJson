@@ -1,12 +1,11 @@
 ﻿using HollyJson.ViewModels;
-using System.Diagnostics;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace HollyJson;
+namespace HollyJson.View;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml
