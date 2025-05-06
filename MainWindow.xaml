@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:HollyJson.ViewModels"
         xmlns:models="clr-namespace:HollyJson.Models" xmlns:numericupdownlib="clr-namespace:NumericUpDownLib;assembly=NumericUpDownLib"
         mc:Ignorable="d"
-        Icon="/main.ico"
-        Title="Holly JsonEditor" Height="790" Width="730" MinWidth="700" MinHeight="790">
+        Keyboard.KeyDown="Window_KeyDown"
+        Icon="/main.ico" 
+        Title="Holly JsonEditor" Height="845" Width="812" MinWidth="800" MinHeight="845">
     <Window.DataContext>
         <local:MainModel/>
     </Window.DataContext>
@@ -35,6 +36,11 @@
         <models:Character x:Key="Character"/>
         <models:stateJson x:Key="Statejs"/>
     </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding SaveCmd}" Modifiers="Control" Key="S"/>
+        <!--<KeyBinding Command="{Binding MoveInFilteredCmd}" CommandParameter="Down" Modifiers="Control" Key="Down"/>
+        <KeyBinding Command="{Binding MoveInFilteredCmd}" CommandParameter="Up" Modifiers="Control" Key="Up"/>-->
+    </Window.InputBindings>
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -139,7 +145,6 @@
                             </ItemsControl>
                         </ScrollViewer>
                     </Border>
-
                 </Popup>
                 <Popup StaysOpen="False" PopupAnimation="Fade" Placement="MousePoint" VerticalOffset="1.5" IsOpen="{Binding ShowTechs}"
                        AllowsTransparency="True">
@@ -272,90 +277,157 @@
                 </Grid.ColumnDefinitions>
                 <CheckBox Content="Show only Dead" Grid.Column="0"  VerticalAlignment="Center" VerticalContentAlignment="Center"
                       HorizontalAlignment="Center" Margin="0,0,0,5" IsChecked="{Binding ShowOnlyDead}"/>
-                <CheckBox Content="Show With Dead" Grid.Column="1" VerticalAlignment="Center" VerticalContentAlignment="Center"
-                      HorizontalAlignment="Center" Margin="0,0,0,5" IsChecked="{Binding ShowWithDead}"/>
+                <!--<CheckBox Content="Show With Dead" Grid.Column="1" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                      HorizontalAlignment="Center" Margin="0,0,0,5" IsChecked="{Binding ShowWithDead}"/>-->
                 <CheckBox Content="Show only Talent" Grid.Column="2" VerticalAlignment="Center" VerticalContentAlignment="Center"
                       HorizontalAlignment="Center" Margin="0,0,0,5" IsChecked="{Binding ShowOnlyTalent}"/>
             </Grid>
-            <ListView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding Filtered_Obj}" 
-          SelectionMode="Single" SelectedItem="{Binding SelectedChar}" AlternationCount="2" Background="White">
-                <ListView.Resources>
-                    <Style TargetType="ListViewItem">
+            <DataGrid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding Filtered_Obj}" x:Name="dgr" 
+          SelectionMode="Single" SelectedItem="{Binding SelectedChar}" AlternationCount="2" Background="White"
+                      AlternatingRowBackground ="#2F77A640"
+                      AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridCell}">
                         <Style.Triggers>
-                            <Trigger Property="ItemsControl.AlternationIndex"  Value="0">
-                                <Setter Property="Background" Value="#1F50d5fa" />
-                            </Trigger>
-                            <Trigger Property="ItemsControl.AlternationIndex"  Value="1">
-                                <Setter Property="Background" Value="#1FFFA64C" />
+                            <Trigger Property="DataGridCell.IsSelected" Value="True">
+                                <Setter Property="Background" Value="#CCDAFF"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="BorderBrush" Value="#CCDAFF"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
-                </ListView.Resources>
-                <ListView.ItemTemplate>
-                    <DataTemplate DataType="local:Character">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Content="{Binding MyCustomName}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0" Margin="0,0,5,0"
-                                   Grid.Column="0"/>
-                            <TextBlock Text="{Binding professions.ProfToDecode, Converter={StaticResource LocaleConverter}}" Padding="0" Grid.Column="1" 
-                                   HorizontalAlignment="Right" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Grid Grid.Row="3" Grid.ColumnSpan="3">
-                <Grid.Resources>
-                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-                        <Setter Property="Height" Value="20"/>
-                        <Setter Property="Margin" Value="2.5,2.5,2.5,2.5"/>
-                    </Style>
-                </Grid.Resources>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Name" Width="101" MinWidth="101" SortMemberPath="MyCustomName" CanUserSort="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding MyCustomName}" TextTrimming="CharacterEllipsis">
+                                    <TextBlock.ToolTip>
+                                        <TextBlock Text="{Binding MyCustomName}"/>
+                                    </TextBlock.ToolTip>
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Prof." Width="80" MinWidth="80" SortMemberPath="professions.ProfToDecode" CanUserSort="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding professions.ProfToDecode, Converter={StaticResource LocaleConverter}}"
+                                           TextTrimming="CharacterEllipsis">
+                                    <TextBlock.ToolTip>
+                                        <TextBlock Text="{Binding professions.ProfToDecode, Converter={StaticResource LocaleConverter}}"/>
+                                    </TextBlock.ToolTip>
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Limit" Binding="{Binding professions.Value, StringFormat={}{0:0.00}}"
+                                        MinWidth="40"/>
+                    <DataGridTextColumn Header="Skill" Binding="{Binding limit, StringFormat={}{0:0.00}}"
+                                        MinWidth="40"/>
+                    <DataGridTextColumn Header="Age" Binding="{Binding Age, StringFormat={}{0:00}}"
+                                        MinWidth="40"/>
+                    <DataGridTemplateColumn Header="Days" SortMemberPath="contract.DaysLeft" CanUserSort="True"
+                                        MinWidth="50">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock TextTrimming="CharacterEllipsis">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Text" Value="{Binding contract.DaysLeft, StringFormat={}{0:0}}"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding contract.contractType}" Value="2">
+                                                    <Setter Property="Text" Value="∞"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Grid Grid.Row="3" Grid.ColumnSpan="3" Margin="0,5,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Image Grid.Column="0" Grid.RowSpan="3" Source="/Resources/arrow_up.png" Width="25"/>
-                <Button Grid.Column="1" Grid.Row="0" Command="{Binding SetMoodAndAttCmd}">
+                <Button Grid.Column="0" Width="25" Margin="0,0,5,0" Command="{Binding ShowMacrosCmd}">
                     <Button.Content>
-                        <TextBlock Padding="0" Text="Set Mood and Att to 1.0" TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                        <Image Source="/Resources/menu.png"/>
                     </Button.Content>
                 </Button>
-                <Button Grid.Column="2" Grid.Row="0" Command="{Binding SetMaxContrDaysCmd}">
-                    <Button.Content>
-                        <TextBlock Padding="0" Text="Set Contract days to max" TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
-                    </Button.Content>
-                </Button>
-                <Button Grid.Column="1" Grid.Row="1" Command="{Binding SetSkillToLimitCmd}">
-                    <Button.Content>
-                        <TextBlock Padding="0" Text="Set Skill to Limit" TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
-                    </Button.Content>
-                </Button>
-                <Button Grid.Column="2" Grid.Row="1" Command="{Binding SetLimitToMaxCmd}">
-                    <Button.Content>
-                        <TextBlock Padding="0" Text="Raise Limit to 1.0" TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
-                    </Button.Content>
-                </Button>
-                <Button Grid.Column="1" Grid.Row="2" Command="{Binding SetAgeToYoungCmd}">
-                    <Button.Content>
-                        <TextBlock Padding="0" Text="Set Age to 18" TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
-                    </Button.Content>
-                </Button>
-                <Button Grid.Column="2" Grid.Row="2" Command="{Binding SetAllSkillsCmd}">
-                    <Button.Content>
-                        <TextBlock Padding="0" Text="Get all skills (max)" TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
-                    </Button.Content>
-                </Button>
-                <Image Grid.Column="3" Grid.RowSpan="3" Source="/Resources/arrow_up.png" Width="25"/>
+                <Image Grid.Column="1" Source="/Resources/arrow_up.png" Width="25"/>
+                <Popup StaysOpen="False" PopupAnimation="Fade" Placement="MousePoint" VerticalOffset="1.5" IsOpen="{Binding ShowMacros}"
+                    AllowsTransparency="True">
+                    <Border BorderThickness="2" CornerRadius="6" Background="White" Padding="1">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="15" Opacity="0.5"  ShadowDepth="4" Direction="-45" RenderingBias="Performance" />
+                        </Border.Effect>
+                        <Grid Width="200">
+                            <Grid.Resources>
+                                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                                    <Setter Property="Height" Value="20"/>
+                                    <Setter Property="Margin" Value="2.5,2.5,2.5,2.5"/>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Column="0" Grid.Row="0" Command="{Binding SetMoodAndAttCmd}">
+                                <Button.Content>
+                                    <TextBlock Padding="5,0" Text="Max Mood\Att" TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                </Button.Content>
+                            </Button>
+                            <Button Grid.Column="1" Grid.Row="0" Command="{Binding SetMaxContrDaysCmd}">
+                                <Button.Content>
+                                    <TextBlock Padding="5,0" Text="Max Days" TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                </Button.Content>
+                            </Button>
+                            <Button Grid.Column="1" Grid.Row="1" Command="{Binding SetSkillToLimitCmd}">
+                                <Button.Content>
+                                    <TextBlock Padding="5,0" Text="Max Skill" TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                </Button.Content>
+                            </Button>
+                            <Button Grid.Column="0" Grid.Row="1" Command="{Binding SetLimitToMaxCmd}">
+                                <Button.Content>
+                                    <TextBlock Padding="5,0" Text="Max Limit" TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                </Button.Content>
+                            </Button>
+                            <GroupBox Header="Set Age" Grid.ColumnSpan="2" Grid.Row="2">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Command="{Binding SetAgeToCmd}" CommandParameter="Y" Grid.Column="0">
+                                        <Button.Content>
+                                            <TextBlock Padding="0" Text="Young" TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Command="{Binding SetAgeToCmd}" CommandParameter="M" Grid.Column="1">
+                                        <Button.Content>
+                                            <TextBlock Padding="0" Text="Mid" TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Command="{Binding SetAgeToCmd}" CommandParameter="O" Grid.Column="2">
+                                        <Button.Content>
+                                            <TextBlock Padding="0" Text="Old" TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </Border>
+                </Popup>
             </Grid>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1">
@@ -379,7 +451,7 @@
                     <Setter Property="Margin" Value="5"/>
                 </Style>
             </Grid.Resources>
-            <Border Grid.Row="0" BorderThickness="1.5" BorderBrush="DarkGray" CornerRadius="5" Margin="5,5,0,0">
+            <GroupBox Grid.Row="0" BorderThickness="1.5" BorderBrush="DarkGray" Margin="5,5,0,0" Header="Char info">
                 <Grid>
                     <Grid.Resources>
                         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource txtbox}">
@@ -403,6 +475,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions >
                         <ColumnDefinition Width="75"/>
@@ -410,54 +483,82 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="60"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="25"/>
                     </Grid.ColumnDefinitions>
                     <Border Grid.RowSpan="3" Margin="5">
                         <Image Source="{Binding SelectedChar.ImgPath}" Stretch="Fill" />
                     </Border>
                     <Label Content="Name" Grid.Row="0" Grid.Column="1"/>
-                    <TextBox Text="{Binding SelectedChar.MyCustomName}" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3"
+                    <TextBox Text="{Binding SelectedChar.MyCustomName}" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="4"
                            HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Tag="STR"/>
                     <Label Content="Studio Id" Grid.Row="1" Grid.Column="1"/>
-                    <Grid Grid.Row="1" Grid.Column="2" Margin="5,0,5,0" Height="20" Grid.ColumnSpan="3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="20"/>
-                        </Grid.ColumnDefinitions>
-                        <ComboBox SelectedItem="{Binding SelectedChar.studioId}" Grid.Column="0"
-                             Padding="0" ItemsSource="{Binding StudioListForChar}" VerticalContentAlignment="Center">
-                            <ComboBox.Style>
-                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.SelectedChar.IsBusyOnJob}" Value="True">
-                                            <Setter Property="IsEnabled" Value="False"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </ComboBox.Style>
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding ., Converter={StaticResource LocaleConverter}}" Padding="0" Margin="5,0,0,0"/>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                        <Image HorizontalAlignment="Center" Source="/Resources/question.png" Width="17" Height="17" Opacity="0.7" Grid.Column="1">
-                            <Image.ToolTip>
-                                <StackPanel>
-                                    <TextBlock Text="If the choice is not available,"/>
-                                    <TextBlock Text="it means the character is busy at work"/>
-                                </StackPanel>
-                            </Image.ToolTip>
-                        </Image>
-                    </Grid>
+                    <ComboBox SelectedItem="{Binding SelectedChar.studioId}" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Margin="5,0"
+                             Padding="0" ItemsSource="{Binding StudioListForChar}" VerticalContentAlignment="Center" Height="20">
+                        <ComboBox.Style>
+                            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.SelectedChar.IsBusyOnJob}" Value="True">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ComboBox.Style>
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ., Converter={StaticResource LocaleConverter}}" Padding="0" Margin="5,0,0,0"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Image HorizontalAlignment="Center" Source="/Resources/question.png" Width="17" Height="17" Opacity="0.7" 
+                           Grid.Column="5" Grid.Row="1" >
+                        <Image.ToolTip>
+                            <StackPanel>
+                                <TextBlock Text="If the choice is not available,"/>
+                                <TextBlock Text="it means the character is busy at work"/>
+                            </StackPanel>
+                        </Image.ToolTip>
+                    </Image>
                     <Label Content="Mood" Grid.Row="2" Grid.Column="1" />
                     <TextBox Text="{Binding SelectedChar.mood, StringFormat={}{0:0.00}}" Grid.Row="2" Grid.Column="2"  
                               Tag="LMT"/>
+                    
                     <Label Content="Attitude" Grid.Row="2" Grid.Column="3"/>
                     <TextBox Text="{Binding SelectedChar.attitude, StringFormat={}{0:0.00}}" Grid.Row="2" Grid.Column="4" 
                               Tag="LMT"/>
+                    <Button Grid.Column="5" Height="18" Width="18" Grid.Row="2" HorizontalAlignment="Center"
+                            Command="{Binding SetMoodAndAttSingleCmd}">
+                        <Image Source="/Resources/arrow_up.png"/>
+                    </Button>
+
+                    <CheckBox Grid.Row="3" Grid.Column="0" Content="Is Dead" VerticalAlignment="Center"
+                              HorizontalAlignment="Center" IsChecked="{Binding SelectedChar.IsDead}">
+                        <CheckBox.Style>
+                            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SelectedChar}" Value="{x:Null}">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                        <Setter Property="Background" Value="#1F777777"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+                    <Label Content="Age"  Grid.Row="3" Grid.Column="3"/>
+                    <TextBox Text="{Binding SelectedChar.Age}" Grid.Row="3" Grid.Column="4" Tag="AGE"/>
+                    <Label Content="Birth" Grid.Row="3" Grid.Column="1"/>
+                    <TextBlock Text="{Binding SelectedChar.GetBirthDate, Converter={StaticResource myDateConverter}}" Grid.Row="3" Grid.Column="2"
+           VerticalAlignment="Center" Margin="5,0"/>
                 </Grid>
-            </Border>
-            <Border Grid.Row="1" BorderThickness="1.5" BorderBrush="DarkGray" CornerRadius="5" Margin="5,5,0,0">
+            </GroupBox>
+            <GroupBox Grid.Row="1" BorderThickness="1.5" BorderBrush="DarkGray" Margin="5,5,0,0">
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Padding="0" Margin="0" Text="Profession: "/>
+                        <TextBlock Padding="0" Margin="5,0" Text="{Binding SelectedChar.professions.ProfToDecode, Converter={StaticResource LocaleConverter}}"
+                                   TextDecorations="Underline" TextTrimming="WordEllipsis" MaxWidth="300"/>
+                    </StackPanel>
+                </GroupBox.Header>
                 <Grid>
                     <Grid.Resources>
                         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource txtbox}">
@@ -470,49 +571,32 @@
                             </Style.Triggers>
                         </Style>
                     </Grid.Resources>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions >
                         <ColumnDefinition Width="60"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
                         <ColumnDefinition Width="60"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Prof." Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Right"/>
-                    <TextBlock Text="{Binding SelectedChar.professions.ProfToDecode, Converter={StaticResource LocaleConverter}}" Grid.Row="0" Grid.Column="1" Margin="5,0,0,0"
-                             TextTrimming="CharacterEllipsis" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" TextAlignment="Left"/>
-                    <Label Content="Age"  Grid.Row="0" Grid.Column="2"/>
-                    <TextBox Text="{Binding SelectedChar.Age}" Grid.Row="0" Grid.Column="3" 
-                               Tag="AGE"/>
-                    <Label Content="Birth" Grid.Row="1" Grid.Column="2"/>
-                    <TextBlock Text="{Binding SelectedChar.GetBirthDate, Converter={StaticResource myDateConverter}}" Grid.Row="1" Grid.Column="3"
-                               VerticalAlignment="Center" Margin="5,0"/>
-                    <CheckBox Grid.Row="1" Grid.Column="1" Content="Is Dead" VerticalAlignment="Center"
-                              HorizontalAlignment="Center" IsChecked="{Binding SelectedChar.IsDead}">
-                        <CheckBox.Style>
-                            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding SelectedChar}" Value="{x:Null}">
-                                        <Setter Property="IsEnabled" Value="False"/>
-                                        <Setter Property="Background" Value="#1F777777"/>
-                                    </DataTrigger>                                
-                                </Style.Triggers>
+                    <!--<TextBlock Text="{Binding SelectedChar.professions.ProfToDecode, Converter={StaticResource LocaleConverter}}" Grid.Row="0" Grid.Column="1" Margin="5,0,0,0"
+                             TextTrimming="CharacterEllipsis" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" TextAlignment="Left"/>-->
+                    <Label Content="Limit" Grid.Column="0"/>
+                    <TextBox Text="{Binding SelectedChar.limit, StringFormat={}{0:0.0}}" Grid.Column="1" 
+           Tag="LMT"/>
+                    <Button Grid.Column="2" Height="18" Width="18" HorizontalAlignment="Left" Command="{Binding SetLimitToMaxSingleCmd}">
+                        <Image Source="/Resources/arrow_up.png"/>
+                    </Button>
+                    <Label Content="Skill" Grid.Column="3"/>
+                    <TextBox Text="{Binding SelectedChar.professions.Value, StringFormat={}{0:0.00}}" Grid.Column="4" 
+                               Tag="LMT"/>
+                    <Button Grid.Column="5" Height="18" Width="18" HorizontalAlignment="Left" Command="{Binding SetSkillToCapSingleCmd}">
+                        <Image Source="/Resources/arrow_up.png"/>
+                    </Button>
 
-                            </Style>
-                        </CheckBox.Style>
-                    </CheckBox>
-                    <Label Content="Skill" Grid.Row="2" Grid.Column="2"/>
-                    <TextBox Text="{Binding SelectedChar.professions.Value, StringFormat={}{0:0.00}}" Grid.Row="2" Grid.Column="3" 
-                               Tag="LMT"/>
-                    <Label Content="Limit" Grid.Row="2" Grid.Column="0"/>
-                    <TextBox Text="{Binding SelectedChar.limit, StringFormat={}{0:0.0}}" Grid.Row="2" Grid.Column="1" 
-                               Tag="LMT"/>
                 </Grid>
-            </Border>
-            <Border Grid.Row="2" BorderThickness="1.5" BorderBrush="DarkGray" CornerRadius="5" Margin="5,5,0,0">
+            </GroupBox>
+            <GroupBox Grid.Row="2" BorderThickness="1.5" BorderBrush="DarkGray" Margin="5,5,0,0" Header="Contract">
                 <Grid>
                     <Grid.Resources>
                         <Style TargetType="{x:Type TextBox}">
@@ -537,7 +621,6 @@
                         <ColumnDefinition Width="60"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Content="Contract" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
                     <Label Grid.Row="0" Grid.Column="2" Content="Days Left"/>
                     <TextBox Grid.Row="0" Grid.Column="3" Tag="INT">
                         <TextBox.Style>
@@ -558,6 +641,10 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
+                    <Button Grid.Column="4" Height="18" Width="18" Grid.Row="0" HorizontalAlignment="Center"
+                            Command="{Binding SetConnDaysSingleCmd}">
+                        <Image Source="/Resources/arrow_up.png"/>
+                    </Button>
                     <Label Grid.Row="1" Grid.Column="0" Content="Date sign"/>
                     <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SelectedChar.contract.dateOfSigning, Converter={StaticResource myDateConverter}}" VerticalAlignment="Center" Margin="5,0"/>
                     <Label Grid.Row="1" Grid.Column="2" Content="Date end"/>
@@ -591,8 +678,8 @@
                         </TextBox.ToolTip>
                     </TextBox>
                 </Grid>
-            </Border>
-            <Border Grid.Row="3" BorderThickness="1.5" BorderBrush="DarkGray" CornerRadius="5" Margin="5,5,0,0">
+            </GroupBox>
+            <GroupBox Grid.Row="3" BorderThickness="1.5" BorderBrush="DarkGray" Margin="5,5,0,0" Header="Traits">
                 <Grid Margin="0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -603,9 +690,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Content="Traits"  VerticalAlignment="Center"  Margin="10,0,0,0"
-                               HorizontalAlignment="Left" Padding="0"/>
-                    <Image Grid.Column="0" HorizontalAlignment="Left" Source="/Resources/question.png" Width="17" Height="17" Opacity="0.7" Margin="45,0">
+                    <Image Grid.Column="0" HorizontalAlignment="Left" Source="/Resources/question.png" Width="17" Height="17" Opacity="0.7" Margin="5,0">
                         <Image.ToolTip>
                             <StackPanel>
                                 <TextBlock Text="Order is important for ingame visual"/>
@@ -615,7 +700,7 @@
                             </StackPanel>
                         </Image.ToolTip>
                     </Image>
-                    <ComboBox Grid.Column="1" Margin="10,5,0,5" VerticalAlignment="Center" Padding="0" Height="20" x:Name="TraitCmb"  HorizontalAlignment="Right"
+                    <ComboBox Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center" Padding="0" Height="20" x:Name="TraitCmb"  HorizontalAlignment="Right"
                               IsEnabled="{Binding HasItems, RelativeSource={RelativeSource Self}}"
                               Width="150" ItemsSource="{Binding SelectedChar.AvalibaleTraits }" VerticalContentAlignment="Center">
                         <ComboBox.Style>
@@ -638,12 +723,12 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                     <Button Grid.Column="2" Grid.Row="0" Height="20" Width="20" HorizontalAlignment="Right" IsEnabled="{Binding SelectedChar.professions.IsTalent}"
-                            VerticalAlignment="Top" Margin="10,5,10,0" Command="{Binding AddTraitCmd}" CommandParameter="{Binding ElementName=TraitCmb, Path=SelectedItem}">
+                            VerticalAlignment="Top" Margin="10,0,5,0" Command="{Binding AddTraitCmd}" CommandParameter="{Binding ElementName=TraitCmb, Path=SelectedItem}">
                         <Button.Content>
                             <Image Source="/Resources/plus.png"/>
                         </Button.Content>
                     </Button>
-                    <ScrollViewer Margin="5,5,10,5" VerticalAlignment="Stretch" Grid.Row="1" Grid.ColumnSpan="3">
+                    <ScrollViewer Margin="5,5,5,0" VerticalAlignment="Stretch" Grid.Row="1" Grid.ColumnSpan="3">
                         <ItemsControl ItemsSource="{Binding SelectedChar.labels}" VerticalAlignment="Top">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
@@ -678,21 +763,20 @@
                         </ItemsControl>
                     </ScrollViewer>
                 </Grid>
-            </Border>
-            <Border Grid.Row="4" BorderThickness="1.5" BorderBrush="DarkGray" CornerRadius="5" Margin="5,5,0,0">
+            </GroupBox>
+            <GroupBox Grid.Row="4" BorderThickness="1.5" BorderBrush="DarkGray" Margin="5,5,0,0" Header="Skills">
                 <Grid Margin="0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*" MinWidth="160"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Column="0" Content="Skills"  VerticalAlignment="Center"  Margin="10,0,0,0"
-                               HorizontalAlignment="Left" Padding="0"/>
-                    <Image Grid.Column="0" HorizontalAlignment="Left" Source="/Resources/question.png" Width="17" Height="17" Opacity="0.7" Margin="45,0">
+                    <Image Grid.Column="0" HorizontalAlignment="Left" Source="/Resources/question.png" Width="17" Height="17" Opacity="0.7" Margin="5,0">
                         <Image.ToolTip>
                             <StackPanel>
                                 <TextBlock Text="If a character has gained any experience - we can't remove that skill completely." Padding="0"/>
@@ -703,9 +787,14 @@
                             </StackPanel>
                         </Image.ToolTip>
                     </Image>
-                    <ComboBox Grid.Column="1" Margin="10,5,0,5" VerticalAlignment="Center" Padding="0" Height="20" VerticalContentAlignment="Center"
+                    <Button Grid.Column="1" Grid.Row="0" Command="{Binding SetAllSkillsCmd}">
+                        <Button.Content>
+                            <TextBlock Padding="5,0" Text="Get all" TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                        </Button.Content>
+                    </Button>
+                    <ComboBox Grid.Column="2" Margin="10,0,0,0" VerticalAlignment="Center" Padding="0" Height="20" VerticalContentAlignment="Center"
                               IsEnabled="{Binding HasItems, RelativeSource={RelativeSource Self}}"
-                              ItemsSource="{Binding SelectedChar.AvalibaleSkills}" x:Name="SkillCmb" Width="150" HorizontalAlignment="Right">
+                              ItemsSource="{Binding SelectedChar.AvalibaleSkills}" x:Name="SkillCmb" MinWidth="150" HorizontalAlignment="Right">
                         <ComboBox.Style>
                             <Style TargetType="{x:Type ComboBox}">
                                 <Style.Triggers>
@@ -725,15 +814,14 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <Button Grid.Column="2" Grid.Row="0" Height="20" Width="20" HorizontalAlignment="Right" IsEnabled="{Binding SelectedChar.professions.IsTalent}"
+                    <Button Grid.Column="3" Height="20" Width="20" HorizontalAlignment="Right" IsEnabled="{Binding SelectedChar.professions.IsTalent}"
                             Command="{Binding AddSkillCmd}" CommandParameter="{Binding ElementName=SkillCmb, Path=SelectedItem}" 
-                            VerticalAlignment="Top" Margin="10,5,10,0">
+                            VerticalAlignment="Top" Margin="10,0,5,0">
                         <Button.Content>
                             <Image Source="/Resources/plus.png"/>
                         </Button.Content>
                     </Button>
-
-                    <ScrollViewer Margin="5,-10,10,0"  Height="80" Padding="0" Grid.Row="1" Grid.ColumnSpan="3" CanContentScroll="True" BorderThickness="2" BorderBrush="Aqua" >
+                    <ScrollViewer Margin="5,5,5,0" Padding="0" Grid.Row="1" Grid.ColumnSpan="4" CanContentScroll="True" BorderThickness="2">
                         <ItemsControl ItemsSource="{Binding SelectedChar.whiteTagsNEW}" >
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate DataType="local:WhiteTag">
@@ -766,21 +854,15 @@
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
-                        <!--<ScrollViewer.Effect>
-                            <DropShadowEffect BlurRadius="15" Opacity="0.5"  ShadowDepth="4" Direction="-45" RenderingBias="Performance" />
-                        </ScrollViewer.Effect>-->
                     </ScrollViewer>
                 </Grid>
-            </Border>
-            <Border Grid.Row="5" BorderThickness="1.5" BorderBrush="DarkGray" CornerRadius="5" Margin="5,5,0,0">
+            </GroupBox>
+            <GroupBox Grid.Row="5" BorderThickness="1.5" BorderBrush="DarkGray" Margin="5,5,0,0" Header="Knowed Sins">
                 <Grid Margin="0,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Content="Knowed Sins" VerticalAlignment="Top"
-                               HorizontalAlignment="Center" Padding="0" Margin="5,5,0,0"/>
-                    <ScrollViewer Margin="5,5,10,5" VerticalAlignment="Stretch" Grid.Row="1">
+                    <ScrollViewer Margin="5,0,5,0" VerticalAlignment="Stretch" Grid.Row="0">
                         <ItemsControl ItemsSource="{Binding SelectedChar.aSins}" VerticalAlignment="Top">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate DataType="local:Character">
@@ -791,10 +873,9 @@
                         </ItemsControl>
                     </ScrollViewer>
                 </Grid>
-            </Border>
-            <Border Grid.Row="6" Grid.Column="1"  Height="12" Padding="0" Margin="5,0" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                <TextBlock Text="{Binding StatusBarText}" Padding="0" Margin="0" FontSize="10" VerticalAlignment="Center"/>
-            </Border>
+            </GroupBox>
+            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding StatusBarText}" Padding="0" FontSize="10" VerticalAlignment="Bottom"
+                       Margin="10,0,0,0" HorizontalAlignment="Left"/>
             <Button Grid.Row="6" Grid.Column="1"  Width="25" Height="25" IsEnabled="{Binding Save_Loaded}"
                     VerticalAlignment="Bottom" HorizontalAlignment="Right"
                     Command="{Binding SaveCmd}">
@@ -820,8 +901,8 @@
             </Button>
         </Grid>
         <Border Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="0" 
-                VerticalAlignment="Center" Opacity="1">
-            <Image  Source="/Resources/backgrnd.png" Stretch="UniformToFill" HorizontalAlignment="Center"/>
+                VerticalAlignment="Center" Opacity="0">
+            <Image Source="/Resources/backgrnd.png" Stretch="UniformToFill" HorizontalAlignment="Center"/>
             <Border.Style>
                 <Style TargetType="Border">
                     <Style.Triggers>
@@ -847,10 +928,17 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <DockPanel Grid.Column="0" HorizontalAlignment="Stretch">
-                <Label Content="{Binding Info.studioName}" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold"/>
-                <Label Content="{Binding Info.Now, Converter={StaticResource myDateConverter}}" HorizontalAlignment="Right" VerticalContentAlignment="Center" FontWeight="Bold"/>
-            </DockPanel>
+            <Grid Grid.Column="0" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="{Binding Info.studioName}" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" Grid.Column="0"/>
+                <TextBlock Text="{Binding PathToSaveFile}"  VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Margin="5,0"/>
+                <Label Content="{Binding Info.Now, Converter={StaticResource myDateConverter}}" HorizontalAlignment="Right" VerticalContentAlignment="Center" FontWeight="Bold" Grid.Column="2"/>
+                
+            </Grid>
             <StackPanel Orientation="Horizontal" Grid.Column="1">
                 <Button Command="{Binding OpenFileCmd}" CommandParameter="Names"  Grid.Column="0"  Height="25" Width="25" Margin="5,0,0,0" IsEnabled="True">
                     <Button.Content>

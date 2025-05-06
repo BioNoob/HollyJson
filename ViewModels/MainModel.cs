@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PropertyChanged;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
@@ -32,14 +33,22 @@ namespace HollyJson.ViewModels
         CommandHandler _setskilltolimit;
         CommandHandler _setskiiltocap;
 
-        CommandHandler _setagetoyoung;
+        CommandHandler _setmoodandatt_single;
+        CommandHandler _setcontdaysmax_single;
+        CommandHandler _setlimittomax_single;
+        CommandHandler _setskiiltocap_single;
+
+        CommandHandler _setageto;
         CommandHandler _setallskills;
 
         CommandHandler _showtags;
+        CommandHandler _showmacros;
         CommandHandler _showspawndate;
         CommandHandler _showtechs;
         CommandHandler _unlocktechs;
         CommandHandler _unlocktags;
+
+        CommandHandler _moveinfiltered;
 
         private string search_txt;
         JObject? jobj = null;
@@ -51,6 +60,7 @@ namespace HollyJson.ViewModels
         private bool showOnlyDead = false;
         private bool showWithDead = true;
 
+        public string PathToSaveFile { get; set; }
         public static Dictionary<string, string> LocaleNames { get; set; } = [];
         public static Dictionary<string, string> LocaleTranslator { get; set; } = [];
         public static string MyStudio { get; set; }
@@ -79,6 +89,7 @@ namespace HollyJson.ViewModels
         }
         public string StatusBarText { get; set; } = "Hello";
         public bool ShowSpawn { get; set; } = false;
+        public bool ShowMacros { get; set; } = false;
         public bool ShowTags { get; set; } = false;
         public bool ShowTechs { get; set; } = false;
         public bool Save_Loaded { get; set; } = false;
@@ -99,22 +110,22 @@ namespace HollyJson.ViewModels
             set
             {
                 showOnlyDead = value;
-                if (value && !ShowWithDead)
-                    ShowWithDead = true;
+                //if (value && !ShowWithDead)
+                //    ShowWithDead = true;
                 SetSearched();
             }
         }
-        public bool ShowWithDead
-        {
-            get => showWithDead;
-            set
-            {
-                showWithDead = value;
-                if (!value && ShowOnlyDead)
-                    ShowOnlyDead = false;
-                SetSearched();
-            }
-        }
+        //public bool ShowWithDead
+        //{
+        //    get => showWithDead;
+        //    set
+        //    {
+        //        showWithDead = value;
+        //        if (!value && ShowOnlyDead)
+        //            ShowOnlyDead = false;
+        //        SetSearched();
+        //    }
+        //}
         public List<string> StudioListForChar { get; set; }// => StudioList is null ? new List<string>() : StudioList.Where(t => t != "All").ToList();
         public List<string> StudioList { get; set; }
         public List<string> ProfList { get; set; }
@@ -152,6 +163,7 @@ namespace HollyJson.ViewModels
             Filter_txt = "";
             Filter_studio = "";
             Filter_Prof = "";
+            //ShowWithDead = false;
             StatusBarText = "Prepared to unzip";
             UnzipResources();
             StatusBarText = "Done";
@@ -164,29 +176,30 @@ namespace HollyJson.ViewModels
             if (Info is null) return;
             if (Info.characters is null) return;
             IEnumerable<Character> q = Info.characters;
-            if (Filter_studio != "All")
-            {
+            if (!string.IsNullOrEmpty(Filter_studio) && Filter_studio != "All")
                 q = q.Where(t => t.studioId == Filter_studio);
-            }
-            if (Filter_Prof != "All")
-            {
+            if (!string.IsNullOrEmpty(Filter_Prof) && Filter_Prof != "All")
                 q = q.Where(t => t.professions.ProfToDecode == Filter_Prof);
-            }
             if (!string.IsNullOrWhiteSpace(Filter_txt))
-            {
                 q = q.Where(t => t.MyCustomName.Contains(Filter_txt, StringComparison.CurrentCultureIgnoreCase));
-            }
             if (ShowOnlyTalent)
                 q = q.Where(t => t.professions.IsTalent);
             if (ShowOnlyDead)
                 q = q.Where(t => t.IsDead);
-            if (!ShowWithDead)
+            else
+                //if (!ShowWithDead)
                 q = q.Where(t => !t.IsDead);
-
-
             q = q.OrderBy(t => t.professions.ProfToDecode);
             StatusBarText = $"Filtered {q.Count()} chars";
+            Filtered_Obj = null;
             Filtered_Obj = [.. q];
+            q = null;
+            if (Filtered_Obj.Count > 0)
+                if (Filtered_Obj.Contains(SelectedChar))
+                    SelectedChar = SelectedChar;
+                else
+                    SelectedChar = Filtered_Obj[0];
+
         }
         public async void UnzipResources()
         {
@@ -260,17 +273,20 @@ namespace HollyJson.ViewModels
                             {
                                 await Task.Run(async () =>
                                 {
+                                    var slt = ofdd.FileName.Split('\\');
+                                    if (slt.Count() > 2)
+                                        PathToSaveFile = "...\\" + slt.ElementAt(slt.Count() - 2) + "\\" + slt.ElementAt(slt.Count() - 1);
+                                    else
+                                        PathToSaveFile = ofdd.FileName;
                                     opennedfileplace = Path.GetDirectoryName(ofdd.FileName);
-                                    await ParseJson(ofdd.FileName);
-                                    GC.Collect();
-                                    MyStudio = Info.studioName;
-                                    Filtered_Obj = Info.characters;
-
-                                    //var q = Info.characters.Where(t=>t.whiteTagsNEW is not null).Select(t => t.whiteTagsNEW.Select(t=>t.id)).SelectMany(x=>x).Distinct().ToList();
-
-                                    Save_Loaded = true;
-                                    SelectedChar = Filtered_Obj[0];
-                                    RefershLocale();
+                                    if (await ParseJson(ofdd.FileName))
+                                    {
+                                        MyStudio = Info.studioName;
+                                        RefershLocale();
+                                        Filter_studio = "PL";
+                                        Filter_Prof = "All";
+                                        Save_Loaded = true;
+                                    }
                                 });
                                 GC.Collect();
                             }
@@ -356,7 +372,6 @@ namespace HollyJson.ViewModels
                 }, (obj) => true);
             }
         }
-
         public CommandHandler SetMoodAndAttCmd
         {
             get
@@ -395,16 +410,34 @@ namespace HollyJson.ViewModels
                 }, (obj) => filtered_Obj?.Count > 0);
             }
         }
-        public CommandHandler SetAgeToYoungCmd
+        public CommandHandler SetAgeToCmd
         {
             get
             {
-                return _setagetoyoung ??= new CommandHandler(obj =>
+                return _setageto ??= new CommandHandler(obj =>
                 {
                     if (filtered_Obj?.Count > 0)
                         foreach (var item in Filtered_Obj)
                         {
-                            item.Age = 18;
+                            switch (obj as string)
+                            {
+                                case "Y":
+                                    item.Age = 18;
+                                    break;
+                                case "M":
+                                    if (item.gender == 0)
+                                        item.Age = 40;
+                                    else
+                                        item.Age = 35;
+                                    break;
+                                case "O":
+                                    if (item.gender == 0)
+                                        item.Age = 60;
+                                    else
+                                        item.Age = 50;
+                                    break;
+                            }
+
                         }
                 }, (obj) => filtered_Obj?.Count > 0);
             }
@@ -459,6 +492,46 @@ namespace HollyJson.ViewModels
                             item.limit = 1.00d;
                         }
                 }, (obj) => filtered_Obj?.Count > 0);
+            }
+        }
+        public CommandHandler SetLimitToMaxSingleCmd
+        {
+            get
+            {
+                return _setlimittomax_single ??= new CommandHandler(obj =>
+                {
+                    SelectedChar.limit = 1.0d;
+                }, (obj) => SelectedChar is not null);
+            }
+        }
+        public CommandHandler SetSkillToCapSingleCmd
+        {
+            get
+            {
+                return _setskiiltocap_single ??= new CommandHandler(obj =>
+                {
+                    SelectedChar.professions.Value = SelectedChar.limit;
+                }, (obj) => SelectedChar is not null);
+            }
+        }
+        public CommandHandler SetConnDaysSingleCmd
+        {
+            get
+            {
+                return _setcontdaysmax_single ??= new CommandHandler(obj =>
+                {
+                    SelectedChar.contract.DaysLeft = (int)Math.Ceiling(SelectedChar.contract.amount * 365.2425);
+                }, (obj) => SelectedChar is not null);
+            }
+        }
+        public CommandHandler SetMoodAndAttSingleCmd
+        {
+            get
+            {
+                return _setmoodandatt_single ??= new CommandHandler(obj =>
+                {
+                    SelectedChar.mood = SelectedChar.attitude = 1.0d;
+                }, (obj) => SelectedChar is not null);
             }
         }
         public CommandHandler ShowSpawnDateCmd
@@ -525,6 +598,46 @@ namespace HollyJson.ViewModels
                 }, (obj) => true);
             }
         }
+        public CommandHandler ShowMacrosCmd
+        {
+            get
+            {
+                return _showmacros ??= new CommandHandler(obj =>
+                {
+                    ShowMacros = ShowMacros ? false : true;
+                }, (obj) => true);
+            }
+        }
+        public CommandHandler MoveInFilteredCmd
+        {
+            get
+            {
+                return _moveinfiltered ??= new CommandHandler(obj =>
+                {
+                    int ind = 0;
+                    string cmd = obj as string;
+                    if (Filtered_Obj is null) return;
+                    if (SelectedChar is not null)
+                        ind = Filtered_Obj.IndexOf(SelectedChar);
+                    if (cmd == "Up")
+                    {
+                        if (ind != 0)
+                            ind--;
+                    }
+                    else
+                    {
+                        if (ind != Filtered_Obj.Count)
+                            ind++;
+                    }
+                    if (ind >= Filtered_Obj.Count)
+                        ind = 0;
+                    else if (ind <= 0)
+                        ind = Filtered_Obj.Count - 1;
+                    SelectedChar = Filtered_Obj[ind];
+
+                }, (obj) => Filtered_Obj is not null);
+            }
+        }
         #endregion
         #region locale
         private async void SetLocale(string path)
@@ -560,7 +673,6 @@ namespace HollyJson.ViewModels
             StudioList = StudioList;
             StudioListForChar = StudioList is not null ? StudioList.Where(t => t != "All").ToList() : new List<string>();
             SelectedChar = null;
-            SelectedChar = Filtered_Obj is not null ? Filtered_Obj[0] : null;
             SetSearched();
             StatusBarText = "Refresh loacales done";
         }
@@ -611,7 +723,7 @@ namespace HollyJson.ViewModels
             }
         }
         #endregion
-        public async Task ParseJson(string path)
+        public async Task<bool> ParseJson(string path)
         {
             try
             {
@@ -739,13 +851,12 @@ namespace HollyJson.ViewModels
                 ProfListWithNoTallent.Insert(0, "All");
                 ProfListWithOutNoTallent.Insert(0, "All");
                 ProfList = ShowOnlyTalent ? ProfListWithOutNoTallent : ProfListWithNoTallent;
-                Filter_Prof = ProfList[0];
-                Filter_studio = StudioList[0];
-                SetSearched();
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
             }
         }
         public async Task<bool> WriteChange()
@@ -855,9 +966,9 @@ namespace HollyJson.ViewModels
                                             //а еще почистить историю?
                                             cnt["amount"] = chr.contract.amount;
                                             cnt["startAmount"] = chr.contract.startAmount;
-                                            cnt["initialFee"] = chr.contract.initialFee.ToString("#0.000", cult); 
-                                            cnt["monthlySalary"] = chr.contract.monthlySalary.ToString("#0.000", cult); 
-                                            cnt["weightToSalary"] = chr.contract.weightToSalary.ToString("#0.000", cult); 
+                                            cnt["initialFee"] = chr.contract.initialFee.ToString("#0.000", cult);
+                                            cnt["monthlySalary"] = chr.contract.monthlySalary.ToString("#0.000", cult);
+                                            cnt["weightToSalary"] = chr.contract.weightToSalary.ToString("#0.000", cult);
                                             cnt["dateOfSigning"] = chr.contract.dateOfSigning;
                                             cnt["contractType"] = chr.contract.contractType;
                                         }

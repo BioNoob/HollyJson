@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿using HollyJson.ViewModels;
+using System.Diagnostics;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -68,7 +70,7 @@ public partial class MainWindow : Window
                     if (double.TryParse(val, CultureInfo.InvariantCulture, out w))
                     {
                         int ans = (int)Math.Round(w, 0, MidpointRounding.AwayFromZero);
-                        if(tags == "AGE")
+                        if (tags == "AGE")
                             if (ans > 150)
                                 ans = 90;
                         val = ans.ToString("0");
@@ -135,7 +137,7 @@ public partial class MainWindow : Window
                 break;
             case "AGE":
                 e.Handled = !CheckAgeFull(z.Text);
-                if(e.Handled)
+                if (e.Handled)
                 {
                     int val = 0;
                     int.TryParse(z.Text, CultureInfo.InvariantCulture, out val);
@@ -164,5 +166,23 @@ public partial class MainWindow : Window
 
     }
 
-
+    private void Window_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.KeyboardDevice.Modifiers == ModifierKeys.Alt)
+        {
+            if (e.KeyboardDevice.IsKeyDown(Key.Down))
+            {
+                (this.DataContext as MainModel).MoveInFilteredCmd.Execute("Down");
+                dgr.ScrollIntoView(dgr.SelectedItem);
+                e.Handled = true;
+            }
+            else if (e.KeyboardDevice.IsKeyDown(Key.Up))
+            {
+                (this.DataContext as MainModel).MoveInFilteredCmd.Execute("Up");
+                dgr.ScrollIntoView(dgr.SelectedItem);
+                e.Handled = true;
+            }
+            
+        }
+    }
 }

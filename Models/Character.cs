@@ -258,68 +258,67 @@ namespace HollyJson.Models
             calcages = true;
             Age = age;
         }
-        public string ImgPath
+        public string ImgPath { get; set; }
+
+        public void GetImgPath()
         {
-            get
+            string a = $"{App.PathToExe}Resources\\Profiles\\";
+            a += $"PRT_";
+            switch (professions.GetProfession)
             {
-                string a = $"{App.PathToExe}Resources\\Profiles\\";
-                a += $"PRT_";
-                switch (professions.GetProfession)
-                {
-                    case Professions.Profession.Actor:
-                    case Professions.Profession.Composer:
-                    case Professions.Profession.Scriptwriter:
-                    case Professions.Profession.Cinematographer:
-                    case Professions.Profession.FilmEditor:
-                    case Professions.Profession.Producer:
-                    case Professions.Profession.Director:
-                    case Professions.Profession.Else:
-                        a += "TALENT_";
-                        break;
-                    case Professions.Profession.Agent:
-                        a += "AGENT_";
-                        break;
-                    case Professions.Profession.LieutScript:
-                    case Professions.Profession.LieutPrep:
-                    case Professions.Profession.LieutProd:
-                    case Professions.Profession.LieutPost:
-                    case Professions.Profession.LieutRelease:
-                    case Professions.Profession.LieutSecurity:
-                    case Professions.Profession.LieutProducers:
-                    case Professions.Profession.LieutInfrastructure:
-                    case Professions.Profession.LieutTech:
-                    case Professions.Profession.LieutMuseum:
-                    case Professions.Profession.LieutEscort:
-                    case Professions.Profession.CptHR:
-                    case Professions.Profession.CptLawyer:
-                    case Professions.Profession.CptFinancier:
-                    case Professions.Profession.CptPR:
-                        a += "LIEUT_";
-                        break;
-                }
-                if (gender == 1)
-                {
-                    a += "F_";
-                    if (Age <= 34)
-                        a += "YOUNG_";
-                    else if (Age > 34 | Age <= 49)
-                        a += "MID_";
-                    else
-                        a += "OLD_";
-                }
-                else
-                {
-                    a += "M_";
-                    if (Age <= 39)
-                        a += "YOUNG_";
-                    else if (Age > 39 | Age <= 59)
-                        a += "MID_";
-                    else
-                        a += "OLD_";
-                }
-                a += $"{portraitBaseId}.png";
-                return a;
+                case Professions.Profession.Actor:
+                case Professions.Profession.Composer:
+                case Professions.Profession.Scriptwriter:
+                case Professions.Profession.Cinematographer:
+                case Professions.Profession.FilmEditor:
+                case Professions.Profession.Producer:
+                case Professions.Profession.Director:
+                case Professions.Profession.Else:
+                    a += "TALENT_";
+                    break;
+                case Professions.Profession.Agent:
+                    a += "AGENT_";
+                    break;
+                case Professions.Profession.LieutScript:
+                case Professions.Profession.LieutPrep:
+                case Professions.Profession.LieutProd:
+                case Professions.Profession.LieutPost:
+                case Professions.Profession.LieutRelease:
+                case Professions.Profession.LieutSecurity:
+                case Professions.Profession.LieutProducers:
+                case Professions.Profession.LieutInfrastructure:
+                case Professions.Profession.LieutTech:
+                case Professions.Profession.LieutMuseum:
+                case Professions.Profession.LieutEscort:
+                case Professions.Profession.CptHR:
+                case Professions.Profession.CptLawyer:
+                case Professions.Profession.CptFinancier:
+                case Professions.Profession.CptPR:
+                    a += "LIEUT_";
+                    break;
             }
+            if (gender == 1)
+            {
+                a += "F_";
+                if (Age <= 34)
+                    a += "YOUNG_";
+                else if (Age > 34 & Age <= 49)
+                    a += "MID_";
+                else
+                    a += "OLD_";
+            }
+            else
+            {
+                a += "M_";
+                if (Age <= 39)
+                    a += "YOUNG_";
+                else if (Age > 39 & Age <= 59)
+                    a += "MID_";
+                else
+                    a += "OLD_";
+            }
+            a += $"{portraitBaseId}.png";
+            ImgPath = a;
         }
         public List<string> AvalibaleSkills { get; set; }
         public void SetAvSkills()
@@ -483,6 +482,7 @@ namespace HollyJson.Models
                         z.whiteTagsNEW.Add(whiteTag);
                     }
                 }
+                z.GetImgPath();
                 z.SetAvSkills();
                 z.SetAvTraits();
                 z.IsInit = false;

@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <None Remove="Resources\arrow_up.png" />
+    <None Remove="Resources\menu.png" />
     <None Remove="Resources\question.png" />
   </ItemGroup>
 
@@ -38,6 +39,7 @@
   <ItemGroup>
     <Resource Include="Resources\backgrnd.png" />
     <Resource Include="Resources\Jura-SemiBold.ttf" />
+    <Resource Include="Resources\menu.png" />
     <Resource Include="Resources\minus.png" />
     <Resource Include="Resources\ofd.png" />
     <Resource Include="Resources\plus.png" />
