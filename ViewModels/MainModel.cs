@@ -712,7 +712,7 @@ namespace HollyJson.ViewModels
                     LocaleNames.Add(ii++.ToString(), t);
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

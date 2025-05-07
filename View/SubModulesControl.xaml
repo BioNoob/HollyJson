@@ -1,15 +1,16 @@
-﻿<UserControl x:Class="HollyJson.View.SubModulesControl"
+﻿<local:ControlBase x:Class="HollyJson.View.SubModulesControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HollyJson.View"
              xmlns:vm="clr-namespace:HollyJson.ViewModels"
+             xmlns:numericupdownlib="clr-namespace:NumericUpDownLib;assembly=NumericUpDownLib"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="400">
-    <UserControl.DataContext>
+             d:DesignHeight="840" d:DesignWidth="600">
+    <local:ControlBase.DataContext>
         <vm:SubModulesVM/>
-    </UserControl.DataContext>
+    </local:ControlBase.DataContext>
     <Grid Background="White" Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -29,41 +30,273 @@
                 <TextBlock Padding="0" Text="Open config folder"/>
             </Button.ToolTip>
         </Button>
-        <WrapPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5,0,0">
-            <WrapPanel.Resources>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.Resources>
                 <Style TargetType="{x:Type GroupBox}">
                     <Setter Property="Margin" Value="5"/>
                     <Setter Property="BorderBrush" Value="DarkGray"/>
                     <Setter Property="BorderThickness" Value="1.5"/>
                 </Style>
-            </WrapPanel.Resources>
-            <GroupBox Header="Current tags">
-                
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Height" Value="20"/>
+                    <Setter Property="Margin" Value="0,5,0,0"/>
+                </Style>
+            </Grid.Resources>
+            <GroupBox Header="Current tags" MinHeight="150" Grid.Column="0" Grid.Row="0">
+                <Grid Background="White" Margin="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Padding="0" Content="Opened:" Grid.Column="0"/>
+                        <TextBlock Padding="0" Text="{Binding TagPools.Count}" Margin="5,0" Grid.Column="1"/>
+                        <Label Padding="0" Content="Сlosed:" Grid.Column="2"/>
+                        <TextBlock Padding="0" Text="{Binding TagBank.Count}" Margin="5,0" Grid.Column="3"/>
+                    </Grid>
+                    <Rectangle Stroke="#3F777777" StrokeThickness="2" Margin="2" Grid.Row="1"/>
+                    <ScrollViewer VerticalAlignment="Stretch" Grid.Row="2" >
+                        <ItemsControl ItemsSource="{Binding TagBank}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="5,2.5,5,2.5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding ., Converter={StaticResource LocaleConverter}}"
+                                            TextTrimming="CharacterEllipsis" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                    <Button Content="Unlock" Padding="0" Command="{Binding UnlockTagsCmd}" Grid.Row="3"/>
+                </Grid>
             </GroupBox>
-            <GroupBox Header="Tags in codex">
+            <GroupBox Header="Tags in codex" MinHeight="150" Grid.Column="1" Grid.Row="0">
+                <Grid Background="White" Margin="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ScrollViewer VerticalAlignment="Stretch" Grid.Row="0">
+                        <ItemsControl ItemsSource="{Binding TagBank}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="5,2.5,5,2.5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding ., Converter={StaticResource LocaleConverter}}"
+                                            TextTrimming="CharacterEllipsis" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                    <Button  Padding="0" Command="{Binding SwitchCodexCmd}" Grid.Row="1">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding isCodexOpened}" Value="True">
+                                        <Setter Property="Content" Value="Disable codex"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding isCodexOpened}" Value="False">
+                                        <Setter Property="Content" Value="EnableCodex codex"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Buildings" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid ItemsSource="{Binding Buildings}" x:Name="dgr" 
+                          SelectionMode="Single" AlternationCount="2" Background="White"
+                          AlternatingRowBackground ="#2F77A640"
+                          AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Style.Triggers>
+                                <Trigger Property="DataGridCell.IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#CCDAFF"/>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="BorderBrush" Value="#CCDAFF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="Name" Width="101" MinWidth="101" SortMemberPath="id" CanUserSort="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding id, Converter={StaticResource LocaleConverter}}" TextTrimming="CharacterEllipsis">
+                                            <TextBlock.ToolTip>
+                                                <TextBlock Text="{Binding id, Converter={StaticResource LocaleConverter}}"/>
+                                            </TextBlock.ToolTip>
+                                </TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Duration" Width="80" MinWidth="80" SortMemberPath="baseDuration" CanUserSort="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding baseDuration, Converter={StaticResource LocaleConverter}}" Tag="INT"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Cost" Width="80" MinWidth="80" SortMemberPath="baseCost" CanUserSort="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding baseCost, Converter={StaticResource LocaleConverter}}" Tag="INT"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Water" Width="50" MinWidth="50" SortMemberPath="baseWater" CanUserSort="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding baseWater, Converter={StaticResource LocaleConverter}}" Tag="INT"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Electr." Width="50" MinWidth="50" SortMemberPath="baseElectricity" CanUserSort="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding baseElectricity, Converter={StaticResource LocaleConverter}}" Tag="INT"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Staff" Width="50" MinWidth="50" SortMemberPath="staff" CanUserSort="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding staff, Converter={StaticResource LocaleConverter}}" Tag="INT"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Grid.Column="1" Margin="5,0" VerticalAlignment="Center">
+                        <Button Width="18" Height="18" Command="{Binding UnlockBuildsParamsCmd}" CommandParameter="D"/>
+                        <Button Width="18" Height="18" Command="{Binding UnlockBuildsParamsCmd}" CommandParameter="C"/>
+                        <Button Width="18" Height="18" Command="{Binding UnlockBuildsParamsCmd}" CommandParameter="E"/>
+                        <Button Width="18" Height="18" Command="{Binding UnlockBuildsParamsCmd}" CommandParameter="W"/>
+                        <Button Width="18" Height="18" Command="{Binding UnlockBuildsParamsCmd}" CommandParameter="S"/>
+                    </StackPanel>
+                    
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Research spd" Grid.Column="0" Grid.Row="2">
 
             </GroupBox>
-            <GroupBox Header="Next Spawn Dates">
+            <GroupBox Header="Tech spd" Grid.Column="1" Grid.Row="2">
 
             </GroupBox>
-            <GroupBox Header="Buildings">
+            <GroupBox Header="Characters XP" Grid.Column="0" Grid.Row="3">
 
             </GroupBox>
-            <GroupBox Header="Research spd">
-
+            <GroupBox Header="Boutique spd" Grid.Column="1" Grid.Row="3">
+                <DockPanel  Grid.Row="1" Grid.ColumnSpan="8" Margin="5,5,0,0" >
+                    <Label Content="Active studio politics"/>
+                    <Label Content="{Binding NameOfActivePolicy, Converter={StaticResource LocaleConverter}}" 
+                           HorizontalAlignment="Center" Width="100" Margin="5,0"/>
+                    <numericupdownlib:NumericUpDown IsMouseDragEnabled="False" MinValue="0" MaxValue="3" IsEnabled="{Binding HaveActivePolicy}"
+                                Value="{Binding ValOfActivePolicy, Mode=TwoWay}" NumberStyle="Integer" IsLargeStepEnabled="False"/>
+                </DockPanel>
             </GroupBox>
-            <GroupBox Header="Characters XP">
-
+            <GroupBox Header="Friends titans" Grid.Column="0" Grid.Row="4">
+                <ScrollViewer VerticalAlignment="Stretch" Grid.Row="2" >
+                    <ItemsControl ItemsSource="{Binding Titans}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="5,2.5,5,2.5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding id, Converter={StaticResource LocaleConverter}}"
+                                            TextTrimming="CharacterEllipsis" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                    <TextBox Grid.Column="0" Text="{Binding Item2, StringFormat={}{#0}}" Tag="INT"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
             </GroupBox>
-            <GroupBox Header="Boutique spd">
+            <Grid Grid.Column="1" Grid.Row="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <GroupBox Header="Next Spawn Dates" MinHeight="80">
+                    <ScrollViewer VerticalAlignment="Stretch"  Background="White" Margin="1">
+                        <ItemsControl ItemsSource="{Binding NextSpawnDays}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="5,2.5,5,2.5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Path=Key, Converter={StaticResource LocaleConverter}}" 
+                                               TextTrimming="CharacterEllipsis" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Path=Value, Converter={StaticResource myDateConverter}}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </GroupBox>
+                <Button Grid.Row="2" Width="25" Height="25" IsEnabled="{Binding Save_Loaded}"
+        VerticalAlignment="Bottom" HorizontalAlignment="Right"
+        Command="{Binding SaveCmd}">
+                    <Image Source="/Resources/save.png"/>
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Save_done}" Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation To="#7F00FF00" 
+                                                Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                                FillBehavior="Stop" AutoReverse="True" 
+                                                Duration="0:0:1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
 
-            </GroupBox>
-            <GroupBox Header="Technologies Speed">
-
-            </GroupBox>
-            <GroupBox Header="Friends titans">
-
-            </GroupBox>
-        </WrapPanel>
+        </Grid>
     </Grid>
-</UserControl>
+</local:ControlBase>

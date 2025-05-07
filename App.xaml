@@ -2,11 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:HollyJson.View"
+             xmlns:vm="clr-namespace:HollyJson.ViewModels"
              StartupUri="/View/MainWindow.xaml">
     <Application.Resources>
         <FontFamily x:Key="Jura">pack://application:,,,/Resources/Jura-SemiBold.ttf#Jura SemiBold</FontFamily>
-        <!--<Style TargetType="{x:Type Window}">
-            <Setter Property="FontFamily" Value="{StaticResource Jura}"/>
-        </Style>-->
+        <vm:DateTimeToDateConverter x:Key="myDateConverter" />
+        <vm:LangStringConverter x:Key="LocaleConverter" />
     </Application.Resources>
 </Application>
