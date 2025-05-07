@@ -24,8 +24,18 @@
 
   <ItemGroup>
     <None Remove="Resources\arrow_up.png" />
+    <None Remove="Resources\cheap.png" />
+    <None Remove="Resources\duration.png" />
+    <None Remove="Resources\electr.png" />
     <None Remove="Resources\menu.png" />
+    <None Remove="Resources\ok.png" />
     <None Remove="Resources\question.png" />
+    <None Remove="Resources\staff.png" />
+    <None Remove="Resources\water.png" />
+    <None Remove="Resources\x1.png" />
+    <None Remove="Resources\х10.png" />
+    <None Remove="Resources\х2.png" />
+    <None Remove="Resources\х5.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,14 +48,24 @@
 
   <ItemGroup>
     <Resource Include="Resources\backgrnd.png" />
+    <Resource Include="Resources\cheap.png" />
+    <Resource Include="Resources\duration.png" />
+    <Resource Include="Resources\electr.png" />
     <Resource Include="Resources\Jura-SemiBold.ttf" />
     <Resource Include="Resources\menu.png" />
     <Resource Include="Resources\minus.png" />
     <Resource Include="Resources\ofd.png" />
+    <Resource Include="Resources\ok.png" />
     <Resource Include="Resources\plus.png" />
     <Resource Include="Resources\question.png" />
     <Resource Include="Resources\save.png" />
+    <Resource Include="Resources\staff.png" />
     <Resource Include="Resources\user.png" />
+    <Resource Include="Resources\water.png" />
+    <Resource Include="Resources\x1.png" />
+    <Resource Include="Resources\х10.png" />
+    <Resource Include="Resources\х2.png" />
+    <Resource Include="Resources\х5.png" />
   </ItemGroup>
 
   <ItemGroup>

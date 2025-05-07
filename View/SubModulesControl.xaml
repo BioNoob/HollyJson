@@ -7,10 +7,10 @@
              xmlns:vm="clr-namespace:HollyJson.ViewModels"
              xmlns:numericupdownlib="clr-namespace:NumericUpDownLib;assembly=NumericUpDownLib"
              mc:Ignorable="d" 
-             d:DesignHeight="840" d:DesignWidth="600">
-    <local:ControlBase.DataContext>
+             d:DesignHeight="840" d:DesignWidth="500">
+    <!--<local:ControlBase.DataContext>
         <vm:SubModulesVM/>
-    </local:ControlBase.DataContext>
+    </local:ControlBase.DataContext>-->
     <Grid Background="White" Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -36,8 +36,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -50,10 +50,15 @@
                 </Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Height" Value="20"/>
-                    <Setter Property="Margin" Value="0,5,0,0"/>
+                </Style>
+                <Style TargetType="{x:Type TextBox}">
+                    <Setter Property="Height" Value="20"/>
+                    <EventSetter Event="TextChanged" Handler="TextBox_TextChanged"/>
+                    <EventSetter Event="PreviewTextInput" Handler="TextBox_PreviewTextInput"/>
+                    <EventSetter Event="DataObject.Pasting" Handler="PastingHandler"/>
                 </Style>
             </Grid.Resources>
-            <GroupBox Header="Current tags" MinHeight="150" Grid.Column="0" Grid.Row="0">
+            <GroupBox Header="Current tags" MinHeight="130" Grid.Column="0" Grid.Row="0">
                 <Grid Background="White" Margin="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -74,7 +79,7 @@
                         <TextBlock Padding="0" Text="{Binding TagBank.Count}" Margin="5,0" Grid.Column="3"/>
                     </Grid>
                     <Rectangle Stroke="#3F777777" StrokeThickness="2" Margin="2" Grid.Row="1"/>
-                    <ScrollViewer VerticalAlignment="Stretch" Grid.Row="2" >
+                    <ScrollViewer VerticalAlignment="Stretch" Grid.Row="2" Margin="0,5">
                         <ItemsControl ItemsSource="{Binding TagBank}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
@@ -93,13 +98,13 @@
                     <Button Content="Unlock" Padding="0" Command="{Binding UnlockTagsCmd}" Grid.Row="3"/>
                 </Grid>
             </GroupBox>
-            <GroupBox Header="Tags in codex" MinHeight="150" Grid.Column="1" Grid.Row="0">
+            <GroupBox Header="Tags in codex" MinHeight="130" Grid.Column="1" Grid.Row="0">
                 <Grid Background="White" Margin="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <ScrollViewer VerticalAlignment="Stretch" Grid.Row="0">
+                    <ScrollViewer VerticalAlignment="Stretch" Grid.Row="0" Margin="0,5">
                         <ItemsControl ItemsSource="{Binding TagBank}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
@@ -137,9 +142,9 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid ItemsSource="{Binding Buildings}" x:Name="dgr" 
+                    <DataGrid ItemsSource="{Binding Buildings}" x:Name="dgr"
                           SelectionMode="Single" AlternationCount="2" Background="White"
-                          AlternatingRowBackground ="#2F77A640"
+                          AlternatingRowBackground ="#2F77A640" Margin="0,5,0,0"
                           AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
                     <DataGrid.Resources>
                         <Style TargetType="{x:Type DataGridCell}">
@@ -202,32 +207,110 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     <StackPanel Grid.Column="1" Margin="5,0" VerticalAlignment="Center">
-                        <Button Width="18" Height="18" Command="{Binding UnlockBuildsParamsCmd}" CommandParameter="D"/>
-                        <Button Width="18" Height="18" Command="{Binding UnlockBuildsParamsCmd}" CommandParameter="C"/>
-                        <Button Width="18" Height="18" Command="{Binding UnlockBuildsParamsCmd}" CommandParameter="E"/>
-                        <Button Width="18" Height="18" Command="{Binding UnlockBuildsParamsCmd}" CommandParameter="W"/>
-                        <Button Width="18" Height="18" Command="{Binding UnlockBuildsParamsCmd}" CommandParameter="S"/>
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Margin" Value="0,5,0,0"/>
+                                <Setter Property="Width" Value="18"/>
+                                <Setter Property="Height" Value="18"/>
+                                <Setter Property="Command" Value="{Binding UnlockBuildsParamsCmd}"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Button CommandParameter="D">
+                            <Image Source="/Resources/duration.png"/>
+                        </Button>
+                        <Button CommandParameter="C">
+                            <Image Source="/Resources/cheap.png"/>
+                        </Button>
+                        <Button CommandParameter="E">
+                            <Image Source="/Resources/electr.png"/>
+                        </Button>
+                        <Button CommandParameter="W">
+                            <Image Source="/Resources/water.png"/>
+                        </Button>
+                        <Button CommandParameter="S">
+                            <Image Source="/Resources/staff.png"/>
+                        </Button>
                     </StackPanel>
                     
                 </Grid>
             </GroupBox>
             <GroupBox Header="Research spd" Grid.Column="0" Grid.Row="2">
-
+                <Grid Margin="5,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Current" Grid.Column="0" Padding="0" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding ResearchPreset}" Grid.Column="1" Padding="0" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox Grid.Column="2" Text="{Binding ResearchPreset}" Tag="INT"/>
+                    <Button Grid.Column="3" VerticalAlignment="Center" Margin="5,0,0,0" Command="{Binding SetResDurationCmd}">
+                        <Image Source="/Resources/ok.png"/>
+                    </Button>
+                </Grid>
             </GroupBox>
             <GroupBox Header="Tech spd" Grid.Column="1" Grid.Row="2">
-
+                <Grid Margin="5,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Current" Grid.Column="0" Padding="0" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding TechhSpd_curr}" Grid.Column="1" Padding="0" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox Grid.Column="2" Text="{Binding TechPreset}" Tag="INT"/>
+                    <Button Grid.Column="3" VerticalAlignment="Center" Margin="5,0,0,0" Command="{Binding SetTechDurationCmd}">
+                        <Image Source="/Resources/ok.png"/>
+                    </Button>
+                </Grid>
             </GroupBox>
-            <GroupBox Header="Characters XP" Grid.Column="0" Grid.Row="3">
-
+            <GroupBox Grid.Column="0" Grid.Row="3" Header="Characters XP">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="{x:Type ToggleButton}">
+                            <Setter Property="Width" Value="25"/>
+                            <Setter Property="Height" Value="20"/>
+                            <Setter Property="Command" Value="{Binding UnlockBuildsParamsCmd}"/>
+                        </Style>
+                    </Grid.Resources>
+                    <ToggleButton CommandParameter="1" Grid.Column="0" Grid.Row="1" IsChecked="{Binding IsX1Chosen}">
+                        <Image Source="/Resources/x1.png"/>
+                    </ToggleButton>
+                    <ToggleButton CommandParameter="2" Grid.Column="1" Grid.Row="1" IsChecked="{Binding IsX2Chosen}">
+                        <Image Source="/Resources/х2.png"/>
+                    </ToggleButton>
+                    <ToggleButton CommandParameter="5" Grid.Column="2" Grid.Row="1" IsChecked="{Binding IsX5Chosen}">
+                        <Image Source="/Resources/х5.png"/>
+                    </ToggleButton>
+                    <ToggleButton CommandParameter="10" Grid.Column="3" Grid.Row="1" IsChecked="{Binding IsX10Chosen}">
+                        <Image Source="/Resources/х10.png"/>
+                    </ToggleButton>
+                </Grid>
             </GroupBox>
-            <GroupBox Header="Boutique spd" Grid.Column="1" Grid.Row="3">
-                <DockPanel  Grid.Row="1" Grid.ColumnSpan="8" Margin="5,5,0,0" >
-                    <Label Content="Active studio politics"/>
-                    <Label Content="{Binding NameOfActivePolicy, Converter={StaticResource LocaleConverter}}" 
-                           HorizontalAlignment="Center" Width="100" Margin="5,0"/>
-                    <numericupdownlib:NumericUpDown IsMouseDragEnabled="False" MinValue="0" MaxValue="3" IsEnabled="{Binding HaveActivePolicy}"
-                                Value="{Binding ValOfActivePolicy, Mode=TwoWay}" NumberStyle="Integer" IsLargeStepEnabled="False"/>
-                </DockPanel>
+            <GroupBox Header="Studio Politic" Grid.Column="1" Grid.Row="3">
+                <Grid Margin="5,5,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Active politic" Grid.Column="0" Padding="0" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding NameOfActivePolicy, Converter={StaticResource LocaleConverter}}" Padding="0" VerticalAlignment="Center"
+                           HorizontalAlignment="Stretch" Margin="5,0" Grid.Column="1" TextTrimming="CharacterEllipsis" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                    <numericupdownlib:NumericUpDown IsMouseDragEnabled="False" MinValue="0" MaxValue="3" IsEnabled="{Binding HaveActivePolicy}" VerticalAlignment="Center"
+                                Value="{Binding ValOfActivePolicy, Mode=TwoWay}" NumberStyle="Integer" IsLargeStepEnabled="False" Grid.Column="2"/>
+                </Grid>
             </GroupBox>
             <GroupBox Header="Friends titans" Grid.Column="0" Grid.Row="4">
                 <ScrollViewer VerticalAlignment="Stretch" Grid.Row="2" >
@@ -241,7 +324,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="{Binding id, Converter={StaticResource LocaleConverter}}"
                                             TextTrimming="CharacterEllipsis" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
-                                    <TextBox Grid.Column="0" Text="{Binding Item2, StringFormat={}{#0}}" Tag="INT"/>
+                                    <TextBox Grid.Column="0" Text="{Binding Item2, StringFormat={}{0:#0}}" Tag="INT"/>
                                 </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
