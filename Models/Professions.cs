@@ -5,6 +5,8 @@ namespace HollyJson.Models
     [AddINotifyPropertyChangedInterface]
     public class Professions
     {
+        private double _value;
+
         public enum Profession
         {
             Actor,
@@ -33,7 +35,10 @@ namespace HollyJson.Models
             Else
         }
         public string Name { get; set; }
-        public double Value { get; set; }
+        public double Value { get => _value; set { _value = value;  IsValChanged?.Invoke(_value); } }
+        public delegate void ValChanged(double val);
+        public event ValChanged IsValChanged;
+
         public string ProfToDecode
         {
             get

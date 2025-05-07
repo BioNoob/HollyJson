@@ -482,6 +482,7 @@ namespace HollyJson.Models
                         z.whiteTagsNEW.Add(whiteTag);
                     }
                 }
+                z.professions.IsValChanged += z.Professions_IsValChanged;
                 z.GetImgPath();
                 z.SetAvSkills();
                 z.SetAvTraits();
@@ -489,6 +490,12 @@ namespace HollyJson.Models
                 return z;
             }
             return null;
+        }
+
+        private void Professions_IsValChanged(double val)
+        {
+            if (val > limit)
+                limit = val;
         }
     }
 }

@@ -182,9 +182,9 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Limit" Binding="{Binding professions.Value, StringFormat={}{0:0.00}}"
+                    <DataGridTextColumn Header="Limit" Binding="{Binding limit, StringFormat={}{0:0.00}}"
                                         MinWidth="40"/>
-                    <DataGridTextColumn Header="Skill" Binding="{Binding limit, StringFormat={}{0:0.00}}"
+                    <DataGridTextColumn Header="Skill" Binding="{Binding professions.Value, StringFormat={}{0:0.00}}"
                                         MinWidth="40"/>
                     <DataGridTextColumn Header="Age" Binding="{Binding Age, StringFormat={}{0:00}}"
                                         MinWidth="40"/>
@@ -443,8 +443,7 @@
                     <!--<TextBlock Text="{Binding SelectedChar.professions.ProfToDecode, Converter={StaticResource LocaleConverter}}" Grid.Row="0" Grid.Column="1" Margin="5,0,0,0"
                              TextTrimming="CharacterEllipsis" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" TextAlignment="Left"/>-->
                     <Label Content="Limit" Grid.Column="0"/>
-                    <TextBox Text="{Binding SelectedChar.limit, StringFormat={}{0:0.0}}" Grid.Column="1" 
-           Tag="LMT"/>
+                    <TextBox Text="{Binding SelectedChar.limit, StringFormat={}{0:0.0}}" Grid.Column="1" Tag="LMT"/>
                     <Button Grid.Column="2" Height="18" Width="18" HorizontalAlignment="Left" Command="{Binding SetLimitToMaxSingleCmd}">
                         <Image Source="/Resources/arrow_up.png"/>
                     </Button>
@@ -603,14 +602,14 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <Button Grid.Column="0" Width="18" Height="18" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" 
+                                        <!--<Button Grid.Column="0" Width="18" Height="18" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" 
                                                 VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,0,15,0"
                                                 Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type views:ControlBase }}, Path=DataContext.MoveTraitUpCmd}" 
                                                 CommandParameter="{Binding }">
                                             <Button.Content>
                                                 <Image Source="/Resources/arrow_up.png" Margin="1,0,0,0"/>
                                             </Button.Content>
-                                        </Button>
+                                        </Button>-->
                                         <TextBlock Text="{Binding ., Converter={StaticResource LocaleConverter}}" TextWrapping="Wrap" Grid.Column="1" Margin="5,0,5,0"
                                             HorizontalAlignment="Right" Padding="0" TextAlignment="Right"/>
                                         <Button Grid.Column="2" Width="18" Height="18" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" 

@@ -3,12 +3,11 @@ using Microsoft.Win32;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PropertyChanged;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
+using System.Text;
 using System.Windows;
 
 namespace HollyJson.ViewModels
@@ -168,7 +167,7 @@ namespace HollyJson.ViewModels
             UnzipResources();
             StatusBarText = "Done";
             SubModulesVM b = new SubModulesVM();
-            b.ReadBuildingsData("D:\\Downloads\\Perks.json");
+            b.ReadPerksData("D:\\Downloads\\Perks.json");
             b.ReadGameVarData("D:\\Downloads\\GameVariables.json");
         }
         public void SetSearched()
@@ -904,7 +903,7 @@ namespace HollyJson.ViewModels
 
                     //codextags NEED TEST
                     var ctic = z["currentTagsInCodex"];
-                    if (ctic is not null)
+                    if (ctic is not null && ctic.Children().Count() > 0)
                     {
                         List<JProperty> torem = new List<JProperty>();
                         foreach (var label in z.Children<JProperty>())
@@ -923,7 +922,10 @@ namespace HollyJson.ViewModels
                     //так как мы можем только либо почистить все, либо ничего не менять
                     //то, если в объекте нихрена нет, можем грохать все элементы
                     if (Info.tagBank.Count < 1)
-                        ((JArray)z["tagBank"]).Clear();
+                    {
+                        if (z["tagBank"] is not null)
+                            ((JArray)z["tagBank"]).Clear();
+                    }
 
                     //characters
                     var cult = CultureInfo.InvariantCulture;
@@ -1062,7 +1064,7 @@ namespace HollyJson.ViewModels
                         }
                     }
                     StatusBarText = "Write file";
-                    await File.WriteAllTextAsync(sfd.FileName, jobj.ToString(Formatting.None)).ContinueWith(t => StatusBarText = "Save done!");
+                    await File.WriteAllTextAsync(sfd.FileName, jobj.ToString(Formatting.None), new UTF8Encoding(true)).ContinueWith(t => StatusBarText = "Save done!");
 
                     return true;
                 }
