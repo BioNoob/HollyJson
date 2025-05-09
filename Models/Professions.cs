@@ -1,4 +1,6 @@
-﻿using PropertyChanged;
+﻿using HollyJson.ViewModels;
+using Newtonsoft.Json;
+using PropertyChanged;
 
 namespace HollyJson.Models
 {
@@ -35,6 +37,7 @@ namespace HollyJson.Models
             Else
         }
         public string Name { get; set; }
+        [JsonConverter(typeof(DoubleJsonConverter))]
         public double Value { get => _value; set { _value = value;  IsValChanged?.Invoke(_value); } }
         public delegate void ValChanged(double val);
         public event ValChanged IsValChanged;

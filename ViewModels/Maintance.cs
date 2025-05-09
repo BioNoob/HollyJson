@@ -1,10 +1,57 @@
-﻿using System.Globalization;
+﻿using Newtonsoft.Json;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 
 namespace HollyJson.ViewModels
 {
+    public class DoubleJsonConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType.IsSubclassOf(typeof(double));
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            return double.Parse((string)reader.Value, CultureInfo.InvariantCulture);
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            if (value is not null)
+            {
+                string val = ((double)value).ToString("#0.000", CultureInfo.InvariantCulture);
+                writer.WriteValue(val);
+            }
+            else
+                writer.WriteNull();
+        }
+    }
+    public class IntJsonConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType.IsSubclassOf(typeof(int));
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            return int.Parse((string)reader.Value, CultureInfo.InvariantCulture);
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            if (value is not null)
+            {
+                string val = ((int)value).ToString("#0", CultureInfo.InvariantCulture);
+                writer.WriteValue(val);
+            }
+            else
+                writer.WriteNull();
+        }
+    }
     public class DateTimeToDateConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

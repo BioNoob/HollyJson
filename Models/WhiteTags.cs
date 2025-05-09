@@ -1,3 +1,4 @@
+using HollyJson.ViewModels;
 using Newtonsoft.Json;
 using PropertyChanged;
 namespace HollyJson.Models
@@ -205,7 +206,9 @@ namespace HollyJson.Models
         }
         public DateTime dateAdded { get; set; }
         public int movieId { get; set; }
+
         [JsonProperty("value")]
+        [JsonConverter(typeof(DoubleJsonConverter))]
         public double Value
         {
             get => value1; set
@@ -236,6 +239,7 @@ namespace HollyJson.Models
         public bool IsOverall { get; set; }
         [JsonIgnore]
         public Skills Tagtype { get; set; }
+        [JsonConstructor]
         public WhiteTag()
         {
             dateAdded = stateJson.GameStartTime;
@@ -260,7 +264,8 @@ namespace HollyJson.Models
                 Value = val;
             dateAdded = stateJson.GameStartTime;
             movieId = 0;
-            overallValues = [new OverallValue() { movieId = 0, dateAdded = dateAdded, value = Value, sourceType = 0 }];
+            //Разобраться студийные / обычные... У безстудийных overall 0.0 у студийных overall = value
+            overallValues = [new OverallValue() { movieId = 0, dateAdded = dateAdded, value = 0.0d, sourceType = 0 }];
         }
         public static bool operator ==(WhiteTag a, WhiteTag b)
         {

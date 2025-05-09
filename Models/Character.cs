@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using HollyJson.ViewModels;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PropertyChanged;
 using System.Collections.ObjectModel;
@@ -59,7 +60,7 @@ namespace HollyJson.Models
         private double limit1;
         [JsonIgnore]
         public bool IsInit { get; set; }
-
+        [JsonConverter(typeof(DoubleJsonConverter))]
         public double limit
         {
             get => limit1;
@@ -71,7 +72,9 @@ namespace HollyJson.Models
                         professions.Value = limit1;
             }
         }
+        [JsonConverter(typeof(DoubleJsonConverter))]
         public double mood { get; set; }
+        [JsonConverter(typeof(DoubleJsonConverter))]
         public double attitude { get; set; }
         public int id { get; set; }
         public int portraitBaseId { get; set; }

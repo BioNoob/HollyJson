@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using HollyJson.ViewModels;
+using Newtonsoft.Json;
 using PropertyChanged;
 
 namespace HollyJson.Models
@@ -39,8 +40,11 @@ namespace HollyJson.Models
             }
         }
         public int startAmount { get; set; }
+        [JsonConverter(typeof(DoubleJsonConverter))]
         public double initialFee { get; set; }
+        [JsonConverter(typeof(DoubleJsonConverter))]
         public double monthlySalary { get; set; }
+        [JsonConverter(typeof(DoubleJsonConverter))]
         public double weightToSalary { get; set; }
         public DateTime dateOfSigning { get; set; }
         [JsonIgnore]
@@ -58,6 +62,7 @@ namespace HollyJson.Models
         public List<object> offers { get; set; }
         public object extension { get; set; }
         public bool Is5050 { get; set; }
+        [JsonConverter(typeof(DoubleJsonConverter))]
         public double FeeWith5050 { get; set; }
         public int SecondPay { get; set; }
         #endregion
@@ -160,6 +165,7 @@ namespace HollyJson.Models
             else
                 return false;
         }
+        [JsonConstructor]
         public Contract()
         {
             IsInit = true;
